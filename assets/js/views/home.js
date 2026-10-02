@@ -688,7 +688,7 @@ export default {
     this._cleanups = [];
 
     // Animation spéciale du titre du Hero si GSAP est présent
-    if (window.gsap) {
+    if (typeof window !== 'undefined' && window.gsap && container) {
       const heroTitle = container.querySelector('#hero-title');
       if (heroTitle) {
         window.gsap.fromTo(

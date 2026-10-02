@@ -7,7 +7,8 @@ let lenisInstance = null;
 
 // Détection de la préférence utilisateur "réduction de mouvement"
 export const isReducedMotion = () => {
-  return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (typeof window === 'undefined' || !window.matchMedia) return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 };
 
 /**
@@ -18,7 +19,7 @@ export const initSmoothScroll = () => {
     return null;
   }
 
-  if (typeof window.Lenis !== 'undefined' && !lenisInstance) {
+  if (typeof window !== 'undefined' && typeof window.Lenis !== 'undefined' && !lenisInstance) {
     lenisInstance = new window.Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -53,7 +54,7 @@ export const getLenis = () => lenisInstance;
  * Nettoie tous les ScrollTriggers actifs (utilisé à chaque changement de page)
  */
 export const killScrollTriggers = () => {
-  if (window.ScrollTrigger) {
+  if (typeof window !== 'undefined' && window.ScrollTrigger) {
     const triggers = window.ScrollTrigger.getAll();
     triggers.forEach((trigger) => trigger.kill(true));
   }
@@ -63,7 +64,7 @@ export const killScrollTriggers = () => {
  * Rafraîchit les positions ScrollTrigger après recalcul du layout
  */
 export const refreshScrollTriggers = () => {
-  if (window.ScrollTrigger) {
+  if (typeof window !== 'undefined' && window.ScrollTrigger) {
     window.ScrollTrigger.refresh();
   }
 };

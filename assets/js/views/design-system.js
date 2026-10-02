@@ -177,9 +177,11 @@ export default {
     `;
   },
 
-  async init(container) {
+  async init(container = (typeof document !== 'undefined' ? document.getElementById('app') || document : null)) {
     console.log('⚡ [Design System View] init()');
     this._cleanups = [];
+
+    if (!container) return;
 
     // Initialisation des composants UI internes à la vue
     initAccordions(container);

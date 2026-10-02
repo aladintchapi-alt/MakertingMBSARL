@@ -1,0 +1,26 @@
+{
+  "name": "MULTI BUSINESS SARL - Gestion Locative & SaaS",
+  "short_name": "MultiBusiness",
+  "description": "Plateforme de gestion locative immobilière et conseil d'affaires à Douala & Yaoundé, Cameroun.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06130E",
+  "theme_color": "#06130E",
+  "icons": [
+    {
+      "src": "/assets/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/apple-touch-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
