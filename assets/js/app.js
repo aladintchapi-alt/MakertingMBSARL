@@ -6,7 +6,7 @@
 import Router from './router.js';
 import { CONFIG } from './config.js';
 import { initSmoothScroll } from './animations.js';
-import { initHeader, initMobileMenu } from './ui.js';
+import { initHeader, initMobileMenu, initScrollProgressBar, initCustomCursor } from './ui.js';
 
 // Table de routage SPA
 const routes = {
@@ -44,14 +44,14 @@ const handlePreloader = () => {
     });
 
     tl.to('#preloader-logo', {
-      scale: 1.1,
-      duration: 0.5,
+      scale: 1.15,
+      duration: 0.6,
       ease: "power2.out"
     })
     .to(preloader, {
       opacity: 0,
       y: -20,
-      duration: 0.45,
+      duration: 0.5,
       ease: "power2.inOut",
       delay: 0.15
     });
@@ -61,12 +61,14 @@ const handlePreloader = () => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Initialiser le défilement fluide
+  // 1. Initialiser le défilement fluide Lenis
   initSmoothScroll();
 
   // 2. Initialiser les interactions d'interface permanentes
   initHeader();
   initMobileMenu();
+  initScrollProgressBar();
+  initCustomCursor();
 
   // 3. Initialiser le routeur SPA
   const router = new Router(routes);

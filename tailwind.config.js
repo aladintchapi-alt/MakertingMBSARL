@@ -19,7 +19,6 @@ export default {
     },
     extend: {
       colors: {
-        // Multi Business SARL Color System
         lime: {
           50: '#F7FFE5',
           100: '#ECFFC2',
@@ -67,30 +66,19 @@ export default {
           300: '#E2E2D2',
           400: '#CDCCB8',
           500: '#B2B097',
-        },
-        surface: {
-          dark: '#080E0B',
-          'dark-card': '#0E1713',
-          'dark-border': '#1A2922',
-          'dark-hover': '#16231D',
-          light: '#FBFBF9',
-          'light-card': '#FFFFFF',
-          'light-border': '#E6E9E6',
-          'light-hover': '#F3F5F3',
         }
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['"Syne"', 'sans-serif'],
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['"Outfit"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       fontSize: {
-        'display-2xl': ['clamp(2.75rem, 6vw + 1rem, 5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
-        'display-xl': ['clamp(2.25rem, 4.5vw + 1rem, 4.25rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
-        'display-lg': ['clamp(1.85rem, 3.5vw + 1rem, 3.25rem)', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-        'heading-xl': ['clamp(1.5rem, 2.5vw + 0.75rem, 2.25rem)', { lineHeight: '1.2', letterSpacing: '-0.015em' }],
-        'heading-lg': ['clamp(1.25rem, 1.8vw + 0.5rem, 1.75rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        'display-2xl': ['clamp(2.75rem, 5.5vw + 1rem, 5.25rem)', { lineHeight: '1.08', letterSpacing: '-0.03em' }],
+        'display-xl': ['clamp(2.25rem, 4vw + 1rem, 4rem)', { lineHeight: '1.12', letterSpacing: '-0.025em' }],
+        'display-lg': ['clamp(1.75rem, 3vw + 1rem, 3rem)', { lineHeight: '1.18', letterSpacing: '-0.02em' }],
+        'heading-xl': ['clamp(1.35rem, 2vw + 0.75rem, 2.15rem)', { lineHeight: '1.22', letterSpacing: '-0.015em' }],
+        'heading-lg': ['clamp(1.15rem, 1.5vw + 0.5rem, 1.6rem)', { lineHeight: '1.28', letterSpacing: '-0.01em' }],
       },
       boxShadow: {
         'glow-lime': '0 0 35px -5px rgba(154, 255, 1, 0.35)',
@@ -99,8 +87,6 @@ export default {
         'glow-mint-sm': '0 0 18px -3px rgba(38, 201, 146, 0.35)',
         'luxury': '0 20px 45px -15px rgba(4, 19, 14, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05)',
         'luxury-hover': '0 30px 60px -15px rgba(4, 19, 14, 0.65), 0 0 0 1px rgba(154, 255, 1, 0.25)',
-        'card-dark': '0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08)',
-        'card-light': '0 10px 30px -10px rgba(6, 19, 14, 0.06), 0 1px 3px rgba(6, 19, 14, 0.04)',
       },
       borderRadius: {
         '2xl': '1.25rem',
@@ -110,8 +96,7 @@ export default {
       animation: {
         'pulse-subtle': 'pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float-slow': 'floatSlow 6s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
-        'shimmer': 'shimmer 2.5s infinite linear',
+        'marquee': 'marquee 35s linear infinite',
       },
       keyframes: {
         pulseSubtle: {
@@ -122,15 +107,13 @@ export default {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-10px)' },
         },
-        shimmer: {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(100%)' },
-        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'mesh-dark': 'radial-gradient(at 15% 15%, rgba(38, 201, 146, 0.15) 0px, transparent 50%), radial-gradient(at 85% 85%, rgba(154, 255, 1, 0.08) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(13, 38, 28, 0.5) 0px, transparent 80%)',
-        'mesh-light': 'radial-gradient(at 10% 20%, rgba(38, 201, 146, 0.08) 0px, transparent 40%), radial-gradient(at 90% 80%, rgba(154, 255, 1, 0.06) 0px, transparent 40%)',
+        'mesh-dark': 'radial-gradient(at 15% 15%, rgba(38, 201, 146, 0.12) 0px, transparent 50%), radial-gradient(at 85% 85%, rgba(154, 255, 1, 0.08) 0px, transparent 50%), radial-gradient(at 50% 50%, rgba(13, 38, 28, 0.4) 0px, transparent 80%)',
       }
     },
   },

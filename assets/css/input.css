@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Syne:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -26,36 +26,36 @@
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   }
 
-  h1, h2, h3, .font-display {
-    font-family: 'Syne', sans-serif;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  h1, h2, h3, h4, .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    letter-spacing: -0.025em;
   }
 }
 
 @layer components {
   /* Bouton Primaire Ultra Luxe */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-[#06130E] bg-[#9AFF01] hover:bg-[#82DB00] transition-all duration-300 active:scale-[0.98] overflow-hidden;
-    box-shadow: 0 0 30px -5px rgba(154, 255, 1, 0.4);
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-bold text-[#06130E] bg-[#9AFF01] hover:bg-[#82DB00] transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base;
+    box-shadow: 0 0 30px -5px rgba(154, 255, 1, 0.45);
   }
   .btn-primary:hover {
-    box-shadow: 0 0 40px 0px rgba(154, 255, 1, 0.6);
+    box-shadow: 0 0 45px 0px rgba(154, 255, 1, 0.65);
   }
 
   /* Bouton Secondaire Glass */
   .btn-secondary {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-white bg-[#0D261C]/80 hover:bg-[#133B2B] border border-[#26C992]/30 hover:border-[#26C992]/60 backdrop-blur-md transition-all duration-300 active:scale-[0.98] overflow-hidden;
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-white bg-[#0D261C]/80 hover:bg-[#133B2B] border border-[#26C992]/30 hover:border-[#26C992]/60 backdrop-blur-md transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
   }
 
   /* Bouton Ghost */
   .btn-ghost {
-    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium text-slate-300 hover:text-[#9AFF01] hover:bg-white/5 transition-all duration-200;
+    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-slate-300 hover:text-[#9AFF01] hover:bg-white/5 transition-all duration-200;
   }
 
   /* Glassmorphism Card */
   .glass-card {
-    @apply relative rounded-3xl bg-[#0D261C]/40 border border-white/10 backdrop-blur-xl transition-all duration-500 hover:border-[#26C992]/30 hover:bg-[#0D261C]/60;
+    @apply relative rounded-3xl bg-[#0D261C]/45 border border-white/10 backdrop-blur-xl transition-all duration-500 hover:border-[#26C992]/30 hover:bg-[#0D261C]/65;
     box-shadow: 0 20px 45px -15px rgba(4, 19, 14, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 
@@ -67,7 +67,7 @@
 
   /* Badge Élite */
   .badge-tag {
-    @apply inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border;
+    @apply inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase border;
   }
   .badge-lime {
     @apply bg-[#9AFF01]/10 text-[#9AFF01] border-[#9AFF01]/30;
@@ -80,12 +80,102 @@
   .input-field {
     @apply w-full px-4 py-3.5 rounded-xl bg-[#06130E]/80 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#9AFF01]/80 focus:ring-2 focus:ring-[#9AFF01]/20 transition-all duration-300;
   }
+
+  /* Bouton WhatsApp Flottant */
+  .whatsapp-float-btn {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border-radius: 9999px;
+    background-color: #25D366;
+    color: #ffffff;
+    box-shadow: 0 10px 30px -5px rgba(37, 211, 102, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  @media (min-width: 768px) {
+    .whatsapp-float-btn {
+      padding: 0.85rem 1.25rem;
+    }
+  }
+  .whatsapp-float-btn:hover {
+    transform: scale(1.06);
+    box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.7);
+  }
+  .whatsapp-float-btn:active {
+    transform: scale(0.96);
+  }
 }
 
-/* Background Texture Noise */
+/* Texture de fond discrète */
 .bg-noise {
   background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
   background-size: 24px 24px;
+}
+
+/* Barre de progression de scroll */
+#scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #9AFF01, #26C992);
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.05s ease-out;
+  box-shadow: 0 0 10px rgba(154, 255, 1, 0.7);
+}
+
+/* Curseur personnalisé (Desktop uniquement) */
+@media (hover: hover) and (pointer: fine) {
+  #custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: #9AFF01;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+  }
+
+  #custom-cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid rgba(154, 255, 1, 0.5);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+  }
+
+  body.cursor-hover #custom-cursor-ring {
+    width: 48px;
+    height: 48px;
+    border-color: #9AFF01;
+    background-color: rgba(154, 255, 1, 0.08);
+  }
+}
+
+/* Marquee Infini */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
 /* Custom Scrollbar */

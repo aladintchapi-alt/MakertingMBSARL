@@ -1,12 +1,74 @@
 /**
  * MULTI BUSINESS SARL - UI Interaction Engine
- * Composants interactifs, Header dynamique, Menu Mobile, Modales, Accordéons, Onglets, Toasts
+ * Composants interactifs, Header dynamique, Curseur personnalisé, Scroll Progress, Modales, Accordéons, Tabs, Toasts
  */
+
+import { isReducedMotion } from './animations.js';
 
 export const initUIComponents = (scope = document) => {
   initAccordions(scope);
   initTabs(scope);
   initModalTriggers(scope);
+};
+
+/**
+ * Barre de progression de scroll en haut de page
+ */
+export const initScrollProgressBar = () => {
+  const bar = document.getElementById('scroll-progress-bar');
+  if (!bar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+  }, { passive: true });
+};
+
+/**
+ * Curseur personnalisé fluide (Desktop uniquement)
+ */
+export const initCustomCursor = () => {
+  if (isReducedMotion() || window.matchMedia('(pointer: coarse)').matches) return;
+
+  const dot = document.getElementById('custom-cursor-dot');
+  const ring = document.getElementById('custom-cursor-ring');
+  if (!dot || !ring) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let ringX = mouseX;
+  let ringY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.left = `${mouseX}px`;
+    dot.style.top = `${mouseY}px`;
+  }, { passive: true });
+
+  // Animation inertielle fluide pour l'anneau
+  const renderCursor = () => {
+    ringX += (mouseX - ringX) * 0.18;
+    ringY += (mouseY - ringY) * 0.18;
+    ring.style.left = `${ringX}px`;
+    ring.style.top = `${ringY}px`;
+    requestAnimationFrame(renderCursor);
+  };
+  requestAnimationFrame(renderCursor);
+
+  // Détection du survol des éléments interactifs
+  const handleHoverState = (e) => {
+    const isInteractive = e.target.closest('a, button, input, textarea, select, [data-magnetic], [data-tab-btn], [data-accordion-trigger]');
+    if (isInteractive) {
+      document.body.classList.add('cursor-hover');
+    } else {
+      document.body.classList.remove('cursor-hover');
+    }
+  };
+
+  document.addEventListener('mouseover', handleHoverState, { passive: true });
 };
 
 /**
@@ -16,15 +78,18 @@ export const initHeader = () => {
   const header = document.getElementById('main-header');
   if (!header) return;
 
-  window.addEventListener('scroll', () => {
+  const handleScroll = () => {
     if (window.scrollY > 40) {
-      header.classList.add('bg-forest-950/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
+      header.classList.add('bg-forest-950/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
       header.classList.remove('bg-transparent', 'py-5');
     } else {
-      header.classList.remove('bg-forest-950/90', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
+      header.classList.remove('bg-forest-950/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
       header.classList.add('bg-transparent', 'py-5');
     }
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
 };
 
 /**
@@ -36,10 +101,10 @@ export const updateActiveNavLink = (currentPath) => {
     const href = link.getAttribute('href');
     const isMatch = href === currentPath || (currentPath === '/' && (href === '/' || href === ''));
     if (isMatch) {
-      link.classList.add('text-lime-400', 'font-semibold');
+      link.classList.add('text-lime-400', 'font-bold', 'bg-white/5');
       link.classList.remove('text-slate-300');
     } else {
-      link.classList.remove('text-lime-400', 'font-semibold');
+      link.classList.remove('text-lime-400', 'font-bold', 'bg-white/5');
       link.classList.add('text-slate-300');
     }
   });
@@ -58,14 +123,10 @@ export const initMobileMenu = () => {
 
   if (!toggleBtn || !menuOverlay) return;
 
-  toggleBtn.addEventListener('click', () => {
-    openMobileMenu();
-  });
+  toggleBtn.addEventListener('click', openMobileMenu);
 
   if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      closeMobileMenu();
-    });
+    closeBtn.addEventListener('click', closeMobileMenu);
   }
 };
 
@@ -126,7 +187,6 @@ export const initAccordions = (scope = document) => {
     trigger.addEventListener('click', () => {
       const isOpen = !content.classList.contains('hidden');
       
-      // Ferme les autres accordéons du même conteneur s'il a data-accordion-group
       const group = item.closest('[data-accordion-group]');
       if (group && !isOpen) {
         group.querySelectorAll('[data-accordion-content]').forEach((c) => c.classList.add('hidden'));
@@ -161,10 +221,10 @@ export const initTabs = (scope = document) => {
         const target = btn.dataset.tabBtn;
 
         buttons.forEach((b) => {
-          b.classList.remove('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm');
+          b.classList.remove('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm', 'font-bold');
           b.classList.add('text-slate-300', 'hover:text-white');
         });
-        btn.classList.add('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm');
+        btn.classList.add('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm', 'font-bold');
         btn.classList.remove('text-slate-300', 'hover:text-white');
 
         contents.forEach((c) => {
@@ -216,8 +276,8 @@ export const openModal = (modalId) => {
   if (window.gsap && modalBox) {
     window.gsap.fromTo(
       modalBox,
-      { opacity: 0, scale: 0.9, y: 20 },
-      { opacity: 1, scale: 1, y: 0, duration: 0.4, ease: "power3.out" }
+      { opacity: 0, scale: 0.92, y: 20 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.35, ease: "power3.out" }
     );
   }
 };
@@ -255,7 +315,7 @@ export const showToast = (message, type = 'success') => {
   if (!toastContainer) {
     toastContainer = document.createElement('div');
     toastContainer.id = 'toast-container';
-    toastContainer.className = 'fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none';
+    toastContainer.className = 'fixed bottom-6 left-6 z-50 flex flex-col gap-3 pointer-events-none';
     document.body.appendChild(toastContainer);
   }
 
