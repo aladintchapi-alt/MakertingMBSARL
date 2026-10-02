@@ -1,0 +1,42 @@
+{
+  "name": "multi-business-sarl-website",
+  "version": "1.0.0",
+  "description": "Site vitrine haute performance pour MULTI BUSINESS SARL - Gestion locative & Conseil d'affaires (Douala & Yaoundé, Cameroun)",
+  "type": "module",
+  "scripts": {
+    "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
+    "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
+    "serve": "npx serve . -l 3000",
+    "dev": "npx concurrently \"npm run dev:css\" \"npm run serve\"",
+    "build": "npm run build:css"
+  },
+  "keywords": [
+    "gestion-locative",
+    "immobilier",
+    "cameroun",
+    "douala",
+    "yaounde",
+    "saas",
+    "bailleurs",
+    "locataires"
+  ],
+  "author": "MULTI BUSINESS SARL",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "gsap": "^3.12.7",
+    "lenis": "^1.1.20"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aladintchapi-alt/MakertingMBSARL.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aladintchapi-alt/MakertingMBSARL/issues"
+  },
+  "homepage": "https://github.com/aladintchapi-alt/MakertingMBSARL#readme"
+}

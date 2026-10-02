@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Syne:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-lime-500: #9AFF01;
+  --color-mint-500: #26C992;
+  --color-forest-950: #06130E;
+  --color-forest-900: #0D261C;
+  --color-forest-850: #133B2B;
+}
+
+@layer base {
+  html {
+    scroll-behavior: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #06130E;
+    color: #E2E8F0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Syne', sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  /* Bouton Primaire Ultra Luxe */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-[#06130E] bg-[#9AFF01] hover:bg-[#82DB00] transition-all duration-300 active:scale-[0.98] overflow-hidden;
+    box-shadow: 0 0 30px -5px rgba(154, 255, 1, 0.4);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 0 40px 0px rgba(154, 255, 1, 0.6);
+  }
+
+  /* Bouton Secondaire Glass */
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-white bg-[#0D261C]/80 hover:bg-[#133B2B] border border-[#26C992]/30 hover:border-[#26C992]/60 backdrop-blur-md transition-all duration-300 active:scale-[0.98] overflow-hidden;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Bouton Ghost */
+  .btn-ghost {
+    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-medium text-slate-300 hover:text-[#9AFF01] hover:bg-white/5 transition-all duration-200;
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply relative rounded-3xl bg-[#0D261C]/40 border border-white/10 backdrop-blur-xl transition-all duration-500 hover:border-[#26C992]/30 hover:bg-[#0D261C]/60;
+    box-shadow: 0 20px 45px -15px rgba(4, 19, 14, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  /* Glassmorphism Card Accent */
+  .glass-card-accent {
+    @apply relative rounded-3xl bg-gradient-to-b from-[#133B2B]/70 to-[#06130E]/90 border border-[#26C992]/30 backdrop-blur-xl;
+    box-shadow: 0 20px 45px -15px rgba(4, 19, 14, 0.5);
+  }
+
+  /* Badge Élite */
+  .badge-tag {
+    @apply inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold tracking-wider uppercase border;
+  }
+  .badge-lime {
+    @apply bg-[#9AFF01]/10 text-[#9AFF01] border-[#9AFF01]/30;
+  }
+  .badge-mint {
+    @apply bg-[#26C992]/10 text-[#26C992] border-[#26C992]/30;
+  }
+
+  /* Inputs Luxe */
+  .input-field {
+    @apply w-full px-4 py-3.5 rounded-xl bg-[#06130E]/80 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#9AFF01]/80 focus:ring-2 focus:ring-[#9AFF01]/20 transition-all duration-300;
+  }
+}
+
+/* Background Texture Noise */
+.bg-noise {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06130E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1A513A;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #26C992;
+}
