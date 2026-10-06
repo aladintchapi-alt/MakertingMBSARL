@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /design-system
 
 Sitemap: https://www.multibusiness-sarl.com/sitemap.xml

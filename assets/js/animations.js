@@ -69,75 +69,243 @@ export const refreshScrollTriggers = () => {
   }
 };
 
+// Thèmes de couleur du rideau de transition selon le service de destination
+export const ROUTE_TRANSITION_THEMES = {
+  '/gestion-immobiliere': { bg: '#26C992', accent: '#9AFF01', label: 'Gestion Immobilière' },
+  '/gestion-locative': { bg: '#26C992', accent: '#9AFF01', label: 'Gestion Immobilière' },
+  '/creation-entreprise': { bg: '#D97706', accent: '#FDE68A', label: 'Création d\'Entreprise' },
+  '/creation-d-entreprise': { bg: '#D97706', accent: '#FDE68A', label: 'Création d\'Entreprise' },
+  '/dedouanement': { bg: '#0284C7', accent: '#BAE6FD', label: 'Dédouanement des Marchandises' },
+  '/prestation-de-services': { bg: '#E11D48', accent: '#FECDD3', label: 'Prestations de Services' },
+  '/prestation-services': { bg: '#E11D48', accent: '#FECDD3', label: 'Prestations de Services' },
+  '/fiscalite-conseil': { bg: '#4F46E5', accent: '#C7D2FE', label: 'Fiscalité & Conseil' },
+  '/fiscalite': { bg: '#4F46E5', accent: '#C7D2FE', label: 'Fiscalité & Conseil' },
+  '/qui-sommes-nous': { bg: '#0B1B2B', accent: '#26C992', label: 'Qui sommes-nous' },
+  '/a-propos': { bg: '#0B1B2B', accent: '#26C992', label: 'Qui sommes-nous' },
+  '/nos-services': { bg: '#0F2942', accent: '#38BDF8', label: 'Nos Services' },
+  '/services': { bg: '#0F2942', accent: '#38BDF8', label: 'Nos Services' },
+  '/contact': { bg: '#10B981', accent: '#A7F3D0', label: 'Contact & Siège' },
+  '/design-system': { bg: '#059669', accent: '#A7F3D0', label: 'Design System' },
+  '/test-a': { bg: '#4F46E5', accent: '#C7D2FE', label: 'Test A : Lifecycle & Timers' },
+  '/test-b': { bg: '#0284C7', accent: '#BAE6FD', label: 'Test B : Three.js WebGL' },
+  '/test-c': { bg: '#D97706', accent: '#FEF3C7', label: 'Test C : Clics & Ancres' },
+  '/': { bg: '#0B1B2B', accent: '#26C992', label: 'MULTI BUSINESS SARL' }
+};
+
+let curtainElement = null;
+
 /**
- * Transitions de pages cinématiques (600 - 800ms)
+ * Nettoyage forcé de tous les overlays (rideau, preloader, verrou pointer-events)
+ * Garantit qu'aucun écran bloqué ne subsiste, quoi qu'il arrive
+ */
+export const forceResetOverlays = () => {
+  const curtain = document.getElementById('page-curtain');
+  if (curtain) {
+    if (window.gsap) {
+      window.gsap.killTweensOf(curtain);
+      const contentEl = curtain.querySelector('#curtain-content');
+      if (contentEl) window.gsap.killTweensOf(contentEl);
+    }
+    curtain.style.opacity = '0';
+    curtain.style.visibility = 'hidden';
+    curtain.style.pointerEvents = 'none';
+    curtain.style.transform = 'translateY(100%)';
+  }
+
+  const preloader = document.getElementById('app-preloader');
+  if (preloader) {
+    if (window.gsap) window.gsap.killTweensOf(preloader);
+    preloader.style.opacity = '0';
+    preloader.style.pointerEvents = 'none';
+    preloader.style.visibility = 'hidden';
+    if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
+  }
+
+  document.body.style.pointerEvents = '';
+  document.body.style.overflow = '';
+
+  const lenis = getLenis();
+  if (lenis && typeof lenis.start === 'function') {
+    try { lenis.start(); } catch (e) {}
+  }
+};
+
+const getOrCreateCurtain = () => {
+  if (curtainElement) return curtainElement;
+  curtainElement = document.getElementById('page-curtain');
+  if (!curtainElement) {
+    curtainElement = document.createElement('div');
+    curtainElement.id = 'page-curtain';
+    curtainElement.className = 'fixed inset-0 z-[9990] pointer-events-none flex flex-col items-center justify-center';
+    curtainElement.style.transform = 'translateY(100%)';
+    curtainElement.style.willChange = 'transform';
+    curtainElement.innerHTML = `
+      <div id="curtain-content" class="flex flex-col items-center gap-3 opacity-0 transition-opacity">
+        <img src="./assets/images/logo-transparent.png" class="w-16 h-16 object-contain drop-shadow-md rounded-full bg-white/95 p-1" alt="Logo MULTI BUSINESS SARL" />
+        <span id="curtain-label" class="font-serif font-bold text-xl md:text-2xl text-white tracking-wider">MULTI BUSINESS SARL</span>
+        <div class="w-20 h-1 rounded-full bg-white/30 overflow-hidden mt-1">
+          <div id="curtain-bar" class="w-full h-full bg-white"></div>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(curtainElement);
+  }
+  return curtainElement;
+};
+
+/**
+ * Transitions de pages cinématiques avec rideau coloré (avec watchdog & annulation)
+ * Zéro saut de layout, zéro flash blanc, fail-safe 600ms
  */
 export const pageTransitions = {
-  // Sortie animée de la page courante
-  leave: (container) => {
+  // 1. Fermeture du rideau coloré sur l'écran
+  leave: (container, targetPath = '/', signal) => {
     return new Promise((resolve) => {
-      if (isReducedMotion() || !window.gsap || !container) {
+      if (signal?.aborted) {
+        forceResetOverlays();
         return resolve();
       }
 
-      window.gsap.to(container, {
-        opacity: 0,
-        y: -25,
-        filter: "blur(4px)",
-        duration: 0.35,
-        ease: "power2.inOut",
-        onComplete: () => {
-          window.gsap.set(container, { clearProps: "filter" });
+      // Verrouillage anti-clic temporaire durant la fermeture uniquement
+      document.body.style.pointerEvents = 'none';
+
+      if (isReducedMotion() || !window.gsap) {
+        if (container) container.style.opacity = '0';
+        return resolve();
+      }
+
+      const curtain = getOrCreateCurtain();
+      curtain.style.visibility = 'visible';
+      curtain.style.opacity = '1';
+      curtain.style.pointerEvents = 'auto';
+
+      const theme = ROUTE_TRANSITION_THEMES[targetPath] || ROUTE_TRANSITION_THEMES['/'];
+      curtain.style.backgroundColor = theme.bg;
+      const labelEl = curtain.querySelector('#curtain-label');
+      if (labelEl) labelEl.textContent = theme.label;
+      const contentEl = curtain.querySelector('#curtain-content');
+
+      // Watchdog de sécurité interne (650ms max pour éviter tout blocage)
+      const safetyTimer = setTimeout(() => {
+        resolve();
+      }, 650);
+
+      const onDone = () => {
+        clearTimeout(safetyTimer);
+        resolve();
+      };
+
+      if (signal) {
+        signal.addEventListener('abort', () => {
+          clearTimeout(safetyTimer);
+          if (window.gsap) window.gsap.killTweensOf(curtain);
+          forceResetOverlays();
           resolve();
-        }
+        }, { once: true });
+      }
+
+      const tl = window.gsap.timeline({
+        onComplete: onDone
       });
+
+      window.gsap.set(curtain, { y: '100%' });
+      if (contentEl) window.gsap.set(contentEl, { opacity: 0, scale: 0.95 });
+
+      // Le rideau monte pour recouvrir l'écran
+      tl.to(curtain, {
+        y: '0%',
+        duration: 0.35,
+        ease: 'power3.inOut'
+      })
+      .to(contentEl, {
+        opacity: 1,
+        scale: 1,
+        duration: 0.15,
+        ease: 'power2.out'
+      }, '-=0.15');
     });
   },
 
-  // Entrée animée cinématique avec cascade (stagger) des éléments enfants
-  enter: (container) => {
+  // 2. Ouverture du rideau vers le haut et révélation du nouveau contenu
+  enter: (container, signal) => {
     return new Promise((resolve) => {
-      if (isReducedMotion() || !window.gsap || !container) {
+      if (signal?.aborted) {
+        forceResetOverlays();
+        return resolve();
+      }
+
+      if (isReducedMotion() || !window.gsap) {
         if (container) {
           container.style.opacity = '1';
           container.style.transform = 'none';
         }
+        forceResetOverlays();
+        refreshScrollTriggers();
         return resolve();
       }
 
-      // Reset état initial du conteneur
-      window.gsap.set(container, { opacity: 0, y: 35 });
+      const curtain = getOrCreateCurtain();
+      const contentEl = curtain.querySelector('#curtain-content');
+
+      // Watchdog de sécurité interne (650ms max)
+      const safetyTimer = setTimeout(() => {
+        forceResetOverlays();
+        resolve();
+      }, 650);
+
+      const onDone = () => {
+        clearTimeout(safetyTimer);
+        forceResetOverlays();
+        refreshScrollTriggers();
+        resolve();
+      };
+
+      if (signal) {
+        signal.addEventListener('abort', () => {
+          clearTimeout(safetyTimer);
+          if (window.gsap) window.gsap.killTweensOf(curtain);
+          forceResetOverlays();
+          resolve();
+        }, { once: true });
+      }
 
       const tl = window.gsap.timeline({
-        onComplete: () => {
-          refreshScrollTriggers();
-          resolve();
+        onComplete: onDone
+      });
+
+      // Le contenu du rideau s'estompe
+      tl.to(contentEl, {
+        opacity: 0,
+        y: -20,
+        duration: 0.15,
+        ease: 'power2.in'
+      })
+      // Le rideau glisse vers le haut pour révéler la nouvelle page
+      .to(curtain, {
+        y: '-100%',
+        duration: 0.38,
+        ease: 'power3.inOut'
+      }, '-=0.05');
+
+      // Entrée en cascade (stagger) des éléments enfants
+      if (container) {
+        window.gsap.set(container, { opacity: 1, y: 0 });
+        const animElements = container.querySelectorAll('[data-stagger-item], [data-reveal]');
+        if (animElements.length > 0) {
+          tl.fromTo(
+            animElements,
+            { opacity: 0, y: 25 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.06,
+              ease: 'power3.out',
+              clearProps: 'opacity,transform'
+            },
+            '-=0.25'
+          );
         }
-      });
-
-      // Apparition du conteneur
-      tl.to(container, {
-        opacity: 1,
-        y: 0,
-        duration: 0.55,
-        ease: "power3.out"
-      });
-
-      // Animation en cascade des blocs marqués
-      const animElements = container.querySelectorAll('[data-stagger-item], [data-reveal]');
-      if (animElements.length > 0) {
-        tl.fromTo(
-          animElements,
-          { opacity: 0, y: 30 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.65,
-            stagger: 0.08,
-            ease: "power3.out"
-          },
-          "-=0.35"
-        );
       }
     });
   }
@@ -172,6 +340,7 @@ export const initScrollReveals = (scope = document) => {
         duration: 0.85,
         delay,
         ease: "power3.out",
+        clearProps: "opacity,transform",
         scrollTrigger: {
           trigger: el,
           start: "top 88%",

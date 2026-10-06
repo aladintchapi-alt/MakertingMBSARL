@@ -6,10 +6,15 @@
   "scripts": {
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
-    "serve": "npx serve . -l 3000",
-    "dev": "npx concurrently \"npm run dev:css\" \"npm run serve\"",
+    "serve": "node dev-server.mjs",
+    "dev": "concurrently \"npm run dev:css\" \"node dev-server.mjs\"",
+    "audit": "node audit-all-pages.mjs",
+    "audit:final": "node final-compliance-audit.mjs",
+    "test:nav": "node test-nav.mjs",
+    "test:runtime": "node test-spa-runtime.mjs",
+    "prebuild": "npm run audit && npm run test:nav && npm run test:runtime && npm run audit:final",
     "build": "npm run build:css",
-    "test": "node qa-stress-test.js"
+    "test": "npm run audit:final"
   },
   "keywords": [
     "gestion-locative",

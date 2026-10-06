@@ -8,29 +8,51 @@ import { CONFIG } from './config.js';
 import { initSmoothScroll } from './animations.js';
 import { initHeader, initMobileMenu, initScrollProgressBar, initCustomCursor } from './ui.js';
 
-// Table de routage SPA
+// Table de routage SPA exhaustive (avec gestion stricte de toutes les URLs et alias)
 const routes = {
   '/': () => import('./views/home.js'),
-  '/gestion-locative': () => import('./views/gestion-locative.js'),
-  '/services': () => import('./views/services.js'),
+  '/qui-sommes-nous': () => import('./views/a-propos.js'),
   '/a-propos': () => import('./views/a-propos.js'),
+  '/gestion-immobiliere': () => import('./views/gestion-locative.js'),
+  '/gestion-locative': () => import('./views/gestion-locative.js'),
+  '/nos-services': () => import('./views/services.js'),
+  '/services': () => import('./views/services.js'),
+  '/creation-entreprise': () => import('./views/creation-entreprise.js'),
+  '/creation-d-entreprise': () => import('./views/creation-entreprise.js'),
+  '/dedouanement': () => import('./views/dedouanement.js'),
+  '/prestation-de-services': () => import('./views/prestation-services.js'),
+  '/prestation-services': () => import('./views/prestation-services.js'),
+  '/fiscalite-conseil': () => import('./views/fiscalite.js'),
+  '/fiscalite': () => import('./views/fiscalite.js'),
   '/contact': () => import('./views/contact.js'),
   '/design-system': () => import('./views/design-system.js'),
+  '/test-a': () => import('./views/test-a.js'),
+  '/test-b': () => import('./views/test-b.js'),
+  '/test-c': () => import('./views/test-c.js'),
   '/404': () => import('./views/not-found.js'),
   '*': () => import('./views/not-found.js'),
 };
 
 /**
- * Gestion du Preloader (au premier chargement uniquement)
+ * Gestion du Preloader (au premier chargement uniquement avec chien de garde absolu)
  */
 const handlePreloader = () => {
   const preloader = document.getElementById('app-preloader');
   if (!preloader) return;
 
-  const hasSeenPreloader = sessionStorage.getItem('mb_preloader_seen');
+  const removePreloader = () => {
+    if (preloader && preloader.parentNode) {
+      preloader.parentNode.removeChild(preloader);
+    }
+  };
 
+  // Chien de garde absolu : suppression garantie après 3.5s quoi qu'il arrive
+  const safetyTimer = setTimeout(removePreloader, 3500);
+
+  const hasSeenPreloader = sessionStorage.getItem('mb_preloader_seen');
   if (hasSeenPreloader) {
-    preloader.remove();
+    clearTimeout(safetyTimer);
+    removePreloader();
     return;
   }
 
@@ -39,7 +61,8 @@ const handlePreloader = () => {
   if (window.gsap) {
     const tl = window.gsap.timeline({
       onComplete: () => {
-        preloader.remove();
+        clearTimeout(safetyTimer);
+        removePreloader();
       }
     });
 
@@ -56,26 +79,51 @@ const handlePreloader = () => {
       delay: 0.15
     });
   } else {
-    setTimeout(() => preloader.remove(), 400);
+    setTimeout(() => {
+      clearTimeout(safetyTimer);
+      removePreloader();
+    }, 400);
+  }
+};
+
+/**
+ * Vérification de l'intégrité du chargement des styles CSS
+ */
+const checkCssIntegrity = () => {
+  try {
+    const isLoaded = getComputedStyle(document.documentElement).getPropertyValue('--app-css-loaded').trim();
+    if (isLoaded !== '1') {
+      console.warn('[App] CSS non encore appliqué. Tentative de rafraîchissement du lien CSS.');
+      const link = document.querySelector('link[href*="output.css"]');
+      if (link) {
+        link.href = `./assets/css/output.css?v=${Date.now()}`;
+      }
+    }
+  } catch (e) {
+    // Silencieux
   }
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Initialiser le défilement fluide Lenis
+  // 1. Contrôle d'intégrité CSS
+  checkCssIntegrity();
+
+  // 2. Initialiser le défilement fluide Lenis
   initSmoothScroll();
 
-  // 2. Initialiser les interactions d'interface permanentes
+  // 3. Initialiser les interactions d'interface permanentes
   initHeader();
   initMobileMenu();
   initScrollProgressBar();
   initCustomCursor();
 
-  // 3. Initialiser le routeur SPA
+  // 4. Initialiser le routeur SPA
   const router = new Router(routes);
   window.appRouter = router;
 
-  // 4. Exécuter le preloader élégant
+  // 5. Exécuter le preloader élégant
   handlePreloader();
 
   console.log(`✨ [App] MULTI BUSINESS SARL SPA Engine Running smoothly.`);
 });
+

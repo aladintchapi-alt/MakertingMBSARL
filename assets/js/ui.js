@@ -9,6 +9,7 @@ export const initUIComponents = (scope = document) => {
   initAccordions(scope);
   initTabs(scope);
   initModalTriggers(scope);
+  initLightbox(scope);
 };
 
 /**
@@ -72,24 +73,40 @@ export const initCustomCursor = () => {
 };
 
 /**
- * Gestion du Header au scroll (Glassmorphism & shrink)
+ * Gestion du Header Unifié au scroll (Pliage fluide de la top-bar & synchronisation des dimensions)
  */
 export const initHeader = () => {
-  const header = document.getElementById('main-header');
-  if (!header) return;
+  const siteHeader = document.getElementById('site-header') || document.getElementById('main-header');
+  const topBar = document.getElementById('top-bar');
+  if (!siteHeader) return;
+
+  // Mesure et mise à jour dynamique des variables CSS de hauteur
+  const updateHeaderDimensions = () => {
+    const headerHeight = siteHeader.offsetHeight;
+    const topBarHeight = topBar ? topBar.offsetHeight : 0;
+    document.documentElement.style.setProperty('--header-h', `${headerHeight}px`);
+    document.documentElement.style.setProperty('--topbar-h', `${topBarHeight}px`);
+  };
+
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => updateHeaderDimensions());
+    ro.observe(siteHeader);
+  }
 
   const handleScroll = () => {
-    if (window.scrollY > 40) {
-      header.classList.add('bg-forest-950/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
-      header.classList.remove('bg-transparent', 'py-5');
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+    if (scrollY > 40) {
+      siteHeader.classList.add('header-scrolled');
     } else {
-      header.classList.remove('bg-forest-950/85', 'backdrop-blur-xl', 'border-b', 'border-white/10', 'py-3.5', 'shadow-luxury');
-      header.classList.add('bg-transparent', 'py-5');
+      siteHeader.classList.remove('header-scrolled');
     }
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('resize', updateHeaderDimensions, { passive: true });
+  
   handleScroll();
+  updateHeaderDimensions();
 };
 
 /**
@@ -101,11 +118,11 @@ export const updateActiveNavLink = (currentPath) => {
     const href = link.getAttribute('href');
     const isMatch = href === currentPath || (currentPath === '/' && (href === '/' || href === ''));
     if (isMatch) {
-      link.classList.add('text-lime-400', 'font-bold', 'bg-white/5');
-      link.classList.remove('text-slate-300');
+      link.classList.add('text-marine-900', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+      link.classList.remove('text-slate-600');
     } else {
-      link.classList.remove('text-lime-400', 'font-bold', 'bg-white/5');
-      link.classList.add('text-slate-300');
+      link.classList.remove('text-marine-900', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+      link.classList.add('text-slate-600');
     }
   });
 
@@ -207,7 +224,7 @@ export const initAccordions = (scope = document) => {
 };
 
 /**
- * Onglets (Tabs interactifs)
+ * Onglets (Tabs interactifs - Style Light Luxury)
  */
 export const initTabs = (scope = document) => {
   const tabContainers = scope.querySelectorAll('[data-tabs]');
@@ -221,11 +238,13 @@ export const initTabs = (scope = document) => {
         const target = btn.dataset.tabBtn;
 
         buttons.forEach((b) => {
-          b.classList.remove('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm', 'font-bold');
-          b.classList.add('text-slate-300', 'hover:text-white');
+          b.classList.remove('bg-marine-900', 'text-white', 'shadow-md', 'font-bold');
+          b.classList.add('text-slate-600', 'hover:text-slate-900', 'bg-transparent');
+          b.setAttribute('aria-selected', 'false');
         });
-        btn.classList.add('bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm', 'font-bold');
-        btn.classList.remove('text-slate-300', 'hover:text-white');
+        btn.classList.add('bg-marine-900', 'text-white', 'shadow-md', 'font-bold');
+        btn.classList.remove('text-slate-600', 'hover:text-slate-900', 'bg-transparent');
+        btn.setAttribute('aria-selected', 'true');
 
         contents.forEach((c) => {
           if (c.dataset.tabContent === target) {
@@ -241,6 +260,87 @@ export const initTabs = (scope = document) => {
     });
   });
 };
+
+/**
+ * Visualiseur d'images Lightbox Fullscreen
+ */
+export const initLightbox = (scope = document) => {
+  const triggers = scope.querySelectorAll('[data-lightbox]');
+  if (!triggers.length) return;
+
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const src = trigger.getAttribute('data-lightbox') || trigger.getAttribute('src');
+      const caption = trigger.getAttribute('data-caption') || trigger.getAttribute('alt') || 'MULTI BUSINESS SARL';
+      openLightbox(src, caption);
+    });
+  });
+};
+
+export const openLightbox = (src, caption = '') => {
+  let lightbox = document.getElementById('app-lightbox');
+  if (!lightbox) {
+    lightbox = document.createElement('div');
+    lightbox.id = 'app-lightbox';
+    lightbox.className = 'fixed inset-0 z-[99999] bg-slate-950/90 backdrop-blur-xl flex flex-col items-center justify-center p-4 transition-opacity duration-300';
+    lightbox.innerHTML = `
+      <button id="lightbox-close" class="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all" aria-label="Fermer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center">
+        <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl border border-white/10" />
+        <p id="lightbox-caption" class="text-white text-sm md:text-base font-medium mt-4 text-center px-4"></p>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.closest('#lightbox-close')) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
+  const img = lightbox.querySelector('#lightbox-img');
+  const captionEl = lightbox.querySelector('#lightbox-caption');
+  img.src = src;
+  img.alt = caption;
+  captionEl.textContent = caption;
+
+  lightbox.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+
+  if (window.gsap) {
+    window.gsap.fromTo(lightbox, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+    window.gsap.fromTo(img, { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: 'power3.out' });
+  }
+};
+
+export const closeLightbox = () => {
+  const lightbox = document.getElementById('app-lightbox');
+  if (!lightbox || lightbox.classList.contains('hidden')) return;
+
+  if (window.gsap) {
+    window.gsap.to(lightbox, {
+      opacity: 0,
+      duration: 0.25,
+      ease: 'power2.in',
+      onComplete: () => {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  } else {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+};
+
 
 /**
  * Modales

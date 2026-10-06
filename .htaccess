@@ -1,11 +1,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   
-  # Si le fichier ou le dossier demandé existe physiquement (assets, css, images, etc.), on le sert
+  # Si le fichier ou le dossier demandé existe physiquement (assets, css, images, etc.), on le sert directement
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
   RewriteRule ^ - [L]
 
-  # Redirection de toutes les routes virtuelles vers le index.html local
-  RewriteRule . index.html [L]
+  # Exclure explicitement les extensions de fichiers statiques (vrai 404 si fichier absent)
+  RewriteCond %{REQUEST_URI} \.(css|js|mjs|jpg|jpeg|png|gif|svg|webp|avif|json|woff|woff2|ttf|eot|ico|webmanifest|xml|txt|pdf)$ [NC]
+  RewriteRule ^ - [L]
+
+  # Redirection de toutes les routes SPA virtuelles vers index.html du dossier
+  RewriteRule ^ index.html [L]
 </IfModule>

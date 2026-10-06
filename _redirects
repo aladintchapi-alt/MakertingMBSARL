@@ -1,1 +1,8 @@
-/*    /index.html   200
+# MULTI BUSINESS SARL - SPA Redirect Rules (Netlify)
+/assets/*          /assets/:splat          200
+/site.webmanifest  /site.webmanifest      200
+/version.json      /version.json          200
+/favicon.ico       /favicon.ico           200
+/sitemap.xml       /sitemap.xml           200
+/robots.txt        /robots.txt            200
+/*                 /index.html            200

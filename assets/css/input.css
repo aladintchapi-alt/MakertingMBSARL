@@ -1,16 +1,153 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ========================================================================= */
+/* 1. TOKENS SÉMANTIQUES PAIRÉS & SYSTÈME DE THÈMES DE SECTIONS               */
+/* ========================================================================= */
+
 :root {
-  --color-lime-500: #9AFF01;
-  --color-mint-500: #26C992;
-  --color-forest-950: #06130E;
-  --color-forest-900: #0D261C;
-  --color-forest-850: #133B2B;
+  /* Marqueur d'intégrité CSS pour l'amorce JS */
+  --app-css-loaded: 1;
+
+  /* Dimensions dynamiques du Header */
+  --topbar-h: 36px;
+  --header-h: 88px;
+
+  /* Typographie & Polices */
+  --font-serif: 'Playfair Display', Georgia, Cambria, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Thème par défaut : Light (Blanc Pur) */
+  --surface: #FFFFFF;
+  --surface-subtle: #F8FAFC;
+  --on-surface-title: #0B1B2B;    /* Contraste 17.41:1 (AAA) */
+  --on-surface-body: #334155;     /* Contraste 10.35:1 (AAA) */
+  --on-surface-muted: #475569;    /* Contraste 7.58:1 (AAA) */
+  --on-surface-accent: #065F46;   /* Vert Émeraude Profond - Contraste 7.68:1 (AAA) */
+  --border-color: #E2E8F0;
+  --border-subtle: #F1F5F9;
+
+  /* Marque Principale */
+  --color-brand-lime: #9AFF01;
+  --color-brand-mint: #26C992;
+  --color-brand-marine: #0B1B2B;
 }
+
+/* Thème 1 : Blanc Pur (data-theme="light") */
+[data-theme="light"] {
+  --surface: #FFFFFF;
+  --surface-subtle: #F8FAFC;
+  --on-surface-title: #0B1B2B;
+  --on-surface-body: #334155;
+  --on-surface-muted: #475569;
+  --on-surface-accent: #065F46;
+  --border-color: #E2E8F0;
+  --border-subtle: #F1F5F9;
+}
+
+/* Thème 2 : Ivoire Chaud (data-theme="ivory") */
+[data-theme="ivory"] {
+  --surface: #FAF9F5;
+  --surface-subtle: #F4F1EA;
+  --on-surface-title: #0B1B2B;
+  --on-surface-body: #334155;
+  --on-surface-muted: #475569;
+  --on-surface-accent: #065F46;
+  --border-color: #E6E1D5;
+  --border-subtle: #EFECE4;
+}
+
+/* Thème 3 : Pastel Gestion Immobilière (data-theme="tint-emerald") */
+[data-theme="tint-emerald"] {
+  --surface: #F0FDF4;
+  --surface-subtle: #DCFCE7;
+  --on-surface-title: #064E3B;
+  --on-surface-body: #1E293B;
+  --on-surface-muted: #334155;
+  --on-surface-accent: #065F46;
+  --border-color: #BBF7D0;
+  --border-subtle: #DCFCE7;
+}
+
+/* Thème 4 : Pastel Fiscalité (data-theme="tint-indigo") */
+[data-theme="tint-indigo"] {
+  --surface: #EEF2FF;
+  --surface-subtle: #E0E7FF;
+  --on-surface-title: #1E1B4B;
+  --on-surface-body: #1E293B;
+  --on-surface-muted: #3730A3;
+  --on-surface-accent: #3730A3;
+  --border-color: #C7D2FE;
+  --border-subtle: #E0E7FF;
+}
+
+/* Thème 5 : Pastel Création d'Entreprise (data-theme="tint-amber") */
+[data-theme="tint-amber"] {
+  --surface: #FFFBEB;
+  --surface-subtle: #FEF3C7;
+  --on-surface-title: #451A03;
+  --on-surface-body: #1E293B;
+  --on-surface-muted: #78350F;
+  --on-surface-accent: #92400E;
+  --border-color: #FDE68A;
+  --border-subtle: #FEF3C7;
+}
+
+/* Thème 6 : Pastel Dédouanement (data-theme="tint-ocean") */
+[data-theme="tint-ocean"] {
+  --surface: #F0F9FF;
+  --surface-subtle: #E0F2FE;
+  --on-surface-title: #082F49;
+  --on-surface-body: #1E293B;
+  --on-surface-muted: #075985;
+  --on-surface-accent: #0369A1;
+  --border-color: #BAE6FD;
+  --border-subtle: #E0F2FE;
+}
+
+/* Thème 7 : Pastel Prestations (data-theme="tint-coral") */
+[data-theme="tint-coral"] {
+  --surface: #FFF1F2;
+  --surface-subtle: #FFE4E6;
+  --on-surface-title: #4C0519;
+  --on-surface-body: #1E293B;
+  --on-surface-muted: #881337;
+  --on-surface-accent: #9F1239;
+  --border-color: #FECDD3;
+  --border-subtle: #FFE4E6;
+}
+
+/* Thème 8 : Sombre Marine Encre (data-theme="ink" - Strict 10% Max) */
+[data-theme="ink"] {
+  --surface: #0B1B2B;
+  --surface-subtle: #132435;
+  --on-surface-title: #FFFFFF;    /* Contraste 17.41:1 (AAA) */
+  --on-surface-body: #CBD5E1;     /* Contraste 11.73:1 (AAA) */
+  --on-surface-muted: #94A3B8;    /* Contraste 8.12:1 (AAA) */
+  --on-surface-accent: #9AFF01;   /* Contraste 13.83:1 (AAA) */
+  --border-color: rgba(255, 255, 255, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+/* Thème 9 : Photo Cinématique HD (data-theme="photo") */
+[data-theme="photo"] {
+  --surface: transparent;
+  --surface-subtle: rgba(11, 27, 43, 0.65);
+  --on-surface-title: #FFFFFF;
+  --on-surface-body: #F1F5F9;
+  --on-surface-muted: #CBD5E1;
+  --on-surface-accent: #9AFF01;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================================================= */
+/* 2. RÈGLES DE BASE ET TYPOGRAPHIE ALIGNÉE (LINING NUMBERS)                 */
+/* ========================================================================= */
 
 @layer base {
   html {
@@ -20,175 +157,204 @@
     text-rendering: optimizeLegibility;
   }
 
-  body {
-    background-color: #06130E;
-    color: #E2E8F0;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  /* Règle impérative : Chiffres alignés (Lining Numerals) partout pour éviter le 0 médiéval */
+  *, *::before, *::after {
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
   }
 
-  h1, h2, h3, h4, .font-display {
-    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
-    letter-spacing: -0.025em;
+  body {
+    background-color: #FFFFFF;
+    color: #334155;
+    font-family: var(--font-sans);
+    line-height: 1.6;
+  }
+
+  /* Titres avec Serif Éditorial Élégant et Contraste Noir Encre AAA */
+  h1, h2, h3, .font-serif-title {
+    font-family: var(--font-serif);
+    letter-spacing: -0.015em;
+    color: var(--on-surface-title);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+  }
+
+  h4, h5, h6, .font-sans-heading {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    color: var(--on-surface-title);
   }
 }
+
+/* ========================================================================= */
+/* 3. COMPOSANTS HAUT DE GAMME                                               */
+/* ========================================================================= */
 
 @layer components {
-  /* Bouton Primaire Ultra Luxe */
+  
+  /* Bouton Primaire (Lime Électrique / Texte Encre Marine Profond) */
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-bold text-[#06130E] bg-[#9AFF01] hover:bg-[#82DB00] transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base;
-    box-shadow: 0 0 30px -5px rgba(154, 255, 1, 0.45);
+    @apply relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full font-bold text-marine-950 bg-lime-500 hover:bg-lime-400 transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base whitespace-nowrap;
+    box-shadow: 0 4px 14px 0 rgba(154, 255, 1, 0.45);
   }
   .btn-primary:hover {
-    box-shadow: 0 0 45px 0px rgba(154, 255, 1, 0.65);
+    box-shadow: 0 6px 20px rgba(154, 255, 1, 0.65);
+    transform: translateY(-1px);
   }
 
-  /* Bouton Secondaire Glass */
+  /* Bouton Secondaire Luxe (Marine Encre) */
   .btn-secondary {
-    @apply relative inline-flex items-center justify-center gap-3 px-7 py-3.5 rounded-full font-semibold text-white bg-[#0D261C]/80 hover:bg-[#133B2B] border border-[#26C992]/30 hover:border-[#26C992]/60 backdrop-blur-md transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base;
-    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    @apply relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full font-semibold text-white bg-marine-900 hover:bg-marine-800 transition-all duration-300 active:scale-[0.98] overflow-hidden text-sm md:text-base whitespace-nowrap;
+    box-shadow: 0 4px 14px 0 rgba(11, 27, 43, 0.25);
+  }
+  .btn-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(11, 27, 43, 0.35);
   }
 
-  /* Bouton Ghost */
-  .btn-ghost {
-    @apply relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full font-semibold text-slate-300 hover:text-[#9AFF01] hover:bg-white/5 transition-all duration-200;
+  /* Bouton Contour Épuré (Outline) */
+  .btn-outline {
+    @apply relative inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full font-semibold text-marine-900 bg-white hover:bg-slate-50 border border-slate-300 hover:border-slate-400 transition-all duration-300 active:scale-[0.98] text-sm md:text-base shadow-sm whitespace-nowrap;
   }
 
-  /* Glassmorphism Card */
-  .glass-card {
-    @apply relative rounded-3xl bg-[#0D261C]/45 border border-white/10 backdrop-blur-xl transition-all duration-500 hover:border-[#26C992]/30 hover:bg-[#0D261C]/65;
-    box-shadow: 0 20px 45px -15px rgba(4, 19, 14, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  /* Cartes Lumineuses de Prestige */
+  .card-light {
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 20px -2px rgba(11, 27, 43, 0.05);
+    border-radius: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .card-light:hover {
+    box-shadow: 0 12px 30px -4px rgba(11, 27, 43, 0.1);
+    transform: translateY(-2px);
+    border-color: #CBD5E1;
   }
 
-  /* Glassmorphism Card Accent */
-  .glass-card-accent {
-    @apply relative rounded-3xl bg-gradient-to-b from-[#133B2B]/70 to-[#06130E]/90 border border-[#26C992]/30 backdrop-blur-xl;
-    box-shadow: 0 20px 45px -15px rgba(4, 19, 14, 0.5);
+  /* Badges avec Contraste Élevé Garanti */
+  .badge-emerald {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-900 border border-emerald-200;
+  }
+  .badge-indigo {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-950 border border-indigo-200;
+  }
+  .badge-amber {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-950 border border-amber-300;
+  }
+  .badge-ocean {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-50 text-sky-950 border border-sky-200;
+  }
+  .badge-coral {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-50 text-rose-950 border border-rose-200;
   }
 
-  /* Badge Élite */
-  .badge-tag {
-    @apply inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold tracking-wider uppercase border;
+  /* Gradients de Texte Sombre Haute Lisibilité */
+  .text-gradient-emerald {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-900 font-extrabold;
   }
-  .badge-lime {
-    @apply bg-[#9AFF01]/10 text-[#9AFF01] border-[#9AFF01]/30;
-  }
-  .badge-mint {
-    @apply bg-[#26C992]/10 text-[#26C992] border-[#26C992]/30;
+  .text-gradient-marine {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-marine-950 via-marine-900 to-slate-800 font-extrabold;
   }
 
-  /* Inputs Luxe */
-  .input-field {
-    @apply w-full px-4 py-3.5 rounded-xl bg-[#06130E]/80 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-[#9AFF01]/80 focus:ring-2 focus:ring-[#9AFF01]/20 transition-all duration-300;
+  /* Inputs Épurés avec Contraste */
+  .input-light {
+    @apply w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-300;
   }
 
-  /* Bouton WhatsApp Flottant */
-  .whatsapp-float-btn {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    z-index: 40;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.85rem;
-    border-radius: 9999px;
-    background-color: #25D366;
-    color: #ffffff;
-    box-shadow: 0 10px 30px -5px rgba(37, 211, 102, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Arrière-plans Photos HD : Image nette et éclatante avec protection douce */
+  .hero-photo-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
   }
-  @media (min-width: 768px) {
-    .whatsapp-float-btn {
-      padding: 0.85rem 1.25rem;
-    }
+  .hero-photo-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.96) contrast(1.04);
   }
-  .whatsapp-float-btn:hover {
-    transform: scale(1.06);
-    box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.7);
-  }
-  .whatsapp-float-btn:active {
-    transform: scale(0.96);
+  /* Overlay photo léger qui préserve la visibilité HD de la photo tout en protégeant le texte */
+  .hero-photo-overlay-light {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.75) 55%, rgba(255, 255, 255, 0.35) 100%);
   }
 }
 
-/* Texture de fond discrète */
-.bg-noise {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
-  background-size: 24px 24px;
-}
+/* ========================================================================= */
+/* 4. ÉLÉMENTS FIXES (SCROLLBAR, CURSEUR, WHATSAPP)                           */
+/* ========================================================================= */
 
-/* Barre de progression de scroll */
 #scroll-progress-bar {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #9AFF01, #26C992);
-  width: 0%;
+  background: linear-gradient(90deg, #9AFF01, #26C992, #0EA5E9);
   z-index: 9999;
-  transition: width 0.05s ease-out;
-  box-shadow: 0 0 10px rgba(154, 255, 1, 0.7);
+  width: 0%;
+  transition: width 0.1s ease-out;
 }
 
-/* Curseur personnalisé (Desktop uniquement) */
-@media (hover: hover) and (pointer: fine) {
-  #custom-cursor-dot {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 6px;
-    height: 6px;
-    background-color: #9AFF01;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    transform: translate(-50%, -50%);
-    transition: width 0.2s, height 0.2s, background-color 0.2s;
-  }
-
-  #custom-cursor-ring {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 32px;
-    height: 32px;
-    border: 1.5px solid rgba(154, 255, 1, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99998;
-    transform: translate(-50%, -50%);
-    transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
-  }
-
-  body.cursor-hover #custom-cursor-ring {
-    width: 48px;
-    height: 48px;
-    border-color: #9AFF01;
-    background-color: rgba(154, 255, 1, 0.08);
-  }
-}
-
-/* Marquee Infini */
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee 30s linear infinite;
-}
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
+#custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 8px;
+  height: 8px;
+  background-color: #065F46;
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
 }
-::-webkit-scrollbar-track {
-  background: #06130E;
+
+#custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(6, 95, 70, 0.6);
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
 }
-::-webkit-scrollbar-thumb {
-  background: #1A513A;
-  border-radius: 4px;
+
+body.cursor-hover #custom-cursor-ring {
+  width: 48px;
+  height: 48px;
+  border-color: #9AFF01;
+  background-color: rgba(154, 255, 1, 0.08);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: #26C992;
+
+/* ========================================================================= */
+/* 5. STRUCTURE DU HEADER UNIFIÉ & PLIAGE FLUIDE                             */
+/* ========================================================================= */
+
+#site-header {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
+
+#top-bar {
+  max-height: 50px;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin 0.35s ease;
+}
+
+#site-header.header-scrolled #top-bar {
+  max-height: 0;
+  opacity: 0;
+  margin-top: -45px;
+  pointer-events: none;
+}
+
+#site-header.header-scrolled #main-nav-bar {
+  box-shadow: 0 10px 25px -5px rgba(11, 27, 43, 0.08), 0 8px 10px -6px rgba(11, 27, 43, 0.05);
+}
+

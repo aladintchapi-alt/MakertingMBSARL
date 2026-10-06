@@ -1,0 +1,177 @@
+[
+  {
+    "file": "index.html",
+    "line": 29,
+    "cat": 5,
+    "desc": "Symbole % sans espace insécable",
+    "fix": "Remplacer par &nbsp;%"
+  },
+  {
+    "file": "index.html",
+    "line": 162,
+    "cat": 2,
+    "desc": "Texte lime sur fond non-sombre garanti",
+    "fix": "Remplacer par un token on-surface ou couleur contrastée"
+  },
+  {
+    "file": "index.html",
+    "line": 181,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair",
+    "fix": "Passer en slate-600 ou slate-700"
+  },
+  {
+    "file": "index.html",
+    "line": 185,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair",
+    "fix": "Passer en slate-600 ou slate-700"
+  },
+  {
+    "file": "index.html",
+    "line": 195,
+    "cat": 2,
+    "desc": "Texte lime sur fond non-sombre garanti",
+    "fix": "Remplacer par un token on-surface ou couleur contrastée"
+  },
+  {
+    "file": "index.html",
+    "line": 235,
+    "cat": 5,
+    "desc": "Symbole % sans espace insécable",
+    "fix": "Remplacer par &nbsp;%"
+  },
+  {
+    "file": "index.html",
+    "line": 315,
+    "cat": 5,
+    "desc": "Symbole % sans espace insécable",
+    "fix": "Remplacer par &nbsp;%"
+  },
+  {
+    "file": "index.html",
+    "line": 319,
+    "cat": 6,
+    "desc": "Lien Design System présent dans le footer/menu public",
+    "fix": "Retirer de la production"
+  },
+  {
+    "file": "index.html",
+    "line": 358,
+    "cat": 5,
+    "desc": "Symbole % sans espace insécable",
+    "fix": "Remplacer par &nbsp;%"
+  },
+  {
+    "file": "index.html",
+    "line": 360,
+    "cat": 5,
+    "desc": "Symbole % sans espace insécable",
+    "fix": "Remplacer par &nbsp;%"
+  },
+  {
+    "file": "index.html",
+    "line": 380,
+    "cat": 6,
+    "desc": "Lien Design System présent dans le footer/menu public",
+    "fix": "Retirer de la production"
+  },
+  {
+    "file": "assets/css/input.css",
+    "line": 113,
+    "cat": 6,
+    "desc": "Bordure brute sans token sémantique",
+    "fix": "Utiliser var(--border-subtle)"
+  },
+  {
+    "file": "assets/css/input.css",
+    "line": 200,
+    "cat": 6,
+    "desc": "Bordure brute sans token sémantique",
+    "fix": "Utiliser var(--border-subtle)"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 24,
+    "cat": 7,
+    "desc": "Hero trop haut risquant de masquer les CTA",
+    "fix": "Calibrer en 100svh avec padding dynamique"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 108,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 169,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 210,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 567,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 693,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 697,
+    "cat": 5,
+    "desc": "Chiffre et % sans espace insécable",
+    "fix": "Ajouter &nbsp;%"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 852,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair sur fond clair",
+    "fix": "Remplacer par var(--on-surface-light-muted)"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 1038,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair sur fond clair",
+    "fix": "Remplacer par var(--on-surface-light-muted)"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 1042,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair sur fond clair",
+    "fix": "Remplacer par var(--on-surface-light-muted)"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 1046,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair sur fond clair",
+    "fix": "Remplacer par var(--on-surface-light-muted)"
+  },
+  {
+    "file": "assets/js/views/home.js",
+    "line": 1051,
+    "cat": 8,
+    "desc": "Texte slate-300 trop clair sur fond clair",
+    "fix": "Remplacer par var(--on-surface-light-muted)"
+  }
+]

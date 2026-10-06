@@ -1,0 +1,34 @@
+# Configuration Nginx pour MULTI BUSINESS SARL (Production SPA)
+server {
+    listen 80;
+    listen 443 ssl http2;
+    server_name www.multibusiness-sarl.com multibusiness-sarl.com;
+
+    root /var/www/multibusiness;
+    index index.html;
+
+    # Gzip / Compression
+    gzip on;
+    gzip_types text/plain text/css application/json application/javascript text/xml application/xml image/svg+xml;
+
+    # Assets statiques avec mise en cache
+    location /assets/ {
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+        try_files $uri =404;
+    }
+
+    # Manifeste & Favicons
+    location ~* \.(webmanifest|ico|png|svg)$ {
+        expires 7d;
+        try_files $uri =404;
+    }
+
+    # Fallback SPA pour toutes les routes virtuelles HTML5 History API
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Page d'erreur personnalisée
+    error_page 404 /index.html;
+}

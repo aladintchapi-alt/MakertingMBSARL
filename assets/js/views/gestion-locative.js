@@ -1,14 +1,16 @@
 /**
- * Vue GESTION LOCATIVE - MULTI BUSINESS SARL (Phase 4 Production)
- * La page la plus riche et la plus importante du site (70% du positionnement)
+ * MULTI BUSINESS SARL - Page GESTION IMMOBILIÈRE (Pôle Phare 70% Production)
+ * Direction Artistique : Hyper-Premium Light Luxury White & Ivory (85%), Typographie Marine Profond AAA, >= 12 Images HD
  */
 import { CONFIG } from '../config.js';
-import { showToast, initAccordions, initTabs } from '../ui.js';
+import { showToast, initAccordions, initTabs, initUIComponents } from '../ui.js';
+import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
 
 export default {
   meta: {
-    title: "Gestion Locative Immobilière & SaaS Bailleurs | Douala & Yaoundé",
-    description: "MULTI BUSINESS SARL : Solution complète de gestion locative au Cameroun. Recherche de locataires, encaissement Orange Money & MTN MoMo, quittances certifiées et reversements ponctuels le 5 du mois."
+    title: "Gestion Immobilière & Espace SaaS Bailleurs | Douala & Yaoundé",
+    description: "MULTI BUSINESS SARL : Leader de la gestion locative intelligente au Cameroun. Recherche de locataires, encaissement Orange Money & MTN MoMo, quittances certifiées et reversements ponctuels le 5 du mois.",
+    image: "./assets/images/hero-gestion-immobiliere.jpg"
   },
 
   _cleanups: [],
@@ -16,70 +18,71 @@ export default {
   async render() {
     return `
       <!-- ================================================================= -->
-      <!-- 1. HERO DÉDIÉ AVEC ACCROCHE FORTE                                 -->
+      <!-- 1. HERO GESTION IMMOBILIÈRE (Photo HD Éclatante)                  -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[85vh] flex items-center justify-center pt-32 pb-20 px-4 md:px-8 overflow-hidden">
-        <div class="absolute inset-0 bg-mesh-dark opacity-85 pointer-events-none"></div>
-        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-lime-500/10 rounded-full blur-[150px] pointer-events-none"></div>
+      <section class="relative min-h-[85vh] lg:min-h-[80vh] flex items-center justify-center pt-32 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
+        <div class="hero-photo-bg">
+          <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Gestion Immobilière de Prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <div class="hero-photo-overlay-light"></div>
+        </div>
 
-        <div class="container max-w-6xl mx-auto text-center relative z-10" data-stagger-item>
+        <div class="container max-w-5xl mx-auto text-center relative z-10" data-stagger-item>
           
-          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-forest-900/90 border border-lime-500/40 text-lime-400 text-xs font-bold tracking-widest uppercase mb-8 shadow-glow-lime-sm">
-            <span class="w-2 h-2 rounded-full bg-lime-400 animate-ping"></span>
-            <span>Pôle Majeur • 70% de Notre Expertise Métier</span>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold tracking-wider uppercase mb-6 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span>PÔLE MAJEUR • 70&nbsp;% DE NOTRE EXPERTISE MÉTIER</span>
           </div>
 
-          <h1 class="text-display-xl md:text-display-2xl font-display font-black text-white tracking-tight mb-8 leading-[1.08] max-w-5xl mx-auto">
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marine-900 leading-[1.12] tracking-tight mb-6 max-w-4xl mx-auto">
             Votre patrimoine immobilier géré avec rigueur.<br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-lime-400 via-mint-400 to-mint-500">
-              0 impayé. 0 litige. 100% de sérénité.
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-900 font-extrabold">
+              0 impayé. 0 litige. 100&nbsp;% de sérénité.
             </span>
           </h1>
 
-          <p class="text-lg md:text-2xl text-slate-300 font-normal max-w-3xl mx-auto mb-12 leading-relaxed">
+          <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
             Bailleurs résidents et de la diaspora : confiez-nous vos immeubles, appartements, studios et commerces à Douala et Yaoundé. Encaissez vos loyers chaque mois à date fixe en toute transparence grâce à notre plateforme SaaS propriétaire.
           </p>
 
-          <div class="flex flex-wrap items-center justify-center gap-5 mb-14">
-            <a href="#catalogue-biens" class="btn-primary" data-magnetic>
+          <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+            <a href="#catalogue-biens" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg" data-magnetic>
               <span>Explorer les types de biens gérés</span>
-              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="${CONFIG.contact.whatsapp.link}" target="_blank" rel="noopener" class="btn-secondary" data-magnetic>
+            <a href="https://wa.me/237694811715?text=Bonjour%20je%20souhaite%20confier%20un%20bien%20en%20gestion%20locative" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Estimer mes revenus locatifs</span>
-              <svg class="w-4 h-4 text-mint-400" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
             </a>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-mono text-slate-400 pt-6 border-t border-white/10">
-            <span class="flex items-center gap-2"><span class="text-lime-400 font-bold">✓</span> Reversement garanti le 5 du mois</span>
-            <span class="flex items-center gap-2"><span class="text-lime-400 font-bold">✓</span> Rapprochement Orange Money & MTN MoMo</span>
-            <span class="flex items-center gap-2"><span class="text-lime-400 font-bold">✓</span> Baux conformes droit OHADA</span>
-            <span class="flex items-center gap-2"><span class="text-lime-400 font-bold">✓</span> Plateforme SaaS Bailleurs 24/7</span>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-mono text-slate-700 pt-6 border-t border-slate-200">
+            <span class="flex items-center gap-2"><strong class="text-emerald-700">✓</strong> Reversement garanti le 5 du mois</span>
+            <span class="flex items-center gap-2"><strong class="text-emerald-700">✓</strong> Orange Money & MTN MoMo</span>
+            <span class="flex items-center gap-2"><strong class="text-emerald-700">✓</strong> Baux conformes droit OHADA</span>
+            <span class="flex items-center gap-2"><strong class="text-emerald-700">✓</strong> Plateforme SaaS Bailleurs 24/7</span>
           </div>
 
         </div>
       </section>
 
       <!-- ================================================================= -->
-      <!-- 2. OFFRE BAILLEURS vs LOCATAIRES (INTERACTIVE SWITCH)             -->
+      <!-- 2. OFFRE BAILLEURS vs LOCATAIRES (BASCULE INTERACTIVE ANIMÉE)     -->
       <!-- ================================================================= -->
-      <section class="py-24 px-4 md:px-8 max-w-7xl mx-auto" data-tabs>
+      <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white" data-tabs>
         <div class="text-center max-w-3xl mx-auto mb-14" data-reveal="up">
-          <div class="badge-tag badge-mint mb-3">Deux Expériences Sur-Mesure</div>
-          <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold tracking-wider uppercase mb-3">Deux Expériences Sur-Mesure</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 mb-4">
             Une Plateforme, Deux Espaces Dédiés
           </h2>
-          <p class="text-slate-300 text-sm md:text-base">
+          <p class="text-slate-600 text-sm md:text-base">
             Que vous soyez propriétaire cherchant la rentabilité maximale ou locataire en quête de transparence, découvrez nos fonctionnalités dédiées.
           </p>
 
-          <!-- Bouton de bascule interactif -->
-          <div class="inline-flex p-1.5 rounded-full bg-forest-900 border border-white/10 mt-8 shadow-luxury">
-            <button class="py-3 px-8 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-wider transition-all bg-lime-500 text-forest-950 shadow-glow-lime-sm" data-tab-btn="bailleurs-tab">
+          <!-- Bouton de bascule interactif avec fort contraste -->
+          <div class="inline-flex p-1.5 rounded-full bg-slate-100 border border-slate-200 mt-8 shadow-sm">
+            <button class="py-3 px-6 md:px-8 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-wider transition-all bg-marine-900 text-white shadow-md" data-tab-btn="bailleurs-tab">
               Espace Bailleurs (Propriétaires)
             </button>
-            <button class="py-3 px-8 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-wider transition-all text-slate-300 hover:text-white" data-tab-btn="locataires-tab">
+            <button class="py-3 px-6 md:px-8 rounded-full text-xs md:text-sm font-extrabold uppercase tracking-wider transition-all text-slate-700 hover:text-marine-900" data-tab-btn="locataires-tab">
               Espace Locataires
             </button>
           </div>
@@ -89,696 +92,569 @@ export default {
         <div data-tab-content="bailleurs-tab" class="space-y-8" data-reveal="up">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">01</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Sélection & Scoring Solvabilité</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Vérification rigoureuse des pièces d'identité, bulletins de paie, garanties bancaires et antécédents locatifs pour ne retenir que les profils de confiance.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">⏳</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Économie de Temps & Sérénité</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Fini les relances interminables, les visites le week-end et les tensions. Nous gérons 100&nbsp;% de la relation locative et des urgences techniques.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">Taux de sélection < 25%</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">02</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Encaissement & Rapprochement</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Passerelles automatisées Orange Money, MTN MoMo et virements. Les loyers sont collectés sur comptes sécurisés avec réconciliation comptable instantanée.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">💳</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Encaissement & Reversement Garanti</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Encaissement par Orange Money, MTN MoMo et virements. Vos loyers sont reversés ponctuellement sur votre compte le 5 de chaque mois.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">0 erreur manuelle</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">03</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Reversement Garanti le 5 du Mois</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Vos fonds vous sont transférés par virement bancaire ou Mobile Money chaque mois sans le moindre retard, même en cas de décalage avec le locataire.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">📊</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Tableau de Bord SaaS 24/7</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Suivez en direct l'état d'occupation de vos lots, l'historique des quittances émises et téléchargez vos rapports comptables en 1 clic.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">Ponctualité 100% garantie</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">04</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Maintenance & Artisans Certifiés</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Prise en charge des urgences (plomberie, électricité, étanchéité) par notre réseau de prestataires agréés à Douala et Yaoundé avec devis pré-validés.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">⚖️</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Sécurité Juridique OHADA</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Rédaction rigoureuse des baux d'habitation et commerciaux avec clauses résolutoires et enregistrement auprès de la DGI.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">Intervention sous 24h</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">05</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Reporting SaaS & Fiscalité</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Export en 1 clic de vos états financiers mensuels et annuels pour vos déclarations d'impôts fonciers (CGI Cameroun) avec assistance de notre pôle fiscal.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">🔧</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Maintenance & Artisans Qualifiés</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Réseau d'artisans sélectionnés pour les réparations d'électricité, plomberie et réfection avec devis préalablement validés.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">Conformité fiscale totale</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-lime-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-lime-500/10 text-lime-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-lime-sm">06</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Recouvrement & Gestion Contentieuse</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Relances automatisées diplomatiques par SMS/WhatsApp, suivi par nos juristes et exécution des procédures légales d'expulsion si nécessaire sans frais d'avocat cachés.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-emerald-500 transition-all bg-emerald-50/20">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">🌍</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Accompagnement Spécial Diaspora</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Vous vivez en France, aux USA ou au Canada ? Pilotez vos investissements camerounais à distance sans intermédiaire informel.
               </p>
-              <span class="text-xs font-mono text-lime-400 font-semibold">0 stress de procédure</span>
             </div>
 
+          </div>
+
+          <!-- Aperçu Visuel Espace SaaS Bailleur -->
+          <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-white p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-3">
+              <span class="text-xs font-mono font-bold text-emerald-800 uppercase tracking-wider">Aperçu Espace Propriétaire</span>
+              <h4 class="font-serif text-2xl font-bold text-marine-900">Tableau de bord financier en temps réel</h4>
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed">Visualisez le statut de chaque lot, les loyers collectés, les quittances générées et les reversements effectués chaque mois à date fixe.</p>
+            </div>
+            <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200">
+              <img src="./assets/images/app-preview-dashboard.jpg" alt="Tableau de bord SaaS Propriétaire" class="w-full h-48 object-cover" />
+            </div>
+          </div>
+
+          <div class="text-center pt-4">
+            <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-sm font-bold">
+              <span>Accéder à l'Espace Propriétaire SaaS →</span>
+            </a>
           </div>
         </div>
 
         <!-- CONTENU ONGLET 2 : OFFRE LOCATAIRES -->
-        <div data-tab-content="locataires-tab" class="space-y-8 hidden" data-reveal="up">
+        <div data-tab-content="locataires-tab" class="hidden space-y-8" data-reveal="up">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">01</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Logements 100% Vérifiés</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Chaque logement proposé fait l'objet d'un contrôle technique strict : état des compteurs Eneo/CDE, climatisation, plomberie et sécurité du quartier.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-mint-500 transition-all bg-slate-50">
+              <div class="w-12 h-12 rounded-2xl bg-mint-100 text-mint-900 flex items-center justify-center font-bold text-xl">📱</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Paiement Mobile Instantané</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Payez votre loyer simplement via Orange Money ou MTN Mobile Money sans vous déplacer en agence bancaire.
               </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">Zéro mauvaise surprise</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">02</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Paiement Mobile Money 1 Clic</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Payez votre loyer depuis votre canapé via Orange Money (#150#) ou MTN Mobile Money (*126#) sans faire la queue à la banque ni vous déplacer.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-mint-500 transition-all bg-slate-50">
+              <div class="w-12 h-12 rounded-2xl bg-mint-100 text-mint-900 flex items-center justify-center font-bold text-xl">🧾</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Quittance Numérique Immédiate</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Génération instantanée d'une quittance de loyer certifiée avec QR code infalsifiable, envoyée par SMS et e-mail.
               </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">Disponible 24h/24 & 7j/7</span>
             </div>
 
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">03</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Quittances Numériques Instantanées</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Dès confirmation de votre paiement mobile, votre quittance PDF officielle avec signature électronique et QR code certifié vous est envoyée par SMS et email.
+            <div class="card-light p-8 rounded-3xl border border-slate-200 space-y-4 hover:border-mint-500 transition-all bg-slate-50">
+              <div class="w-12 h-12 rounded-2xl bg-mint-100 text-mint-900 flex items-center justify-center font-bold text-xl">🛠️</div>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Assistance & Ticket SAV</h3>
+              <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
+                Une fuite ou une panne électrique ? Déclarez l'incident en 2 clics sur votre espace locataire pour une intervention rapide.
               </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">Valeur juridique certifiée</span>
-            </div>
-
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">04</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Signalement de Pannes 24/7</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Un problème de plomberie ou d'électricité ? Déclarez-le en 2 clics sur votre espace locataire avec photos pour une intervention rapide d'un artisan agréé.
-              </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">Suivi d'intervention en direct</span>
-            </div>
-
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">05</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Baux Clairs & Transparent</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Contrats de location rédigés en conformité avec la législation camerounaise et OHADA. Pas de clauses abusives ni de frais d'agence dissimulés.
-              </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">Protection légale garantie</span>
-            </div>
-
-            <div class="glass-card p-8 group hover:border-mint-500/40">
-              <div class="w-12 h-12 rounded-2xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold text-lg mb-6 shadow-glow-mint-sm">06</div>
-              <h3 class="text-xl font-display font-bold text-white mb-3">Restitution Sécurisée de la Caution</h3>
-              <p class="text-slate-300 text-xs md:text-sm leading-relaxed mb-4">
-                Votre dépôt de garantie est conservé sur un compte séquestre dédié et restitué intégralement sous 15 jours après l'état des lieux de sortie conforme.
-              </p>
-              <span class="text-xs font-mono text-mint-400 font-semibold">100% de transparence</span>
             </div>
 
           </div>
-        </div>
 
+          <!-- Aperçu Visuel Espace Mobile Locataire -->
+          <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-white p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7 space-y-3">
+              <span class="text-xs font-mono font-bold text-emerald-800 uppercase tracking-wider">Aperçu Espace Locataire Mobile</span>
+              <h4 class="font-serif text-2xl font-bold text-marine-900">Paiement en 30 secondes & Reçus Instantanés</h4>
+              <p class="text-xs md:text-sm text-slate-600 leading-relaxed">Accédez à votre historique, téléchargez vos quittances officielles à tout moment et signalez vos demandes techniques directement depuis votre smartphone.</p>
+            </div>
+            <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200">
+              <img src="./assets/images/app-preview-mobile.jpg" alt="Application Mobile Locataire" class="w-full h-48 object-cover" />
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- ================================================================= -->
-      <!-- 3. CATALOGUE DES TYPES DE BIENS AVEC FILTRES ANIMÉS               -->
+      <!-- 3. CATALOGUE DES TYPES DE BIENS AVEC FILTRES INTERACTIFS          -->
       <!-- ================================================================= -->
-      <section id="catalogue-biens" class="py-24 px-4 md:px-8 bg-forest-950/70 border-t border-white/10">
-        <div class="max-w-7xl mx-auto">
+      <section id="catalogue-biens" class="py-24 px-4 md:px-8 bg-[#FAF9F5] border-t border-slate-200" data-theme="ivory">
+        <div class="max-w-7xl mx-auto space-y-12">
           
-          <div class="text-center max-w-3xl mx-auto mb-12" data-reveal="up">
-            <div class="badge-tag badge-lime mb-3">Typologies de Biens</div>
-            <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
-              Notre Portefeuille de Biens Sous Gestion
-            </h2>
-            <p class="text-slate-400 text-sm md:text-base">
-              Filtrez par catégorie pour découvrir nos standards d'excellence à Douala et Yaoundé.
-            </p>
+          <div class="text-center max-w-3xl mx-auto space-y-3" data-reveal="up">
+            <span class="inline-block px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider">Parc Immobilier sous Mandat</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Types de Biens Immobiliers Pris en Gestion</h2>
+            <p class="text-slate-600 text-sm md:text-base">De l'immeuble de rapport complet au studio moderne, nous administrons tous types de patrimoines bâtis.</p>
           </div>
 
-          <!-- Filtres de Catégories Interactifs -->
-          <div class="flex flex-wrap items-center justify-center gap-2 mb-12" id="property-filters" data-reveal="up">
-            <button class="filter-btn active py-2 px-5 rounded-full text-xs font-bold transition-all bg-lime-500 text-forest-950 shadow-glow-lime-sm" data-filter="all">Tous les biens (7)</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="immeuble">Immeubles entiers</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="appartement">Appartements & Duplex</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="studio">Studios & Chambres</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="magasin">Magasins & Boutiques</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="bureau">Bureaux d'Affaires</button>
-            <button class="filter-btn py-2 px-5 rounded-full text-xs font-bold transition-all bg-forest-900 border border-white/10 text-slate-300 hover:text-white" data-filter="entrepot">Espaces Commerciaux & Entrepôts</button>
+          <!-- Filtres de Catégories -->
+          <div class="flex flex-wrap items-center justify-center gap-2" id="property-filters">
+            <button class="filter-btn active px-4 py-2 rounded-full text-xs font-bold bg-marine-900 text-white shadow-sm transition-all" data-category="all">Tous les biens (7)</button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-400 transition-all" data-category="immeuble">Immeubles & Bâtiments</button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-400 transition-all" data-category="appartement">Appartements</button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-400 transition-all" data-category="studio">Studios & Chambres</button>
+            <button class="filter-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-400 transition-all" data-category="commercial">Bureaux & Commerces</button>
           </div>
 
-          <!-- Grille des Cartes de Biens -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="properties-grid">
+          <!-- Grille des Biens (Photos HD) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="properties-grid">
             
-            <!-- Carte 1 : Immeubles -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="immeuble" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-lime">Immeuble Entier</span>
-                    <span class="text-xs font-mono text-lime-400 font-bold">R+4 à R+7</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Résidence Prestige Akwa</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Douala • 16 Appartements</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Immeubles de Rapport Résidentiels</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Prise en charge intégrale : conciergerie, sécurité, nettoyage, répartition des charges et reversement groupé le 5 du mois.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Occupation : <strong class="text-lime-400">100%</strong></span>
-                  <span>Gestion : <strong class="text-mint-400">Intégrale</strong></span>
-                </div>
+            <!-- Bien 1 : Immeuble -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="immeuble" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-immeuble.jpg" alt="Immeubles de rapport" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white">🏢 Immeuble Entier</span>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier un immeuble</a>
-            </div>
-
-            <!-- Carte 2 : Appartements Standing -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="appartement" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-mint">Appartement T4</span>
-                    <span class="text-xs font-mono text-mint-400 font-bold">Haut Standing</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Duplex & Appartements Bastos</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Yaoundé • 180 à 250 m²</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Appartements de Standing & Duplex</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Sélection ciblée de locataires solvables (cadres supérieurs, diplomates, ONG) et encaissement sécurisé par Mobile Money / virement.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Loyer : <strong class="text-lime-400">350k - 1.2M FCFA</strong></span>
-                  <span>Solvabilité : <strong class="text-mint-400">Scorée</strong></span>
-                </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Immeubles de Rapport & Résidences R+4 / R+8</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Administration globale : baux individuels, gardiennage, syndic bénévole, entretien des parties communes et reversements groupés.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-emerald-800">Douala (Akwa, Bonapriso, Kotto) & Yaoundé</div>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier un appartement</a>
             </div>
 
-            <!-- Carte 3 : Studios & Meublés -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="studio" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-lime">Studio Moderne</span>
-                    <span class="text-xs font-mono text-lime-400 font-bold">Climatisé</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Studios & Chambres Makepe</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Douala • 35 à 60 m²</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Studios Modernes & Chambres</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Gestion des locations meublées et non meublées avec rotation optimisée et prélèvement ponctuel par MTN MoMo / Orange Money.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Loyer : <strong class="text-lime-400">80k - 200k FCFA</strong></span>
-                  <span>Vacance : <strong class="text-mint-400">< 10 jours</strong></span>
-                </div>
+            <!-- Bien 2 : Appartement -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="appartement" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-appartement.jpg" alt="Appartements de standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white">🏠 Appartements T2 à T5</span>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier un studio</a>
-            </div>
-
-            <!-- Carte 4 : Magasins & Boutiques -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="magasin" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-mint">Commercial</span>
-                    <span class="text-xs font-mono text-mint-400 font-bold">Bail OHADA</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Boutiques & Espaces Marchands</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Douala Akwa & Yaoundé Centre</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Magasins & Boutiques Commerciales</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Rédaction rigoureuse des baux commerciaux, fixation des pas-de-porte, révision triennale et garantie d'encaissement continu.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Bail : <strong class="text-lime-400">Commercial OHADA</strong></span>
-                  <span>Recouvrement : <strong class="text-mint-400">99.2%</strong></span>
-                </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Appartements Meublés & Non Meublés</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Sélection rigoureuse des dossiers locataires (solvabilité vérifiée, fiches de paie, garanties), états des lieux d'entrée et sortie numérisés.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-emerald-800">Résidentiel & Standing</div>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier un magasin</a>
             </div>
 
-            <!-- Carte 5 : Bureaux Corporate -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="bureau" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-lime">Bureaux Pro</span>
-                    <span class="text-xs font-mono text-lime-400 font-bold">Plateaux Aménagés</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Immeuble d'Affaires Bonanjo</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Douala • 120 à 600 m²</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Plateaux de Bureaux & Coworking</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Location pour banques, multinationales, PME et cabinets juridiques avec facturation conforme et reversement bancaire.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Locataires : <strong class="text-lime-400">Sociétés & PME</strong></span>
-                  <span>Durée : <strong class="text-mint-400">Baux 3-6-9 ans</strong></span>
-                </div>
+            <!-- Bien 3 : Studio -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="studio" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-studio.jpg" alt="Studios modernes" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white">🛋️ Studios Modernes</span>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier des bureaux</a>
-            </div>
-
-            <!-- Carte 6 : Entrepôts -->
-            <div class="property-card glass-card p-6 flex flex-col justify-between" data-category="entrepot" data-reveal="up">
-              <div>
-                <div class="h-48 rounded-2xl bg-gradient-to-br from-forest-850 to-forest-950 border border-white/10 p-5 flex flex-col justify-between mb-5 relative overflow-hidden">
-                  <div class="flex items-center justify-between">
-                    <span class="badge-tag badge-mint">Logistique</span>
-                    <span class="text-xs font-mono text-mint-400 font-bold">Zone Portuaire</span>
-                  </div>
-                  <div>
-                    <div class="text-white font-bold text-sm">Hangars & Entrepôts Sécurisés</div>
-                    <div class="text-[11px] text-slate-400 font-mono">Douala Bassa & Zone Portuaire</div>
-                  </div>
-                </div>
-                <h3 class="text-lg font-display font-bold text-white mb-2">Espaces Commerciaux & Entrepôts</h3>
-                <p class="text-xs text-slate-400 leading-relaxed mb-4">
-                  Gestion de hangars logistiques, dépôts de fret et parcs de stockage avec surveillance et baux industriels longue durée.
-                </p>
-                <div class="flex items-center gap-4 text-xs font-mono text-slate-300 py-3 border-t border-white/5 mb-4">
-                  <span>Surfaces : <strong class="text-lime-400">500 à 3 000 m²</strong></span>
-                  <span>Sécurité : <strong class="text-mint-400">24/7</strong></span>
-                </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Studios Américains & Suites</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Gestion de haute rotation, relocation rapide sous 15 jours en cas de préavis, suivi des charges d'eau et d'électricité Eneo/CDE.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-emerald-800">Taux d'occupation 98&nbsp;%</div>
               </div>
-              <a href="/contact" data-link class="btn-secondary !py-2.5 text-xs w-full text-center">Confier un entrepôt</a>
             </div>
 
-          </div>
-        </div>
-      </section>
-
-      <!-- ================================================================= -->
-      <!-- 4. SECTION "NOTRE PLATEFORME SAAS" (MOCKUPS ÉLÉGANTS)             -->
-      <!-- ================================================================= -->
-      <section class="py-28 px-4 md:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto mb-16" data-reveal="up">
-          <div class="badge-tag badge-lime mb-3">Innovation SaaS Propriétaire</div>
-          <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
-            Une Technologie Unique Développée Pour l'Immobilier au Cameroun
-          </h2>
-          <p class="text-slate-300 text-sm md:text-base">
-            Découvrez les 5 modules exclusifs qui garantissent la transparence totale et la ponctualité de vos loyers.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          
-          <!-- Module 1 -->
-          <div class="glass-card p-8 group hover:border-lime-500/40" data-reveal="up" data-delay="0.05">
-            <div class="text-lime-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            <!-- Bien 4 : Chambres -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="studio" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-chambre.jpg" alt="Chambres standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white">🛏️ Chambres Modernes</span>
+              </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Chambres avec Douche Interne</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Gestion adaptée pour cités modernes, étudiants et jeunes cadres à proximité des universités et centres d'affaires.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-emerald-800">Recouvrement direct Mobile Money</div>
+              </div>
             </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">1. Tableau de Bord Bailleurs</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Consultez vos taux d'occupation, l'historique de chaque lot et le montant exact qui sera versé sur votre compte le 5 du mois.
-            </p>
-          </div>
 
-          <!-- Module 2 -->
-          <div class="glass-card p-8 group hover:border-mint-500/40" data-reveal="up" data-delay="0.1">
-            <div class="text-mint-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+            <!-- Bien 5 : Bureaux -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-bureaux.jpg" alt="Plateaux de bureaux" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white">💼 Plateaux de Bureaux</span>
+              </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Bureaux d'Affaires & Sièges Sociaux</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Baux commerciaux conformes Acte Uniforme OHADA, indexation des loyers, facturation de TVA et quittances conformes DGI.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-indigo-800">Akwa, Bonanjo, Bastos</div>
+              </div>
             </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">2. Passerelle MoMo / Orange Money</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Paiement instantané direct avec rapprochement bancaire automatique. Fini les reçus papiers perdus ou falsifiés.
-            </p>
-          </div>
 
-          <!-- Module 3 -->
-          <div class="glass-card p-8 group hover:border-lime-500/40" data-reveal="up" data-delay="0.15">
-            <div class="text-lime-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <!-- Bien 6 : Magasins -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-magasin.jpg" alt="Boutiques et magasins" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white">🛍️ Boutiques & Magasins</span>
+              </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Espaces Commerciaux & Boutiques</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Emplacements stratégiques en bordure d'axe principal, encadrement strict du pas-de-porte et protection contre les impayés d'activité.</p>
+                <div class="pt-2 text-xs font-mono font-bold text-indigo-800">Bordure de route & Marchés</div>
+              </div>
             </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">3. Quittances Électroniques Certifiées</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Génération immédiate en PDF avec signature numérique, tampon légal et QR Code infalsifiable pour chaque loyer réglé.
-            </p>
-          </div>
 
-          <!-- Module 4 -->
-          <div class="glass-card p-8 group hover:border-mint-500/40" data-reveal="up" data-delay="0.2">
-            <div class="text-mint-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+            <!-- Bien 7 : Espaces Commerciaux & Hangars -->
+            <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
+              <div class="relative h-56 overflow-hidden">
+                <img src="./assets/images/bien-commercial.jpg" alt="Hangars et entrepôts" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white">🏭 Entrepôts & Hangars</span>
+              </div>
+              <div class="p-6 space-y-2">
+                <h3 class="font-serif text-lg font-bold text-marine-900">Surfaces de Stockage & Hangars</h3>
+                <p class="text-xs text-slate-600 leading-relaxed">Grandes superficies de transit et stockage sécurisées pour importateurs et distributeurs en zones industrielles de Douala (Bassa, Bonabéri).</p>
+                <div class="pt-2 text-xs font-mono font-bold text-indigo-800">Zones Industrielles</div>
+              </div>
             </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">4. Relances Automatisées SMS & WhatsApp</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Rappels courtois programmés avant échéance. Moins de 1.3% de retard constaté sur l'ensemble de notre parc géré.
-            </p>
-          </div>
 
-          <!-- Module 5 -->
-          <div class="glass-card p-8 group hover:border-lime-500/40" data-reveal="up" data-delay="0.25">
-            <div class="text-lime-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">5. Rapports Fiscaux & Déclarations</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Bilan annuel récapitulatif prêt pour votre centre des impôts (DSF, précomptes sur loyers) en conformité CGI.
-            </p>
-          </div>
-
-          <!-- Module 6 -->
-          <div class="glass-card p-8 group hover:border-mint-500/40" data-reveal="up" data-delay="0.3">
-            <div class="text-mint-400 mb-4">
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">6. Gestion Technique & Dépannages</h3>
-            <p class="text-xs text-slate-400 leading-relaxed">
-              Ticket d'incident direct ouvert par le locataire, validation du devis par le bailleur et intervention coordonnée.
-            </p>
           </div>
 
         </div>
       </section>
 
       <!-- ================================================================= -->
-      <!-- 5. PROCESSUS DE GESTION EN ÉTAPES (PINNED STORYTELLING)           -->
+      <!-- 4. PARTENARIAT JURIDIQUE & HUISSIERS ASSERMENTÉS                  -->
       <!-- ================================================================= -->
-      <section class="py-24 px-4 md:px-8 bg-forest-950/60 border-t border-white/10">
-        <div class="max-w-6xl mx-auto">
+      <section class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
+        <div class="card-light p-8 md:p-12 rounded-3xl border border-slate-200 bg-[#FAF9F5] grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          <div class="text-center max-w-3xl mx-auto mb-16" data-reveal="up">
-            <div class="badge-tag badge-mint mb-3">Méthodologie Éprouvée</div>
-            <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
-              Comment Nous Prenons en Charge Votre Bien
-            </h2>
-            <p class="text-slate-400 text-sm md:text-base">
-              Un accompagnement complet et transparent en 4 étapes ordonnées.
-            </p>
+          <div class="lg:col-span-5 relative" data-reveal="left">
+            <div class="rounded-2xl overflow-hidden shadow-md border border-slate-200">
+              <img src="./assets/images/partenaire-justice.jpg" alt="Partenariat Huissiers de Justice assermentés" class="w-full h-auto object-cover max-h-[360px]" />
+            </div>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="lg:col-span-7 space-y-6" data-reveal="right">
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold uppercase tracking-wider">Sécurisation Juridique Ultime</span>
             
-            <div class="glass-card p-8 md:p-10 border-lime-500/30" data-reveal="up" data-delay="0.1">
-              <div class="flex items-center justify-between mb-6">
-                <span class="text-5xl font-display font-black text-lime-400 font-mono">01</span>
-                <span class="badge-tag badge-lime">Audit Gratuit</span>
-              </div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Audit Patrimonial & Estimation</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Visite sur place de notre gestionnaire à Douala ou Yaoundé. Nous analysons l'état technique, le standing, la tension locative du quartier et fixons le loyer optimal pour un taux d'occupation maximal.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Rapport d'évaluation remis sous 48h</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Recommandations de valorisation éventuelle</li>
-              </ul>
-            </div>
+            <h2 class="font-serif text-3xl font-extrabold text-marine-900 leading-tight">
+              Partenariat Permanent avec Huissiers de 1ère et 2e Charges
+            </h2>
 
-            <div class="glass-card p-8 md:p-10 border-mint-500/30" data-reveal="up" data-delay="0.2">
-              <div class="flex items-center justify-between mb-6">
-                <span class="text-5xl font-display font-black text-mint-400 font-mono">02</span>
-                <span class="badge-tag badge-mint">Mise en Location</span>
-              </div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Diffusion, Visites & Scoring</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Publication sur nos canaux exclusifs et notre base de demandeurs qualifiés. Réalisation des visites par nos agents et audit financier complet de chaque candidat locataire.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Contrôle d'identité et des garanties</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Rédaction du bail sécurisé OHADA</li>
-              </ul>
-            </div>
+            <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+              Pour garantir le principe du <strong>zéro litige et zéro impayé</strong>, MULTI BUSINESS SARL collabore en direct avec des études d'huissiers de justice de 1ère et 2e charges compétentes sur les ressorts des Cours d'Appel du Littoral (Douala) et du Centre (Yaoundé).
+            </p>
 
-            <div class="glass-card p-8 md:p-10 border-lime-500/30" data-reveal="up" data-delay="0.3">
-              <div class="flex items-center justify-between mb-6">
-                <span class="text-5xl font-display font-black text-lime-400 font-mono">03</span>
-                <span class="badge-tag badge-lime">Installation</span>
+            <div class="space-y-3 text-xs md:text-sm text-slate-700">
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
+                <div>
+                  <strong class="text-slate-900">Sommations de payer & Mise en demeure sans délai :</strong> Dès 5 jours de retard non régularisé.
+                </div>
               </div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">État des Lieux Numérisé & Clés</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                État des lieux minutieux sur tablette avec plus de 40 photos HD horodatées et signées électroniquement. Encaissement de la caution et du premier mois de loyer.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Dépôt de garantie consigné sur compte sécurisé</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Relevé des compteurs Eneo / CDE</li>
-              </ul>
-            </div>
-
-            <div class="glass-card p-8 md:p-10 border-mint-500/30" data-reveal="up" data-delay="0.4">
-              <div class="flex items-center justify-between mb-6">
-                <span class="text-5xl font-display font-black text-mint-400 font-mono">04</span>
-                <span class="badge-tag badge-mint">Gestion Continue</span>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">2</span>
+                <div>
+                  <strong class="text-slate-900">Clauses résolutoires de plein droit (OHADA) :</strong> Résiliation automatique du bail sans procédure judiciaire interminable.
+                </div>
               </div>
-              <h3 class="text-2xl font-display font-bold text-white mb-3">Encaissements & Reversements le 5</h3>
-              <p class="text-slate-300 text-sm leading-relaxed mb-4">
-                Collecte mensuelle automatisée, reversement ponctuel à date fixe le 5 sur votre compte, gestion technique préventive et rapports financiers 24/7 sur la plateforme SaaS.
-              </p>
-              <ul class="text-xs text-slate-400 space-y-2">
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Quittances certifiées instantanées</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Suivi 24/7 pour les bailleurs résidents & diaspora</li>
-              </ul>
+              <div class="flex items-start gap-3">
+                <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">3</span>
+                <div>
+                  <strong class="text-slate-900">Expulsion régulière avec force publique :</strong> Procédure stricte assurée par huissier pour libérer les lieux et relouer sans perte financière.
+                </div>
+              </div>
             </div>
-
           </div>
+
         </div>
       </section>
 
       <!-- ================================================================= -->
-      <!-- 6. FORMULES & TARIFICATION TRANSPARENTE                           -->
+      <!-- 5. PROCESSUS EN 5 ÉTAPES (Storytelling Mandat de Gestion)        -->
       <!-- ================================================================= -->
-      <section class="py-24 px-4 md:px-8 max-w-7xl mx-auto">
-        <div class="text-center max-w-3xl mx-auto mb-16" data-reveal="up">
-          <div class="badge-tag badge-lime mb-3">Honoraires Clairs</div>
-          <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
-            Des Formules Transparentes Sans Frais Cachés
-          </h2>
-          <p class="text-slate-300 text-sm md:text-base">
-            Nos honoraires sont prélevés uniquement sur les loyers réellement encaissés. Zéro loyer perçu = zéro honoraire.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      <section class="py-24 px-4 md:px-8 bg-[#FAF9F5] border-t border-slate-200" data-theme="ivory">
+        <div class="max-w-6xl mx-auto space-y-12">
           
-          <!-- Formule 1 : Lots Individuels -->
-          <div class="glass-card p-8 flex flex-col justify-between" data-reveal="up" data-delay="0.1">
-            <div>
-              <div class="badge-tag badge-lime mb-4">Appartement / Studio</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-2">Formule Sérénité</h3>
-              <p class="text-xs text-slate-400 mb-6">Idéale pour les propriétaires d'un ou plusieurs appartements, studios ou magasins.</p>
-              
-              <div class="p-4 rounded-2xl bg-forest-950/70 border border-white/5 mb-6">
-                <span class="text-xs text-slate-400 block mb-1">Honoraires de gestion</span>
-                <div class="text-2xl font-mono font-bold text-white">Sur Devis <span class="text-xs font-sans text-lime-400 font-bold">(% déductible)</span></div>
-              </div>
-
-              <ul class="space-y-3 text-xs text-slate-300 font-medium mb-8">
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Recherche & scoring du locataire</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Encaissement Orange Money / MTN MoMo</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Reversement garanti le 5 du mois</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Accès SaaS Bailleurs 24/7</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Quittances certifiées instantanées</li>
-              </ul>
-            </div>
-            <a href="/contact" data-link class="btn-primary w-full text-center">Demander une proposition</a>
+          <div class="text-center max-w-2xl mx-auto space-y-3" data-reveal="up">
+            <span class="inline-block px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider">Méthodologie Éprouvée</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Comment Nous Prenons en Charge Votre Bien</h2>
           </div>
 
-          <!-- Formule 2 : Immeubles & Multi-Lots -->
-          <div class="glass-card-accent p-8 flex flex-col justify-between border-mint-500/40 relative shadow-2xl" data-reveal="up" data-delay="0.2">
-            <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-lime-500 text-forest-950 text-[10px] font-extrabold uppercase tracking-wider">Recommandé Immeubles</div>
-            <div>
-              <div class="badge-tag badge-mint mb-4">Immeubles & R+</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-2">Formule Patrimoine Multi-Lots</h3>
-              <p class="text-xs text-slate-300 mb-6">Pour immeubles complets, résidences et parcs commerciaux à Douala & Yaoundé.</p>
-              
-              <div class="p-4 rounded-2xl bg-forest-950/90 border border-mint-500/20 mb-6">
-                <span class="text-xs text-slate-300 block mb-1">Tarif dégressif</span>
-                <div class="text-2xl font-mono font-bold text-mint-400">Taux Préférentiel <span class="text-xs font-sans text-white font-bold">(selon volume)</span></div>
-              </div>
-
-              <ul class="space-y-3 text-xs text-slate-200 font-medium mb-8">
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Gestionnaire de patrimoine dédié</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Gestion des parties communes & conciergerie</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Reversement consolidé chaque mois</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Audit technique & maintenance préventive</li>
-                <li class="flex items-center gap-2"><span class="text-mint-400">✓</span> Déclarations fiscales foncières incluses</li>
-              </ul>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+            
+            <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
+              <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-sm">01</span>
+              <h4 class="font-bold text-sm text-slate-900">Audit & Estimation</h4>
+              <p class="text-[11px] text-slate-500 leading-snug">Visite physique, évaluation de la valeur locative du marché et état des lieux initial.</p>
             </div>
-            <a href="/contact" data-link class="btn-primary w-full text-center">Étude gratuite immeuble</a>
-          </div>
 
-          <!-- Formule 3 : Diaspora Privilège -->
-          <div class="glass-card p-8 flex flex-col justify-between" data-reveal="up" data-delay="0.3">
-            <div>
-              <div class="badge-tag badge-lime mb-4">Diaspora Camerounaise</div>
-              <h3 class="text-2xl font-display font-bold text-white mb-2">Formule Diaspora Privilège</h3>
-              <p class="text-xs text-slate-400 mb-6">Pour les propriétaires vivant à l'étranger (France, USA, Canada, Belgique, UK...).</p>
-              
-              <div class="p-4 rounded-2xl bg-forest-950/70 border border-white/5 mb-6">
-                <span class="text-xs text-slate-400 block mb-1">Gestion 100% à distance</span>
-                <div class="text-2xl font-mono font-bold text-white">Virement International <span class="text-xs font-sans text-lime-400 font-bold">(EUR / USD / XAF)</span></div>
-              </div>
-
-              <ul class="space-y-3 text-xs text-slate-300 font-medium mb-8">
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Compte-rendu vidéo des états des lieux</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Reversements bancaires internationaux</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Ligne directe WhatsApp avec votre gestionnaire</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Représentation légale et fiscale locale</li>
-                <li class="flex items-center gap-2"><span class="text-lime-400">✓</span> Zéro déplacement nécessaire au pays</li>
-              </ul>
+            <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
+              <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-sm">02</span>
+              <h4 class="font-bold text-sm text-slate-900">Signature du Mandat</h4>
+              <p class="text-[11px] text-slate-500 leading-snug">Mandat exclusif ou semi-exclusif clair, définissant les modalités de reversement.</p>
             </div>
-            <a href="${CONFIG.contact.whatsapp.link}" target="_blank" rel="noopener" class="btn-secondary w-full text-center">Contacter un conseiller Diaspora</a>
+
+            <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
+              <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-sm">03</span>
+              <h4 class="font-bold text-sm text-slate-900">Sélection Locataire</h4>
+              <p class="text-[11px] text-slate-500 leading-snug">Filtrage rigoureux de solvabilité, rédaction de bail OHADA et cautionnement.</p>
+            </div>
+
+            <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
+              <span class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-sm">04</span>
+              <h4 class="font-bold text-sm text-slate-900">Gestion & Recouvrement</h4>
+              <p class="text-[11px] text-slate-500 leading-snug">Collecte automatisée Orange Money/MTN MoMo, émission de quittances sécurisées.</p>
+            </div>
+
+            <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
+              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-mono font-black text-sm">05</span>
+              <h4 class="font-bold text-sm text-slate-900">Reversement le 5</h4>
+              <p class="text-[11px] text-slate-500 leading-snug">Transfert direct de vos loyers nets avec rapport complet téléchargeable sur le SaaS.</p>
+            </div>
+
           </div>
 
         </div>
       </section>
 
       <!-- ================================================================= -->
-      <!-- 7. FAQ DÉTAILLÉE & CTA FINAL                                      -->
+      <!-- 6. SECTION APPLICATIONS 3D (iPhone Interactif Three.js)           -->
       <!-- ================================================================= -->
-      <section class="py-24 px-4 md:px-8 max-w-5xl mx-auto">
-        
-        <!-- FAQ Accordéons -->
-        <div class="mb-24" data-reveal="up" data-accordion-group>
-          <div class="text-center mb-12">
-            <div class="badge-tag badge-mint mb-3">Transparence Totale</div>
-            <h2 class="text-display-lg font-display font-extrabold text-white mb-3">Foire Aux Questions Bailleurs</h2>
-            <p class="text-slate-400 text-sm">Toutes les réponses pour confier votre patrimoine en toute confiance.</p>
+      <section class="py-24 px-4 md:px-8 bg-white border-t border-slate-200" id="experience-3d-app">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <div class="lg:col-span-6 space-y-6" data-reveal="left">
+            <span class="inline-block px-3 py-1 rounded-full bg-mint-50 text-mint-800 border border-mint-200 text-xs font-bold uppercase tracking-wider">Technologie Propriétaire</span>
+            
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 leading-tight">
+              L'Application Mobile & Web MULTI BUSINESS SARL
+            </h2>
+
+            <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+              Bailleurs ou locataires, retrouvez toute votre gestion dans votre poche. Notifications de paiement en temps réel, téléchargement des quittances avec QR code, demandes d'interventions techniques et compte-rendu comptable instantané.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 pt-2">
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-emerald-800 font-bold text-sm block">📱 Application iOS & Android</span>
+                <span class="text-xs text-slate-500">PWA fluide sans installation lourde</span>
+              </div>
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+                <span class="font-mono text-emerald-800 font-bold text-sm block">💻 Portail Web Responsive</span>
+                <span class="text-xs text-slate-500">Accessible sur PC, Mac et tablette</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3.5 text-xs font-bold">
+                <span>Tester la plateforme en direct →</span>
+              </a>
+            </div>
           </div>
 
-          <div class="space-y-3">
-            <div class="border border-white/10 rounded-2xl p-5 bg-forest-950/50" data-accordion-item>
-              <button class="w-full flex items-center justify-between text-left font-bold text-sm md:text-base text-white" data-accordion-trigger>
-                <span>Comment garantissez-vous le versement du loyer le 5 de chaque mois ?</span>
-                <svg class="w-4 h-4 text-lime-400 transition-transform duration-300" data-accordion-icon fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </button>
-              <div class="mt-3 pt-3 border-t border-white/5 text-xs md:text-sm text-slate-300 hidden leading-relaxed" data-accordion-content>
-                Grâce à notre rigueur de sélection en amont, aux paiements digitalisés par Orange Money et MTN MoMo et à notre fonds de prévoyance, nous exécutons le reversement automatique à date fixe sur votre compte bancaire ou Mobile Money chaque 5 du mois, sans exception.
-              </div>
-            </div>
-
-            <div class="border border-white/10 rounded-2xl p-5 bg-forest-950/50" data-accordion-item>
-              <button class="w-full flex items-center justify-between text-left font-bold text-sm md:text-base text-white" data-accordion-trigger>
-                <span>Que se passe-t-il si un locataire dégrade le bien ?</span>
-                <svg class="w-4 h-4 text-lime-400 transition-transform duration-300" data-accordion-icon fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </button>
-              <div class="mt-3 pt-3 border-t border-white/5 text-xs md:text-sm text-slate-300 hidden leading-relaxed" data-accordion-content>
-                L'état des lieux d'entrée est numérisé avec plus de 40 photos HD. À la sortie, toute dégradation non liée à l'usure normale est immédiatement déduite du dépôt de garantie (caution), et les réparations sont effectuées par nos artisans qualifiés sous devis transparent.
-              </div>
-            </div>
-
-            <div class="border border-white/10 rounded-2xl p-5 bg-forest-950/50" data-accordion-item>
-              <button class="w-full flex items-center justify-between text-left font-bold text-sm md:text-base text-white" data-accordion-trigger>
-                <span>Je vis à l'étranger (diaspora), comment suivre mes loyers ?</span>
-                <svg class="w-4 h-4 text-lime-400 transition-transform duration-300" data-accordion-icon fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </button>
-              <div class="mt-3 pt-3 border-t border-white/5 text-xs md:text-sm text-slate-300 hidden leading-relaxed" data-accordion-content>
-                Vous disposez d'un accès sécurisé 24h/24 à votre portail SaaS Bailleurs. Vous y visualisez en direct les encaissements, quittances émises, rapports financiers mensuels et photos des états des lieux. Vos loyers peuvent vous être transférés par virement international vers votre compte bancaire en Europe, Amérique du Nord ou ailleurs.
-              </div>
-            </div>
-
-            <div class="border border-white/10 rounded-2xl p-5 bg-forest-950/50" data-accordion-item>
-              <button class="w-full flex items-center justify-between text-left font-bold text-sm md:text-base text-white" data-accordion-trigger>
-                <span>Vos contrats sont-ils conformes au droit camerounais et OHADA ?</span>
-                <svg class="w-4 h-4 text-lime-400 transition-transform duration-300" data-accordion-icon fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </button>
-              <div class="mt-3 pt-3 border-t border-white/5 text-xs md:text-sm text-slate-300 hidden leading-relaxed" data-accordion-content>
-                Oui, l'intégralité de nos baux d'habitation et baux commerciaux sont rédigés sous le contrôle de notre pôle juridique en stricte conformité avec le Code Civil, l'Acte Uniforme OHADA portant sur le droit commercial général et la législation foncière du Cameroun.
+          <!-- Container 3D Three.js -->
+          <div class="lg:col-span-6 flex items-center justify-center" data-reveal="right">
+            <div id="phone-3d-canvas-container" class="w-full h-[480px] rounded-3xl bg-gradient-to-b from-slate-50 to-emerald-50/40 border border-slate-200 shadow-inner flex items-center justify-center relative overflow-hidden">
+              <div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-white/90 text-[10px] font-mono font-bold text-slate-700 shadow-sm border border-slate-200">
+                3D Interactive • Faites glisser
               </div>
             </div>
           </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 7. TÉMOIGNAGES BAILLEURS & LOCATAIRES                             -->
+      <!-- ================================================================= -->
+      <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white">
+        <div class="text-center max-w-3xl mx-auto mb-12 space-y-3" data-reveal="up">
+          <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">Avis Vérifiés</span>
+          <h2 class="font-serif text-3xl font-extrabold text-marine-900">Ils Nous Font Confiance au Quotidien</h2>
         </div>
 
-        <!-- Appel à l'Action Final -->
-        <div class="glass-card-accent p-10 md:p-14 rounded-4xl text-center relative overflow-hidden shadow-2xl" data-reveal="up">
-          <div class="badge-tag badge-lime mb-4">Mandat Sans Risque</div>
-          <h2 class="text-display-lg font-display font-extrabold text-white mb-4">
-            Confiez Votre Bien à Multi Business SARL Dès Aujourd'hui
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
+            <div class="flex items-center gap-3">
+              <img src="./assets/images/temoin-1.jpg" alt="Jean-Paul N. - Propriétaire" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <div>
+                <h4 class="font-bold text-sm text-slate-900">Jean-Paul N.</h4>
+                <p class="text-[11px] text-slate-500">Propriétaire d'un immeuble R+3 à Bonapriso</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 italic leading-relaxed">« Depuis que j'ai confié mon immeuble à MULTI BUSINESS SARL, le 5 du mois mes loyers sont virés sans aucun retard. Plus de stress d'impayés ! »</p>
+          </div>
+
+          <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
+            <div class="flex items-center gap-3">
+              <img src="./assets/images/temoin-2.jpg" alt="Aïssatou M. - Diaspora France" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <div>
+                <h4 class="font-bold text-sm text-slate-900">Aïssatou M.</h4>
+                <p class="text-[11px] text-slate-500">Diaspora (Paris) • 4 appartements à Bastos</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 italic leading-relaxed">« Vivant en France, le tableau de bord SaaS me permet de suivre mes biens en direct. La transparence et le professionnalisme sont remarquables. »</p>
+          </div>
+
+          <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
+            <div class="flex items-center gap-3">
+              <img src="./assets/images/temoin-3.jpg" alt="Samuel E. - Locataire professionnel" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <div>
+                <h4 class="font-bold text-sm text-slate-900">Samuel E.</h4>
+                <p class="text-[11px] text-slate-500">Locataire de bureau à Akwa</p>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 italic leading-relaxed">« Le paiement par Orange Money et la quittance reçue instantanément par SMS apportent une vraie clarté. Très bon service technique en cas de souci. »</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 8. FORMULES SUR DEVIS & FAQ                                       -->
+      <!-- ================================================================= -->
+      <section class="py-24 px-4 md:px-8 bg-[#FAF9F5] border-t border-slate-200" data-theme="ivory">
+        <div class="max-w-4xl mx-auto space-y-12">
+          
+          <div class="text-center space-y-3" data-reveal="up">
+            <span class="inline-block px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider">Foire Aux Questions</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Questions Fréquentes sur la Gestion Locative</h2>
+          </div>
+
+          <!-- Accordéon FAQ -->
+          <div class="space-y-4" data-accordion-group>
+            
+            <div class="card-light rounded-2xl border border-slate-200 bg-white overflow-hidden" data-accordion-item>
+              <button class="w-full p-6 text-left flex items-center justify-between font-bold text-sm md:text-base text-slate-900 focus:outline-none" data-accordion-trigger>
+                <span>Quels sont vos honoraires de gestion locative ?</span>
+                <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
+              </button>
+              <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
+                Nos honoraires sont prélevés sous forme de pourcentage transparent sur les loyers effectivement encaissés (généralement entre 8&nbsp;% et 10&nbsp;% selon le volume de lots et les prestations incluses). Si un bien est vacant, aucun honoraire n'est facturé.
+              </div>
+            </div>
+
+            <div class="card-light rounded-2xl border border-slate-200 bg-white overflow-hidden" data-accordion-item>
+              <button class="w-full p-6 text-left flex items-center justify-between font-bold text-sm md:text-base text-slate-900 focus:outline-none" data-accordion-trigger>
+                <span>Comment sont gérés les retards ou refus de paiement ?</span>
+                <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
+              </button>
+              <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
+                Grâce aux alertes automatiques et au suivi rigoureux de nos juristes, nous intervenons dès le 1er jour de retard. En cas de non-régularisation, nos huissiers partenaires de 1ère et 2e charges délivrent immédiatement une sommation de payer et mettent en œuvre la clause résolutoire du bail OHADA.
+              </div>
+            </div>
+
+            <div class="card-light rounded-2xl border border-slate-200 bg-white overflow-hidden" data-accordion-item>
+              <button class="w-full p-6 text-left flex items-center justify-between font-bold text-sm md:text-base text-slate-900 focus:outline-none" data-accordion-trigger>
+                <span>Je réside à l'étranger (Diaspora), comment puis-je suivre mes biens ?</span>
+                <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
+              </button>
+              <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
+                Vous bénéficiez d'un accès direct à votre tableau de bord SaaS 24/7 sur <a href="https://app.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">app.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
+              </div>
+            </div>
+
+            <div class="card-light rounded-2xl border border-slate-200 bg-white overflow-hidden" data-accordion-item>
+              <button class="w-full p-6 text-left flex items-center justify-between font-bold text-sm md:text-base text-slate-900 focus:outline-none" data-accordion-trigger>
+                <span>Quels documents sont nécessaires pour confier un bien en gestion ?</span>
+                <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
+              </button>
+              <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
+                Il vous suffit de fournir une copie de votre pièce d'identité (CNI ou Passeport), le titre de propriété ou certificat d'attribution du bien, et les clés pour l'état des lieux d'entrée. Nous rédigeons le mandat de gestion en toute simplicité.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 8. CTA FINAL SUR FOND PHOTO                                       -->
+      <!-- ================================================================= -->
+      <section class="relative py-24 px-4 md:px-8 overflow-hidden" data-theme="photo">
+        <div class="absolute inset-0 z-0">
+          <img src="./assets/images/cta-final-bg.jpg" alt="Gestion Immobilière Douala" class="w-full h-full object-cover object-center filter brightness-[0.45]" />
+        </div>
+
+        <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">
+          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-lime-400 border border-lime-400/30 text-xs font-bold tracking-wider uppercase backdrop-blur-md">
+            <span>Mandat de Gestion Immobilière</span>
+          </span>
+
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+            Offrez à Votre Patrimoine la Sérénité Qu'il Mérite Dès Aujourd'hui.
           </h2>
-          <p class="text-slate-300 text-sm md:text-base max-w-2xl mx-auto mb-8 leading-relaxed">
-            Audit gratuit et sans engagement de votre bien sous 48h à Douala et Yaoundé.
+
+          <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
+            Rejoignez plus de 500 bailleurs satisfaits à Douala et Yaoundé. Estimation gratuite de vos loyers et prise en charge en 48h.
           </p>
-          <div class="flex flex-wrap items-center justify-center gap-4">
-            <a href="${CONFIG.contact.whatsapp.link}" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-base" data-magnetic>
-              <span>Échanger sur WhatsApp</span>
-              <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+
+          <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-base shadow-xl" data-magnetic>
+              <span>Confier un bien en gestion</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="/contact" data-link class="btn-secondary !px-8 !py-4 text-base" data-magnetic>
-              <span>Prendre rendez-vous en agence</span>
+            <a href="tel:+237694811715" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
+              <span>Appeler notre expert gestion</span>
             </a>
           </div>
         </div>
-
       </section>
     `;
   },
 
-  async init(container = (typeof document !== 'undefined' ? document.getElementById('app') || document : null)) {
-    console.log('⚡ [Gestion Locative View] Initialisation complète de la page');
-    this._cleanups = [];
+  async init(container) {
+    initUIComponents(container);
 
-    if (!container) return;
-
-    // Initialisation des accordéons et des onglets de la vue
-    initAccordions(container);
-    initTabs(container);
-
-    // Système de filtres interactifs pour le catalogue de biens
-    const filterButtons = container.querySelectorAll('.filter-btn');
+    // Initialiser les filtres du catalogue de biens
+    const filterButtons = container.querySelectorAll('#property-filters .filter-btn');
     const propertyCards = container.querySelectorAll('.property-card');
 
-    filterButtons.forEach((btn) => {
-      const handler = () => {
-        const filter = btn.dataset.filter;
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
 
-        // Mise à jour des classes actives sur les boutons
-        filterButtons.forEach((b) => {
-          b.classList.remove('active', 'bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm');
-          b.classList.add('bg-forest-900', 'border', 'border-white/10', 'text-slate-300');
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-marine-900', 'text-white', 'active');
+          b.classList.add('bg-white', 'text-slate-700');
         });
-        btn.classList.add('active', 'bg-lime-500', 'text-forest-950', 'shadow-glow-lime-sm');
-        btn.classList.remove('bg-forest-900', 'border', 'border-white/10', 'text-slate-300');
+        btn.classList.add('bg-marine-900', 'text-white', 'active');
+        btn.classList.remove('bg-white', 'text-slate-700');
 
-        // Filtrage des cartes
-        propertyCards.forEach((card) => {
-          const category = card.dataset.category;
-          if (filter === 'all' || category === filter) {
+        propertyCards.forEach(card => {
+          const cardCat = card.dataset.cat;
+          if (category === 'all' || cardCat === category) {
             card.classList.remove('hidden');
             if (window.gsap) {
-              window.gsap.fromTo(card, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" });
+              window.gsap.fromTo(card, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.35, ease: "power2.out" });
             }
           } else {
             card.classList.add('hidden');
           }
         });
-      };
-
-      btn.addEventListener('click', handler);
-      this._cleanups.push(() => btn.removeEventListener('click', handler));
+      });
     });
+
+    // Initialiser le visualiseur 3D Three.js
+    const canvasContainer = container.querySelector('#phone-3d-canvas-container');
+    if (canvasContainer) {
+      setTimeout(() => {
+        try {
+          init3DPhoneViewer(canvasContainer);
+        } catch (e) {
+          console.warn('[GestionLocative] 3D Viewer init exception:', e);
+        }
+      }, 100);
+    }
   },
 
   destroy() {
-    console.log('🧹 [Gestion Locative View] Nettoyage complet');
-    this._cleanups.forEach((c) => {
-      try { c(); } catch (e) {}
-    });
+    destroy3DPhoneViewer();
+    this._cleanups.forEach(fn => fn());
     this._cleanups = [];
   }
 };

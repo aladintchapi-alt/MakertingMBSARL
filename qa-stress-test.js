@@ -72,13 +72,13 @@ const requiredFiles = [
   'assets/js/views/contact.js',
   'assets/js/views/not-found.js',
   'assets/js/views/design-system.js',
-  'assets/images/logo-icon.svg',
-  'assets/images/logo-dark-theme.svg',
-  'assets/images/logo-light-theme.svg',
+  'assets/images/logo.jpeg',
+  'assets/images/logo-transparent.png',
   'assets/images/favicon-16x16.png',
   'assets/images/favicon-32x32.png',
   'assets/images/apple-touch-icon-180x180.png',
-  'assets/images/logo-512x512.png'
+  'assets/images/logo-512x512.png',
+  'assets/images/og-image.png'
 ];
 
 let missingFiles = 0;
