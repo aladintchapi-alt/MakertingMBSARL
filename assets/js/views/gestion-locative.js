@@ -49,7 +49,7 @@ export default {
               <span>Explorer les types de biens gérés</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="https://wa.me/237694811715?text=Bonjour%20je%20souhaite%20confier%20un%20bien%20en%20gestion%20locative" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20confier%20un%20bien%20en%20gestion%20locative" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Estimer mes revenus locatifs</span>
             </a>
           </div>
@@ -598,7 +598,7 @@ export default {
               <span>Confier un bien en gestion</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="tel:+237694811715" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
+            <a href="tel:+237690843497" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
               <span>Appeler notre expert gestion</span>
             </a>
           </div>

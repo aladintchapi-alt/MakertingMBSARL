@@ -58,9 +58,9 @@ export default {
               <a href="#rdv-section" class="btn-outline !px-6 !py-3.5 text-sm bg-white/80" data-magnetic>
                 <span>Prendre rendez-vous</span>
               </a>
-              <a href="tel:+237694811715" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-marine-900 bg-slate-100 hover:bg-slate-200 px-4 py-3 rounded-full transition-colors">
+              <a href="tel:+237690843497" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-marine-900 bg-slate-100 hover:bg-slate-200 px-4 py-3 rounded-full transition-colors">
                 <svg class="w-3.5 h-3.5 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                <span>694 811 715</span>
+                <span>690 84 34 97</span>
               </a>
             </div>
 
@@ -75,8 +75,8 @@ export default {
                 <span class="text-xs text-slate-500">Reversements directs</span>
               </div>
               <div>
-                <span class="block font-serif text-lg font-bold text-marine-900">Douala & Rép.</span>
-                <span class="text-xs text-slate-500">Rond-point CCC Dakar</span>
+                <span class="block font-serif text-lg font-bold text-marine-900">Douala Dakar</span>
+                <span class="text-xs text-slate-500">Immeuble Express Union</span>
               </div>
             </div>
           </div>
@@ -361,7 +361,7 @@ export default {
               <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl font-bold font-mono">03</div>
               <h3 class="font-serif text-2xl font-bold text-marine-900">Disponibilité</h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                Un interlocuteur dédié accessible 6j/7 de 08h à 17h, par téléphone, WhatsApp ou au siège de Douala (Rond-point CCC Dakar).
+                Un interlocuteur dédié accessible 6j/7 de 08h à 17h, par téléphone, WhatsApp ou au siège de Douala (Dakar, Immeuble Express Union).
               </p>
             </div>
 
@@ -832,8 +832,8 @@ export default {
                 <div class="space-y-0.5">
                   <h4 class="font-serif font-bold text-sm text-marine-900">Direction Générale</h4>
                   <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Douala</p>
-                  <a href="tel:+237694811715" class="text-xs font-mono font-bold text-mint-700 hover:underline inline-block pt-1">
-                    Ligne directe : (+237) 694 811 715
+                  <a href="tel:+237690843497" class="text-xs font-mono font-bold text-mint-700 hover:underline inline-block pt-1">
+                    Ligne directe : (+237) 690 84 34 97
                   </a>
                 </div>
               </div>
@@ -957,7 +957,7 @@ export default {
                     <span class="text-mint-700 text-lg transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <p class="text-xs text-slate-600 pt-3 leading-relaxed">
-                    Notre siège est situé à Douala, au rond-point CCC (Dakar), à quelques mètres du commissariat du 8ᵉ arrondissement.
+                    Notre siège est situé à Douala, à Dakar, à quelques mètres du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau.
                   </p>
                 </details>
               </div>
@@ -987,7 +987,7 @@ export default {
                   </div>
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Numéro Téléphone / WhatsApp *</label>
-                    <input type="tel" required placeholder="Ex: 694 811 715" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 font-mono" />
+                    <input type="tel" required placeholder="Ex: 690 84 34 97 ou 671 46 17 91" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 font-mono" />
                   </div>
                 </div>
 
@@ -1024,7 +1024,7 @@ export default {
               </form>
             </div>
 
-            <!-- Bloc Coordonnées & 3 Numéros Réels -->
+            <!-- Bloc Coordonnées & Lignes Officielles -->
             <div class="lg:col-span-5 space-y-6 text-left" data-reveal="right">
               <div class="p-8 bg-marine-900 text-white rounded-3xl shadow-xl space-y-6">
                 <div>
@@ -1033,28 +1033,31 @@ export default {
                 </div>
 
                 <div class="space-y-3 font-mono text-sm">
-                  <a href="tel:+237694811715" class="p-3.5 rounded-xl bg-marine-800/80 border border-mint-500/30 flex items-center justify-between hover:bg-marine-800 transition-colors">
-                    <span class="text-xs text-slate-300">Ligne Principale :</span>
-                    <span class="font-bold text-lime-400">(+237) 694 811 715</span>
+                  <a href="tel:+237690843497" class="p-3.5 rounded-xl bg-marine-800/80 border border-orange-500/40 flex items-center justify-between hover:bg-marine-800 transition-colors">
+                    <span class="text-xs text-slate-300 flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-[#FF7900]"></span>
+                      <span>Orange :</span>
+                    </span>
+                    <span class="font-bold text-white">(+237) 690 84 34 97</span>
                   </a>
-                  <a href="tel:+237690843497" class="p-3.5 rounded-xl bg-marine-800/80 border border-slate-700 flex items-center justify-between hover:bg-marine-800 transition-colors">
-                    <span class="text-xs text-slate-300">Ligne 2 :</span>
-                    <span class="font-bold text-white">(+237) 690 843 497</span>
-                  </a>
-                  <a href="tel:+237671461791" class="p-3.5 rounded-xl bg-marine-800/80 border border-slate-700 flex items-center justify-between hover:bg-marine-800 transition-colors">
-                    <span class="text-xs text-slate-300">Ligne 3 :</span>
-                    <span class="font-bold text-white">(+237) 671 461 791</span>
+                  <a href="tel:+237671461791" class="p-3.5 rounded-xl bg-marine-800/80 border border-yellow-500/40 flex items-center justify-between hover:bg-marine-800 transition-colors">
+                    <span class="text-xs text-slate-300 flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-[#FFCC00]"></span>
+                      <span>MTN :</span>
+                    </span>
+                    <span class="font-bold text-white">(+237) 671 46 17 91</span>
                   </a>
                 </div>
 
                 <div class="pt-2 border-t border-slate-800 text-xs text-slate-300 space-y-2">
-                  <p><strong>Siège :</strong> Douala, rond-point CCC (Dakar), à quelques mètres du commissariat du 8ᵉ arr.</p>
+                  <p><strong>Siège :</strong> Douala, Dakar, à quelques mètres du commissariat du 8ᵉ arr., Immeuble Express Union, 1er niveau</p>
                   <p><strong>Horaires :</strong> Lundi au Samedi : 08h00 – 17h00</p>
-                  <p><strong>E-mail :</strong> <a href="mailto:contact@multibusiness.cm" class="text-mint-400 hover:underline">contact@multibusiness.cm</a></p>
+                  <p><strong>E-mail :</strong> <a href="mailto:contacts@multibusiness.cm" class="text-mint-400 hover:underline">contacts@multibusiness.cm</a></p>
                 </div>
 
-                <a href="https://wa.me/237694811715" target="_blank" rel="noopener" class="w-full btn-primary bg-lime-400 hover:bg-lime-300 text-marine-900 font-bold !py-3 text-xs flex items-center justify-center gap-2">
-                  <span>Ouvrir WhatsApp direct</span>
+                <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="w-full btn-primary bg-lime-400 hover:bg-lime-300 text-marine-900 font-bold !py-3 text-xs flex items-center justify-center gap-2">
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                  <span>Ouvrir WhatsApp direct (+237 651 55 94 11)</span>
                 </a>
               </div>
             </div>
@@ -1086,7 +1089,7 @@ export default {
             <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm bg-lime-400 text-marine-900 hover:bg-lime-300 font-bold shadow-xl" data-magnetic>
               <span>Prendre contact avec la Direction</span>
             </a>
-            <a href="https://wa.me/237694811715" target="_blank" rel="noopener" class="btn-outline !px-8 !py-4 text-sm !text-white !border-white/50 hover:!border-white" data-magnetic>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="btn-outline !px-8 !py-4 text-sm !text-white !border-white/50 hover:!border-white" data-magnetic>
               <span>Échanger sur WhatsApp</span>
             </a>
           </div>

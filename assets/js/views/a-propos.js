@@ -158,7 +158,7 @@ export default {
                   <h4 class="font-serif font-bold text-base text-marine-900">La Direction Générale</h4>
                   <p class="text-xs text-slate-500">MULTI BUSINESS SARL</p>
                 </div>
-                <span class="font-mono text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Rond-point CCC, Douala</span>
+                <span class="font-mono text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Dakar, Douala</span>
               </div>
             </div>
 
@@ -215,7 +215,7 @@ export default {
             <div class="p-6 space-y-3">
               <h3 class="font-serif text-xl font-bold text-marine-900">Disponibilité & Proximité Terrain</h3>
               <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Une équipe joignable 6j/7, un siège physique accessible au rond-point CCC (Dakar, Douala) et des gestionnaires dédiés qui se déplacent sur vos sites d'immeubles.
+                Une équipe joignable 6j/7, un siège physique accessible à Dakar (Douala, Immeuble Express Union) et des gestionnaires dédiés qui se déplacent sur vos sites d'immeubles.
               </p>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default {
               <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1">2020</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Création et Implantation à Douala</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
-                Ouverture du cabinet à Akwa / Rond-point CCC Dakar. Démarrage des activités de conseil d'affaires, assistance fiscale et immatriculation des premières PME camerounaises.
+                Ouverture du cabinet à Douala (Dakar). Démarrage des activités de conseil d'affaires, assistance fiscale et immatriculation des premières PME camerounaises.
               </p>
             </div>
 
@@ -306,7 +306,7 @@ export default {
           </div>
 
           <!-- Photo 2 : Bureaux & Réception -->
-          <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-bureau-douala.jpg" data-caption="Espace d'accueil et bureaux de prestige de MULTI BUSINESS SARL à Douala (Rond-point CCC)">
+          <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-bureau-douala.jpg" data-caption="Espace d'accueil et bureaux de prestige de MULTI BUSINESS SARL à Douala (Dakar)">
             <img src="./assets/images/galerie-bureau-douala.jpg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
@@ -402,7 +402,7 @@ export default {
             <div class="w-16 h-16 rounded-full bg-lime-400/20 text-lime-400 flex items-center justify-center text-2xl mb-4">🎬</div>
             <h3 class="font-serif text-xl md:text-2xl font-bold mb-2">Présentation Institutionnelle MULTI BUSINESS SARL</h3>
             <p class="text-xs md:text-sm text-slate-300 max-w-md mb-6">Gestion locative intelligente, baux OHADA, recouvrement Orange/MTN et prestations d'affaires à Douala & Yaoundé.</p>
-            <a href="https://wa.me/237694811715" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs">Échanger avec un conseiller vidéo</a>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs">Échanger avec un conseiller vidéo</a>
           </div>
         </div>
       </div>
@@ -426,7 +426,7 @@ export default {
                   <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
                   <strong class="text-sm text-slate-900">Douala (Siège Principal)</strong>
                 </div>
-                <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Rond-point CCC</span>
+                <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Dakar (Express Union)</span>
               </div>
 
               <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200">
@@ -459,7 +459,7 @@ export default {
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bonanjo & Centre</div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bonapriso & Bali</div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Deido & Bépanda</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Dakar & Rond-Point CCC</div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Dakar (Express Union)</div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Maképé & Kotto</div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Logbessou & PK14</div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bassa Zone Industrielle</div>
@@ -535,8 +535,8 @@ export default {
               <span>Prendre contact maintenant</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="tel:+237694811715" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
-              <span>Appeler le 694 811 715</span>
+            <a href="tel:+237690843497" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
+              <span>Appeler le (+237) 690 84 34 97</span>
             </a>
           </div>
         </div>

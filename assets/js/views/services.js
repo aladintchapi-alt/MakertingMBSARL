@@ -447,8 +447,8 @@ export default {
               <span>Demander une étude gratuite</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="https://wa.me/237694811715" target="_blank" rel="noopener" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
-              <span>WhatsApp Direct (+237 694 811 715)</span>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
+              <span>WhatsApp Direct (+237 651 55 94 11)</span>
             </a>
           </div>
         </div>

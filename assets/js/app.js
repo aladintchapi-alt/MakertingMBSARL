@@ -124,6 +124,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 5. Exécuter le preloader élégant
   handlePreloader();
 
+  // 6. Filet de sécurité visuel pour les images : évite tout bloc vide ou blanc
+  window.addEventListener('error', (e) => {
+    if (e.target && e.target.tagName === 'IMG') {
+      const img = e.target;
+      if (!img.dataset.fallbackApplied) {
+        img.dataset.fallbackApplied = 'true';
+        img.classList.add('bg-slate-100', 'p-4');
+        img.style.objectFit = 'contain';
+        img.src = './assets/images/logo-transparent.png';
+      }
+    }
+  }, true);
+
   console.log(`✨ [App] MULTI BUSINESS SARL SPA Engine Running smoothly.`);
 });
+
 

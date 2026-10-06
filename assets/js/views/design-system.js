@@ -188,7 +188,7 @@ export default {
             <div>
               <span class="text-xs font-mono text-slate-400 block mb-2">Corps de texte courant — font-sans</span>
               <p class="text-slate-600 text-base leading-relaxed max-w-3xl">
-                Basée à Douala, au rond-point CCC (Dakar), <strong>MULTI BUSINESS SARL</strong> accompagne les bailleurs résidents et de la diaspora dans la valorisation de leur patrimoine immobilier. Grâce à son application web et mobile propriétaire, elle sécurise les flux de loyers et garantit des reversements ponctuels.
+                Basée à Douala (Dakar, Immeuble Express Union), <strong>MULTI BUSINESS SARL</strong> accompagne les bailleurs résidents et de la diaspora dans la valorisation de leur patrimoine immobilier. Grâce à son application web et mobile propriétaire, elle sécurise les flux de loyers et garantit des reversements ponctuels.
               </p>
             </div>
 

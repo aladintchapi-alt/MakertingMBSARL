@@ -12,8 +12,8 @@ export const CONFIG = {
     slogan: "L'Excellence Opérationnelle, la Rigueur Juridique & l'Innovation au Cameroun",
     tagline: "Plateforme SaaS Immobilière & Conseil Stratégique aux Entreprises",
     yearFounded: 2020,
-    rccm: "RC/DLA/2020/B/1842",
-    niu: "M052014528174C",
+    rccm: "RC/DLA/2020/B/243",
+    niu: "M012014379280U",
     values: [
       {
         title: "Dynamisme",
@@ -43,31 +43,46 @@ export const CONFIG = {
 
   contact: {
     phones: [
-      { raw: "+237694811715", formatted: "(+237) 694 811 715", label: "Ligne Principale / Direction" },
-      { raw: "+237690843497", formatted: "(+237) 690 843 497", label: "Pôle Gestion & Bailleurs" },
-      { raw: "+237671461791", formatted: "(+237) 671 461 791", label: "Assistance & Formalités" }
+      { raw: "+237690843497", formatted: "(+237) 690 84 34 97", operator: "Orange", color: "#FF7900", label: "Ligne Orange" },
+      { raw: "+237671461791", formatted: "(+237) 671 46 17 91", operator: "MTN", color: "#FFCC00", label: "Ligne MTN" }
     ],
-    phonePrimary: "(+237) 694 811 715",
-    phoneSecondary: "(+237) 690 843 497",
-    phoneTertiary: "(+237) 671 461 791",
-    emailMain: "contact@multibusiness.cm",
+    phoneOrange: "(+237) 690 84 34 97",
+    phoneMTN: "(+237) 671 46 17 91",
+    phonePrimary: "(+237) 690 84 34 97",
+    phoneSecondary: "(+237) 671 46 17 91",
+    emailMain: "contacts@multibusiness.cm",
     hours: "Lundi – Samedi : 08h00 – 17h00",
     headquarters: {
       city: "Douala",
       country: "Cameroun",
       district: "Dakar",
-      landmark: "Rond-point CCC, à quelques mètres du commissariat du 8ᵉ arrondissement",
-      addressFull: "Rond-point CCC (Dakar), près du commissariat du 8ᵉ arr., Douala, Cameroun"
+      landmark: "à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
+      addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arr., Immeuble Express Union",
+      addressFull: "Dakar (Douala, Cameroun), à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
+      mapUrl: "https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun"
     },
     whatsapp: {
-      number: "237694811715",
-      directUrl: "https://wa.me/237694811715?text=Bonjour%20MULTI%20BUSINESS%20SARL%2C%20je%20souhaite%20des%20renseignements.",
+      number: "237651559411",
+      formatted: "(+237) 651 55 94 11",
+      directUrl: "https://wa.me/237651559411?text=Bonjour%20MULTI%20BUSINESS%20SARL%2C%20je%20souhaite%20des%20renseignements.",
       serviceMessages: {
         immobilier: "Bonjour MULTI BUSINESS SARL, je souhaite confier un bien en gestion immobilière / louer un bien.",
         creation: "Bonjour MULTI BUSINESS SARL, je souhaite être accompagné pour la création de mon entreprise (CFCE).",
         dedouanement: "Bonjour MULTI BUSINESS SARL, j'ai une cargaison à dédouaner au Port de Douala / Kribi.",
         prestation: "Bonjour MULTI BUSINESS SARL, je sollicite un artisan / une prestation technique pour un chantier.",
         fiscalite: "Bonjour MULTI BUSINESS SARL, je souhaite un accompagnement fiscal et déclaratif (DGI)."
+      }
+    },
+    socials: {
+      tiktok: {
+        handle: "@multibusinesssarl",
+        url: "https://www.tiktok.com/@multibusinesssarl",
+        label: "TikTok de MULTI BUSINESS SARL"
+      },
+      facebook: {
+        handle: "multibusinesssarl",
+        url: "https://www.facebook.com/multibusinesssarl",
+        label: "Facebook de MULTI BUSINESS SARL"
       }
     }
   },
@@ -207,7 +222,22 @@ export const CONFIG = {
 
   seo: {
     siteTitle: "MULTI BUSINESS SARL | Gestion Immobilière Intelligente, SaaS & Conseil - Douala, Cameroun",
-    siteDescription: "Leader de la gestion immobilière et du conseil aux entreprises au Cameroun (Douala, Rond-point CCC). Bailleurs, locataires, application SaaS, quittances certifiées, CFCE, douane et fiscalité.",
+    siteDescription: "Leader de la gestion immobilière et du conseil aux entreprises au Cameroun (Douala, Dakar). Bailleurs, locataires, application SaaS, quittances certifiées, CFCE, douane et fiscalité.",
     keywords: "gestion immobiliere douala, multibusiness sarl, bailleur cameroun, huissier expulsion cameroun, saas gestion locative, creation entreprise cfce douala, dedouanement port douala, fiscalite dgi cameroun"
   }
 };
+
+/**
+ * Résout une URL d'asset de manière sûre quel que soit le contexte d'hébergement (racine, sous-dossier, ngrok)
+ */
+export function resolveAsset(path) {
+  if (!path) return '';
+  if (path.startsWith('http://') || path.startsWith('https://') || path.startsWith('data:') || path.startsWith('blob:')) {
+    return path;
+  }
+  const base = (typeof window !== 'undefined' && window.__APP_BASE__) || (typeof document !== 'undefined' && document.querySelector('base')?.getAttribute('href')) || '/';
+  const cleanBase = base.endsWith('/') ? base : base + '/';
+  const cleanPath = path.replace(/^\.?\//, '');
+  return `${cleanBase}${cleanPath}`;
+}
+

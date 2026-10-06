@@ -52,14 +52,37 @@ class Router {
   }
 
   /**
-   * Détecte le sous-dossier d'exécution (ex: /MakertingMBSARL sous XAMPP ou vide sous root)
+   * Détecte le sous-dossier d'exécution (support universel : racine, sous-dossier, ngrok)
    */
   detectBasePath() {
-    const pathname = window.location.pathname;
-    if (pathname.toLowerCase().includes('/makertingmbsarl')) {
-      this.basePath = '/MakertingMBSARL';
-    } else {
+    let base = window.__APP_BASE__;
+    if (!base) {
+      const baseEl = document.querySelector('base');
+      if (baseEl && baseEl.getAttribute('href')) {
+        base = baseEl.getAttribute('href');
+      }
+    }
+    if (!base) {
+      const pathname = window.location.pathname;
+      const knownRoutes = Object.keys(this.routes || {}).map(r => r.replace(/^\//, '')).filter(Boolean);
+      for (const route of knownRoutes) {
+        const pattern = new RegExp('/' + route + '(/)?$', 'i');
+        if (pattern.test(pathname)) {
+          base = pathname.replace(pattern, '') + '/';
+          break;
+        }
+      }
+    }
+    if (!base) {
+      base = window.location.pathname.replace(/\/[^/]+\.[a-zA-Z0-9]+$/, '') + '/';
+    }
+
+    // Normaliser : basePath sans slash final pour concaténation aisée (ex: "/MakertingMBSARL" ou "")
+    let norm = (base || '').replace(/\/+$/, '');
+    if (norm === '/' || norm === '') {
       this.basePath = '';
+    } else {
+      this.basePath = norm.startsWith('/') ? norm : '/' + norm;
     }
   }
 

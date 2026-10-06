@@ -369,7 +369,7 @@ export class Phone3DViewer {
       const items = [
         { title: 'Appartement 3 Pièces - Bonapriso', price: '350 000 FCFA/mois', tenant: 'M. Jean-Paul T.' },
         { title: 'Studio Meublé Design - Akwa', price: '180 000 FCFA/mois', tenant: 'Mme Sandrine E.' },
-        { title: 'Magasin Commercial - Rond-Point CCC', price: '450 000 FCFA/mois', tenant: 'Société CAM Sarl' },
+        { title: 'Magasin Commercial - Douala Dakar', price: '450 000 FCFA/mois', tenant: 'Société CAM Sarl' },
         { title: 'Plateau Bureaux 120m² - Bonanjo', price: '750 000 FCFA/mois', tenant: 'Cabinet Audit' }
       ];
 

@@ -44,7 +44,7 @@ export default {
               <span>Lancer ma création d'entreprise</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="https://wa.me/237694811715?text=Bonjour%20je%20souhaite%20cr%C3%A9er%20une%20entreprise%20au%20Cameroun" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20cr%C3%A9er%20une%20entreprise%20au%20Cameroun" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Conseil Express WhatsApp</span>
             </a>
           </div>
@@ -169,7 +169,7 @@ export default {
             <img src="./assets/images/galerie-bureau-douala.jpg" alt="Bureaux MULTI BUSINESS SARL Douala" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Bureaux d'Affaires & Domiciliation</h4>
-              <p class="text-xs text-slate-600 leading-relaxed">Nos locaux au Rond-point CCC (Dakar, Douala) vous accueillent pour vos entretiens et vous offrent une adresse prestigieuse pour votre siège social.</p>
+              <p class="text-xs text-slate-600 leading-relaxed">Nos locaux à Dakar (Douala, Immeuble Express Union) vous accueillent pour vos entretiens et vous offrent une adresse prestigieuse pour votre siège social.</p>
             </div>
           </div>
 
@@ -236,7 +236,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-5 pb-5 text-xs text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Oui, MULTI BUSINESS SARL propose un service de domiciliation commerciale officiel à Douala (Rond-point CCC Dakar), avec réception de votre courrier et mise à disposition de salles de réunion.
+                Oui, MULTI BUSINESS SARL propose un service de domiciliation commerciale officiel à Douala (Dakar, Immeuble Express Union), avec réception de votre courrier et mise à disposition de salles de réunion.
               </div>
             </div>
           </div>
