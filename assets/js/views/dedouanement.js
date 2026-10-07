@@ -4,6 +4,7 @@
  */
 import { CONFIG } from '../config.js';
 import { initUIComponents } from '../ui.js';
+import { icon } from '../icons.js';
 
 export default {
   meta: {
@@ -19,9 +20,9 @@ export default {
       <!-- ================================================================= -->
       <!-- 1. HERO DÉDOUANEMENT (Bleu Océan Signature)                       -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-32 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-ocean">
+      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-ocean">
         <div class="hero-photo-bg">
-          <img src="./assets/images/service-dedouanement.jpg" alt="Dédouanement portuaire à Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/service-dedouanement.jpg" alt="Dédouanement portuaire à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -36,24 +37,24 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
-            Importateurs, industriels et commerçants : confiez vos déclarations en douane, le suivi SYDONIA et l'enlèvement de vos marchandises à une équipe de déclarants agréés et réactifs.
+            Importateurs, industriels et commerçants : confiez vos déclarations en douane, le suivi CAMCIS / SYDONIA et l'enlèvement de vos marchandises à une équipe de déclarants agréés et réactifs.
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <a href="#estimer-dedouanement" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg" data-magnetic>
+            <a href="#estimer-dedouanement" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic>
               <span>Estimer mes frais de dédouanement</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
             <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20d%C3%A9douaner%20un%20conteneur%20au%20port" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Échanger avec un déclarant WhatsApp</span>
             </a>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-mono text-slate-700 pt-6 border-t border-sky-200/80">
-            <span class="flex items-center gap-2"><strong class="text-sky-800">✓</strong> Ports de Douala & Kribi</span>
-            <span class="flex items-center gap-2"><strong class="text-sky-800">✓</strong> Conteneurs FCL / LCL</span>
-            <span class="flex items-center gap-2"><strong class="text-sky-800">✓</strong> Fret aérien express</span>
-            <span class="flex items-center gap-2"><strong class="text-sky-800">✓</strong> Assurance & Livraison site</span>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-semibold text-slate-700 pt-6 border-t border-sky-200/80">
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-sky-800' })} Ports de Douala & Kribi</span>
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-sky-800' })} Conteneurs FCL / LCL</span>
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-sky-800' })} Fret aérien express</span>
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-sky-800' })} Assurance & Livraison site</span>
           </div>
         </div>
       </section>
@@ -74,26 +75,26 @@ export default {
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1">
-                <span class="text-lg">⚡</span>
+              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1.5">
+                ${icon('zap', { class: 'w-5 h-5 text-sky-800' })}
                 <h4 class="font-bold text-slate-900 text-sm">1. Rapidité d'Exécution</h4>
                 <p class="text-xs text-slate-600">Saisie et validation anticipée des manifestes avant même l'arrivée du navire au quai.</p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1">
-                <span class="text-lg">🛡️</span>
+              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1.5">
+                ${icon('shield-check', { class: 'w-5 h-5 text-sky-800' })}
                 <h4 class="font-bold text-slate-900 text-sm">2. Fiabilité & 0 Surestarie</h4>
                 <p class="text-xs text-slate-600">Respect strict des franchises compagnies maritimes pour éliminer toute pénalité de retard.</p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1">
-                <span class="text-lg">📋</span>
+              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1.5">
+                ${icon('file-text', { class: 'w-5 h-5 text-sky-800' })}
                 <h4 class="font-bold text-slate-900 text-sm">3. Assurance Marchandises</h4>
                 <p class="text-xs text-slate-600">Couverture des cargaisons sensibles contre les avaries et risques de transport.</p>
               </div>
 
-              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1">
-                <span class="text-lg">🚛</span>
+              <div class="p-4 rounded-2xl bg-sky-50/40 border border-sky-200/80 space-y-1.5">
+                ${icon('truck', { class: 'w-5 h-5 text-sky-800' })}
                 <h4 class="font-bold text-slate-900 text-sm">4. Enlèvement & Livraison</h4>
                 <p class="text-xs text-slate-600">Prise en charge par camions remorques et livraison directe jusqu'à votre entrepôt.</p>
               </div>
@@ -108,7 +109,7 @@ export default {
                   <span class="text-xs font-bold text-slate-900 block">Port Autonome de Douala (PAD)</span>
                   <span class="text-[11px] text-slate-500">Terminal Conteneurs • Terminal Bois • Fret</span>
                 </div>
-                <span class="px-2.5 py-1 bg-sky-100 text-sky-950 text-xs font-bold rounded-lg font-mono">24/7 Opérationnel</span>
+                <span class="px-2.5 py-1 bg-sky-100 text-sky-950 text-xs font-bold rounded-lg tabular-nums">24/7 Opérationnel</span>
               </div>
             </div>
           </div>
@@ -128,31 +129,31 @@ export default {
 
           <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-mono font-bold text-sm">01</span>
+              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-sm tabular-nums">01</span>
               <h4 class="font-bold text-sm text-slate-900">Réception B/L & Factures</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Vérification de la documentation commerciale : Connaissement (B/L), facture et certificat d'origine.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-mono font-bold text-sm">02</span>
-              <h4 class="font-bold text-sm text-slate-900">Déclaration SYDONIA</h4>
+              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-sm tabular-nums">02</span>
+              <h4 class="font-bold text-sm text-slate-900">Déclaration CAMCIS</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Enregistrement électronique de la Déclaration en Détail des Marchandises (DDM).</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-mono font-bold text-sm">03</span>
+              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-sm tabular-nums">03</span>
               <h4 class="font-bold text-sm text-slate-900">Paiement des Droits</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Liquidation et règlement des droits et taxes de douane auprès de la banque agréée.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-mono font-bold text-sm">04</span>
+              <span class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center font-bold text-sm tabular-nums">04</span>
               <h4 class="font-bold text-sm text-slate-900">Visite & Bon à Enlever</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Inspection par les inspecteurs de douane et délivrance du Bon à Enlever (BAE).</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-mono font-black text-sm">05</span>
+              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-bold text-sm tabular-nums">05</span>
               <h4 class="font-bold text-sm text-slate-900">Sortie & Livraison</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Facturation terminal portuaire, enlèvement et acheminement vers votre entrepôt.</p>
             </div>
@@ -253,20 +254,35 @@ export default {
             <h3 class="font-serif text-2xl font-bold text-marine-900">Entrepôts & Espaces Commerciaux de Stockage</h3>
             <p class="text-xs text-slate-600 max-w-xl">Besoin d'un hangar sécurisé pour décharger et stocker vos conteneurs à Douala (Bassa, Bonabéri) ? Notre pôle immobilier dispose de surfaces disponibles immédiatement.</p>
           </div>
-          <a href="/gestion-immobiliere" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white">Voir les entrepôts disponibles →</a>
+          <a href="/gestion-immobiliere" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white inline-flex items-center gap-2">
+            <span>Voir les entrepôts disponibles</span>
+            ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
+          </a>
         </div>
       </section>
 
       <!-- CTA Final -->
-      <section class="relative py-20 px-4 md:px-8 overflow-hidden" data-theme="photo">
+      <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Port de Douala" class="w-full h-full object-cover object-center filter brightness-[0.45]" />
+          <img src="./assets/images/cta-final-bg.jpg" alt="Port de Douala" class="w-full h-full object-cover object-center filter brightness-75" />
+          <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-white">Un Conteneur à Dédouaner ou une Opération de Fret ?</h2>
-          <p class="text-sm md:text-base text-slate-200 max-w-xl mx-auto">Transmettez-nous vos documents de transport pour une cotation détaillée sans frais cachés.</p>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-lime-400 text-xs font-semibold">
+            ${icon('shield-check', { class: 'w-4 h-4' })}
+            <span>MULTI BUSINESS SARL • CAMEROUN</span>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-md">Un Conteneur à Dédouaner ou une Opération de Fret ?</h2>
+          <p class="text-sm md:text-base text-slate-100 max-w-xl mx-auto drop-shadow-sm">Transmettez-nous vos documents de transport pour une cotation détaillée sans frais cachés.</p>
           <div class="pt-2 flex justify-center gap-4">
-            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl">Demander une cotation douanière</a>
+            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl flex items-center gap-2" data-magnetic>
+              <span>Demander une cotation douanière</span>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
+            </a>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="btn-ghost-photo !px-8 !py-4 text-sm font-bold flex items-center gap-2" data-magnetic>
+              ${icon('phone', { class: 'w-4 h-4' })}
+              <span>Échanger sur WhatsApp</span>
+            </a>
           </div>
         </div>
       </section>

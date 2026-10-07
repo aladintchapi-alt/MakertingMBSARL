@@ -41,7 +41,6 @@ async function runAudit() {
     { file: 'gestion-locative.js', name: 'Gestion Immobilière (/gestion-immobiliere)', minImages: 12 },
     { file: 'creation-entreprise.js', name: 'Création d\'Entreprise (/creation-entreprise)', minImages: 6 },
     { file: 'dedouanement.js', name: 'Dédouanement (/dedouanement)', minImages: 6 },
-    { file: 'prestation-services.js', name: 'Prestation de Services (/prestation-de-services)', minImages: 6 },
     { file: 'fiscalite.js', name: 'Fiscalité & Conseil (/fiscalite-conseil)', minImages: 6 },
     { file: 'contact.js', name: 'Contact (/contact)', minImages: 1 },
     { file: 'not-found.js', name: 'Page 404 (/404)', minImages: 1 }
@@ -87,7 +86,7 @@ async function runAudit() {
     const rawLines = content.split('\n');
     for (let i = 0; i < rawLines.length; i++) {
       const line = rawLines[i];
-      if (line.includes('text-white') && (line.includes('bg-white') || line.includes('bg-[#FAF9F5]')) && !line.includes('hover:')) {
+      if (line.includes('text-white') && (line.includes('bg-white ') || line.includes('bg-white"') || line.includes('bg-[#FAF9F5]')) && !line.includes('hover:') && !line.includes('bg-white/')) {
         invalidTextWhiteCount++;
       }
     }

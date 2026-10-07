@@ -526,7 +526,7 @@ export default {
   },
 
   async init(container = (typeof document !== 'undefined' ? document.getElementById('app') || document : null)) {
-    console.log('⚡ [Design System View] Initialisation des composants interactifs');
+    console.log('[Design System View] Initialisation des composants interactifs');
     this._cleanups = [];
 
     if (!container) return;
@@ -565,7 +565,7 @@ export default {
   },
 
   destroy() {
-    console.log('🧹 [Design System View] Nettoyage complet');
+    console.log('[Design System View] Nettoyage complet');
     this._cleanups.forEach((cleanup) => {
       try { cleanup(); } catch (e) {}
     });

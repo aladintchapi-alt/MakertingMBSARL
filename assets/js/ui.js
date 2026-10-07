@@ -5,7 +5,8 @@
 
 import { isReducedMotion } from './animations.js';
 
-export const initUIComponents = (scope = document) => {
+export const initUIComponents = (scope = (typeof document !== 'undefined' ? document : null)) => {
+  if (!scope) return;
   initAccordions(scope);
   initTabs(scope);
   initModalTriggers(scope);

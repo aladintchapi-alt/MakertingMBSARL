@@ -20,8 +20,8 @@ const routes = {
   '/creation-entreprise': () => import('./views/creation-entreprise.js'),
   '/creation-d-entreprise': () => import('./views/creation-entreprise.js'),
   '/dedouanement': () => import('./views/dedouanement.js'),
-  '/prestation-de-services': () => import('./views/prestation-services.js'),
-  '/prestation-services': () => import('./views/prestation-services.js'),
+  '/prestation-de-services': () => import('./views/gestion-locative.js'),
+  '/prestation-services': () => import('./views/gestion-locative.js'),
   '/fiscalite-conseil': () => import('./views/fiscalite.js'),
   '/fiscalite': () => import('./views/fiscalite.js'),
   '/contact': () => import('./views/contact.js'),
@@ -117,6 +117,22 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollProgressBar();
   initCustomCursor();
 
+  // Mesure dynamique de la hauteur réelle du header pour les paddings des heroes
+  const siteHeader = document.querySelector('#site-header');
+  if (siteHeader) {
+    const updateHeaderH = () => {
+      const h = siteHeader.offsetHeight;
+      if (h > 0) {
+        document.documentElement.style.setProperty('--header-h', `${h}px`);
+      }
+    };
+    updateHeaderH();
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(updateHeaderH).observe(siteHeader);
+    }
+    window.addEventListener('resize', updateHeaderH);
+  }
+
   // 4. Initialiser le routeur SPA
   const router = new Router(routes);
   window.appRouter = router;
@@ -137,7 +153,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }, true);
 
-  console.log(`✨ [App] MULTI BUSINESS SARL SPA Engine Running smoothly.`);
+  console.log(`[App] MULTI BUSINESS SARL SPA Engine Running smoothly.`);
 });
 
 

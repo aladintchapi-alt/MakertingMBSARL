@@ -4,11 +4,12 @@
  */
 import { CONFIG } from '../config.js';
 import { initUIComponents } from '../ui.js';
+import { icon } from '../icons.js';
 
 export default {
   meta: {
     title: "Qui sommes-nous | Notre Histoire, Vision & Équipe d'Experts au Cameroun",
-    description: "MULTI BUSINESS SARL : Prestataire intellectuel de référence à Douala et Yaoundé. Gestion immobilière intelligente, fiscalité, création d'entreprise et prestations d'affaires.",
+    description: "MULTI BUSINESS SARL : Prestataire intellectuel de référence au Cameroun. Gestion immobilière intelligente, fiscalité, création d'entreprise et prestations d'affaires.",
     image: "./assets/images/hero-apropos.jpg"
   },
 
@@ -19,9 +20,9 @@ export default {
       <!-- ================================================================= -->
       <!-- 1. HERO PLEIN ÉCRAN MANIFESTE (Photo HD Éclatante)                 -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-32 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
+      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-apropos.jpg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/hero-apropos.jpg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -40,9 +41,9 @@ export default {
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4">
-            <a href="#histoire-vocation" class="btn-primary !px-6 !py-3.5 text-sm shadow-md" data-magnetic>
+            <a href="#histoire-vocation" class="btn-primary !px-6 !py-3.5 text-sm shadow-md flex items-center gap-2" data-magnetic>
               <span>Découvrir notre histoire</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
             <a href="/contact" data-link class="btn-outline !px-6 !py-3.5 text-sm bg-white/80" data-magnetic>
               <span>Rencontrer nos experts</span>
@@ -85,30 +86,38 @@ export default {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <!-- Carte Vocation 1 : Bailleurs -->
               <div class="card-light p-6 rounded-2xl border border-slate-200 hover:border-emerald-300 transition-all bg-emerald-50/30">
-                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center text-xl mb-3">🏢</div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-900 flex items-center justify-center mb-3">
+                  ${icon('building', { class: 'w-5 h-5 text-emerald-800' })}
+                </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Bailleurs</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement le 5 du mois et tableau de bord SaaS 24/7.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement garanti le 5 du mois et tableau de bord SaaS 24/7.</p>
               </div>
 
               <!-- Carte Vocation 2 : Entrepreneurs -->
               <div class="card-light p-6 rounded-2xl border border-slate-200 hover:border-amber-300 transition-all bg-amber-50/30">
-                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center text-xl mb-3">🚀</div>
+                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center mb-3">
+                  ${icon('landmark', { class: 'w-5 h-5 text-amber-800' })}
+                </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Entrepreneurs</h4>
                 <p class="text-xs text-slate-600 leading-relaxed">Création express d'entreprise (CFCE, RCCM, NIU) et accompagnement juridique OHADA.</p>
               </div>
 
               <!-- Carte Vocation 3 : Importateurs -->
               <div class="card-light p-6 rounded-2xl border border-slate-200 hover:border-sky-300 transition-all bg-sky-50/30">
-                <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-900 flex items-center justify-center text-xl mb-3">⚓</div>
+                <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-900 flex items-center justify-center mb-3">
+                  ${icon('ship', { class: 'w-5 h-5 text-sky-800' })}
+                </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Importateurs</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Dédouanement fluide aux ports de Douala et Kribi, transit et suivi douanier DGI/DGD.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Dédouanement fluide aux ports de Douala et Kribi, transit et suivi douanier CAMCIS / SYDONIA.</p>
               </div>
 
-              <!-- Carte Vocation 4 : Entreprises & Particuliers -->
+              <!-- Carte Vocation 4 : Entreprises & Fiscalité -->
               <div class="card-light p-6 rounded-2xl border border-slate-200 hover:border-indigo-300 transition-all bg-indigo-50/30">
-                <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-900 flex items-center justify-center text-xl mb-3">⚖️</div>
+                <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-900 flex items-center justify-center mb-3">
+                  ${icon('scale', { class: 'w-5 h-5 text-indigo-800' })}
+                </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Entreprises</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Optimisation fiscale, déclarations mensuelles, DSF et audit juridique préventif.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Optimisation fiscale, déclarations mensuelles, DSF et assistance lors des contrôles DGI.</p>
               </div>
             </div>
           </div>
@@ -149,7 +158,7 @@ export default {
                   « Lorsque nous avons lancé MULTI BUSINESS SARL, notre conviction était simple : l'immobilier et le conseil d'affaires ne peuvent prospérer que sur un socle de transparence totale. Un bailleur qui nous confie son immeuble nous confie des années de sacrifice et de labeur. Notre devoir est de lui assurer la tranquillité d'esprit absolue. »
                 </p>
                 <p>
-                  « En combinant notre expertise juridique terrain, notre partenariat avec des huissiers assermentés de 1ère et 2e charges, et des technologies de reversement automatisé par Mobile Money, nous redéfinissons les standards d'excellence à Douala et Yaoundé. »
+                  « En combinant notre expertise juridique terrain, notre partenariat avec des huissiers assermentés de 1ère et 2e charges, et des technologies de reversement automatisé par Mobile Money, nous redéfinissons les standards d'excellence au Cameroun. »
                 </p>
               </div>
 
@@ -158,7 +167,7 @@ export default {
                   <h4 class="font-serif font-bold text-base text-marine-900">La Direction Générale</h4>
                   <p class="text-xs text-slate-500">MULTI BUSINESS SARL</p>
                 </div>
-                <span class="font-mono text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Dakar, Douala</span>
+                <span class="text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Dakar, Douala</span>
               </div>
             </div>
 
@@ -182,7 +191,7 @@ export default {
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
               <img src="./assets/images/valeur-expertise.jpg" alt="Rigueur & Expertise Juridique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-900 text-white font-mono">01</span>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-900 text-white tabular-nums">01</span>
             </div>
             <div class="p-6 space-y-3">
               <h3 class="font-serif text-xl font-bold text-marine-900">Rigueur & Expertise Juridique</h3>
@@ -196,7 +205,7 @@ export default {
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
               <img src="./assets/images/valeur-dynamisme.jpg" alt="Dynamisme & Innovation Technologique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-800 text-white font-mono">02</span>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-800 text-white tabular-nums">02</span>
             </div>
             <div class="p-6 space-y-3">
               <h3 class="font-serif text-xl font-bold text-marine-900">Dynamisme & Innovation SaaS</h3>
@@ -210,7 +219,7 @@ export default {
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
               <img src="./assets/images/valeur-disponibilite.jpg" alt="Disponibilité & Proximité Humaine" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-sky-800 text-white font-mono">03</span>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-sky-800 text-white tabular-nums">03</span>
             </div>
             <div class="p-6 space-y-3">
               <h3 class="font-serif text-xl font-bold text-marine-900">Disponibilité & Proximité Terrain</h3>
@@ -238,8 +247,8 @@ export default {
             
             <!-- Étape 1 : 2020 -->
             <div class="relative pl-8 md:pl-12" data-reveal="left">
-              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md">1</div>
-              <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1">2020</span>
+              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md tabular-nums">1</div>
+              <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2020</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Création et Implantation à Douala</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
                 Ouverture du cabinet à Douala (Dakar). Démarrage des activités de conseil d'affaires, assistance fiscale et immatriculation des premières PME camerounaises.
@@ -248,8 +257,8 @@ export default {
 
             <!-- Étape 2 : 2022 -->
             <div class="relative pl-8 md:pl-12" data-reveal="left">
-              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md">2</div>
-              <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1">2022</span>
+              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md tabular-nums">2</div>
+              <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2022</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Structuration du Pôle Gestion Immobilière OHADA</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
                 Face à la demande des propriétaires de la diaspora et locaux, développement du protocole de baux sécurisés et signature des partenariats avec les études d'huissiers assermentés.
@@ -258,8 +267,8 @@ export default {
 
             <!-- Étape 3 : 2024 -->
             <div class="relative pl-8 md:pl-12" data-reveal="left">
-              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md">3</div>
-              <span class="font-mono text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1">2024</span>
+              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md tabular-nums">3</div>
+              <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2024</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Digitalisation SaaS & Reversements Mobile Money</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
                 Lancement de la plateforme logicielle <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="text-emerald-700 font-bold hover:underline">app.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
@@ -268,11 +277,11 @@ export default {
 
             <!-- Étape 4 : 2026 -->
             <div class="relative pl-8 md:pl-12" data-reveal="left">
-              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black shadow-md animate-pulse">4</div>
-              <span class="font-mono text-xs font-bold text-emerald-900 bg-emerald-100 px-2.5 py-1 rounded border border-emerald-300 inline-block mb-1">2026 & Avenir</span>
-              <h4 class="font-serif text-xl font-bold text-marine-900">Leader Régional de la Gestion Locative Intelligente</h4>
+              <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-black shadow-md animate-pulse tabular-nums">4</div>
+              <span class="text-xs font-bold text-emerald-900 bg-emerald-100 px-2.5 py-1 rounded border border-emerald-300 inline-block mb-1">2026 & Avenir</span>
+              <h4 class="font-serif text-xl font-bold text-marine-900">Leader de la Gestion Locative Intelligente</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
-                Gestion de plus de 1 000 baux actifs entre Douala et Yaoundé, extension des services logistiques et transit vers le port en eau profonde de Kribi.
+                Gestion de plus de 1 200 baux actifs au Cameroun, extension des services logistiques et transit vers le port en eau profonde de Kribi.
               </p>
             </div>
 
@@ -299,8 +308,8 @@ export default {
             <img src="./assets/images/galerie-equipe.jpg" alt="Équipe MULTI BUSINESS SARL" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Réunion d'expertise & stratégie immobilière
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Réunion d'expertise & stratégie immobilière</span>
               </span>
             </div>
           </div>
@@ -310,8 +319,8 @@ export default {
             <img src="./assets/images/galerie-bureau-douala.jpg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Accueil & Salon Bailleurs à Douala
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Accueil & Salon Bailleurs à Douala</span>
               </span>
             </div>
           </div>
@@ -321,8 +330,8 @@ export default {
             <img src="./assets/images/galerie-terrain.jpg" alt="Inspection terrain à Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Audit d'immeuble & État des lieux
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Audit d'immeuble & État des lieux</span>
               </span>
             </div>
           </div>
@@ -332,8 +341,8 @@ export default {
             <img src="./assets/images/bien-immeuble.jpg" alt="Immeuble résidentiel moderne sous mandat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Immeubles de rapport sous mandat
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Immeubles de rapport sous mandat</span>
               </span>
             </div>
           </div>
@@ -343,8 +352,8 @@ export default {
             <img src="./assets/images/bien-bureaux.jpg" alt="Plateaux de bureaux d'affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Baux professionnels & Commerciaux
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Baux professionnels & Commerciaux</span>
               </span>
             </div>
           </div>
@@ -354,8 +363,8 @@ export default {
             <img src="./assets/images/hero-accueil.jpg" alt="Douala Centre d'Affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
-                <svg class="w-4 h-4 text-mint-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg>
-                Douala, Littoral • Rayonnement national
+                ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
+                <span>Douala, Littoral • Rayonnement national</span>
               </span>
             </div>
           </div>
@@ -380,10 +389,10 @@ export default {
             <img src="./assets/images/video-cover.jpg" alt="Aperçu vidéo MULTI BUSINESS SARL" class="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-opacity" />
             <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
               <div class="w-20 h-20 rounded-full bg-lime-400 text-marine-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-8 h-8 fill-current ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                ${icon('play', { class: 'w-8 h-8 text-marine-950 fill-current ml-1' })}
               </div>
             </div>
-            <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white text-xs font-mono">
+            <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white text-xs font-semibold">
               <span class="bg-slate-950/80 px-3 py-1.5 rounded-full border border-white/20">Présentation Officielle • 02:45</span>
               <span class="bg-emerald-600 px-3 py-1.5 rounded-full font-bold">HD 1080p</span>
             </div>
@@ -396,13 +405,18 @@ export default {
       <div id="video-modal" data-modal class="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-xl hidden items-center justify-center p-4">
         <div class="modal-box relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-700">
           <button data-modal-close class="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            ${icon('x', { class: 'w-6 h-6' })}
           </button>
           <div class="aspect-video bg-black flex flex-col items-center justify-center p-8 text-center text-white">
-            <div class="w-16 h-16 rounded-full bg-lime-400/20 text-lime-400 flex items-center justify-center text-2xl mb-4">🎬</div>
+            <div class="w-16 h-16 rounded-full bg-lime-400/20 text-lime-400 flex items-center justify-center mb-4">
+              ${icon('video', { class: 'w-8 h-8 text-lime-400' })}
+            </div>
             <h3 class="font-serif text-xl md:text-2xl font-bold mb-2">Présentation Institutionnelle MULTI BUSINESS SARL</h3>
-            <p class="text-xs md:text-sm text-slate-300 max-w-md mb-6">Gestion locative intelligente, baux OHADA, recouvrement Orange/MTN et prestations d'affaires à Douala & Yaoundé.</p>
-            <a href="https://wa.me/237651559411" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs">Échanger avec un conseiller vidéo</a>
+            <p class="text-xs md:text-sm text-slate-300 max-w-md mb-6">Gestion locative intelligente, baux OHADA, recouvrement Orange/MTN et prestations d'affaires au Cameroun.</p>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+              ${icon('phone', { class: 'w-3.5 h-3.5' })}
+              <span>Échanger avec un conseiller vidéo</span>
+            </a>
           </div>
         </div>
       </div>
@@ -417,7 +431,7 @@ export default {
             <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">Couverture Géographique</span>
             <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 leading-tight">Présents Là Où Se Décide Votre Croissance</h2>
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              Basés à Douala avec une présence active à Yaoundé et sur l'axe portuaire de Kribi, nos agents et juristes quadrillent les pôles économiques majeurs du Cameroun.
+              Basés à Douala avec des interventions régulières à Yaoundé et sur l'axe logistique de Kribi, nos conseillers et juristes quadrillent les pôles économiques majeurs du Cameroun.
             </p>
 
             <div class="space-y-3 pt-2">
@@ -426,7 +440,7 @@ export default {
                   <span class="w-3 h-3 rounded-full bg-emerald-600"></span>
                   <strong class="text-sm text-slate-900">Douala (Siège Principal)</strong>
                 </div>
-                <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Dakar (Express Union)</span>
+                <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Dakar (Express Union)</span>
               </div>
 
               <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200">
@@ -434,7 +448,7 @@ export default {
                   <span class="w-3 h-3 rounded-full bg-sky-600"></span>
                   <strong class="text-sm text-slate-900">Yaoundé (Centre Administratif)</strong>
                 </div>
-                <span class="text-xs font-mono font-bold text-sky-800 bg-sky-100 px-2 py-0.5 rounded">Bastos / Centre</span>
+                <span class="text-xs font-bold text-sky-800 bg-sky-100 px-2 py-0.5 rounded">Bastos / Centre</span>
               </div>
 
               <div class="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 border border-slate-200">
@@ -442,7 +456,7 @@ export default {
                   <span class="w-3 h-3 rounded-full bg-amber-600"></span>
                   <strong class="text-sm text-slate-900">Kribi (Pôle Logistique & Douane)</strong>
                 </div>
-                <span class="text-xs font-mono font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Port en Eau Profonde</span>
+                <span class="text-xs font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">Port en Eau Profonde</span>
               </div>
             </div>
           </div>
@@ -451,19 +465,46 @@ export default {
             <div class="card-light p-8 rounded-3xl border border-slate-200 bg-[#FAF9F5] shadow-lg">
               <h3 class="font-serif text-xl font-bold text-marine-900 mb-6 flex items-center justify-between">
                 <span>Quartiers & Pôles sous Gestion Directe</span>
-                <span class="text-xs font-mono font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">100&nbsp;% Couvert</span>
+                <span class="text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-1 rounded-full">100&nbsp;% Couvert</span>
               </h3>
 
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-700">
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Akwa & Akwa-Nord</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bonanjo & Centre</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bonapriso & Bali</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Deido & Bépanda</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Dakar (Express Union)</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Maképé & Kotto</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Logbessou & PK14</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Bassa Zone Industrielle</div>
-                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">📍 Yassa & Japoma</div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Akwa & Akwa-Nord</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Bonanjo & Centre</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Bonapriso & Bali</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Deido & Bépanda</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Dakar (Express Union)</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Maképé & Kotto</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Logbessou & PK14</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Bassa Zone Industrielle</span>
+                </div>
+                <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
+                  ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
+                  <span>Yassa & Japoma</span>
+                </div>
               </div>
             </div>
           </div>
@@ -512,31 +553,34 @@ export default {
       <!-- ================================================================= -->
       <!-- 10. CTA FINAL SUR FOND PHOTO HD                                   -->
       <!-- ================================================================= -->
-      <section class="relative py-24 px-4 md:px-8 overflow-hidden" data-theme="photo">
+      <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Douala business building" class="w-full h-full object-cover object-center filter brightness-[0.45]" />
+          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <div class="cta-photo-overlay"></div>
         </div>
 
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">
-          <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-lime-400 border border-lime-400/30 text-xs font-bold tracking-wider uppercase backdrop-blur-md">
-            <span>Passons à l'action ensemble</span>
-          </span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-lime-400 text-xs font-semibold">
+            ${icon('shield-check', { class: 'w-4 h-4' })}
+            <span>MULTI BUSINESS SARL • CAMEROUN</span>
+          </div>
 
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-md">
             Prêt à Confier Vos Intérêts à une Équipe Rigoureuse et Éprouvée ?
           </h2>
 
-          <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          <p class="text-base sm:text-lg text-slate-100 max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
             Prenez rendez-vous à notre siège de Douala ou demandez une consultation personnalisée sans engagement.
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-base shadow-xl" data-magnetic>
+            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl flex items-center gap-2" data-magnetic>
               <span>Prendre contact maintenant</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
-            <a href="tel:+237690843497" class="btn-outline !px-8 !py-4 text-base bg-white/90" data-magnetic>
-              <span>Appeler le (+237) 690 84 34 97</span>
+            <a href="tel:+237690843497" class="btn-ghost-photo !px-8 !py-4 text-sm font-bold flex items-center gap-2" data-magnetic>
+              ${icon('phone', { class: 'w-4 h-4' })}
+              <span class="tabular-nums">Appeler le (+237) 690 84 34 97</span>
             </a>
           </div>
         </div>

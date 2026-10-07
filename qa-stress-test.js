@@ -112,6 +112,9 @@ const viewFiles = [
   { name: 'Services', path: './assets/js/views/services.js' },
   { name: 'À Propos', path: './assets/js/views/a-propos.js' },
   { name: 'Contact', path: './assets/js/views/contact.js' },
+  { name: 'Création Entreprise', path: './assets/js/views/creation-entreprise.js' },
+  { name: 'Dédouanement', path: './assets/js/views/dedouanement.js' },
+  { name: 'Fiscalité', path: './assets/js/views/fiscalite.js' },
   { name: '404 Introuvable', path: './assets/js/views/not-found.js' },
   { name: 'Design System', path: './assets/js/views/design-system.js' }
 ];

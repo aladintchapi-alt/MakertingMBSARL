@@ -4,10 +4,11 @@
  */
 import { CONFIG } from '../config.js';
 import { initUIComponents } from '../ui.js';
+import { icon } from '../icons.js';
 
 export default {
   meta: {
-    title: "Conseil Fiscal, Déclarations DGI & DSF | Douala & Yaoundé",
+    title: "Conseil Fiscal, Déclarations DGI & DSF | Cameroun",
     description: "MULTI BUSINESS SARL : Optimisation fiscale légale, déclarations mensuelles, liasse DSF et fiscalité foncière des bailleurs au Cameroun. Zéro pénalité et audit préventif.",
     image: "./assets/images/service-fiscalite.jpg"
   },
@@ -19,9 +20,9 @@ export default {
       <!-- ================================================================= -->
       <!-- 1. HERO FISCALITÉ ET CONSEIL (Indigo Signature)                   -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-32 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-indigo">
+      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-indigo">
         <div class="hero-photo-bg">
-          <img src="./assets/images/service-fiscalite.jpg" alt="Conseil fiscal et déclarations DGI à Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/service-fiscalite.jpg" alt="Conseil fiscal et déclarations DGI au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -36,7 +37,7 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
-            Entreprises, professions libérales et propriétaires fonciers : confiez vos liasses DSF, télé-déclarations mensuelles DGI et audits fiscaux à des experts assermentés.
+            Entreprises, professions libérales et propriétaires fonciers au Cameroun : confiez vos liasses DSF, télé-déclarations mensuelles DGI et audits fiscaux à des experts assermentés.
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
@@ -49,11 +50,11 @@ export default {
             </a>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-mono text-slate-700 pt-6 border-t border-indigo-200/80">
-            <span class="flex items-center gap-2"><strong class="text-indigo-800">✓</strong> Conformité Code Général des Impôts</span>
-            <span class="flex items-center gap-2"><strong class="text-indigo-800">✓</strong> Déclaration Statistique & Fiscale (DSF)</span>
-            <span class="flex items-center gap-2"><strong class="text-indigo-800">✓</strong> Fiscalité foncière des loyers</span>
-            <span class="flex items-center gap-2"><strong class="text-indigo-800">✓</strong> Assistance lors des contrôles DGI</span>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-sans font-medium text-slate-700 pt-6 border-t border-indigo-200/80">
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-indigo-700 flex-shrink-0')} Conformité Code Général des Impôts</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-indigo-700 flex-shrink-0')} Déclaration Statistique & Fiscale (DSF)</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-indigo-700 flex-shrink-0')} Fiscalité foncière des loyers</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-indigo-700 flex-shrink-0')} Assistance lors des contrôles DGI</span>
           </div>
         </div>
       </section>
@@ -102,9 +103,9 @@ export default {
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Expertise & Conformité CGI</span>
-                  <span class="text-[11px] text-slate-500">Centres Fiscaux Douala & Yaoundé</span>
+                  <span class="text-[11px] text-slate-500">Centres Fiscaux au Cameroun</span>
                 </div>
-                <span class="px-2.5 py-1 bg-indigo-100 text-indigo-950 text-xs font-bold rounded-lg font-mono">0 Litige DGI</span>
+                <span class="px-2.5 py-1 bg-indigo-100 text-indigo-950 text-xs font-bold rounded-lg font-sans tabular-nums">0 Litige DGI</span>
               </div>
             </div>
           </div>
@@ -124,31 +125,31 @@ export default {
 
           <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-mono font-bold text-sm">01</span>
+              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">01</span>
               <h4 class="font-bold text-sm text-slate-900">Diagnostic Fiscal</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Audit complet de vos déclarations antérieures et détection des éventuels risques de redressement.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-mono font-bold text-sm">02</span>
+              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">02</span>
               <h4 class="font-bold text-sm text-slate-900">Mise en Conformité</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Régularisation des déclarations en retard et apurement des pénalités auprès du centre fiscal.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-mono font-bold text-sm">03</span>
+              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">03</span>
               <h4 class="font-bold text-sm text-slate-900">Suivi Mensuel</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Télé-déclarations mensuelles ponctuelles avant le 15 du mois pour éviter tout blocage du compte fiscal.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-mono font-bold text-sm">04</span>
+              <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">04</span>
               <h4 class="font-bold text-sm text-slate-900">Liasse DSF Annuelle</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Établissement du bilan annuel certifié avant le 15 mars conformément aux règles DGI.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-mono font-black text-sm">05</span>
+              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-sans font-black tabular-nums text-sm">05</span>
               <h4 class="font-bold text-sm text-slate-900">Optimisation Légale</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Conseil permanent pour activer les crédits d'impôt et régimes fiscaux avantageux au Cameroun.</p>
             </div>
@@ -191,7 +192,7 @@ export default {
           <div class="lg:col-span-8 space-y-3">
             <h3 class="font-serif text-2xl font-bold text-marine-900">Maîtrise Parfaite des Télé-Procédures DGI</h3>
             <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-              En lien constant avec les Centres Spécialisés des Impôts (CSI) et Centres des Impôts des Moyennes et Grandes Entreprises de Douala (Littoral I/II) et Yaoundé, nous garantissons l'édition de vos attestations de conformité fiscale (ANR) indispensables aux marchés publics et appels d'offres.
+              En lien constant avec les Centres Spécialisés des Impôts (CSI) et Centres des Impôts des Moyennes et Grandes Entreprises de Douala (Littoral I/II), Yaoundé et sur l'ensemble du territoire camerounais, nous garantissons l'édition de vos attestations de conformité fiscale (ANR) indispensables aux marchés publics et appels d'offres.
             </p>
           </div>
         </div>
@@ -245,7 +246,7 @@ export default {
       <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="card-light p-8 rounded-3xl border border-emerald-200 bg-emerald-50/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-900 font-mono">Service Connexe Recommandé</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-900 font-sans tabular-nums">Service Connexe Recommandé</span>
             <h3 class="font-serif text-2xl font-bold text-marine-900">Gestion Immobilière & Déclaration Fiscale des Bailleurs</h3>
             <p class="text-xs text-slate-600 max-w-xl">Confiez la gestion de vos loyers à MULTI BUSINESS SARL et bénéficiez de la prise en charge automatique de vos déclarations de précompte foncier.</p>
           </div>
@@ -256,13 +257,18 @@ export default {
       <!-- CTA Final -->
       <section class="relative py-20 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Fiscalité Douala" class="w-full h-full object-cover object-center filter brightness-[0.45]" />
+          <img src="./assets/images/cta-final-bg.jpg" alt="Fiscalité Cameroun" class="w-full h-full object-cover object-center brightness-75" />
+          <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-white">Besoin d'un Conseil Fiscal ou d'un Bilan d'Entreprise ?</h2>
-          <p class="text-sm md:text-base text-slate-200 max-w-xl mx-auto">Échangez confidentiellement avec nos fiscalistes pour auditer et optimiser vos déclarations.</p>
-          <div class="pt-2 flex justify-center gap-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-bold tracking-wider uppercase">
+            <span>MULTI BUSINESS SARL • CAMEROUN</span>
+          </div>
+          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-white drop-shadow-md">Besoin d'un Conseil Fiscal ou d'un Bilan d'Entreprise ?</h2>
+          <p class="text-sm md:text-base text-slate-100 max-w-xl mx-auto leading-relaxed">Échangez confidentiellement avec nos fiscalistes pour auditer et optimiser vos déclarations.</p>
+          <div class="pt-2 flex flex-wrap justify-center gap-4">
             <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl">Prendre rendez-vous avec un fiscaliste</a>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20un%20conseil%20fiscal" target="_blank" rel="noopener" class="btn-ghost-photo !px-7 !py-4 text-sm font-semibold">Consultation WhatsApp</a>
           </div>
         </div>
       </section>

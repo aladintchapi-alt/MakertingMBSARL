@@ -51,13 +51,13 @@ export const CONFIG = {
     phonePrimary: "(+237) 690 84 34 97",
     phoneSecondary: "(+237) 671 46 17 91",
     emailMain: "contacts@multibusiness.cm",
-    hours: "Lundi – Samedi : 08h00 – 17h00",
+    hours: "Lundi – Vendredi : 08h00 – 17h00; Samedi : 08h00 – 14h00",
     headquarters: {
       city: "Douala",
       country: "Cameroun",
       district: "Dakar",
       landmark: "à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
-      addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arr., Immeuble Express Union",
+      addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union",
       addressFull: "Dakar (Douala, Cameroun), à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
       mapUrl: "https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun"
     },
@@ -69,7 +69,6 @@ export const CONFIG = {
         immobilier: "Bonjour MULTI BUSINESS SARL, je souhaite confier un bien en gestion immobilière / louer un bien.",
         creation: "Bonjour MULTI BUSINESS SARL, je souhaite être accompagné pour la création de mon entreprise (CFCE).",
         dedouanement: "Bonjour MULTI BUSINESS SARL, j'ai une cargaison à dédouaner au Port de Douala / Kribi.",
-        prestation: "Bonjour MULTI BUSINESS SARL, je sollicite un artisan / une prestation technique pour un chantier.",
         fiscalite: "Bonjour MULTI BUSINESS SARL, je souhaite un accompagnement fiscal et déclaratif (DGI)."
       }
     },
@@ -135,7 +134,7 @@ export const CONFIG = {
       colorHex: "#26C992",
       pastelBg: "#F0FDF4",
       gradient: "from-[#26C992] to-[#10B981]",
-      shortDesc: "Prise en charge intégrale de votre patrimoine immobilier à Douala et sur le territoire national : perception garantie des loyers, sélection et suivi rigoureux des locataires, entretien, quittances instantanées et partenariats avec cabinets d'huissiers de 1ère et 2ème charges.",
+      shortDesc: "Prise en charge intégrale de votre patrimoine immobilier partout au Cameroun : perception garantie des loyers, sélection et suivi rigoureux des locataires, entretien des logements gérés, quittances certifiées et partenariats avec cabinets d'huissiers de 1ère et 2ème charges.",
       fullPitch: "En confiant la gestion de vos bâtiments, logements, appartements, studios, chambres, magasins, bureaux et espaces commerciaux à MULTI BUSINESS SARL, vous gagnez un temps précieux et bénéficiez d'une tranquillité d'esprit absolue. Notre application propriétaire (web & mobile) offre un reporting transparent 24/7, des encaissements automatisés Orange Money & MTN MoMo, tandis que notre pôle juridique sécurise l'expulsion légale en bonne et due forme de tout locataire indélicat.",
       partner: "Cabinets d'huissiers de justice de 1ère et 2ème charges",
       propertyCategories: [
@@ -179,25 +178,6 @@ export const CONFIG = {
       fullPitch: "En nous confiant le dédouanement et l'enlèvement de vos marchandises, vous opérez en toute sérénité. En partenariat direct avec la douane camerounaise et les syndicats agréés, nous garantissons rapidité, conformité tarifaire, fiabilité et assurance contre tout risque de blocage ou de pénalité de magasinage.",
       partner: "Douane Camerounaise & Syndicats de Transitaires Agréés",
       pillars: ["Rapidité d'enlèvement", "Fiabilité des déclarations douanières", "Assurance et protection des cargaisons"]
-    },
-    {
-      id: "prestation-services",
-      route: "/prestation-services",
-      title: "Prestation de Services & Travaux",
-      isPrimary: false,
-      colorName: "coral",
-      colorHex: "#F43F5E",
-      pastelBg: "#FFF1F2",
-      gradient: "from-[#F43F5E] to-[#E11D48]",
-      shortDesc: "Mise à disposition d'artisans qualifiés et accompagnement de chantiers : dépannages électriques, peinture bâtiment, montage d'échafaudages et second œuvre.",
-      fullPitch: "Nous soutenons activement les artisans et maîtres ouvriers indépendants dans la réalisation de chantiers professionnels et de marchés publics/privés. Nos équipes assurent des interventions soignées en électricité, peinture, échafaudage sécurisé et maintenance de bâtiments.",
-      partner: "Réseau d'artisans certifiés et spécialistes second œuvre",
-      fields: [
-        "Dépannages et installations électriques conformes",
-        "Peinture intérieure, extérieure et ravalement de façades",
-        "Location et montage sécurisé d'échafaudages",
-        "Menuiserie, plomberie et maintenance préventive"
-      ]
     },
     {
       id: "fiscalite-conseil",

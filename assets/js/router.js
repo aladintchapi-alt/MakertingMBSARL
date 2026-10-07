@@ -503,7 +503,9 @@ class Router {
     this.appContainer.innerHTML = `
       <div class="min-h-[75vh] flex flex-col items-center justify-center text-center p-8 bg-[#FAF9F5]" data-theme="ivory">
         <div class="max-w-md w-full bg-white rounded-3xl p-8 border border-slate-200 shadow-xl space-y-4">
-          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-700 mx-auto text-2xl">⚠️</div>
+          <div class="w-16 h-16 rounded-2xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-700 mx-auto">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+          </div>
           <h2 class="text-2xl font-serif font-bold text-marine-900">${title}</h2>
           <p class="text-sm text-slate-600 leading-relaxed">${message}</p>
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
@@ -517,16 +519,18 @@ class Router {
   }
 
   /**
-   * Gestion du focus clavier
+   * Gestion du focus clavier sans contour parasite
    */
   manageFocus() {
     if (!this.appContainer) return;
     const h1 = typeof this.appContainer.querySelector === 'function' ? this.appContainer.querySelector('h1') : null;
     if (h1 && typeof h1.setAttribute === 'function') {
       h1.setAttribute('tabindex', '-1');
+      h1.style.outline = 'none';
       if (typeof h1.focus === 'function') h1.focus({ preventScroll: true });
     } else if (typeof this.appContainer.setAttribute === 'function') {
       this.appContainer.setAttribute('tabindex', '-1');
+      this.appContainer.style.outline = 'none';
       if (typeof this.appContainer.focus === 'function') this.appContainer.focus({ preventScroll: true });
     }
   }

@@ -6,11 +6,12 @@
 import { CONFIG } from '../config.js';
 import { showToast } from '../ui.js';
 import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
+import { icon, iconBadge } from '../icons.js';
 
 export default {
   meta: {
-    title: "Accueil | Gestion Locative Intelligente & Conseil d'Affaires",
-    description: "MULTI BUSINESS SARL à Douala : Leader de la gestion locative moderne au Cameroun, fiscalité, création d'entreprise, dédouanement et prestations techniques.",
+    title: "Accueil | Gestion Locative Intelligente & Conseil d'Affaires au Cameroun",
+    description: "MULTI BUSINESS SARL : Leader de la gestion locative moderne au Cameroun, fiscalité, création d'entreprise et dédouanement des marchandises.",
     image: "./assets/images/hero-accueil.jpg"
   },
 
@@ -21,10 +22,10 @@ export default {
       <!-- ================================================================= -->
       <!-- SECTION 1 : HERO PLEIN ÉCRAN IMMERSIF (Photo HD Éclatante)        -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[90vh] lg:min-h-[85vh] flex items-center justify-center pt-28 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
-        <!-- Photo d'arrière-plan HD nette et vibrante sans voile blanc opaque -->
+      <section class="relative min-h-[100svh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
+        <!-- Photo d'arrière-plan HD nette avec voile asymétrique protégeant le texte -->
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-accueil.jpg" alt="Immobilier de prestige à Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/hero-accueil.jpg" alt="Immobilier de prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -33,20 +34,20 @@ export default {
           <!-- Colonne Gauche : Titre, Accroche & CTA -->
           <div class="lg:col-span-7 text-left space-y-6">
             
-            <!-- Badge Live Institutionnel -->
-            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-mint-50 border border-mint-200/80 text-mint-800 text-xs font-bold tracking-wider uppercase shadow-sm" data-stagger-item>
-              <span class="w-2 h-2 rounded-full bg-mint-500 animate-pulse"></span>
+            <!-- Badge Live Institutionnel avec vraie respiration au-dessus -->
+            <div id="hero-badge" class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-mint-50/95 border border-mint-300 text-emerald-900 text-xs font-bold tracking-wider uppercase shadow-xs backdrop-blur-xs" data-stagger-item>
+              <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
               <span>Prestataire Intellectuel & Gestionnaire de Patrimoine Agréé</span>
             </div>
 
             <!-- Titre Révélé Mot par Mot -->
-            <h1 id="hero-split-title" class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marine-900 leading-[1.12] tracking-tight" data-stagger-item>
-              Bienvenue chez <span class="text-transparent bg-clip-text bg-gradient-to-r from-marine-900 via-mint-700 to-mint-600">MULTIBUSINESS SARL</span>
+            <h1 id="hero-split-title" class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0B1B2B] leading-[1.12] tracking-tight" data-stagger-item>
+              Bienvenue chez <span class="text-transparent bg-clip-text bg-gradient-to-r from-marine-900 via-mint-700 to-mint-600">MULTI BUSINESS SARL</span>
             </h1>
 
-            <!-- Accroche Métier Complète -->
-            <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal leading-relaxed max-w-2xl" data-stagger-item>
-              Votre partenaire stratégique à Douala et Yaoundé. Nous unifions l'excellence de la <strong>Gestion Locative Sécurisée</strong>, la <strong>Fiscalité</strong>, la <strong>Création d'Entreprise</strong>, le <strong>Dédouanement</strong> et les <strong>Prestations Techniques</strong>.
+            <!-- Accroche Métier Complète avec Contraste Renforcé -->
+            <p class="text-base sm:text-lg md:text-xl text-slate-800 font-medium leading-relaxed max-w-2xl" data-stagger-item>
+              Votre partenaire stratégique au Cameroun. Nous unifions l'excellence de la <strong>Gestion Locative Sécurisée</strong>, la <strong>Fiscalité</strong>, la <strong>Création d'Entreprise</strong> et le <strong>Dédouanement des marchandises</strong>.
             </p>
 
             <!-- 2 CTA Magnétiques & Téléphone Direct -->
@@ -55,28 +56,32 @@ export default {
                 <span>Découvrir nos services</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
-              <a href="#rdv-section" class="btn-outline !px-6 !py-3.5 text-sm bg-white/80" data-magnetic>
+              <a href="#rdv-section" class="btn-outline !px-6 !py-3.5 text-sm bg-white" data-magnetic>
                 <span>Prendre rendez-vous</span>
               </a>
-              <a href="tel:+237690843497" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-marine-900 bg-slate-100 hover:bg-slate-200 px-4 py-3 rounded-full transition-colors">
-                <svg class="w-3.5 h-3.5 text-mint-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                <span>690 84 34 97</span>
+              <a href="tel:+237690843497" class="inline-flex items-center gap-2 text-xs font-bold tabular-nums text-marine-900 bg-white/90 hover:bg-slate-100 border border-slate-300 px-4 py-3 rounded-full transition-colors shadow-2xs">
+                <span class="w-2 h-2 rounded-full bg-[#FF7900]"></span>
+                <span>Orange : (+237) 690 84 34 97</span>
+              </a>
+              <a href="tel:+237671461791" class="inline-flex items-center gap-2 text-xs font-bold tabular-nums text-marine-900 bg-white/90 hover:bg-slate-100 border border-slate-300 px-4 py-3 rounded-full transition-colors shadow-2xs">
+                <span class="w-2 h-2 rounded-full bg-[#FFCC00]"></span>
+                <span>MTN : (+237) 671 46 17 91</span>
               </a>
             </div>
 
-            <!-- Indicateurs de réassurance rapide -->
-            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200/80 max-w-xl text-left" data-stagger-item>
+            <!-- Indicateurs de réassurance sur barre en verre dépoli translucide -->
+            <div id="hero-markers" class="bg-white/85 backdrop-blur-md rounded-2xl p-4 border border-slate-200/90 shadow-sm max-w-xl text-left grid grid-cols-3 gap-4" data-stagger-item>
               <div>
-                <span class="block font-serif text-lg font-bold text-marine-900">Baux OHADA</span>
-                <span class="text-xs text-slate-500">Sécurisation légale</span>
+                <span class="block font-serif text-base sm:text-lg font-bold text-marine-950">Baux OHADA</span>
+                <span class="text-xs text-slate-700">Sécurisation légale</span>
               </div>
               <div>
-                <span class="block font-serif text-lg font-bold text-mint-700">Orange / MTN</span>
-                <span class="text-xs text-slate-500">Reversements directs</span>
+                <span class="block font-serif text-base sm:text-lg font-bold text-emerald-800">Orange / MTN</span>
+                <span class="text-xs text-slate-700">Reversements directs</span>
               </div>
               <div>
-                <span class="block font-serif text-lg font-bold text-marine-900">Douala Dakar</span>
-                <span class="text-xs text-slate-500">Immeuble Express Union</span>
+                <span class="block font-serif text-base sm:text-lg font-bold text-marine-950">Siège à Douala</span>
+                <span class="text-xs text-slate-700">Immeuble Express Union</span>
               </div>
             </div>
           </div>
@@ -91,7 +96,7 @@ export default {
                   <div class="w-9 h-9 rounded-xl bg-mint-500 flex items-center justify-center text-white font-black text-sm shadow-sm">MB</div>
                   <div>
                     <h3 class="font-bold text-xs text-slate-900 leading-tight">Espace SaaS Propriétaire</h3>
-                    <span class="text-[10px] font-mono text-mint-700">app.multibusiness.cm</span>
+                    <span class="text-[11px] font-semibold text-mint-700">app.multibusiness.cm</span>
                   </div>
                 </div>
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint-50 text-mint-800 text-[10px] font-bold border border-mint-200">
@@ -102,28 +107,34 @@ export default {
 
               <!-- Aperçu Métrique SaaS -->
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 mb-4">
-                <div class="flex justify-between items-center text-xs text-slate-500">
+                <div class="flex justify-between items-center text-xs text-slate-600 font-medium">
                   <span>Loyers reversés (Mois en cours)</span>
-                  <span class="font-mono text-mint-700 font-bold">100% à date fixe</span>
+                  <span class="text-mint-700 font-bold">100% à date fixe</span>
                 </div>
-                <div class="font-mono text-2xl md:text-3xl font-black text-marine-900 tracking-tight">
-                  14 850 000 <span class="text-xs font-sans text-slate-500 font-normal">FCFA</span>
+                <div class="text-2xl md:text-3xl font-extrabold tabular-nums text-marine-900 tracking-tight">
+                  14 850 000 <span class="text-xs text-slate-500 font-semibold">FCFA</span>
                 </div>
                 <div class="flex items-center gap-2 text-[11px] text-slate-600 font-medium">
-                  <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[9px] font-bold">Orange Money</span>
-                  <span class="px-1.5 py-0.5 rounded bg-yellow-100 text-yellow-800 text-[9px] font-bold">MTN MoMo</span>
-                  <span class="text-slate-400">• Quittance instantanée</span>
+                  <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 text-[9px] font-bold">Orange Money</span>
+                  <span class="px-1.5 py-0.5 rounded bg-yellow-100 text-yellow-900 text-[9px] font-bold">MTN MoMo</span>
+                  <span class="text-slate-500">• Quittance instantanée</span>
                 </div>
               </div>
 
-              <!-- Lots témoins sous gestion -->
+              <!-- Lots témoins sous gestion (Icônes vectorielles propres, noms neutres sans emoji) -->
               <div class="space-y-2 mb-5">
                 <div class="p-2.5 rounded-xl bg-white border border-slate-100 flex items-center justify-between text-xs">
-                  <span class="font-medium text-slate-800">🏢 Résidence Bonapriso (Douala)</span>
+                  <div class="flex items-center gap-2 text-slate-800">
+                    ${icon('building', { class: 'w-4 h-4 text-emerald-700' })}
+                    <span class="font-medium">Résidence Les Palmiers</span>
+                  </div>
                   <span class="text-[10px] font-bold px-2 py-0.5 bg-mint-100 text-mint-800 rounded-md">9/9 Loué</span>
                 </div>
                 <div class="p-2.5 rounded-xl bg-white border border-slate-100 flex items-center justify-between text-xs">
-                  <span class="font-medium text-slate-800">🏬 Espace Commercial Akwa</span>
+                  <div class="flex items-center gap-2 text-slate-800">
+                    ${icon('store', { class: 'w-4 h-4 text-emerald-700' })}
+                    <span class="font-medium">Complexe Commercial Central</span>
+                  </div>
                   <span class="text-[10px] font-bold px-2 py-0.5 bg-mint-100 text-mint-800 rounded-md">4/4 Loué</span>
                 </div>
               </div>
@@ -184,7 +195,7 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 3 : LES 5 SERVICES EN CARTES IMMERSIVES (Fond Ivoire)      -->
+      <!-- SECTION 3 : LES 4 SERVICES EN CARTES IMMERSIVES (Fond Ivoire)      -->
       <!-- ================================================================= -->
       <section id="services-section" class="py-24 bg-[#FAF9F5] relative">
         <div class="container max-w-7xl mx-auto px-4">
@@ -192,7 +203,7 @@ export default {
           <div class="max-w-3xl mx-auto text-center mb-16" data-reveal="up">
             <span class="inline-block px-3 py-1 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-wider uppercase mb-3">Nos Domaines d'Intervention</span>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-extrabold text-marine-900 mb-4">
-              5 Pôles d'Excellence pour Votre Réussite
+              4 Pôles d'Excellence pour Votre Réussite
             </h2>
             <p class="text-slate-600 text-sm md:text-base">
               Une offre pluridisciplinaire pensée pour sécuriser vos investissements, valoriser votre patrimoine et accélérer votre développement au Cameroun.
@@ -201,34 +212,39 @@ export default {
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- SERVICE 1 : GESTION IMMOBILIÈRE (Carte Majeure / Plus Grande) -->
-            <div class="md:col-span-2 lg:col-span-2 rounded-3xl bg-white border-2 border-mint-400 p-8 shadow-card flex flex-col md:flex-row gap-8 items-center relative overflow-hidden group" data-reveal="up">
-              <div class="w-full md:w-1/2 h-64 md:h-full min-h-[260px] rounded-2xl overflow-hidden relative">
-                <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Gestion Immobilière Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <span class="absolute top-3 left-3 px-3 py-1 bg-mint-500 text-white font-bold text-xs rounded-full shadow-md">
-                  ★ PÔLE PHARE (70% DE L'ACTIVITÉ)
+            <!-- SERVICE 1 : GESTION IMMOBILIÈRE (Pôle Phare - Pleine Largeur) -->
+            <div class="col-span-1 md:col-span-2 lg:col-span-3 rounded-3xl bg-white border-2 border-mint-400 p-8 shadow-card flex flex-col lg:flex-row gap-8 items-center relative overflow-hidden group" data-reveal="up">
+              <div class="w-full lg:w-5/12 h-64 lg:h-full min-h-[280px] rounded-2xl overflow-hidden relative">
+                <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Gestion Immobilière au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <span class="absolute top-3 left-3 px-3 py-1.5 bg-mint-600 text-white font-bold text-xs rounded-full shadow-md flex items-center gap-1.5">
+                  ${icon('star', { class: 'w-3.5 h-3.5 fill-current' })}
+                  <span>PÔLE PHARE (70% DE L'ACTIVITÉ)</span>
                 </span>
               </div>
-              <div class="w-full md:w-1/2 space-y-4 text-left">
+              <div class="w-full lg:w-7/12 space-y-4 text-left">
                 <div class="flex items-center gap-2">
                   <span class="w-3 h-3 rounded-full bg-mint-500"></span>
-                  <span class="text-xs font-mono font-bold text-mint-700 uppercase">Immobilier & Conciergerie</span>
+                  <span class="text-xs font-bold text-mint-800 uppercase tracking-wider">Immobilier • Conciergerie • Suivi Technique</span>
                 </div>
                 <h3 class="font-serif text-2xl md:text-3xl font-bold text-marine-900">
-                  Gestion Immobilière & Espace SaaS Bailleurs
+                  Gestion Immobilière Intelligente & Espace SaaS Bailleurs
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                  Confiez-nous vos immeubles, duplex, studios et commerces. Nous assurons la sélection des locataires, les baux conformes OHADA, les quittances instantanées et le reversement garanti de vos loyers chaque 5 du mois via Orange Money ou MTN MoMo.
+                  Confiez-nous vos immeubles, duplex, appartements, studios et espaces commerciaux. Nous prenons en charge la sélection rigoureuse des locataires, les baux conformes OHADA, les quittances certifiées et le reversement garanti de vos loyers chaque 5 du mois via virement, Orange Money ou MTN MoMo.
                 </p>
-                <div class="flex flex-wrap gap-2 pt-2">
+                <div class="flex flex-wrap gap-2 pt-1">
                   <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Huissiers 1ère & 2e charges</span>
                   <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Zéro litige locatif</span>
-                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Reporting 24/7</span>
+                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Reporting SaaS 24/7</span>
+                  <span class="text-[11px] px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-lg font-medium border border-emerald-200 inline-flex items-center gap-1.5">
+                    ${icon('wrench', { class: 'w-3 h-3 text-emerald-700' })}
+                    <span>Entretien technique & maintenance des biens gérés</span>
+                  </span>
                 </div>
                 <div class="pt-3">
-                  <a href="/gestion-immobiliere" data-link class="btn-primary !px-5 !py-2.5 text-xs inline-flex items-center gap-2">
+                  <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
                     <span>Explorer l'offre Immobilière complète</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                   </a>
                 </div>
               </div>
@@ -241,17 +257,19 @@ export default {
                   <img src="./assets/images/service-creation.jpg" alt="Création Entreprise CFCE" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-500 text-white font-bold text-[10px] rounded-md">72H CHRONO</span>
                 </div>
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-amber-700">
-                  <span>Partenaire CFCE</span>
+                <div class="flex items-center gap-2 text-xs font-bold text-amber-800">
+                  ${icon('landmark', { class: 'w-3.5 h-3.5 text-amber-600' })}
+                  <span>Partenaire CFCE & Notaires</span>
                 </div>
                 <h3 class="font-serif text-xl font-bold text-marine-900">Création d'Entreprise PME-PMI</h3>
                 <p class="text-slate-600 text-xs leading-relaxed">
-                  Immatriculation complète (SARL, SAS, Ets) : rédaction de statuts, RCCM, carte de contribuable, NIU et publication légale en 72 heures.
+                  Immatriculation complète (SARL, SAS, Ets) : rédaction des statuts, RCCM, carte de contribuable, NIU et publication au journal d'annonces légales en 72 heures.
                 </p>
               </div>
               <div class="pt-4 border-t border-slate-100 mt-4">
                 <a href="/creation-entreprise" data-link class="text-xs font-bold text-amber-700 hover:text-amber-800 flex items-center gap-1.5">
-                  <span>Créer mon entreprise →</span>
+                  <span>Créer mon entreprise</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
               </div>
             </div>
@@ -260,20 +278,22 @@ export default {
             <div class="rounded-3xl bg-white border border-ocean-200 p-6 shadow-card flex flex-col justify-between group text-left" data-reveal="up" data-delay="0.2">
               <div class="space-y-4">
                 <div class="h-48 rounded-2xl overflow-hidden relative">
-                  <img src="./assets/images/service-dedouanement.jpg" alt="Dédouanement Portuaire Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src="./assets/images/service-dedouanement.jpg" alt="Dédouanement Portuaire Douala et Kribi" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-ocean-500 text-white font-bold text-[10px] rounded-md">PORTS DOUALA & KRIBI</span>
                 </div>
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-ocean-700">
-                  <span>Douane & Transit</span>
+                <div class="flex items-center gap-2 text-xs font-bold text-ocean-800">
+                  ${icon('ship', { class: 'w-3.5 h-3.5 text-ocean-600' })}
+                  <span>Douane, Transit & Fret</span>
                 </div>
                 <h3 class="font-serif text-xl font-bold text-marine-900">Dédouanement des Marchandises</h3>
                 <p class="text-slate-600 text-xs leading-relaxed">
-                  Passage portuaire accéléré, déclarations CAMCIS/SYDONIA, transit import/export et élimination des frais de surestaries.
+                  Passage portuaire accéléré, déclarations CAMCIS/SYDONIA, transit conteneurs, assurance cargaison et élimination des surestaries.
                 </p>
               </div>
               <div class="pt-4 border-t border-slate-100 mt-4">
                 <a href="/dedouanement" data-link class="text-xs font-bold text-ocean-700 hover:text-ocean-800 flex items-center gap-1.5">
-                  <span>Dédouaner un conteneur →</span>
+                  <span>Dédouaner une cargaison</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
               </div>
             </div>
@@ -285,39 +305,19 @@ export default {
                   <img src="./assets/images/service-fiscalite.jpg" alt="Fiscalité et Conseil DGI" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-indigo-600 text-white font-bold text-[10px] rounded-md">CONFORMITÉ DGI</span>
                 </div>
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-indigo-700">
-                  <span>Centre des Impôts</span>
+                <div class="flex items-center gap-2 text-xs font-bold text-indigo-800">
+                  ${icon('scale', { class: 'w-3.5 h-3.5 text-indigo-600' })}
+                  <span>Centre des Impôts Cameroun</span>
                 </div>
                 <h3 class="font-serif text-xl font-bold text-marine-900">Fiscalité & Conseil Juridique</h3>
                 <p class="text-slate-600 text-xs leading-relaxed">
-                  Déclarations mensuelles, DSF, TVA, acomptes IS, audits préventifs et assistance solide lors des contrôles fiscaux.
+                  Déclarations fiscales mensuelles, DSF, TVA, acomptes IS, audits préventifs et assistance stratégique lors des contrôles fiscaux.
                 </p>
               </div>
               <div class="pt-4 border-t border-slate-100 mt-4">
                 <a href="/fiscalite-conseil" data-link class="text-xs font-bold text-indigo-700 hover:text-indigo-800 flex items-center gap-1.5">
-                  <span>Consulter un fiscaliste →</span>
-                </a>
-              </div>
-            </div>
-
-            <!-- SERVICE 5 : PRESTATION DE SERVICES & ARTISANS -->
-            <div class="rounded-3xl bg-white border border-coral-200 p-6 shadow-card flex flex-col justify-between group text-left" data-reveal="up" data-delay="0.4">
-              <div class="space-y-4">
-                <div class="h-48 rounded-2xl overflow-hidden relative">
-                  <img src="./assets/images/service-prestations.jpg" alt="Travaux et Maintenance Bâtiment" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-coral-500 text-white font-bold text-[10px] rounded-md">SECOND ŒUVRE</span>
-                </div>
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-coral-700">
-                  <span>Artisans Qualifiés</span>
-                </div>
-                <h3 class="font-serif text-xl font-bold text-marine-900">Prestation de Services & Travaux</h3>
-                <p class="text-slate-600 text-xs leading-relaxed">
-                  Électricité bâtiment sécurisée, peinture de finition, plomberie et maintenance générale pour préserver la valeur de votre bien.
-                </p>
-              </div>
-              <div class="pt-4 border-t border-slate-100 mt-4">
-                <a href="/prestation-de-services" data-link class="text-xs font-bold text-coral-700 hover:text-coral-800 flex items-center gap-1.5">
-                  <span>Commander une intervention →</span>
+                  <span>Consulter un fiscaliste</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
               </div>
             </div>
@@ -388,11 +388,13 @@ export default {
           <!-- Bascule Onglets Bailleurs vs Locataires -->
           <div class="flex justify-center mb-12" data-reveal="up">
             <div class="inline-flex p-1.5 rounded-full bg-slate-100 border border-slate-200">
-              <button id="tab-btn-bailleurs" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-marine-900 shadow-sm">
-                🏢 Espace Bailleurs (Propriétaires)
+              <button id="tab-btn-bailleurs" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-white text-marine-900 shadow-sm flex items-center gap-2">
+                ${icon('building', { class: 'w-4 h-4 text-emerald-700' })}
+                <span>Espace Bailleurs (Propriétaires)</span>
               </button>
-              <button id="tab-btn-locataires" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all text-slate-600 hover:text-marine-900">
-                🔑 Espace Locataires (Résidents)
+              <button id="tab-btn-locataires" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all text-slate-600 hover:text-marine-900 flex items-center gap-2">
+                ${icon('key', { class: 'w-4 h-4 text-slate-500' })}
+                <span>Espace Locataires (Résidents)</span>
               </button>
             </div>
           </div>
@@ -405,24 +407,27 @@ export default {
               </h3>
               <ul class="space-y-3 text-sm text-slate-700">
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
                   <span><strong>Recherche & Filtrage rigoureux des locataires :</strong> solvabilité vérifiée, contrats de travail et cautions.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
                   <span><strong>Recouvrement ponctuel & Relances automatiques :</strong> virement sur compte bancaire, Orange Money ou MTN MoMo le 5 du mois.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
                   <span><strong>Assistance juridique & Huissiers assermentés :</strong> prise en charge totale des éventuels litiges sans frais imprévus.</span>
                 </li>
               </ul>
               <div class="pt-2">
-                <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3 text-xs">Confier la gestion de mon bien →</a>
+                <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+                  <span>Confier la gestion de mon bien</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
+                </a>
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl" data-reveal="right">
-              <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Bailleurs Douala" class="w-full h-80 object-cover" />
+              <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Bailleurs au Cameroun" class="w-full h-80 object-cover" />
             </div>
           </div>
 
@@ -434,24 +439,27 @@ export default {
               </h3>
               <ul class="space-y-3 text-sm text-slate-700">
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
                   <span><strong>Logements audités & vérifiés :</strong> électricité conforme, plomberie saine, propreté irréprochable.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
                   <span><strong>Paiement facile par Mobile Money :</strong> payez votre loyer depuis votre smartphone et recevez votre quittance instantanément.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-700 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">✓</span>
-                  <span><strong>Service d'assistance réactif :</strong> intervention rapide d'artisans en cas de panne ou de besoin d'entretien.</span>
+                  <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
+                  <span><strong>Service d'assistance réactif :</strong> intervention rapide d'artisans qualifiés en cas de panne ou de besoin d'entretien.</span>
                 </li>
               </ul>
               <div class="pt-2">
-                <a href="/gestion-immobiliere" data-link class="btn-secondary !px-6 !py-3 text-xs">Voir les logements disponibles →</a>
+                <a href="/gestion-immobiliere" data-link class="btn-secondary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+                  <span>Voir les logements disponibles</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
+                </a>
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
-              <img src="./assets/images/bien-appartement.jpg" alt="Locataires Douala" class="w-full h-80 object-cover" />
+              <img src="./assets/images/bien-appartement.jpg" alt="Locataires au Cameroun" class="w-full h-80 object-cover" />
             </div>
           </div>
 
@@ -459,49 +467,60 @@ export default {
           <div class="pt-10 border-t border-slate-100">
             <h3 class="font-serif text-2xl font-bold text-marine-900 text-center mb-8">Types de Biens Pris en Charge</h3>
             
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               
               <!-- Bien 1 : Appartements -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up">
-                <div class="h-44 overflow-hidden">
+                <div class="h-40 overflow-hidden">
                   <img src="./assets/images/bien-appartement.jpg" alt="Appartements standing Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div class="p-4 space-y-1">
-                  <h4 class="font-bold text-sm text-marine-900">Appartements & Duplex</h4>
-                  <p class="text-[11px] text-slate-500">Résidences meublées ou non à Bonapriso, Bonanjo, Akwa.</p>
+                <div class="p-3.5 space-y-1">
+                  <h4 class="font-bold text-sm text-marine-900">Appartements</h4>
+                  <p class="text-[11px] text-slate-500">Résidences meublées ou nues haut standing.</p>
                 </div>
               </div>
 
               <!-- Bien 2 : Studios -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.1">
-                <div class="h-44 overflow-hidden">
+                <div class="h-40 overflow-hidden">
                   <img src="./assets/images/bien-studio.jpg" alt="Studios modernes Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div class="p-4 space-y-1">
+                <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Studios & Chambres</h4>
-                  <p class="text-[11px] text-slate-500">Logements modernes et fonctionnels pour cadres et étudiants.</p>
+                  <p class="text-[11px] text-slate-500">Logements modernes pour cadres et étudiants.</p>
                 </div>
               </div>
 
               <!-- Bien 3 : Magasins & Commerces -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.2">
-                <div class="h-44 overflow-hidden">
+                <div class="h-40 overflow-hidden">
                   <img src="./assets/images/bien-commercial.jpg" alt="Commerces Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div class="p-4 space-y-1">
+                <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Magasins & Boutiques</h4>
-                  <p class="text-[11px] text-slate-500">Emplacements commerciaux stratégiques en bordure d'artères.</p>
+                  <p class="text-[11px] text-slate-500">Emplacements commerciaux stratégiques.</p>
                 </div>
               </div>
 
               <!-- Bien 4 : Bureaux d'Affaires -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.3">
-                <div class="h-44 overflow-hidden">
+                <div class="h-40 overflow-hidden">
                   <img src="./assets/images/bien-bureaux.jpg" alt="Bureaux d'affaires Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
-                <div class="p-4 space-y-1">
-                  <h4 class="font-bold text-sm text-marine-900">Bureaux & Immeubles</h4>
-                  <p class="text-[11px] text-slate-500">Plateaux de bureaux et bâtiments entiers pour entreprises.</p>
+                <div class="p-3.5 space-y-1">
+                  <h4 class="font-bold text-sm text-marine-900">Bureaux d'Affaires</h4>
+                  <p class="text-[11px] text-slate-500">Plateaux professionnels pour entreprises.</p>
+                </div>
+              </div>
+
+              <!-- Bien 5 : Immeubles & Ensembles -->
+              <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.4">
+                <div class="h-40 overflow-hidden">
+                  <img src="./assets/images/bien-immeuble.jpg" alt="Immeubles collectifs au Cameroun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                </div>
+                <div class="p-3.5 space-y-1">
+                  <h4 class="font-bold text-sm text-marine-900">Immeubles Complets</h4>
+                  <p class="text-[11px] text-slate-500">Gestion intégrale d'immeubles de rapport.</p>
                 </div>
               </div>
 
@@ -538,10 +557,12 @@ export default {
             <!-- Sélecteur Animé Version Mobile vs Version Web -->
             <div class="mt-8 inline-flex p-1.5 rounded-full bg-white border border-slate-200 shadow-sm">
               <button id="btn-app-mobile" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all bg-mint-500 text-white shadow-sm flex items-center gap-2">
-                <span>📱 Version Mobile (iPhone 3D)</span>
+                ${icon('smartphone', { class: 'w-4 h-4' })}
+                <span>Version Mobile (iPhone 3D)</span>
               </button>
               <button id="btn-app-web" class="px-6 py-2.5 rounded-full text-xs font-bold transition-all text-slate-600 hover:text-marine-900 flex items-center gap-2">
-                <span>💻 Version Web (Desktop)</span>
+                ${icon('monitor', { class: 'w-4 h-4' })}
+                <span>Version Web (Desktop)</span>
               </button>
             </div>
           </div>
@@ -612,7 +633,7 @@ export default {
               <div class="flex flex-wrap items-center gap-4 pt-2">
                 <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs flex items-center gap-2">
                   <span>Ouvrir l'application mobile</span>
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
                 <a href="#rdv-section" class="btn-outline !px-5 !py-3 text-xs bg-white">
                   <span>Demander une démo</span>
@@ -628,8 +649,8 @@ export default {
                 <div id="home-3d-phone-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
                 
                 <!-- Badge d'aide interaction -->
-                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-marine-900/80 text-white text-[10px] font-mono tracking-wide backdrop-blur-sm pointer-events-none flex items-center gap-1.5 shadow-md">
-                  <svg class="w-3 h-3 text-lime-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"/></svg>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-marine-900/80 text-white text-[10px] tracking-wide backdrop-blur-sm pointer-events-none flex items-center gap-1.5 shadow-md">
+                  ${icon('refresh-cw', { class: 'w-3 h-3 text-lime-400' })}
                   <span>Glissez pour faire pivoter le téléphone</span>
                 </div>
               </div>
@@ -650,9 +671,10 @@ export default {
                   <span class="w-3 h-3 rounded-full bg-mint-400"></span>
                 </div>
                 <div class="px-6 py-1 rounded-lg bg-white border border-slate-200 text-xs font-mono text-slate-600 flex items-center gap-2 w-72 justify-center shadow-inner">
-                  <span class="text-mint-600 font-bold">🔒</span> https://app.multibusiness.cm/dashboard
+                  ${icon('lock', { class: 'w-3.5 h-3.5 text-mint-700' })}
+                  <span>https://app.multibusiness.cm/dashboard</span>
                 </div>
-                <span class="text-xs font-mono text-slate-400">MULTI BUSINESS SAAS</span>
+                <span class="text-xs font-semibold text-slate-400">MULTI BUSINESS SAAS</span>
               </div>
 
               <!-- Corps de l'interface bureau -->
@@ -665,12 +687,30 @@ export default {
                     <span class="font-bold text-xs text-white">Espace Bailleurs</span>
                   </div>
                   <nav class="space-y-1 text-xs">
-                    <div class="px-3 py-2 rounded-xl bg-marine-800 text-mint-400 font-bold">📊 Vue d'ensemble</div>
-                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400">🏢 Mes Biens (48)</div>
-                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400">👥 Locataires & Baux</div>
-                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400">💳 Paiements MoMo / OM</div>
-                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400">📄 Quittances & Rapports</div>
-                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400">⚙️ Paramètres</div>
+                    <div class="px-3 py-2 rounded-xl bg-marine-800 text-mint-400 font-bold flex items-center gap-2">
+                      ${icon('layout-dashboard', { class: 'w-3.5 h-3.5' })}
+                      <span>Vue d'ensemble</span>
+                    </div>
+                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400 flex items-center gap-2">
+                      ${icon('building-2', { class: 'w-3.5 h-3.5' })}
+                      <span>Mes Biens (48)</span>
+                    </div>
+                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400 flex items-center gap-2">
+                      ${icon('users', { class: 'w-3.5 h-3.5' })}
+                      <span>Locataires & Baux</span>
+                    </div>
+                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400 flex items-center gap-2">
+                      ${icon('credit-card', { class: 'w-3.5 h-3.5' })}
+                      <span>Paiements MoMo / OM</span>
+                    </div>
+                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400 flex items-center gap-2">
+                      ${icon('file-text', { class: 'w-3.5 h-3.5' })}
+                      <span>Quittances & Rapports</span>
+                    </div>
+                    <div class="px-3 py-2 rounded-xl hover:bg-marine-800/50 text-slate-400 flex items-center gap-2">
+                      ${icon('settings', { class: 'w-3.5 h-3.5' })}
+                      <span>Paramètres</span>
+                    </div>
                   </nav>
                 </div>
 
@@ -679,7 +719,7 @@ export default {
                   <div class="flex flex-wrap items-center justify-between gap-4">
                     <div>
                       <h3 class="font-bold text-lg text-marine-900">Tableau de Bord Portefeuille Immobilier</h3>
-                      <p class="text-xs text-slate-500">Mise à jour en temps réel • Douala & Yaoundé</p>
+                      <p class="text-xs text-slate-500">Mise à jour en temps réel • Partout au Cameroun</p>
                     </div>
                     <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder au SaaS</a>
                   </div>
@@ -688,17 +728,17 @@ export default {
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                       <span class="text-[11px] text-slate-500 font-semibold block mb-1">Revenus Collectés (Mois)</span>
-                      <div class="font-mono text-xl font-bold text-marine-900">14 850 000 FCFA</div>
+                      <div class="text-xl font-bold text-marine-900 tabular-nums">14 850 000 FCFA</div>
                       <span class="text-[10px] text-mint-700 font-bold block mt-1">↑ 100% encaissé</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                       <span class="text-[11px] text-slate-500 font-semibold block mb-1">Taux d'Occupation</span>
-                      <div class="font-mono text-xl font-bold text-mint-700">100%</div>
+                      <div class="text-xl font-bold text-mint-700 tabular-nums">100%</div>
                       <span class="text-[10px] text-slate-500 block mt-1">48 lots occupés</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                       <span class="text-[11px] text-slate-500 font-semibold block mb-1">Reversement Garanti</span>
-                      <div class="font-mono text-xl font-bold text-indigo-600">Le 5 du mois</div>
+                      <div class="text-xl font-bold text-indigo-600">Le 5 du mois</div>
                       <span class="text-[10px] text-slate-500 block mt-1">Orange Money / Virement</span>
                     </div>
                   </div>
@@ -712,21 +752,21 @@ export default {
                     <div class="divide-y divide-slate-100 text-xs">
                       <div class="px-4 py-3 flex items-center justify-between">
                         <div>
-                          <span class="font-bold text-slate-900 block">Résidence Akwa Palace, Apt 3B</span>
-                          <span class="text-[11px] text-slate-500">Locataire : M. Jean-Paul T.</span>
+                          <span class="font-bold text-slate-900 block">Résidence Belvédère, Apt 3B</span>
+                          <span class="text-[11px] text-slate-500">Locataire : M. Jean Paul T.</span>
                         </div>
                         <div class="text-right">
-                          <span class="font-mono font-bold text-slate-900 block">350 000 FCFA</span>
+                          <span class="font-bold text-slate-900 block tabular-nums">350 000 FCFA</span>
                           <span class="text-[10px] font-bold text-mint-700">Payé via Orange Money</span>
                         </div>
                       </div>
                       <div class="px-4 py-3 flex items-center justify-between">
                         <div>
-                          <span class="font-bold text-slate-900 block">Immeuble Bonanjo, Bureau 204</span>
+                          <span class="font-bold text-slate-900 block">Immeuble Horizon, Bureau 204</span>
                           <span class="text-[11px] text-slate-500">Locataire : Cabinet Audit & Conseil</span>
                         </div>
                         <div class="text-right">
-                          <span class="font-mono font-bold text-slate-900 block">750 000 FCFA</span>
+                          <span class="font-bold text-slate-900 block tabular-nums">750 000 FCFA</span>
                           <span class="text-[10px] font-bold text-mint-700">Payé via Virement</span>
                         </div>
                       </div>
@@ -744,50 +784,50 @@ export default {
             
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
               
-              <div class="p-5 rounded-2xl bg-white border border-mint-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up">
-                <span class="w-8 h-8 rounded-xl bg-mint-100 text-mint-700 flex items-center justify-center text-sm font-bold">🏢</span>
+              <div class="p-5 rounded-2xl bg-white border border-mint-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up">
+                ${iconBadge('building-2', 'mint')}
                 <h4 class="font-bold text-xs text-marine-900">Espace Bailleurs & Locataires</h4>
                 <p class="text-[11px] text-slate-600">Portail séparé avec accès sécurisé 24/7 pour chaque partie prenante.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-amber-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.1">
-                <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center text-sm font-bold">📱</span>
+              <div class="p-5 rounded-2xl bg-white border border-amber-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.1">
+                ${iconBadge('smartphone', 'amber')}
                 <h4 class="font-bold text-xs text-marine-900">Paiements Mobile Money</h4>
                 <p class="text-[11px] text-slate-600">Intégration directe Orange Money et MTN MoMo avec zéro déplacement.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-ocean-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.2">
-                <span class="w-8 h-8 rounded-xl bg-ocean-100 text-ocean-700 flex items-center justify-center text-sm font-bold">📄</span>
+              <div class="p-5 rounded-2xl bg-white border border-ocean-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.2">
+                ${iconBadge('file-text', 'ocean')}
                 <h4 class="font-bold text-xs text-marine-900">Quittances avec QR Code</h4>
                 <p class="text-[11px] text-slate-600">Reçus électroniques infalsifiables avec certification immédiate.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-indigo-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.3">
-                <span class="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold">⚖️</span>
+              <div class="p-5 rounded-2xl bg-white border border-indigo-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.3">
+                ${iconBadge('scale', 'indigo')}
                 <h4 class="font-bold text-xs text-marine-900">Baux Sécurisés OHADA</h4>
                 <p class="text-[11px] text-slate-600">Rédaction légale et collaboration avec huissiers de 1ère et 2e charges.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-coral-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.4">
-                <span class="w-8 h-8 rounded-xl bg-coral-100 text-coral-700 flex items-center justify-center text-sm font-bold">🔔</span>
+              <div class="p-5 rounded-2xl bg-white border border-rose-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.4">
+                ${iconBadge('bell', 'rose')}
                 <h4 class="font-bold text-xs text-marine-900">Relances Automatiques</h4>
                 <p class="text-[11px] text-slate-600">Rappels de loyer cordiaux par SMS et WhatsApp avant l'échéance.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-emerald-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.5">
-                <span class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm font-bold">🛠️</span>
+              <div class="p-5 rounded-2xl bg-white border border-emerald-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.5">
+                ${iconBadge('wrench', 'mint')}
                 <h4 class="font-bold text-xs text-marine-900">Suivi Travaux & Maintenance</h4>
                 <p class="text-[11px] text-slate-600">Gestion des interventions d'artisans (électricité, plomberie, peinture).</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-purple-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.6">
-                <span class="w-8 h-8 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-sm font-bold">📊</span>
+              <div class="p-5 rounded-2xl bg-white border border-purple-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.6">
+                ${iconBadge('bar-chart-3', 'slate')}
                 <h4 class="font-bold text-xs text-marine-900">Rapports & Synthèses</h4>
                 <p class="text-[11px] text-slate-600">Export comptable mensuel et annuel pour vos déclarations fiscales.</p>
               </div>
 
-              <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-sm space-y-2 hover:shadow-md transition-shadow" data-reveal="up" data-delay="0.7">
-                <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center text-sm font-bold">🏢</span>
+              <div class="p-5 rounded-2xl bg-white border border-sky-200 shadow-sm space-y-2 hover:shadow-md transition-shadow group" data-reveal="up" data-delay="0.7">
+                ${iconBadge('layers', 'ocean')}
                 <h4 class="font-bold text-xs text-marine-900">Multi-Bâtiments & Lots</h4>
                 <p class="text-[11px] text-slate-600">Gestion centralisée de plusieurs résidences et immeubles sur un seul compte.</p>
               </div>
@@ -819,10 +859,12 @@ export default {
               <!-- Badges de Réassurance -->
               <div class="flex flex-wrap gap-3">
                 <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-bold">
-                  <span>★</span> Service de Qualité Certifié
+                  ${icon('award', { class: 'w-4 h-4 text-mint-700' })}
+                  <span>Service de Qualité Certifié</span>
                 </span>
                 <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
-                  <span>⚡</span> Rapidité d'Exécution Garantie
+                  ${icon('zap', { class: 'w-4 h-4 text-amber-700' })}
+                  <span>Rapidité d'Exécution Garantie</span>
                 </span>
               </div>
 
@@ -832,7 +874,7 @@ export default {
                 <div class="space-y-0.5">
                   <h4 class="font-serif font-bold text-sm text-marine-900">Direction Générale</h4>
                   <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Douala</p>
-                  <a href="tel:+237690843497" class="text-xs font-mono font-bold text-mint-700 hover:underline inline-block pt-1">
+                  <a href="tel:+237690843497" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
                     Ligne directe : (+237) 690 84 34 97
                   </a>
                 </div>
@@ -870,25 +912,25 @@ export default {
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up">
-              <span class="text-xs font-mono font-bold text-mint-700 block">Pôle Immobilier</span>
+              <span class="text-xs font-bold text-mint-800 block">Pôle Immobilier</span>
               <h4 class="font-bold text-sm text-marine-900">Études d'Huissiers Assermentés</h4>
               <p class="text-xs text-slate-600">Huissiers de justice de 1ère et 2e charges pour sécuriser les baux et exécuter les procédures légales.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up" data-delay="0.1">
-              <span class="text-xs font-mono font-bold text-amber-700 block">Pôle Création</span>
+              <span class="text-xs font-bold text-amber-800 block">Pôle Création</span>
               <h4 class="font-bold text-sm text-marine-900">Partenaire CFCE & Notaires</h4>
               <p class="text-xs text-slate-600">Circuit officiel pour l'obtention rapide du Registre de Commerce et de la Carte de Contribuable.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up" data-delay="0.2">
-              <span class="text-xs font-mono font-bold text-ocean-700 block">Pôle Dédouanement</span>
+              <span class="text-xs font-bold text-ocean-800 block">Pôle Dédouanement</span>
               <h4 class="font-bold text-sm text-marine-900">Direction des Douanes & Syndicats</h4>
               <p class="text-xs text-slate-600">Accès direct aux systèmes CAMCIS et collaboration étroite avec les transitaires portuaires.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up" data-delay="0.3">
-              <span class="text-xs font-mono font-bold text-indigo-700 block">Pôle Fiscal</span>
+              <span class="text-xs font-bold text-indigo-800 block">Pôle Fiscal</span>
               <h4 class="font-bold text-sm text-marine-900">Centres des Impôts (DGI)</h4>
               <p class="text-xs text-slate-600">Conformité rigoureuse du calendrier déclaratif pour éviter toute pénalité ou redressement.</p>
             </div>
@@ -911,16 +953,28 @@ export default {
               <h2 class="font-serif text-3xl font-bold text-marine-900">Ce Que Disent Nos Clients</h2>
               
               <div class="space-y-4">
-                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div class="flex text-amber-500 text-xs">★★★★★</div>
-                  <p class="text-xs text-slate-700 italic">"Étant basé en France, j'avais d'énormes difficultés à recouvrer mes loyers à Douala. Depuis que j'ai confié mon immeuble à MULTI BUSINESS, je reçois mes virements chaque 5 du mois avec quittances claires."</p>
-                  <span class="block text-xs font-bold text-marine-900">— M. Jean-Paul T., Propriétaire d'un immeuble (Akwa)</span>
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                  <div class="flex items-center gap-3">
+                    <img src="./assets/images/temoin-1.jpg" alt="M. Jean Paul T." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
+                    <div>
+                      <span class="block text-xs font-bold text-marine-900">M. Jean Paul T.</span>
+                      <span class="block text-[11px] text-slate-500">Propriétaire d'un immeuble (Akwa)</span>
+                    </div>
+                  </div>
+                  <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
+                  <p class="text-xs text-slate-700 italic">"Étant basé en France, j'avais d'énormes difficultés à recouvrer mes loyers à Douala. Depuis que j'ai confié mon immeuble à MULTI BUSINESS, je reçois mes virements chaque mois avec quittances claires."</p>
                 </div>
 
-                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                  <div class="flex text-amber-500 text-xs">★★★★★</div>
-                  <p class="text-xs text-slate-700 italic">"Création de ma SARL en moins de 3 jours au CFCE avec tous les documents officiels. Service rapide, transparent et très professionnel."</p>
-                  <span class="block text-xs font-bold text-marine-900">— Mme Sandrine E., Dirigeante PME</span>
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                  <div class="flex items-center gap-3">
+                    <img src="./assets/images/temoin-2.jpg" alt="Mme Sandrine E." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
+                    <div>
+                      <span class="block text-xs font-bold text-marine-900">Mme Sandrine E.</span>
+                      <span class="block text-[11px] text-slate-500">Dirigeante PME (Douala)</span>
+                    </div>
+                  </div>
+                  <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
+                  <p class="text-xs text-slate-700 italic">"Création de ma SARL en un temps record au CFCE avec tous les documents officiels. Service rapide, transparent et très professionnel."</p>
                 </div>
               </div>
             </div>
@@ -987,7 +1041,7 @@ export default {
                   </div>
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Numéro Téléphone / WhatsApp *</label>
-                    <input type="tel" required placeholder="Ex: 690 84 34 97 ou 671 46 17 91" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 font-mono" />
+                    <input type="tel" required placeholder="Ex: 690 84 34 97 ou 671 46 17 91" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 tabular-nums" />
                   </div>
                 </div>
 
@@ -999,8 +1053,7 @@ export default {
                       <option value="locataire">Recherche Logement (Locataire)</option>
                       <option value="creation">Création d'Entreprise (CFCE)</option>
                       <option value="douane">Dédouanement des Marchandises</option>
-                      <option value="fiscalite">Fiscalité & Conseil DGI</option>
-                      <option value="travaux">Prestations de Travaux & Artisans</option>
+                      <option value="fiscalite">Fiscalité & Conseil Juridique</option>
                     </select>
                   </div>
                   <div>
@@ -1008,7 +1061,7 @@ export default {
                     <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
                       <option value="douala">Douala (Siège)</option>
                       <option value="yaounde">Yaoundé</option>
-                      <option value="autre">Autre localité</option>
+                      <option value="autre">Autre ville au Cameroun</option>
                     </select>
                   </div>
                 </div>
@@ -1018,8 +1071,9 @@ export default {
                   <textarea rows="3" placeholder="Décrivez brièvement votre besoin (type de bien, localisation, délai souhaité)..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50"></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary w-full !py-3 text-xs">
+                <button type="submit" class="btn-primary w-full !py-3 text-xs flex items-center justify-center gap-2">
                   <span>Envoyer ma demande de rendez-vous</span>
+                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </button>
               </form>
             </div>
@@ -1028,35 +1082,36 @@ export default {
             <div class="lg:col-span-5 space-y-6 text-left" data-reveal="right">
               <div class="p-8 bg-marine-900 text-white rounded-3xl shadow-xl space-y-6">
                 <div>
-                  <span class="text-xs font-mono text-lime-400 block mb-1">CONTACTEZ DIRECTEMENT UN CONSEILLER</span>
+                  <span class="text-xs font-bold text-lime-400 block mb-1 uppercase tracking-wider">Contactez directement un conseiller</span>
                   <h3 class="font-serif text-2xl font-bold">Nos Lignes Directes</h3>
                 </div>
 
-                <div class="space-y-3 font-mono text-sm">
+                <div class="space-y-3 text-sm">
                   <a href="tel:+237690843497" class="p-3.5 rounded-xl bg-marine-800/80 border border-orange-500/40 flex items-center justify-between hover:bg-marine-800 transition-colors">
                     <span class="text-xs text-slate-300 flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-[#FF7900]"></span>
                       <span>Orange :</span>
                     </span>
-                    <span class="font-bold text-white">(+237) 690 84 34 97</span>
+                    <span class="font-bold text-white tabular-nums">(+237) 690 84 34 97</span>
                   </a>
                   <a href="tel:+237671461791" class="p-3.5 rounded-xl bg-marine-800/80 border border-yellow-500/40 flex items-center justify-between hover:bg-marine-800 transition-colors">
                     <span class="text-xs text-slate-300 flex items-center gap-2">
                       <span class="w-2.5 h-2.5 rounded-full bg-[#FFCC00]"></span>
                       <span>MTN :</span>
                     </span>
-                    <span class="font-bold text-white">(+237) 671 46 17 91</span>
+                    <span class="font-bold text-white tabular-nums">(+237) 671 46 17 91</span>
                   </a>
                 </div>
 
                 <div class="pt-2 border-t border-slate-800 text-xs text-slate-300 space-y-2">
                   <p><strong>Siège :</strong> Douala, Dakar, à quelques mètres du commissariat du 8ᵉ arr., Immeuble Express Union, 1er niveau</p>
-                  <p><strong>Horaires :</strong> Lundi au Samedi : 08h00 – 17h00</p>
+                  <p><strong>Horaires :</strong> Lundi au Vendredi : 08h00 – 17h00</p>
+                  <p><strong>Horaires :</strong> Samedi : 08h00 – 14h00</p>
                   <p><strong>E-mail :</strong> <a href="mailto:contacts@multibusiness.cm" class="text-mint-400 hover:underline">contacts@multibusiness.cm</a></p>
                 </div>
 
                 <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="w-full btn-primary bg-lime-400 hover:bg-lime-300 text-marine-900 font-bold !py-3 text-xs flex items-center justify-center gap-2">
-                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                  ${icon('phone', { class: 'w-4 h-4' })}
                   <span>Ouvrir WhatsApp direct (+237 651 55 94 11)</span>
                 </a>
               </div>
@@ -1069,27 +1124,30 @@ export default {
       <!-- ================================================================= -->
       <!-- SECTION 11 : CTA FINAL SUR FOND PHOTO CINÉMATOGRAPHIQUE           -->
       <!-- ================================================================= -->
-      <section class="relative py-28 px-4 overflow-hidden">
+      <section id="cta-final-section" data-theme="photo" class="relative py-28 px-4 overflow-hidden">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.4]" />
-          <div class="absolute inset-0 bg-marine-900/60 backdrop-blur-[1px]"></div>
+          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <div class="cta-photo-overlay"></div>
         </div>
 
         <div class="container max-w-4xl mx-auto text-center relative z-10 text-white space-y-6" data-reveal="up">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-lime-400 text-xs font-mono">
-            <span>MULTI BUSINESS SARL • DOUALA & YAOUNDÉ</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-lime-400 text-xs font-semibold">
+            ${icon('shield-check', { class: 'w-4 h-4' })}
+            <span>MULTI BUSINESS SARL • CAMEROUN</span>
           </div>
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white drop-shadow-md">
             Prêt à Valoriser Votre Patrimoine et Sécuriser Vos Revenus ?
           </h2>
-          <p class="text-sm sm:text-base md:text-lg text-slate-200 max-w-2xl mx-auto leading-relaxed">
+          <p class="text-sm sm:text-base md:text-lg text-slate-100 max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
             Rejoignez les centaines de bailleurs et entrepreneurs qui font confiance à notre rigueur au Cameroun.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm bg-lime-400 text-marine-900 hover:bg-lime-300 font-bold shadow-xl" data-magnetic>
+            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl flex items-center gap-2" data-magnetic>
               <span>Prendre contact avec la Direction</span>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
-            <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="btn-outline !px-8 !py-4 text-sm !text-white !border-white/50 hover:!border-white" data-magnetic>
+            <a href="https://wa.me/237651559411" target="_blank" rel="noopener noreferrer" class="btn-ghost-photo !px-8 !py-4 text-sm font-bold flex items-center gap-2" data-magnetic>
+              ${icon('phone', { class: 'w-4 h-4' })}
               <span>Échanger sur WhatsApp</span>
             </a>
           </div>
@@ -1099,7 +1157,7 @@ export default {
   },
 
   async init(container = (typeof document !== 'undefined' ? document.getElementById('app') || document : null)) {
-    console.log('✨ [Home View] init() exécuté');
+    console.log('[Home View] init() exécuté');
     if (!container) return;
 
     // 1. Initialisation de la scène 3D Three.js pour l'iPhone Mobile
@@ -1225,7 +1283,7 @@ export default {
   },
 
   destroy() {
-    console.log('🧹 [Home View] destroy() exécuté : Nettoyage');
+    console.log('[Home View] destroy() exécuté : Nettoyage');
     destroy3DPhoneViewer();
     this._cleanups.forEach(fn => {
       try { fn(); } catch(e) {}

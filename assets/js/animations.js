@@ -44,6 +44,9 @@ export const initSmoothScroll = () => {
       });
       window.gsap.ticker.lagSmoothing(0);
     }
+    if (typeof window !== 'undefined') {
+      window.lenis = lenisInstance;
+    }
   }
   return lenisInstance;
 };

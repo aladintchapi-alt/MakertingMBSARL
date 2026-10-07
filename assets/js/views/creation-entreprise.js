@@ -4,10 +4,11 @@
  */
 import { CONFIG } from '../config.js';
 import { initUIComponents } from '../ui.js';
+import { icon } from '../icons.js';
 
 export default {
   meta: {
-    title: "Création d'Entreprise Clé en Main & Formalités OHADA | Douala & Yaoundé",
+    title: "Création d'Entreprise Clé en Main & Formalités OHADA | Cameroun",
     description: "MULTI BUSINESS SARL : Immatriculation rapide d'entreprises au Cameroun (CFCE, RCCM, NIU). SARL, SAS, ETS en 72h chrono sans tracasserie.",
     image: "./assets/images/service-creation.jpg"
   },
@@ -19,9 +20,9 @@ export default {
       <!-- ================================================================= -->
       <!-- 1. HERO CRÉATION D'ENTREPRISE (Ambre Signature)                   -->
       <!-- ================================================================= -->
-      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-32 pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-amber">
+      <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="tint-amber">
         <div class="hero-photo-bg">
-          <img src="./assets/images/service-creation.jpg" alt="Création d'entreprise à Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/service-creation.jpg" alt="Création d'entreprise au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -49,11 +50,11 @@ export default {
             </a>
           </div>
 
-          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-mono text-slate-700 pt-6 border-t border-amber-200/80">
-            <span class="flex items-center gap-2"><strong class="text-amber-800">✓</strong> Délai moyen 72h</span>
-            <span class="flex items-center gap-2"><strong class="text-amber-800">✓</strong> Statuts conformes OHADA</span>
-            <span class="flex items-center gap-2"><strong class="text-amber-800">✓</strong> RCCM & NIU officiel</span>
-            <span class="flex items-center gap-2"><strong class="text-amber-800">✓</strong> Domiciliation commerciale</span>
+          <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-sans font-medium text-slate-700 pt-6 border-t border-amber-200/80">
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-amber-700 flex-shrink-0')} Délai moyen 72h</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-amber-700 flex-shrink-0')} Statuts conformes OHADA</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-amber-700 flex-shrink-0')} RCCM & NIU officiel</span>
+            <span class="flex items-center gap-2">${icon('check', 'w-4 h-4 text-amber-700 flex-shrink-0')} Domiciliation commerciale</span>
           </div>
         </div>
       </section>
@@ -77,7 +78,7 @@ export default {
               <div class="p-4 rounded-2xl bg-amber-50/40 border border-amber-200/80 space-y-1">
                 <h4 class="font-bold text-slate-900 text-sm flex items-center justify-between">
                   <span>SARL / SARLU (Société à Responsabilité Limitée)</span>
-                  <span class="font-mono text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Formule Populaire</span>
+                  <span class="font-sans tabular-nums text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Formule Populaire</span>
                 </h4>
                 <p class="text-xs text-slate-600">Idéale pour les PME et commerces. Capital social modulable, protection du patrimoine personnel des associés.</p>
               </div>
@@ -85,7 +86,7 @@ export default {
               <div class="p-4 rounded-2xl bg-amber-50/40 border border-amber-200/80 space-y-1">
                 <h4 class="font-bold text-slate-900 text-sm flex items-center justify-between">
                   <span>SAS / SASU (Société par Actions Simplifiée)</span>
-                  <span class="font-mono text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Investisseurs & Tech</span>
+                  <span class="font-sans tabular-nums text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Investisseurs & Tech</span>
                 </h4>
                 <p class="text-xs text-slate-600">Grande liberté statutaire, levée de fonds facilitée et gouvernance sur-mesure pour investisseurs.</p>
               </div>
@@ -93,7 +94,7 @@ export default {
               <div class="p-4 rounded-2xl bg-amber-50/40 border border-amber-200/80 space-y-1">
                 <h4 class="font-bold text-slate-900 text-sm flex items-center justify-between">
                   <span>Établissement (ETS / Entreprise Individuelle)</span>
-                  <span class="font-mono text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Démarrage Rapide</span>
+                  <span class="font-sans tabular-nums text-xs text-amber-800 font-bold bg-amber-100 px-2 py-0.5 rounded">Démarrage Rapide</span>
                 </h4>
                 <p class="text-xs text-slate-600">Formalités simplifiées et coût réduit pour commerçants et prestataires individuels.</p>
               </div>
@@ -108,7 +109,7 @@ export default {
                   <span class="text-xs font-bold text-slate-900 block">Dossier Complet Certifié</span>
                   <span class="text-[11px] text-slate-500">RCCM • NIU • Statuts • Journal d'Annonces</span>
                 </div>
-                <span class="px-2.5 py-1 bg-amber-100 text-amber-950 text-xs font-bold rounded-lg font-mono">100&nbsp;% Conforme</span>
+                <span class="px-2.5 py-1 bg-amber-100 text-amber-950 text-xs font-bold rounded-lg font-sans tabular-nums">100&nbsp;% Conforme</span>
               </div>
             </div>
           </div>
@@ -128,31 +129,31 @@ export default {
 
           <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-mono font-bold text-sm">01</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">01</span>
               <h4 class="font-bold text-sm text-slate-900">Choix & Dénomination</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Vérification de disponibilité du nom commercial et choix de la forme juridique.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-mono font-bold text-sm">02</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">02</span>
               <h4 class="font-bold text-sm text-slate-900">Rédaction des Statuts</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Élaboration des statuts notariés ou sous seing privé conformes à l'OHADA.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-mono font-bold text-sm">03</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">03</span>
               <h4 class="font-bold text-sm text-slate-900">Dépôt au CFCE</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Dépôt guichet unique, immatriculation au Greffe du Tribunal pour le RCCM.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-mono font-bold text-sm">04</span>
+              <span class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">04</span>
               <h4 class="font-bold text-sm text-slate-900">Obtention du NIU</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Attribution du Numéro d'Identifiant Unique (NIU) auprès du centre fiscal DGI.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
-              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-mono font-black text-sm">05</span>
+              <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-sans font-black tabular-nums text-sm">05</span>
               <h4 class="font-bold text-sm text-slate-900">Compte Bancaire Pro</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Remise du dossier complet et facilitation pour l'ouverture du compte bancaire pro.</p>
             </div>
@@ -195,7 +196,7 @@ export default {
           <div class="lg:col-span-8 space-y-3">
             <h3 class="font-serif text-2xl font-bold text-marine-900">Un Accès Direct et Privilégié au Guichet Unique</h3>
             <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-              Grâce à notre maîtrise quotidienne des procédures du CFCE à Douala et Yaoundé, vos dossiers ne subissent aucun rejet ni aller-retour inutile. Chaque pièce est vérifiée préalablement par nos juristes pour garantir une délivrance expresse de vos documents d'immatriculation.
+              Grâce à notre maîtrise quotidienne des procédures du CFCE au Cameroun, vos dossiers ne subissent aucun rejet ni aller-retour inutile. Chaque pièce est vérifiée préalablement par nos juristes pour garantir une délivrance expresse de vos documents d'immatriculation.
             </p>
           </div>
         </div>
@@ -249,7 +250,7 @@ export default {
       <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="card-light p-8 rounded-3xl border border-indigo-200 bg-indigo-50/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-900 font-mono">Service Connexe Recommandé</span>
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-900 font-sans tabular-nums">Service Connexe Recommandé</span>
             <h3 class="font-serif text-2xl font-bold text-marine-900">Pôle Fiscalité & Déclarations Annuelles (DSF)</h3>
             <p class="text-xs text-slate-600 max-w-xl">Une fois créée, votre entreprise doit respecter ses obligations déclaratives mensuelles et annuelles. Nos fiscalistes prennent le relais immédiatement.</p>
           </div>
@@ -260,13 +261,18 @@ export default {
       <!-- CTA Final -->
       <section class="relative py-20 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Business Douala" class="w-full h-full object-cover object-center filter brightness-[0.45]" />
+          <img src="./assets/images/cta-final-bg.jpg" alt="Business Cameroun" class="w-full h-full object-cover object-center brightness-75" />
+          <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">
-          <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-white">Prêt à Lancer Votre Société en Toute Sérénité ?</h2>
-          <p class="text-sm md:text-base text-slate-200 max-w-xl mx-auto">Confiez vos statuts et formalités à notre équipe juridique pour un démarrage dans les meilleures conditions.</p>
-          <div class="pt-2 flex justify-center gap-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-bold tracking-wider uppercase">
+            <span>MULTI BUSINESS SARL • CAMEROUN</span>
+          </div>
+          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-white drop-shadow-md">Prêt à Lancer Votre Société en Toute Sérénité ?</h2>
+          <p class="text-sm md:text-base text-slate-100 max-w-xl mx-auto leading-relaxed">Confiez vos statuts et formalités à notre équipe juridique pour un démarrage dans les meilleures conditions.</p>
+          <div class="pt-2 flex flex-wrap justify-center gap-4">
             <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl">Prendre rendez-vous de création</a>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20cr%C3%A9er%20mon%20entreprise" target="_blank" rel="noopener" class="btn-ghost-photo !px-7 !py-4 text-sm font-semibold">Conseil Express WhatsApp</a>
           </div>
         </div>
       </section>
