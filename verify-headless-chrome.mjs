@@ -103,7 +103,7 @@ ws.addEventListener('message', (ev) => {
 const testUrls = [
   `http://127.0.0.1:${PORT}/`,
   `http://127.0.0.1:${PORT}/MakertingMBSARL/`,
-  `http://127.0.0.1:${PORT}/MakertingMBSARL/gestion-immobiliere`,
+  `http://127.0.0.1:${PORT}/MakertingMBSARL/gestion-locative`,
   `http://127.0.0.1:${PORT}/MakertingMBSARL/contact`
 ];
 

@@ -1,5 +1,5 @@
 /**
- * MULTI BUSINESS SARL - Page GESTION IMMOBILIÈRE (Pôle Phare 70% Production)
+ * MULTI BUSINESS SARL - Page GESTION LOCATIVE (Pôle Phare 70% Production)
  * Direction Artistique : Hyper-Premium Light Luxury White & Ivory (85%), Typographie Marine Profond AAA, >= 12 Images HD
  */
 import { CONFIG } from '../config.js';
@@ -9,9 +9,9 @@ import { icon } from '../icons.js';
 
 export default {
   meta: {
-    title: "Gestion Immobilière & Espace SaaS Bailleurs | Cameroun",
+    title: "Gestion Locative & Espace SaaS Bailleurs | Cameroun",
     description: "MULTI BUSINESS SARL : Leader de la gestion locative intelligente au Cameroun. Recherche de locataires, encaissement Orange Money & MTN MoMo, quittances certifiées et reversements ponctuels le 5 du mois.",
-    image: "./assets/images/hero-gestion-immobiliere.jpg"
+    image: "./assets/images/hero-gestion-locative.jpg"
   },
 
   _cleanups: [],
@@ -19,11 +19,11 @@ export default {
   async render() {
     return `
       <!-- ================================================================= -->
-      <!-- 1. HERO GESTION IMMOBILIÈRE (Photo HD Éclatante)                  -->
+      <!-- 1. HERO GESTION LOCATIVE (Photo HD Éclatante)                     -->
       <!-- ================================================================= -->
       <section class="relative min-h-[85vh] lg:min-h-[80vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Gestion Immobilière de Prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/hero-gestion-locative.jpg" alt="Gestion Locative de Prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -35,7 +35,7 @@ export default {
           </div>
 
           <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marine-900 leading-[1.12] tracking-tight mb-6 max-w-4xl mx-auto">
-            Votre patrimoine immobilier géré avec rigueur.<br/>
+            Votre patrimoine locatif géré avec rigueur.<br/>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-900 font-extrabold">
               0 impayé. 0 litige. 100&nbsp;% de sérénité.
             </span>
@@ -170,7 +170,7 @@ export default {
           </div>
 
           <div class="text-center pt-4">
-            <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-sm font-bold inline-flex items-center gap-2">
+            <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-sm font-bold inline-flex items-center gap-2">
               <span>Accéder à l'Espace Propriétaire SaaS</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
@@ -234,8 +234,8 @@ export default {
         <div class="max-w-7xl mx-auto space-y-12">
           
           <div class="text-center max-w-3xl mx-auto space-y-3" data-reveal="up">
-            <span class="inline-block px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider">Parc Immobilier sous Mandat</span>
-            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Types de Biens Immobiliers Pris en Gestion</h2>
+            <span class="inline-block px-3 py-1 rounded-full bg-slate-200 text-slate-800 text-xs font-bold uppercase tracking-wider">Parc Locatif sous Mandat</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Types de Biens Pris en Gestion Locative</h2>
             <p class="text-slate-600 text-sm md:text-base">De l'immeuble de rapport complet au studio moderne, nous administrons tous types de patrimoines bâtis.</p>
           </div>
 
@@ -499,7 +499,7 @@ export default {
             </div>
 
             <div class="pt-2">
-              <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
+              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
                 <span>Tester la plateforme en direct</span>
                 ${icon('arrow-right', { class: 'w-4 h-4' })}
               </a>
@@ -507,13 +507,33 @@ export default {
           </div>
 
           <!-- Container 3D Three.js -->
-          <div class="lg:col-span-6 flex items-center justify-center" data-reveal="right">
-            <div id="phone-3d-canvas-container" class="w-full h-[480px] rounded-3xl bg-gradient-to-b from-slate-50 to-emerald-50/40 border border-slate-200 shadow-inner flex items-center justify-center relative overflow-hidden">
+          <div class="lg:col-span-6 flex flex-col items-center justify-center" data-reveal="right">
+            <!-- Sélecteur de Finition Titane iPhone 18 Pro Max -->
+            <div class="w-full max-w-md flex items-center justify-between px-3 py-2 mb-2 bg-slate-50/80 rounded-2xl border border-slate-200/80 backdrop-blur-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Châssis Titane :</span>
+                <div id="iphone-finishes-selector" class="flex items-center gap-2"></div>
+              </div>
+              <div class="text-[10px] font-semibold text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-200">
+                6.9" Super Retina XDR
+              </div>
+            </div>
+
+            <div id="phone-3d-canvas-container" class="w-full max-w-md h-[480px] rounded-3xl bg-gradient-to-b from-slate-50 to-emerald-50/40 border border-slate-200 shadow-inner flex items-center justify-center relative overflow-hidden">
               <div class="absolute top-4 right-4 z-10 px-3 py-1 rounded-full bg-white/90 text-[10px] font-bold text-slate-700 shadow-sm border border-slate-200 flex items-center gap-1.5">
                 ${icon('refresh-cw', { class: 'w-3 h-3 text-emerald-700' })}
                 <span>3D Interactive • Faites glisser</span>
               </div>
             </div>
+
+            <!-- Sélecteur d'écrans rapides -->
+            <div class="w-full max-w-md mt-2.5 flex items-center justify-center">
+              <div id="iphone-screens-tabs" class="flex flex-wrap items-center justify-center gap-1.5"></div>
+            </div>
+
+            <p id="iphone-disclaimer" class="text-[11px] text-slate-400 text-center mt-2 font-normal">
+              iPhone est une marque déposée d'Apple Inc. Rendu conceptuel 3D de l'application MULTI BUSINESS SARL.
+            </p>
           </div>
 
         </div>
@@ -607,7 +627,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Vous bénéficiez d'un accès direct à votre tableau de bord SaaS 24/7 sur <a href="https://app.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">app.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
+                Vous bénéficiez d'un accès direct à votre tableau de bord SaaS 24/7 sur <a href="https://apps.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">apps.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
               </div>
             </div>
 
@@ -631,7 +651,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Gestion Immobilière au Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/cta-final-bg.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 

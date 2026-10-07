@@ -9,7 +9,7 @@ import { icon } from '../icons.js';
 export default {
   meta: {
     title: "Qui sommes-nous | Notre Histoire, Vision & Équipe d'Experts au Cameroun",
-    description: "MULTI BUSINESS SARL : Prestataire intellectuel de référence au Cameroun. Gestion immobilière intelligente, fiscalité, création d'entreprise et prestations d'affaires.",
+    description: "MULTI BUSINESS SARL : Prestataire intellectuel de référence au Cameroun. Gestion locative intelligente, fiscalité, création d'entreprise et prestations d'affaires.",
     image: "./assets/images/hero-apropos.jpg"
   },
 
@@ -155,7 +155,7 @@ export default {
 
               <div class="space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
                 <p>
-                  « Lorsque nous avons lancé MULTI BUSINESS SARL, notre conviction était simple : l'immobilier et le conseil d'affaires ne peuvent prospérer que sur un socle de transparence totale. Un bailleur qui nous confie son immeuble nous confie des années de sacrifice et de labeur. Notre devoir est de lui assurer la tranquillité d'esprit absolue. »
+                  « Lorsque nous avons lancé MULTI BUSINESS SARL, notre conviction était simple : la gestion locative et le conseil d'affaires ne peuvent prospérer que sur un socle de transparence totale. Un bailleur qui nous confie son patrimoine locatif nous confie des années de sacrifice et de labeur. Notre devoir est de lui assurer la tranquillité d'esprit absolue. »
                 </p>
                 <p>
                   « En combinant notre expertise juridique terrain, notre partenariat avec des huissiers assermentés de 1ère et 2e charges, et des technologies de reversement automatisé par Mobile Money, nous redéfinissons les standards d'excellence au Cameroun. »
@@ -259,7 +259,7 @@ export default {
             <div class="relative pl-8 md:pl-12" data-reveal="left">
               <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md tabular-nums">2</div>
               <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2022</span>
-              <h4 class="font-serif text-xl font-bold text-marine-900">Structuration du Pôle Gestion Immobilière OHADA</h4>
+              <h4 class="font-serif text-xl font-bold text-marine-900">Structuration du Pôle Gestion Locative OHADA</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
                 Face à la demande des propriétaires de la diaspora et locaux, développement du protocole de baux sécurisés et signature des partenariats avec les études d'huissiers assermentés.
               </p>
@@ -271,7 +271,7 @@ export default {
               <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2024</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Digitalisation SaaS & Reversements Mobile Money</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
-                Lancement de la plateforme logicielle <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="text-emerald-700 font-bold hover:underline">app.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
+                Lancement de la plateforme logicielle <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">apps.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
               </p>
             </div>
 
@@ -309,7 +309,7 @@ export default {
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
-                <span>Réunion d'expertise & stratégie immobilière</span>
+                <span>Réunion d'expertise & stratégie de gestion locative</span>
               </span>
             </div>
           </div>

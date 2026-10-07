@@ -13,7 +13,6 @@ const routes = {
   '/': () => import('./views/home.js'),
   '/qui-sommes-nous': () => import('./views/a-propos.js'),
   '/a-propos': () => import('./views/a-propos.js'),
-  '/gestion-immobiliere': () => import('./views/gestion-locative.js'),
   '/gestion-locative': () => import('./views/gestion-locative.js'),
   '/nos-services': () => import('./views/services.js'),
   '/services': () => import('./views/services.js'),

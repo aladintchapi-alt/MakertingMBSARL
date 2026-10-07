@@ -87,7 +87,7 @@ class Router {
   }
 
   /**
-   * Supprime le basePath pour obtenir la route relative propre (ex: /gestion-immobiliere)
+   * Supprime le basePath pour obtenir la route relative propre (ex: /gestion-locative)
    */
   stripBasePath(path) {
     if (!path) return '/';
@@ -391,7 +391,16 @@ class Router {
       }
     }, 4000);
 
-    const cleanPath = this.stripBasePath(path);
+    let cleanPath = this.stripBasePath(path);
+
+    // Redirection transparente et automatique de l'ancienne URL vers /gestion-locative
+    if (cleanPath.startsWith('/gestion-im') || cleanPath === '/prestation-services' || cleanPath === '/prestation-de-services') {
+      cleanPath = '/gestion-locative';
+      try {
+        window.history.replaceState({ scrollPos: 0, path: cleanPath }, '', this.buildPath(cleanPath));
+      } catch (e) {}
+    }
+
     let viewLoader = this.routes[cleanPath];
 
     // Fallback 404

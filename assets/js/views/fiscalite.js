@@ -247,10 +247,10 @@ export default {
         <div class="card-light p-8 rounded-3xl border border-emerald-200 bg-emerald-50/30 flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-900 font-sans tabular-nums">Service Connexe Recommandé</span>
-            <h3 class="font-serif text-2xl font-bold text-marine-900">Gestion Immobilière & Déclaration Fiscale des Bailleurs</h3>
+            <h3 class="font-serif text-2xl font-bold text-marine-900">Gestion Locative & Déclaration Fiscale des Bailleurs</h3>
             <p class="text-xs text-slate-600 max-w-xl">Confiez la gestion de vos loyers à MULTI BUSINESS SARL et bénéficiez de la prise en charge automatique de vos déclarations de précompte foncier.</p>
           </div>
-          <a href="/gestion-immobiliere" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white">Découvrir la Gestion Immobilière →</a>
+          <a href="/gestion-locative" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white">Découvrir la Gestion Locative →</a>
         </div>
       </section>
 

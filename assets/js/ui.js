@@ -83,8 +83,9 @@ export const initHeader = () => {
 
   // Mesure et mise à jour dynamique des variables CSS de hauteur
   const updateHeaderDimensions = () => {
-    const headerHeight = siteHeader.offsetHeight;
-    const topBarHeight = topBar ? topBar.offsetHeight : 0;
+    const isDesktop = window.innerWidth >= 1024;
+    const headerHeight = siteHeader ? siteHeader.offsetHeight : 64;
+    const topBarHeight = (topBar && isDesktop && topBar.offsetParent !== null) ? topBar.offsetHeight : 0;
     document.documentElement.style.setProperty('--header-h', `${headerHeight}px`);
     document.documentElement.style.setProperty('--topbar-h', `${topBarHeight}px`);
   };
@@ -96,7 +97,7 @@ export const initHeader = () => {
 
   const handleScroll = () => {
     const scrollY = window.scrollY || window.pageYOffset || 0;
-    if (scrollY > 40) {
+    if (scrollY > 30) {
       siteHeader.classList.add('header-scrolled');
     } else {
       siteHeader.classList.remove('header-scrolled');
@@ -105,6 +106,9 @@ export const initHeader = () => {
 
   window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('resize', updateHeaderDimensions, { passive: true });
+  window.addEventListener('orientationchange', () => {
+    setTimeout(updateHeaderDimensions, 100);
+  }, { passive: true });
   
   handleScroll();
   updateHeaderDimensions();
@@ -132,7 +136,7 @@ export const updateActiveNavLink = (currentPath) => {
 };
 
 /**
- * Menu Mobile Overlay avec animation GSAP
+ * Menu Mobile Overlay avec animation GSAP en cascade, blocage Lenis & gestion du focus
  */
 export const initMobileMenu = () => {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
@@ -141,52 +145,97 @@ export const initMobileMenu = () => {
 
   if (!toggleBtn || !menuOverlay) return;
 
-  toggleBtn.addEventListener('click', openMobileMenu);
+  toggleBtn.addEventListener('click', () => {
+    if (menuOverlay.classList.contains('hidden')) {
+      openMobileMenu();
+    } else {
+      closeMobileMenu();
+    }
+  });
 
   if (closeBtn) {
     closeBtn.addEventListener('click', closeMobileMenu);
   }
+
+  // Fermeture à la touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menuOverlay.classList.contains('hidden')) {
+      closeMobileMenu();
+    }
+  });
+
+  // Fermeture au clic sur n'importe quel lien du menu mobile
+  menuOverlay.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeMobileMenu();
+    });
+  });
 };
 
 export const openMobileMenu = () => {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const closeBtn = document.getElementById('mobile-menu-close');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
   if (!menuOverlay) return;
 
   menuOverlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
+  if (window.lenis) {
+    try { window.lenis.stop(); } catch (e) {}
+  }
+  if (toggleBtn) {
+    toggleBtn.classList.add('is-active');
+    toggleBtn.setAttribute('aria-expanded', 'true');
+  }
+
+  // Focus sur le bouton fermer pour l'accessibilité
+  if (closeBtn) {
+    setTimeout(() => closeBtn.focus(), 50);
+  }
 
   if (window.gsap) {
     window.gsap.fromTo(
       menuOverlay,
-      { opacity: 0, scale: 0.96 },
-      { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }
+      { opacity: 0, scale: 0.98 },
+      { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }
     );
     window.gsap.fromTo(
-      menuOverlay.querySelectorAll('.mobile-nav-item'),
-      { opacity: 0, y: 25 },
-      { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "power2.out", delay: 0.1 }
+      menuOverlay.querySelectorAll('.mobile-cascade-item'),
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.35, stagger: 0.05, ease: "power2.out", delay: 0.08 }
     );
   }
 };
 
 export const closeMobileMenu = () => {
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
   if (!menuOverlay || menuOverlay.classList.contains('hidden')) return;
+
+  if (toggleBtn) {
+    toggleBtn.classList.remove('is-active');
+    toggleBtn.setAttribute('aria-expanded', 'false');
+    toggleBtn.focus();
+  }
+
+  const finalizeClose = () => {
+    menuOverlay.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (window.lenis) {
+      try { window.lenis.start(); } catch (e) {}
+    }
+  };
 
   if (window.gsap) {
     window.gsap.to(menuOverlay, {
       opacity: 0,
       scale: 0.98,
-      duration: 0.3,
+      duration: 0.25,
       ease: "power2.in",
-      onComplete: () => {
-        menuOverlay.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
+      onComplete: finalizeClose
     });
   } else {
-    menuOverlay.classList.add('hidden');
-    document.body.style.overflow = '';
+    finalizeClose();
   }
 };
 

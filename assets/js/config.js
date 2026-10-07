@@ -10,7 +10,7 @@ export const CONFIG = {
     status: "Société à Responsabilité Limitée (SARL)",
     category: "Entreprise Camerounaise de Prestations de Services Intellectuels & Gestion de Patrimoine",
     slogan: "L'Excellence Opérationnelle, la Rigueur Juridique & l'Innovation au Cameroun",
-    tagline: "Plateforme SaaS Immobilière & Conseil Stratégique aux Entreprises",
+    tagline: "Plateforme SaaS de Gestion Locative & Conseil Stratégique aux Entreprises",
     yearFounded: 2020,
     rccm: "RC/DLA/2020/B/243",
     niu: "M012014379280U",
@@ -21,7 +21,7 @@ export const CONFIG = {
       },
       {
         title: "Expertise",
-        description: "Des professionnels rompus au droit immobilier OHADA, aux procédures douanières, fiscales et à l'ingénierie d'affaires."
+        description: "Des professionnels rompus au droit locatif OHADA, aux procédures douanières, fiscales et à l'ingénierie d'affaires."
       },
       {
         title: "Disponibilité",
@@ -34,7 +34,7 @@ export const CONFIG = {
       "Garantie de satisfaction intégrale à 100%"
     ],
     targetAudiences: [
-      "Bailleurs & Investisseurs Immobiliers (Résidents et Diaspora)",
+      "Bailleurs & Investisseurs Locatifs (Résidents et Diaspora)",
       "Jeunes Entrepreneurs & Dirigeants de PME-PMI",
       "Importateurs de Marchandises & Opérateurs Économiques",
       "Commerçants, Artisans & Maîtres d'Ouvrage"
@@ -59,14 +59,18 @@ export const CONFIG = {
       landmark: "à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
       addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union",
       addressFull: "Dakar (Douala, Cameroun), à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
-      mapUrl: "https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun"
+      mapUrl: "https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun",
+      coordinates: {
+        lng: 9.7125,
+        lat: 4.0325
+      }
     },
     whatsapp: {
       number: "237651559411",
       formatted: "(+237) 651 55 94 11",
       directUrl: "https://wa.me/237651559411?text=Bonjour%20MULTI%20BUSINESS%20SARL%2C%20je%20souhaite%20des%20renseignements.",
       serviceMessages: {
-        immobilier: "Bonjour MULTI BUSINESS SARL, je souhaite confier un bien en gestion immobilière / louer un bien.",
+        gestionLocative: "Bonjour MULTI BUSINESS SARL, je souhaite confier un bien en gestion locative / louer un bien.",
         creation: "Bonjour MULTI BUSINESS SARL, je souhaite être accompagné pour la création de mon entreprise (CFCE).",
         dedouanement: "Bonjour MULTI BUSINESS SARL, j'ai une cargaison à dédouaner au Port de Douala / Kribi.",
         fiscalite: "Bonjour MULTI BUSINESS SARL, je souhaite un accompagnement fiscal et déclaratif (DGI)."
@@ -86,10 +90,30 @@ export const CONFIG = {
     }
   },
 
+  // Configuration Officielle de l'Application SaaS Bailleurs & Locataires
+  app: {
+    url: "https://apps.multibusiness.cm/",
+    mobileUrl: "https://apps.multibusiness.cm/mobile",
+    loginUrl: "https://apps.multibusiness.cm/login",
+    demoUrl: "https://apps.multibusiness.cm/demo"
+  },
+
   appUrls: {
-    saasWeb: "https://app.multibusiness.cm/",
-    saasMobile: "https://app.multibusiness.cm/mobile",
+    saasWeb: "https://apps.multibusiness.cm/",
+    saasMobile: "https://apps.multibusiness.cm/mobile",
     currentLiveSite: "https://multibusiness.cm/"
+  },
+
+  // Configuration Interactive de la Carte MapLibre & MapTiler
+  map: {
+    maptilerKey: "", // Clé gratuite MapTiler facultative - repli OSM / Satellite automatique
+    center: [9.7125, 4.0325], // [lng, lat] Siège Dakar (Douala), Immeuble Express Union
+    zoom: 15.5,
+    pitch: 0,
+    pitch3D: 60,
+    bearing: -17.6,
+    flyFromCenter: [12.3547, 7.3697], // Vue générale Cameroun
+    flyFromZoom: 5.5
   },
 
   // Identité Visuelle & Logo Officiel (Source unique de vérité)
@@ -121,12 +145,12 @@ export const CONFIG = {
     logoTransparent: "./assets/images/logo-transparent.png"
   },
 
-  // Les 5 Services Réels avec codes couleurs signatures
+  // Les 4 Services Métier Réels avec codes couleurs signatures
   services: [
     {
-      id: "gestion-immobiliere",
-      route: "/gestion-immobiliere",
-      title: "Gestion Immobilière & SaaS Propriétaire",
+      id: "gestion-locative",
+      route: "/gestion-locative",
+      title: "Gestion Locative & SaaS Propriétaire",
       isPrimary: true, // SERVICE PHARE (70% du site)
       weight: "70%",
       badge: "Pôle d'Excellence Majeur • 70%",
@@ -134,7 +158,7 @@ export const CONFIG = {
       colorHex: "#26C992",
       pastelBg: "#F0FDF4",
       gradient: "from-[#26C992] to-[#10B981]",
-      shortDesc: "Prise en charge intégrale de votre patrimoine immobilier partout au Cameroun : perception garantie des loyers, sélection et suivi rigoureux des locataires, entretien des logements gérés, quittances certifiées et partenariats avec cabinets d'huissiers de 1ère et 2ème charges.",
+      shortDesc: "Prise en charge intégrale de votre patrimoine locatif partout au Cameroun : perception garantie des loyers, sélection et suivi rigoureux des locataires, entretien des logements gérés, quittances certifiées et partenariats avec cabinets d'huissiers de 1ère et 2ème charges.",
       fullPitch: "En confiant la gestion de vos bâtiments, logements, appartements, studios, chambres, magasins, bureaux et espaces commerciaux à MULTI BUSINESS SARL, vous gagnez un temps précieux et bénéficiez d'une tranquillité d'esprit absolue. Notre application propriétaire (web & mobile) offre un reporting transparent 24/7, des encaissements automatisés Orange Money & MTN MoMo, tandis que notre pôle juridique sécurise l'expulsion légale en bonne et due forme de tout locataire indélicat.",
       partner: "Cabinets d'huissiers de justice de 1ère et 2ème charges",
       propertyCategories: [
@@ -201,9 +225,9 @@ export const CONFIG = {
   ],
 
   seo: {
-    siteTitle: "MULTI BUSINESS SARL | Gestion Immobilière Intelligente, SaaS & Conseil - Douala, Cameroun",
-    siteDescription: "Leader de la gestion immobilière et du conseil aux entreprises au Cameroun (Douala, Dakar). Bailleurs, locataires, application SaaS, quittances certifiées, CFCE, douane et fiscalité.",
-    keywords: "gestion immobiliere douala, multibusiness sarl, bailleur cameroun, huissier expulsion cameroun, saas gestion locative, creation entreprise cfce douala, dedouanement port douala, fiscalite dgi cameroun"
+    siteTitle: "MULTI BUSINESS SARL | Gestion Locative Intelligente, SaaS & Conseil - Douala, Cameroun",
+    siteDescription: "Leader de la gestion locative et du conseil aux entreprises au Cameroun (Douala, Dakar). Bailleurs, locataires, application SaaS, quittances certifiées, CFCE, douane et fiscalité.",
+    keywords: "gestion locative douala, multibusiness sarl, bailleur cameroun, huissier expulsion cameroun, saas gestion locative, creation entreprise cfce douala, dedouanement port douala, fiscalite dgi cameroun"
   }
 };
 
@@ -220,4 +244,3 @@ export function resolveAsset(path) {
   const cleanPath = path.replace(/^\.?\//, '');
   return `${cleanBase}${cleanPath}`;
 }
-

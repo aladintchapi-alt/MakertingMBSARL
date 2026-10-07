@@ -10,7 +10,7 @@ import { icon, iconBadge } from '../icons.js';
 export default {
   meta: {
     title: "Nos Services d'Affaires & Gestion Locative | MULTI BUSINESS SARL",
-    description: "Découvrez les 4 pôles d'excellence de MULTI BUSINESS SARL au Cameroun : Gestion Immobilière (phare 70%), Création d'Entreprise, Dédouanement et Fiscalité & Conseil.",
+    description: "Découvrez les 4 pôles d'excellence de MULTI BUSINESS SARL au Cameroun : Gestion Locative (phare 70%), Création d'Entreprise, Dédouanement et Fiscalité & Conseil.",
     image: "./assets/images/hero-services.jpg"
   },
 
@@ -43,9 +43,9 @@ export default {
 
           <!-- Barre de Navigation Rapide par Ancres Fluides -->
           <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
-            <a href="/gestion-immobiliere" data-link class="px-4 py-2 rounded-full bg-emerald-50 border border-emerald-300 text-xs font-bold text-emerald-900 shadow-sm transition-all hover:bg-emerald-100 flex items-center gap-1.5">
+            <a href="/gestion-locative" data-link class="px-4 py-2 rounded-full bg-emerald-50 border border-emerald-300 text-xs font-bold text-emerald-900 shadow-sm transition-all hover:bg-emerald-100 flex items-center gap-1.5">
               ${icon('building', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-              <span>1. Gestion Immobilière (Phare)</span>
+              <span>1. Gestion Locative (Phare)</span>
             </a>
             <a href="#creation-entreprise" class="px-4 py-2 rounded-full bg-amber-50 border border-amber-300 text-xs font-bold text-amber-950 shadow-sm transition-all hover:bg-amber-100 flex items-center gap-1.5">
               ${icon('landmark', { class: 'w-3.5 h-3.5 text-amber-700' })}
@@ -64,9 +64,9 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- 2. SERVICE 1 : GESTION IMMOBILIÈRE (Pôle Phare 70%)               -->
+      <!-- 2. SERVICE 1 : GESTION LOCATIVE (Pôle Phare 70%)                   -->
       <!-- ================================================================= -->
-      <section id="gestion-immobiliere" class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
+      <section id="gestion-locative" class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div class="lg:col-span-6 space-y-6" data-reveal="left">
@@ -80,7 +80,7 @@ export default {
             </h2>
 
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              Nous prenons en charge la gestion intégrale de vos immeubles, appartements, studios, bureaux et magasins au Cameroun. Baux conformes OHADA, recouvrement automatisé par <strong>Orange Money</strong> et <strong>MTN MoMo</strong>, reversement ponctuel et suivi en direct sur <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="text-emerald-700 font-bold hover:underline">app.multibusiness.cm</a>.
+              Nous prenons en charge la gestion intégrale de vos immeubles, appartements, studios, bureaux et magasins au Cameroun. Baux conformes OHADA, recouvrement automatisé par <strong>Orange Money</strong> et <strong>MTN MoMo</strong>, reversement ponctuel et suivi en direct sur <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">apps.multibusiness.cm</a>.
             </p>
 
             <div class="space-y-3.5 pt-2">
@@ -114,11 +114,11 @@ export default {
             </div>
 
             <div class="pt-4 flex flex-wrap items-center gap-4">
-              <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3.5 text-xs font-bold shadow-md inline-flex items-center gap-2">
+              <a href="/gestion-locative" data-link class="btn-primary !px-6 !py-3.5 text-xs font-bold shadow-md inline-flex items-center gap-2">
                 <span>Découvrir l'offre Bailleurs & Locataires</span>
                 ${icon('arrow-right', { class: 'w-4 h-4' })}
               </a>
-              <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-outline !px-5 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
+              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="btn-outline !px-5 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
                 <span>Espace SaaS</span>
                 ${icon('external-link', { class: 'w-3.5 h-3.5' })}
               </a>
@@ -127,11 +127,11 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-              <img src="./assets/images/service-immo.jpg" alt="Gestion Immobilière MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/service-immo.jpg" alt="Gestion Locative MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Plateforme SaaS Propriétaire</span>
-                  <span class="text-[11px] text-slate-500">app.multibusiness.cm</span>
+                  <span class="text-[11px] text-slate-500">apps.multibusiness.cm</span>
                 </div>
                 <span class="px-2.5 py-1 bg-emerald-100 text-emerald-900 text-xs font-bold rounded-lg tabular-nums">100&nbsp;% Traçable</span>
               </div>
@@ -346,7 +346,7 @@ export default {
                 </div>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed italic">
-                « Depuis que MULTI BUSINESS SARL gère mon immeuble de 12 appartements, je reçois mon reversement Orange Money sans faute le 5 de chaque mois. Zéro souci avec les locataires. »
+                « Depuis que MULTI BUSINESS SARL gère mon immeuble de 12 appartements, je reçois mon reversement Orange Money sans faute de chaque mois. Zéro souci avec les locataires. »
               </p>
               <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
             </div>
@@ -360,7 +360,7 @@ export default {
                 </div>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed italic">
-                « Création de ma SARL en 3 jours au CFCE et déclaration fiscale DSF irréprochable. Une équipe réactive et transparente qui maîtrise parfaitement les rouages administratifs. »
+                « Création de ma SARL en un temps record au CFCE et déclaration fiscale DSF irréprochable. Une équipe réactive et transparente qui maîtrise parfaitement les rouages administratifs. »
               </p>
               <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
             </div>

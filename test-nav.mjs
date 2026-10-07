@@ -109,7 +109,6 @@ const allRoutes = [
   '/a-propos',
   '/services',
   '/nos-services',
-  '/gestion-immobiliere',
   '/gestion-locative',
   '/creation-entreprise',
   '/dedouanement',

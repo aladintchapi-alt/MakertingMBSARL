@@ -1,12 +1,12 @@
-# MULTI BUSINESS SARL — Site Web Vitrine Haute Performance & Plateforme Immobilière
+# MULTI BUSINESS SARL — Site Web Vitrine Haute Performance & Plateforme de Gestion Locative
 
 [![Statut Production](https://img.shields.io/badge/Production-Pr%C3%AAt-emerald-100?style=for-the-badge&logo=vercel&logoColor=0F172A)](https://www.multibusiness-sarl.com/)
 [![Tests QA](https://img.shields.io/badge/Audit%20QA-100%25%20PASS%20(31%2F31)-emerald-600?style=for-the-badge)](https://www.multibusiness-sarl.com/)
 [![Stack SPA](https://img.shields.io/badge/Architecture-Vanilla%20SPA%20%7C%20Tailwind%20%7C%20Three.js-0F172A?style=for-the-badge)](https://developer.mozilla.org/)
 [![Performance](https://img.shields.io/badge/Lighthouse-98%2F100-emerald-500?style=for-the-badge)](https://developers.google.com/speed/pagespeed/insights/)
 
-> **Site vitrine et plateforme digitale de prestige international** conçu pour **MULTI BUSINESS SARL** (Cameroun : Douala & Yaoundé).
-> Spécialisée à **70% dans la GESTION IMMOBILIÈRE ET LOCATIVE** avec son écosystème technologique dédié (bailleurs résidents & diaspora, locataires, encaissements instantanés Orange Money / MTN MoMo, quittances certifiées avec QR Code, baux conformes droit OHADA, huissiers assermentés de 1ère et 2e charges, reversements réguliers le 5 du mois) et **4 pôles d'affaires complémentaires d'excellence** (création d'entreprise CFCE, transit & dédouanement portuaire, prestations de travaux/bâtiment, conseil et déclarations fiscales DGI).
+> **Site vitrine et plateforme digitale de prestige international** conçu pour **MULTI BUSINESS SARL** (Cameroun : Douala).
+> Spécialisée à **70% dans la GESTION LOCATIVE** avec son écosystème technologique dédié (bailleurs résidents & diaspora, locataires, encaissements instantanés Orange Money / MTN MoMo, quittances certifiées avec QR Code, baux conformes droit OHADA, huissiers assermentés de 1ère et 2e charges, reversements réguliers le 5 du mois) et **4 pôles d'affaires complémentaires d'excellence** (création d'entreprise CFCE, transit & dédouanement portuaire, prestations de travaux/bâtiment, conseil et déclarations fiscales DGI).
 
 ---
 
@@ -16,7 +16,7 @@ Le design s'appuie sur une esthétique **Light Luxury** lumineuse, épurée et m
 
 | Pôle / Rôle | Couleur Signature | Code Hex | Nuance de Fond Douce |
 | :--- | :--- | :--- | :--- |
-| **Gestion Immobilière (Pôle Phare)** | Vert Émeraude & Menthe | `#047857` / `#10B981` | `#ECFDF5` |
+| **Gestion Locative (Pôle Phare)** | Vert Émeraude & Menthe | `#047857` / `#10B981` | `#ECFDF5` |
 | **Création d'Entreprise** | Ambre Solaire | `#B45309` / `#F59E0B` | `#FFFBEB` |
 | **Dédouanement Portuaire** | Bleu Océan | `#0369A1` / `#0EA5E9` | `#F0F9FF` |
 | **Prestations & Travaux BTP** | Corail & Rose Vif | `#BE123C` / `#F43F5E` | `#FFF1F2` |
@@ -38,7 +38,7 @@ L'application est construite en **Vanilla Single Page Application (SPA)** ultra-
 1. **Accueil (`/`)** : Hero photo plein écran cinématique, bandeau de confiance animé, présentation des 5 services par cartes immersives, vitrine 3D de l'application SaaS, grille de types de biens gérés, storytelling du processus en 4 étapes, témoignages clients et CTA.
 2. **Qui Sommes-Nous (`/qui-sommes-nous`, `/a-propos`)** : Histoire de MULTI BUSINESS SARL, message du PDG, valeurs d'entreprise (Expertise, Rigueur, Disponibilité), timeline d'évolution, galerie photos haute définition (équipe, bureaux, terrains), zones d'intervention (Douala, Yaoundé, CEMAC) et partenaires.
 3. **Hub Nos Services (`/nos-services`, `/services`)** : Vue d'ensemble structurée des 5 métiers avec sections alternées, palettes chromatiques différenciées et accès direct vers chaque page dédiée.
-4. **Gestion Immobilière (`/gestion-immobiliere`, `/gestion-locative`)** : Pôle phare (70% de l'activité). Offre double Bailleurs / Locataires avec bascule interactive, catalogue filtrable des 7 types de biens (immeubles, appartements, studios, chambres, bureaux, magasins, entrepôts), partenariat juridique avec huissiers de justice de 1ère et 2e charges, scène 3D Three.js de l'iPhone interactif, avis vérifiés et FAQ.
+4. **Gestion Locative (`/gestion-locative`)** : Pôle phare (70% de l'activité). Offre double Bailleurs / Locataires avec bascule interactive, catalogue filtrable des 7 types de biens (immeubles, appartements, studios, chambres, bureaux, magasins, entrepôts), partenariat juridique avec huissiers de justice de 1ère et 2e charges, scène 3D Three.js de l'iPhone interactif, avis vérifiés et FAQ.
 5. **Création d'Entreprise (`/creation-entreprise`)** : Accompagnement clé en main pour SARL, SAS, ETS en 72h chrono. Démarches CFCE, rédaction des statuts OHADA, obtention du RCCM et du NIU, photos des bureaux et de l'équipe juridique.
 6. **Dédouanement Portuaire (`/dedouanement`)** : Transit maritime et aérien aux ports de Douala (PAD) et Kribi. 4 piliers d'excellence (rapidité, fiabilité, 0 surestarie, assurance et livraison site), partenaires Douanes Camerounaises (DGD) et syndicats de transporteurs.
 7. **Prestations de Services & Travaux (`/prestation-de-services`)** : Électricité générale, peinture & étanchéité façades, échafaudages légers, plomberie et maintenance express. Portfolio de réalisations avec visionneuse Lightbox HD et devis sous 24h.
@@ -126,7 +126,7 @@ npm run dev
 | **Ratio des Surfaces Sombres** | ≤ 10-15 % | **0.0 % (Fond dominant blanc/ivoire)** | ✅ Validé |
 | **Quota d'Images Accueil** | ≥ 15 images | **15 images HD** | ✅ Validé |
 | **Quota d'Images Qui Sommes-Nous** | ≥ 10 images | **17 images HD** | ✅ Validé |
-| **Quota d'Images Gestion Immobilière**| ≥ 12 images | **15 images HD** | ✅ Validé |
+| **Quota d'Images Gestion Locative**| ≥ 12 images | **15 images HD** | ✅ Validé |
 | **Quota d'Images par Service Spécifique**| ≥ 6 images | **7 images HD chacune** | ✅ Validé |
 | **Navigation SPA sans rechargement** | 100 % fluide | **10 / 10 routes validées** | ✅ Validé |
 | **Stress Test Mémoire (50 cycles)** | 0 fuite / 0 crash | **50 / 50 cycles sans fuite** | ✅ Validé |

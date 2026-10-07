@@ -13,7 +13,7 @@ const routesToTest = [
   { path: '/', modulePath: './assets/js/views/home.js', label: 'Accueil' },
   { path: '/qui-sommes-nous', modulePath: './assets/js/views/a-propos.js', label: 'Qui sommes-nous' },
   { path: '/services', modulePath: './assets/js/views/services.js', label: 'Nos Services' },
-  { path: '/gestion-immobiliere', modulePath: './assets/js/views/gestion-locative.js', label: 'Gestion Immobilière' },
+  { path: '/gestion-locative', modulePath: './assets/js/views/gestion-locative.js', label: 'Gestion Locative' },
   { path: '/creation-entreprise', modulePath: './assets/js/views/creation-entreprise.js', label: 'Création Entreprise' },
   { path: '/dedouanement', modulePath: './assets/js/views/dedouanement.js', label: 'Dédouanement' },
   { path: '/prestation-de-services', modulePath: './assets/js/views/prestation-services.js', label: 'Prestations de Services' },

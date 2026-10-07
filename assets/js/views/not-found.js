@@ -8,7 +8,7 @@ import { icon } from '../icons.js';
 export default {
   meta: {
     title: "404 - Page Introuvable | MULTI BUSINESS SARL",
-    description: "La page que vous recherchez n'existe pas ou a été déplacée. Retrouvez nos services de gestion immobilière et conseil d'affaires au Cameroun.",
+    description: "La page que vous recherchez n'existe pas ou a été déplacée. Retrouvez nos services de gestion locative et conseil d'affaires au Cameroun.",
     image: "./assets/images/og-image.png"
   },
 
@@ -45,10 +45,10 @@ export default {
               <svg class="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>
 
-            <a href="/gestion-immobiliere" data-link class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-md transition-all flex items-center justify-between group shadow-sm">
+            <a href="/gestion-locative" data-link class="p-3.5 rounded-2xl bg-white border border-slate-200 hover:border-emerald-500 hover:shadow-md transition-all flex items-center justify-between group shadow-sm">
               <span class="flex items-center gap-2 text-xs font-bold text-slate-800 group-hover:text-emerald-800">
                 ${icon('building-2', 'w-4 h-4 text-emerald-600')}
-                <span>Gestion Immobilière</span>
+                <span>Gestion Locative</span>
               </span>
               <svg class="w-4 h-4 text-slate-400 group-hover:text-emerald-700 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
             </a>

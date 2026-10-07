@@ -1,0 +1,104 @@
+{
+  "appName": "MULTI BUSINESS SaaS",
+  "appUrl": "https://apps.multibusiness.cm/",
+  "version": "4.2.0 (Build 2026)",
+  "resolution": {
+    "width": 1320,
+    "height": 2868,
+    "aspectRatio": "1320:2868"
+  },
+  "screens": [
+    {
+      "id": "dashboard",
+      "tabTitle": "Vue d'ensemble",
+      "navLabel": "Tableau de bord",
+      "header": {
+        "title": "Bonjour, M. Mbarga",
+        "role": "Bailleur Propriétaire • 48 Lots sous Mandat",
+        "notificationCount": 3
+      },
+      "kpis": [
+        { "label": "Loyers Encaissés (Mois)", "value": "14 850 000 FCFA", "trend": "+100% collecté", "status": "success" },
+        { "label": "Taux d'Occupation", "value": "98.7%", "subtext": "47/48 lots loués", "status": "highlight" },
+        { "label": "Reversement Garanti", "value": "05 du mois", "subtext": "Virement bancaire / OM", "status": "info" },
+        { "label": "Impayés / Litiges", "value": "0 FCFA", "subtext": "Couverture huissiers 1ère & 2e charges", "status": "shield" }
+      ],
+      "recentTransactions": [
+        { "tenant": "Mme Ngo Mandeng", "unit": "Apt 4B - Résidence Akwa", "amount": "450 000 FCFA", "method": "Orange Money", "date": "Aujourd'hui, 09:14", "receiptId": "MB-REC-2026-0891" },
+        { "tenant": "M. Talla Eric", "unit": "Studio 2A - Bonapriso", "amount": "220 000 FCFA", "method": "MTN MoMo", "date": "Hier, 17:42", "receiptId": "MB-REC-2026-0890" },
+        { "tenant": "Sté Cameroun Logistique", "unit": "Magasin 03 - Dakar CCC", "amount": "850 000 FCFA", "method": "Virement Bancaire", "date": "04/10, 11:20", "receiptId": "MB-REC-2026-0889" }
+      ]
+    },
+    {
+      "id": "logements",
+      "tabTitle": "Parc Locatif",
+      "navLabel": "Logements",
+      "header": {
+        "title": "Patrimoine Locatif Géré",
+        "role": "48 Biens Répartis à Douala et Yaoundé",
+        "notificationCount": 0
+      },
+      "filters": ["Tous (48)", "Immeubles (3)", "Appartements (24)", "Studios (15)", "Commerces (6)"],
+      "items": [
+        { "name": "Résidence Les Palmiers", "type": "Immeuble R+4", "units": "12 appartements", "occupancy": "100%", "address": "Douala, Bonapriso", "revenue": "3 800 000 FCFA/mois" },
+        { "name": "Duplex Prestige Golf", "type": "Villa Meublée", "units": "1 lot autonome", "occupancy": "Loué", "address": "Yaoundé, Bastos", "revenue": "1 200 000 FCFA/mois" },
+        { "name": "Complexe Dakar CCC", "type": "Espace Commercial", "units": "6 magasins", "occupancy": "100%", "address": "Douala, Dakar Rond-point CCC", "revenue": "2 100 000 FCFA/mois" },
+        { "name": "Résidence Belvédère", "type": "Appartements F4", "units": "8 appartements", "occupancy": "7/8 Loués", "address": "Douala, Bonamoussadi", "revenue": "2 450 000 FCFA/mois" }
+      ]
+    },
+    {
+      "id": "locataires",
+      "tabTitle": "Baux & Résidents",
+      "navLabel": "Locataires",
+      "header": {
+        "title": "Suivi des Locataires",
+        "role": "Contrats Conformité OHADA & État des Lieux",
+        "notificationCount": 1
+      },
+      "stats": { "activeTenants": 47, "pendingRenewals": 2, "disputes": 0 },
+      "items": [
+        { "tenant": "Dr. Ewane Samuel", "unit": "Palmiers Apt 3A", "entryDate": "15/01/2024", "bailOHADA": "Certifié Conforme", "deposit": "900 000 FCFA (Séquestre)", "paymentScore": "100/100" },
+        { "tenant": "Cabinet BTP Solutions", "unit": "Dakar Bureau 2", "entryDate": "01/06/2023", "bailOHADA": "Bail Commercial OHADA", "deposit": "1 500 000 FCFA", "paymentScore": "98/100" },
+        { "tenant": "Mlle Bih Clarisse", "unit": "Studio Bonapriso S1", "entryDate": "01/09/2025", "bailOHADA": "Certifié Conforme", "deposit": "440 000 FCFA", "paymentScore": "100/100" }
+      ]
+    },
+    {
+      "id": "paiements",
+      "tabTitle": "Flux Mobile Money",
+      "navLabel": "Encaissements",
+      "header": {
+        "title": "Passerelle Mobile Money Live",
+        "role": "Interconnexion Directe Orange Money & MTN MoMo",
+        "notificationCount": 5
+      },
+      "summary": { "today": "1 350 000 FCFA", "orangePercent": "54%", "mtnPercent": "46%" },
+      "liveFeeds": [
+        { "gateway": "Orange Money Cameroun", "txId": "OM-20261007-44910", "amount": "+350 000 FCFA", "sender": "690 ** ** 42", "time": "09:41:12", "status": "Encaissé & Réconcilié" },
+        { "gateway": "MTN Mobile Money", "txId": "MOMO-20261007-88192", "amount": "+220 000 FCFA", "sender": "671 ** ** 19", "time": "09:32:05", "status": "Encaissé & Réconcilié" },
+        { "gateway": "Orange Money Cameroun", "txId": "OM-20261007-11029", "amount": "+450 000 FCFA", "sender": "694 ** ** 77", "time": "08:15:39", "status": "Encaissé & Réconcilié" },
+        { "gateway": "MTN Mobile Money", "txId": "MOMO-20261007-00213", "amount": "+330 000 FCFA", "sender": "677 ** ** 05", "time": "Hier, 22:11", "status": "Encaissé & Réconcilié" }
+      ]
+    },
+    {
+      "id": "quittances",
+      "tabTitle": "Quittances OHADA",
+      "navLabel": "Quittances",
+      "header": {
+        "title": "Quittances Numériques Certifiées",
+        "role": "Horodatage Cryptographique & Code QR Infalsifiable",
+        "notificationCount": 0
+      },
+      "verificationUrl": "https://apps.multibusiness.cm/verify/qr-receipt",
+      "sampleReceipt": {
+        "number": "MB-QUITTANCE-2026-10-0418",
+        "issueDate": "05 Octobre 2026 à 08:00:14",
+        "tenant": "M. Aladin Tchapi",
+        "owner": "SCI Baobab Patrimoine",
+        "amount": "450 000 FCFA",
+        "period": "Octobre 2026",
+        "qrCodeData": "VERIFIED_MB_OHADA_450000_OCT2026_DOUALA",
+        "legalStatus": "Valide & Opposable aux tiers • Art. 78 Acte Uniforme OHADA"
+      }
+    }
+  ]
+}

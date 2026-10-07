@@ -252,9 +252,9 @@ export default {
           <div class="space-y-2">
             <span class="text-xs font-bold uppercase tracking-wider text-emerald-900 font-mono">Service Connexe Recommandé</span>
             <h3 class="font-serif text-2xl font-bold text-marine-900">Entrepôts & Espaces Commerciaux de Stockage</h3>
-            <p class="text-xs text-slate-600 max-w-xl">Besoin d'un hangar sécurisé pour décharger et stocker vos conteneurs à Douala (Bassa, Bonabéri) ? Notre pôle immobilier dispose de surfaces disponibles immédiatement.</p>
+            <p class="text-xs text-slate-600 max-w-xl">Besoin d'un hangar sécurisé pour décharger et stocker vos conteneurs à Douala (Bassa, Bonabéri) ? Notre pôle de gestion locative dispose de surfaces disponibles immédiatement.</p>
           </div>
-          <a href="/gestion-immobiliere" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white inline-flex items-center gap-2">
+          <a href="/gestion-locative" data-link class="btn-outline !px-6 !py-3 text-xs whitespace-nowrap bg-white inline-flex items-center gap-2">
             <span>Voir les entrepôts disponibles</span>
             ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
           </a>

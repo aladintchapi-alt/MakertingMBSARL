@@ -61,7 +61,7 @@
   --border-subtle: #EFECE4;
 }
 
-/* Thème 3 : Pastel Gestion Immobilière (data-theme="tint-emerald") */
+/* Thème 3 : Pastel Gestion Locative (data-theme="tint-emerald") */
 [data-theme="tint-emerald"] {
   --surface: #F0FDF4;
   --surface-subtle: #DCFCE7;
@@ -544,19 +544,27 @@ body.cursor-hover #custom-cursor-ring {
   max-width: 100%;
   z-index: 50;
   transition: box-shadow 0.3s ease;
+  padding-top: env(safe-area-inset-top, 0px);
 }
 
+/* La barre d'informations est STRICTEMENT masquée sur mobile & tablette (< 1024px) */
 #top-bar-container {
-  display: grid;
-  grid-template-rows: 1fr;
-  transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
-  overflow: hidden;
+  display: none !important;
 }
 
-#site-header.header-scrolled #top-bar-container {
-  grid-template-rows: 0fr;
-  opacity: 0;
-  pointer-events: none;
+@media (min-width: 1024px) {
+  #top-bar-container {
+    display: grid !important;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    overflow: hidden;
+  }
+
+  #site-header.header-scrolled #top-bar-container {
+    grid-template-rows: 0fr !important;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 #top-bar-inner {
@@ -567,5 +575,40 @@ body.cursor-hover #custom-cursor-ring {
 #site-header.header-scrolled #main-nav-bar {
   box-shadow: 0 10px 25px -5px rgba(11, 27, 43, 0.08), 0 8px 10px -6px rgba(11, 27, 43, 0.05);
 }
+
+/* Bouton burger interactif avec animation fluide */
+.burger-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  transition: all 0.2s ease;
+}
+
+.burger-line {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: #0B1B2B;
+  border-radius: 9999px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.burger-btn.is-active .burger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burger-btn.is-active .burger-line:nth-child(2) {
+  opacity: 0;
+}
+.burger-btn.is-active .burger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 
 

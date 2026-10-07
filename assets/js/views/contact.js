@@ -5,6 +5,7 @@
 import { CONFIG } from '../config.js';
 import { showToast, initUIComponents } from '../ui.js';
 import { icon } from '../icons.js';
+import { PremiumMapController } from '../modules/map/map-controller.js';
 
 export default {
   meta: {
@@ -61,7 +62,7 @@ export default {
                 <div>
                   <label for="form-service" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Service Concerné *</label>
                   <select id="form-service" class="input-light cursor-pointer font-medium" required>
-                    <option value="Gestion Immobilière (Bailleur / Propriétaire)">Gestion Immobilière (Bailleur / Propriétaire)</option>
+                    <option value="Gestion Locative (Bailleur / Propriétaire)">Gestion Locative (Bailleur / Propriétaire)</option>
                     <option value="Recherche de Logement (Locataire)">Recherche de Logement (Locataire)</option>
                     <option value="Création d'Entreprise Clé en Main">Création d'Entreprise (CFCE / RCCM / NIU)</option>
                     <option value="Dédouanement & Transit Portuaire">Dédouanement & Transit Portuaire</option>
@@ -190,26 +191,64 @@ export default {
               </div>
             </div>
 
-            <!-- Carte Stylisée Plan d'Accès -->
-            <div class="card-light p-6 rounded-3xl border border-slate-200 bg-slate-900 text-white space-y-4">
+            <!-- Carte de Synthèse Situation -->
+            <div class="card-light p-6 rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 space-y-3">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold text-emerald-400 uppercase">Plan de Situation</span>
-                <span class="text-[10px] text-slate-400">Douala 8ᵉ</span>
+                <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider font-mono">Repère Physique</span>
+                <span class="text-[10px] font-mono text-slate-500">4.0325° N, 9.7125° E</span>
               </div>
-              <div class="relative h-44 rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 flex flex-col items-center justify-center text-center p-4">
-                <div class="w-10 h-10 rounded-full bg-lime-400 text-marine-950 flex items-center justify-center font-bold text-lg mb-2 shadow-lg">
-                  ${icon('map-pin', { class: 'w-5 h-5 text-slate-950' })}
-                </div>
-                <p class="font-serif font-bold text-sm text-white">Immeuble Express Union (Dakar)</p>
-                <p class="text-[11px] text-slate-300">Près du Commissariat du 8ᵉ arr. • Douala</p>
-                <a href="https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun" target="_blank" rel="noopener noreferrer" class="mt-3 inline-flex items-center gap-1.5 px-4 py-1.5 bg-white/10 hover:bg-white/20 rounded-full text-xs text-lime-400 border border-lime-400/30 font-semibold transition-colors">
-                  <span>Obtenir l'itinéraire sur Google Maps</span>
-                  ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
-                </a>
+              <div class="space-y-1">
+                <h4 class="font-bold text-sm text-marine-900">Rond-point CCC • Quartier Dakar</h4>
+                <p class="text-xs text-slate-600">Immeuble Express Union, 1er Étage (Face Rond-point CCC, près du Commissariat du 8ᵉ arr.), Douala.</p>
               </div>
+              <a href="#map-section" class="btn-outline !py-2 !px-4 text-xs text-center w-full flex items-center justify-center gap-1.5 bg-white">
+                <span>Explorer la carte interactive ci-dessous ↓</span>
+              </a>
             </div>
 
           </div>
+
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- 3. CARTE INTERACTIVE HYPER-PREMIUM AVEC MODE SATELLITE & 3D       -->
+      <!-- ================================================================= -->
+      <section class="py-20 px-4 md:px-8 bg-white border-t border-slate-200" id="map-section">
+        <div class="max-w-7xl mx-auto space-y-8">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-reveal="up">
+            <div class="space-y-2">
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-200">
+                Géolocalisation & Accès
+              </span>
+              <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">
+                Où Nous Trouver à Douala
+              </h2>
+              <p class="text-xs md:text-sm text-slate-600 max-w-2xl">
+                Explorez notre quartier en mode Plan vectoriel, Satellite haute définition ou Nuit. Basculez la vue 3D pour une perspective immersive du siège.
+              </p>
+            </div>
+
+            <!-- Boutons Rapides Navigation GPS -->
+            <div class="flex flex-wrap items-center gap-2">
+              <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+                <span>Google Maps</span>
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <a href="https://maps.apple.com/?ll=4.0325,9.7125&q=MULTI+BUSINESS+SARL" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+                <span>Apple Maps</span>
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+              <a href="https://waze.com/ul?ll=4.0325,9.7125&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+                <span>Waze</span>
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Conteneur Carte Haute Résolution (Hauteur 540px) -->
+          <div id="contact-interactive-map" class="w-full h-[540px] rounded-3xl overflow-hidden shadow-2xl border border-slate-200" data-reveal="up"></div>
 
         </div>
       </section>
@@ -220,7 +259,7 @@ export default {
       <section class="py-20 px-4 md:px-8 bg-[#FAF9F5] border-t border-slate-200" data-theme="ivory">
         <div class="container max-w-4xl mx-auto text-center space-y-6">
           <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-200">Veille & Conseils</span>
-          <h2 class="font-serif text-3xl font-extrabold text-marine-900">Restez Informé de l'Actualité Immobilière & Fiscale</h2>
+          <h2 class="font-serif text-3xl font-extrabold text-marine-900">Restez Informé de l'Actualité Locative & Fiscale</h2>
           <p class="text-xs md:text-sm text-slate-600 max-w-xl mx-auto">Recevez chaque mois nos analyses de marché au Cameroun, les évolutions de la loi de finances et nos conseils de gestion.</p>
 
           <form id="newsletter-form" class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto pt-2">
@@ -283,9 +322,29 @@ export default {
         }
       });
     }
+
+    // Initialisation de la carte interactive hyper-premium
+    const mapEl = container.querySelector('#contact-interactive-map');
+    if (mapEl) {
+      try {
+        this.mapController = new PremiumMapController({
+          container: mapEl,
+          autoFlyIn: true
+        });
+        this.mapController.init();
+      } catch (err) {
+        console.warn('[Contact] Erreur initialisation carte:', err);
+      }
+    }
   },
 
   destroy() {
+    if (this.mapController) {
+      try {
+        this.mapController.destroy();
+      } catch (e) {}
+      this.mapController = null;
+    }
     this._cleanups.forEach(fn => fn());
     this._cleanups = [];
   }

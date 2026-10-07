@@ -7,6 +7,7 @@ import { CONFIG } from '../config.js';
 import { showToast } from '../ui.js';
 import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
 import { icon, iconBadge } from '../icons.js';
+import { PremiumMapController } from '../modules/map/map-controller.js';
 
 export default {
   meta: {
@@ -25,7 +26,7 @@ export default {
       <section class="relative min-h-[100svh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <!-- Photo d'arrière-plan HD nette avec voile asymétrique protégeant le texte -->
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-accueil.jpg" alt="Immobilier de prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/hero-accueil.jpg" alt="Patrimoine locatif de prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -37,7 +38,7 @@ export default {
             <!-- Badge Live Institutionnel avec vraie respiration au-dessus -->
             <div id="hero-badge" class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-mint-50/95 border border-mint-300 text-emerald-900 text-xs font-bold tracking-wider uppercase shadow-xs backdrop-blur-xs" data-stagger-item>
               <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-              <span>Prestataire Intellectuel & Gestionnaire de Patrimoine Agréé</span>
+              <span>Votre Partenaire d'Affaire</span>
             </div>
 
             <!-- Titre Révélé Mot par Mot -->
@@ -96,7 +97,7 @@ export default {
                   <div class="w-9 h-9 rounded-xl bg-mint-500 flex items-center justify-center text-white font-black text-sm shadow-sm">MB</div>
                   <div>
                     <h3 class="font-bold text-xs text-slate-900 leading-tight">Espace SaaS Propriétaire</h3>
-                    <span class="text-[11px] font-semibold text-mint-700">app.multibusiness.cm</span>
+                    <span class="text-[11px] font-semibold text-mint-700">apps.multibusiness.cm</span>
                   </div>
                 </div>
                 <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint-50 text-mint-800 text-[10px] font-bold border border-mint-200">
@@ -140,7 +141,7 @@ export default {
               </div>
 
               <!-- Bouton d'accès direct au SaaS -->
-              <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="w-full btn-primary !py-3 text-xs flex items-center justify-center gap-2">
+              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="w-full btn-primary !py-3 text-xs flex items-center justify-center gap-2">
                 <span>Accéder à la plateforme SaaS</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
@@ -212,10 +213,10 @@ export default {
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <!-- SERVICE 1 : GESTION IMMOBILIÈRE (Pôle Phare - Pleine Largeur) -->
+            <!-- SERVICE 1 : GESTION LOCATIVE (Pôle Phare - Pleine Largeur) -->
             <div class="col-span-1 md:col-span-2 lg:col-span-3 rounded-3xl bg-white border-2 border-mint-400 p-8 shadow-card flex flex-col lg:flex-row gap-8 items-center relative overflow-hidden group" data-reveal="up">
               <div class="w-full lg:w-5/12 h-64 lg:h-full min-h-[280px] rounded-2xl overflow-hidden relative">
-                <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Gestion Immobilière au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src="./assets/images/hero-gestion-locative.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1.5 bg-mint-600 text-white font-bold text-xs rounded-full shadow-md flex items-center gap-1.5">
                   ${icon('star', { class: 'w-3.5 h-3.5 fill-current' })}
                   <span>PÔLE PHARE (70% DE L'ACTIVITÉ)</span>
@@ -224,10 +225,10 @@ export default {
               <div class="w-full lg:w-7/12 space-y-4 text-left">
                 <div class="flex items-center gap-2">
                   <span class="w-3 h-3 rounded-full bg-mint-500"></span>
-                  <span class="text-xs font-bold text-mint-800 uppercase tracking-wider">Immobilier • Conciergerie • Suivi Technique</span>
+                  <span class="text-xs font-bold text-mint-800 uppercase tracking-wider">Gestion Locative • Conciergerie • Suivi Technique</span>
                 </div>
                 <h3 class="font-serif text-2xl md:text-3xl font-bold text-marine-900">
-                  Gestion Immobilière Intelligente & Espace SaaS Bailleurs
+                  Gestion Locative Intelligente & Espace SaaS Bailleurs
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
                   Confiez-nous vos immeubles, duplex, appartements, studios et espaces commerciaux. Nous prenons en charge la sélection rigoureuse des locataires, les baux conformes OHADA, les quittances certifiées et le reversement garanti de vos loyers chaque 5 du mois via virement, Orange Money ou MTN MoMo.
@@ -242,8 +243,8 @@ export default {
                   </span>
                 </div>
                 <div class="pt-3">
-                  <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
-                    <span>Explorer l'offre Immobilière complète</span>
+                  <a href="/gestion-locative" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+                    <span>Explorer l'offre Locative complète</span>
                     ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                   </a>
                 </div>
@@ -370,7 +371,8 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 5 : GESTION IMMOBILIÈRE EN GRAND (Fond Blanc Pur)          -->
+      <!-- ================================================================= -->
+      <!-- SECTION 5 : GESTION LOCATIVE EN GRAND (Fond Blanc Pur)              -->
       <!-- ================================================================= -->
       <section class="py-24 bg-white">
         <div class="container max-w-7xl mx-auto px-4">
@@ -378,7 +380,7 @@ export default {
           <div class="max-w-3xl mx-auto text-center mb-16" data-reveal="up">
             <span class="inline-block px-3 py-1 rounded-full bg-mint-100 text-mint-800 text-xs font-bold tracking-wider uppercase mb-3">Spécialité Principale</span>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-extrabold text-marine-900 mb-4">
-              La Gestion Immobilière Simplifiée
+              La Gestion Locative Simplifiée
             </h2>
             <p class="text-slate-600 text-sm md:text-base">
               Que vous soyez bailleur propriétaire d'un patrimoine ou locataire à la recherche du logement idéal, découvrez une expérience sur mesure.
@@ -408,7 +410,7 @@ export default {
               <ul class="space-y-3 text-sm text-slate-700">
                 <li class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
-                  <span><strong>Recherche & Filtrage rigoureux des locataires :</strong> solvabilité vérifiée, contrats de travail et cautions.</span>
+                  <span><strong>Recherche & Filtrage rigoureux des locataires :</strong> solvabilité vérifiée, contrats de bail et cautions.</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
@@ -420,14 +422,14 @@ export default {
                 </li>
               </ul>
               <div class="pt-2">
-                <a href="/gestion-immobiliere" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+                <a href="/gestion-locative" data-link class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
                   <span>Confier la gestion de mon bien</span>
                   ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl" data-reveal="right">
-              <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Bailleurs au Cameroun" class="w-full h-80 object-cover" />
+              <img src="./assets/images/hero-gestion-locative.jpg" alt="Bailleurs au Cameroun" class="w-full h-80 object-cover" />
             </div>
           </div>
 
@@ -452,7 +454,7 @@ export default {
                 </li>
               </ul>
               <div class="pt-2">
-                <a href="/gestion-immobiliere" data-link class="btn-secondary !px-6 !py-3 text-xs inline-flex items-center gap-2">
+                <a href="/gestion-locative" data-link class="btn-secondary !px-6 !py-3 text-xs inline-flex items-center gap-2">
                   <span>Voir les logements disponibles</span>
                   ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
@@ -463,7 +465,7 @@ export default {
             </div>
           </div>
 
-          <!-- Catalogue des Types de Biens Immobiliers Gérés -->
+          <!-- Catalogue des Types de Biens Locatifs Gérés -->
           <div class="pt-10 border-t border-slate-100">
             <h3 class="font-serif text-2xl font-bold text-marine-900 text-center mb-8">Types de Biens Pris en Charge</h3>
             
@@ -545,10 +547,10 @@ export default {
           <div class="max-w-3xl mx-auto text-center mb-12" data-reveal="up">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold uppercase tracking-wider mb-4 border border-mint-200">
               <span class="w-2 h-2 rounded-full bg-mint-500 animate-pulse"></span>
-              <span>Plateforme Digitale Propriétaire • app.multibusiness.cm</span>
+              <span>Plateforme Digitale Propriétaire • apps.multibusiness.cm</span>
             </div>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-extrabold text-marine-900 mb-4">
-              L'Application Qui Révolutionne l'Immobilier au Cameroun
+              L'Application Qui Révolutionne la Gestion Locative au Cameroun
             </h2>
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
               Conçue sur mesure pour les bailleurs résidents, la diaspora et les locataires. Suivez vos encaissements, générez vos quittances et pilotez votre patrimoine en temps réel.
@@ -631,7 +633,7 @@ export default {
               </div>
 
               <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs flex items-center gap-2">
+                <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs flex items-center gap-2">
                   <span>Ouvrir l'application mobile</span>
                   ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
@@ -644,6 +646,17 @@ export default {
             <!-- Colonne Droite : Visualiseur 3D Three.js Interactif (Drag & Float) -->
             <div class="lg:col-span-6 relative flex flex-col items-center justify-center order-1 lg:order-2" data-reveal="right">
               
+              <!-- Sélecteur de Finition Titane iPhone 18 Pro Max -->
+              <div class="w-full max-w-md flex items-center justify-between px-3 py-2 mb-2 bg-slate-50/80 rounded-2xl border border-slate-200/80 backdrop-blur-sm">
+                <div class="flex items-center gap-2">
+                  <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">Châssis Titane :</span>
+                  <div id="iphone-finishes-selector" class="flex items-center gap-2"></div>
+                </div>
+                <div class="text-[10px] font-semibold text-slate-400 bg-white px-2 py-0.5 rounded-full border border-slate-200">
+                  Titane Grade 5 • 6.9"
+                </div>
+              </div>
+
               <div class="relative w-full max-w-md h-[520px] rounded-3xl bg-gradient-to-b from-white via-slate-50 to-mint-50/30 border border-slate-200 shadow-xl overflow-hidden flex items-center justify-center p-2">
                 <!-- Zone Canvas 3D -->
                 <div id="home-3d-phone-container" class="w-full h-full cursor-grab active:cursor-grabbing"></div>
@@ -654,6 +667,10 @@ export default {
                   <span>Glissez pour faire pivoter le téléphone</span>
                 </div>
               </div>
+
+              <p id="iphone-disclaimer" class="text-[11px] text-slate-400 text-center mt-2.5 font-normal">
+                iPhone est une marque déposée d'Apple Inc. Rendu conceptuel 3D de l'application MULTI BUSINESS SARL.
+              </p>
 
             </div>
 
@@ -672,7 +689,7 @@ export default {
                 </div>
                 <div class="px-6 py-1 rounded-lg bg-white border border-slate-200 text-xs font-mono text-slate-600 flex items-center gap-2 w-72 justify-center shadow-inner">
                   ${icon('lock', { class: 'w-3.5 h-3.5 text-mint-700' })}
-                  <span>https://app.multibusiness.cm/dashboard</span>
+                  <span>https://apps.multibusiness.cm/dashboard</span>
                 </div>
                 <span class="text-xs font-semibold text-slate-400">MULTI BUSINESS SAAS</span>
               </div>
@@ -718,10 +735,10 @@ export default {
                 <div class="col-span-12 md:col-span-9 p-6 md:p-8 space-y-6 bg-slate-50">
                   <div class="flex flex-wrap items-center justify-between gap-4">
                     <div>
-                      <h3 class="font-bold text-lg text-marine-900">Tableau de Bord Portefeuille Immobilier</h3>
+                      <h3 class="font-bold text-lg text-marine-900">Tableau de Bord Portefeuille Locatif</h3>
                       <p class="text-xs text-slate-500">Mise à jour en temps réel • Partout au Cameroun</p>
                     </div>
-                    <a href="https://app.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder au SaaS</a>
+                    <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder au SaaS</a>
                   </div>
 
                   <!-- Métriques financières en cartes -->
@@ -746,7 +763,7 @@ export default {
                   <!-- Tableau interactif des lots -->
                   <div class="rounded-2xl bg-white border border-slate-200 overflow-hidden shadow-sm">
                     <div class="px-4 py-3 bg-slate-100/70 border-b border-slate-200 font-bold text-xs text-slate-700 flex justify-between">
-                      <span>Lots Immobiliers Récents</span>
+                      <span>Lots Locatifs Récents</span>
                       <span class="text-mint-700">Tous les baux conformes OHADA</span>
                     </div>
                     <div class="divide-y divide-slate-100 text-xs">
@@ -912,7 +929,7 @@ export default {
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up">
-              <span class="text-xs font-bold text-mint-800 block">Pôle Immobilier</span>
+              <span class="text-xs font-bold text-mint-800 block">Pôle Gestion Locative</span>
               <h4 class="font-bold text-sm text-marine-900">Études d'Huissiers Assermentés</h4>
               <p class="text-xs text-slate-600">Huissiers de justice de 1ère et 2e charges pour sécuriser les baux et exécuter les procédures légales.</p>
             </div>
@@ -1049,7 +1066,7 @@ export default {
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Service Concerné *</label>
                     <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
-                      <option value="immo">Gestion Immobilière (Bailleurs)</option>
+                      <option value="gestion-locative">Gestion Locative (Bailleurs)</option>
                       <option value="locataire">Recherche Logement (Locataire)</option>
                       <option value="creation">Création d'Entreprise (CFCE)</option>
                       <option value="douane">Dédouanement des Marchandises</option>
@@ -1118,6 +1135,38 @@ export default {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 10B : NOUS TROUVER À DOUALA (Carte Interactive Satellite) -->
+      <!-- ================================================================= -->
+      <section class="py-20 bg-[#FAF9F5] border-t border-slate-200" data-theme="ivory">
+        <div class="container max-w-7xl mx-auto px-4 space-y-8">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4" data-reveal="up">
+            <div>
+              <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold uppercase tracking-wider mb-2">
+                Localisation • Douala
+              </span>
+              <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">
+                Nous Trouver à Douala (Dakar)
+              </h2>
+              <p class="text-xs md:text-sm text-slate-600 max-w-xl">
+                Rond-point CCC, Immeuble Express Union, 1er Étage. Basculez en mode Satellite ou vue 3D pour explorer nos locaux.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2 !px-4 text-xs inline-flex items-center gap-1.5 bg-white">
+                <span>Itinéraire Google Maps</span>
+                <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="tel:+237690843497" class="btn-primary !py-2 !px-4 text-xs inline-flex items-center gap-1.5">
+                <span>Appeler (+237) 690 84 34 97</span>
+              </a>
+            </div>
+          </div>
+
+          <div id="home-interactive-map" class="w-full h-[440px] rounded-3xl overflow-hidden shadow-xl border border-slate-200" data-reveal="up"></div>
         </div>
       </section>
 
@@ -1280,11 +1329,32 @@ export default {
       playBtn.addEventListener('click', handleVideo);
       this._cleanups.push(() => playBtn.removeEventListener('click', handleVideo));
     }
+
+    // 7. Carte interactive compacte
+    const homeMapEl = container.querySelector('#home-interactive-map');
+    if (homeMapEl) {
+      try {
+        this.mapController = new PremiumMapController({
+          container: homeMapEl,
+          compact: true,
+          autoFlyIn: true
+        });
+        this.mapController.init();
+      } catch (e) {
+        console.warn('[Home] Erreur init map:', e);
+      }
+    }
   },
 
   destroy() {
     console.log('[Home View] destroy() exécuté : Nettoyage');
     destroy3DPhoneViewer();
+    if (this.mapController) {
+      try {
+        this.mapController.destroy();
+      } catch (e) {}
+      this.mapController = null;
+    }
     this._cleanups.forEach(fn => {
       try { fn(); } catch(e) {}
     });

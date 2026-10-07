@@ -76,7 +76,7 @@ export default {
                 <span class="text-white font-mono font-bold text-sm">#26C992</span>
               </div>
               <h3 class="font-serif font-bold text-marine-900 text-base mb-1">Vert Menthe / Émeraude</h3>
-              <p class="text-slate-500 text-xs mb-3">Signature Gestion Immobilière (70%). Sérénité, quittances et finance saine.</p>
+              <p class="text-slate-500 text-xs mb-3">Signature Gestion Locative (70%). Sérénité, quittances et finance saine.</p>
               <div class="flex items-center justify-between text-xs font-mono text-slate-400 pt-2 border-t border-slate-100">
                 <span>Service Phare (70%)</span>
                 <button class="text-mint-700 hover:underline copy-hex-btn" data-hex="#26C992">Copier</button>
@@ -102,13 +102,13 @@ export default {
             Codes Couleur des 5 Services d'Affaires :
           </h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            <!-- 1. Gestion Immobilière -->
+            <!-- 1. Gestion Locative -->
             <div class="p-4 rounded-2xl bg-mint-50 border border-mint-200">
               <div class="w-full h-12 rounded-xl bg-mint-500 mb-3 flex items-center justify-center text-white font-mono font-bold text-xs">
                 #26C992
               </div>
               <span class="badge-pill badge-mint text-[10px] mb-1">Service 1 • 70%</span>
-              <h4 class="font-bold text-marine-900 text-xs mt-1">Gestion Immobilière</h4>
+              <h4 class="font-bold text-marine-900 text-xs mt-1">Gestion Locative</h4>
               <p class="text-[11px] text-slate-500 mt-1">Menthe & Émeraude</p>
             </div>
 
@@ -167,7 +167,7 @@ export default {
             <div>
               <span class="text-xs font-mono text-slate-400 block mb-2">Display 2XL — font-serif (Playfair Display)</span>
               <h1 class="text-display-2xl font-serif font-black text-marine-900 leading-tight">
-                L'Excellence Immobilière au Cameroun.
+                L'Excellence Locative au Cameroun.
               </h1>
             </div>
 
@@ -188,7 +188,7 @@ export default {
             <div>
               <span class="text-xs font-mono text-slate-400 block mb-2">Corps de texte courant — font-sans</span>
               <p class="text-slate-600 text-base leading-relaxed max-w-3xl">
-                Basée à Douala (Dakar, Immeuble Express Union), <strong>MULTI BUSINESS SARL</strong> accompagne les bailleurs résidents et de la diaspora dans la valorisation de leur patrimoine immobilier. Grâce à son application web et mobile propriétaire, elle sécurise les flux de loyers et garantit des reversements ponctuels.
+                Basée à Douala (Dakar, Immeuble Express Union), <strong>MULTI BUSINESS SARL</strong> accompagne les bailleurs résidents et de la diaspora dans la valorisation de leur patrimoine locatif. Grâce à son application web et mobile propriétaire, elle sécurise les flux de loyers et garantit des reversements ponctuels.
               </p>
             </div>
 
@@ -235,7 +235,7 @@ export default {
             <!-- Boutons Couleurs par Service -->
             <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-4">Boutons par Service :</h4>
             <div class="flex flex-wrap gap-4 items-center">
-              <button class="btn-service-mint">Immobilier (Menthe)</button>
+              <button class="btn-service-mint">Gestion Locative (Menthe)</button>
               <button class="btn-service-amber">Création Entreprise (Ambre)</button>
               <button class="btn-service-ocean">Dédouanement (Océan)</button>
               <button class="btn-service-coral">Prestations Travaux (Corail)</button>
@@ -254,15 +254,15 @@ export default {
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Carte 1 : Gestion Immobilière (Phare - Menthe) -->
+            <!-- Carte 1 : Gestion Locative (Phare - Menthe) -->
             <div class="card-light p-8 border-mint-200 bg-gradient-to-b from-mint-50/60 to-white relative overflow-hidden group">
               <div class="badge-pill badge-mint mb-4">Phare • 70%</div>
-              <h3 class="text-xl font-serif font-bold text-marine-900 mb-2">Gestion Immobilière & SaaS</h3>
+              <h3 class="text-xl font-serif font-bold text-marine-900 mb-2">Gestion Locative & SaaS</h3>
               <p class="text-slate-600 text-sm leading-relaxed mb-6">
                 Bailleurs & locataires : immeubles, appartements, studios et magasins. Recouvrement Orange Money / MTN MoMo, quittances certifiées et huissiers de 1ère et 2e charges.
               </p>
               <div class="flex items-center justify-between pt-4 border-t border-mint-100">
-                <span class="text-xs font-mono font-bold text-mint-700">app.multibusiness.cm</span>
+                <span class="text-xs font-mono font-bold text-mint-700">apps.multibusiness.cm</span>
                 <span class="text-sm font-bold text-mint-600 group-hover:translate-x-1 transition-transform">Découvrir →</span>
               </div>
             </div>
@@ -429,11 +429,11 @@ export default {
               </div>
             </div>
 
-            <!-- Image Hero Gestion Immobilière -->
+            <!-- Image Hero Gestion Locative -->
             <div class="card-light overflow-hidden">
               <div class="relative h-64 overflow-hidden">
-                <img src="./assets/images/hero-gestion-immobiliere.jpg" alt="Intérieur Duplex Douala" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-                <span class="absolute top-4 left-4 badge-pill badge-lime !bg-white/95">Hero Gestion Immobilière (16:9)</span>
+                <img src="./assets/images/hero-gestion-locative.jpg" alt="Intérieur Duplex Douala" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
+                <span class="absolute top-4 left-4 badge-pill badge-lime !bg-white/95">Hero Gestion Locative (16:9)</span>
               </div>
               <div class="p-6">
                 <h4 class="font-serif font-bold text-marine-900 text-base mb-1">Intérieur Duplex & Appartements Meublés</h4>
@@ -491,7 +491,7 @@ export default {
                 <div>
                   <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Service Demandé</label>
                   <select class="input-light">
-                    <option>Gestion Immobilière (Bailleur / Locataire)</option>
+                    <option>Gestion Locative (Bailleur / Locataire)</option>
                     <option>Création d'Entreprise PME-PMI (CFCE)</option>
                     <option>Dédouanement des Marchandises</option>
                     <option>Prestation de Services & Artisans</option>

@@ -34,7 +34,7 @@ export default {
           950: '#142501',
         },
         mint: {
-          50: '#F0FDF4',  // Fond pastel service Gestion Immobilière
+          50: '#F0FDF4',  // Fond pastel service Gestion Locative
           100: '#D5FBEA',
           200: '#AEF6D6',
           300: '#75EEBB',

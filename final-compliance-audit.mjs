@@ -38,7 +38,7 @@ async function runAudit() {
     { file: 'home.js', name: 'Accueil (/)', minImages: 15 },
     { file: 'a-propos.js', name: 'Qui sommes-nous (/qui-sommes-nous)', minImages: 10 },
     { file: 'services.js', name: 'Hub Nos Services (/nos-services)', minImages: 5 },
-    { file: 'gestion-locative.js', name: 'Gestion Immobilière (/gestion-immobiliere)', minImages: 12 },
+    { file: 'gestion-locative.js', name: 'Gestion Locative (/gestion-locative)', minImages: 12 },
     { file: 'creation-entreprise.js', name: 'Création d\'Entreprise (/creation-entreprise)', minImages: 6 },
     { file: 'dedouanement.js', name: 'Dédouanement (/dedouanement)', minImages: 6 },
     { file: 'fiscalite.js', name: 'Fiscalité & Conseil (/fiscalite-conseil)', minImages: 6 },
@@ -113,14 +113,14 @@ async function runAudit() {
   assert(indexHtml.includes('<meta property="og:image"'), 'Open Graph og:image configuré');
   assert(indexHtml.includes('<meta property="twitter:card"'), 'Twitter card configurée');
   assert(indexHtml.includes('type="application/ld+json"'), 'Schéma JSON-LD présent dans index.html');
-  assert(indexHtml.includes('RealEstateAgent'), 'Schéma JSON-LD RealEstateAgent configuré');
+  assert(indexHtml.includes('ProfessionalService'), 'Schéma JSON-LD ProfessionalService & LocalBusiness configuré');
   assert(indexHtml.includes('hasOfferCatalog'), 'Schéma JSON-LD OfferCatalog configuré');
   assert(indexHtml.includes('preconnect'), 'Préconnexions DNS & CDN Google Fonts configurées');
   assert(indexHtml.includes('site.webmanifest'), 'Lien vers site.webmanifest configuré');
   
   const sitemapXml = await readFile(join(process.cwd(), 'sitemap.xml'), 'utf-8');
   assert(sitemapXml.includes('<loc>https://www.multibusiness-sarl.com/</loc>'), 'Sitemap contient la racine');
-  assert(sitemapXml.includes('gestion-immobiliere'), 'Sitemap contient la gestion immobilière');
+  assert(sitemapXml.includes('gestion-locative'), 'Sitemap contient la gestion locative');
   assert(sitemapXml.includes('creation-entreprise'), 'Sitemap contient la création d\'entreprise');
   assert(sitemapXml.includes('dedouanement'), 'Sitemap contient le dédouanement');
   assert(sitemapXml.includes('fiscalite-conseil'), 'Sitemap contient la fiscalité');
@@ -182,7 +182,7 @@ async function runAudit() {
     '/',
     '/qui-sommes-nous',
     '/nos-services',
-    '/gestion-immobiliere',
+    '/gestion-locative',
     '/creation-entreprise',
     '/dedouanement',
     '/prestation-de-services',
@@ -201,7 +201,7 @@ async function runAudit() {
         case '/': viewModule = await import('./assets/js/views/home.js'); break;
         case '/qui-sommes-nous': viewModule = await import('./assets/js/views/a-propos.js'); break;
         case '/nos-services': viewModule = await import('./assets/js/views/services.js'); break;
-        case '/gestion-immobiliere': viewModule = await import('./assets/js/views/gestion-locative.js'); break;
+        case '/gestion-locative': viewModule = await import('./assets/js/views/gestion-locative.js'); break;
         case '/creation-entreprise': viewModule = await import('./assets/js/views/creation-entreprise.js'); break;
         case '/dedouanement': viewModule = await import('./assets/js/views/dedouanement.js'); break;
         case '/prestation-de-services': viewModule = await import('./assets/js/views/prestation-services.js'); break;
@@ -243,6 +243,56 @@ async function runAudit() {
     images.length >= 25,
     `Banque d'images multimédia complète (${images.length} assets locaux haute définition)`
   );
+
+  // --- SECTION 6: VÉRIFICATION TERMINOLOGIE "GESTION LOCATIVE" & APP URL ---
+  console.log('\n\x1b[36m[6/6] VÉRIFICATION STRICTE DE LA TERMINOLOGIE ET DU LIEN APPLICATION\x1b[0m');
+
+  const filesToCheck = [
+    'index.html',
+    'sitemap.xml',
+    'site.webmanifest',
+    'assets/js/config.js',
+    'assets/js/router.js',
+    'assets/js/ui.js',
+    'assets/js/views/home.js',
+    'assets/js/views/a-propos.js',
+    'assets/js/views/services.js',
+    'assets/js/views/gestion-locative.js',
+    'assets/js/views/creation-entreprise.js',
+    'assets/js/views/dedouanement.js',
+    'assets/js/views/prestation-services.js',
+    'assets/js/views/fiscalite.js',
+    'assets/js/views/contact.js',
+    'assets/js/views/not-found.js'
+  ];
+
+  let forbiddenFound = 0;
+  let oldUrlFound = 0;
+
+  for (const relFile of filesToCheck) {
+    const rawContent = await readFile(join(process.cwd(), relFile), 'utf-8');
+    // Sanitize allowed "Immeuble" in address
+    const sanitized = rawContent.replace(/Immeuble Express Union/gi, '');
+
+    // Forbidden regex for immobilier/immobilière/etc.
+    const immoRegex = /immobili[a-zà-ÿ]*/gi;
+    const matches = sanitized.match(immoRegex);
+    if (matches && matches.length > 0) {
+      forbiddenFound += matches.length;
+      console.error(`  ❌ [FORBIDDEN] ${matches.length} occurrence(s) de "${matches[0]}" dans ${relFile}`);
+    }
+
+    // Check old app url without 's'
+    const oldUrlRegex = /https?:\/\/app\.multibusiness\.cm/gi;
+    const urlMatches = rawContent.match(oldUrlRegex);
+    if (urlMatches && urlMatches.length > 0) {
+      oldUrlFound += urlMatches.length;
+      console.error(`  ❌ [OLD URL] ${urlMatches.length} occurrence(s) de "app.multibusiness.cm" dans ${relFile}`);
+    }
+  }
+
+  assert(forbiddenFound === 0, `Terminologie stricte : 0 occurrence de "immobili" (hormis "Immeuble Express Union") [détecté: ${forbiddenFound}]`);
+  assert(oldUrlFound === 0, `Lien officiel d'application : 0 occurrence de l'ancien URL sans "s" [détecté: ${oldUrlFound}]`);
 
   console.log('\n================================================================');
   console.log(`📊 RÉSULTAT GLOBAL : ${passedChecks}/${totalChecks} TESTS PASSÉS (${((passedChecks / totalChecks) * 100).toFixed(1)}%)`);

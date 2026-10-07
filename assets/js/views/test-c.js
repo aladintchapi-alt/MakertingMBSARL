@@ -57,8 +57,8 @@ export default {
               Chaque lien ci-dessous déploie le rideau cinématique stylisé aux couleurs du service de destination :
             </p>
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-              <a href="/gestion-immobiliere" data-link class="p-3 bg-mint-500 text-white rounded-xl text-center text-xs font-bold hover:brightness-110 transition-transform hover:scale-105">
-                Immobilier (Menthe)
+              <a href="/gestion-locative" data-link class="p-3 bg-mint-500 text-white rounded-xl text-center text-xs font-bold hover:brightness-110 transition-transform hover:scale-105">
+                Gestion Locative (Menthe)
               </a>
               <a href="/fiscalite-conseil" data-link class="p-3 bg-indigo-600 text-white rounded-xl text-center text-xs font-bold hover:brightness-110 transition-transform hover:scale-105">
                 Fiscalité (Indigo)
@@ -177,7 +177,7 @@ export default {
           '/test-a',
           '/test-b',
           '/test-c',
-          '/gestion-immobiliere',
+          '/gestion-locative',
           '/qui-sommes-nous',
           '/services',
           '/contact'

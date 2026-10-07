@@ -74,8 +74,7 @@ export const refreshScrollTriggers = () => {
 
 // Thèmes de couleur du rideau de transition selon le service de destination
 export const ROUTE_TRANSITION_THEMES = {
-  '/gestion-immobiliere': { bg: '#26C992', accent: '#9AFF01', label: 'Gestion Immobilière' },
-  '/gestion-locative': { bg: '#26C992', accent: '#9AFF01', label: 'Gestion Immobilière' },
+  '/gestion-locative': { bg: '#26C992', accent: '#9AFF01', label: 'Gestion Locative' },
   '/creation-entreprise': { bg: '#D97706', accent: '#FDE68A', label: 'Création d\'Entreprise' },
   '/creation-d-entreprise': { bg: '#D97706', accent: '#FDE68A', label: 'Création d\'Entreprise' },
   '/dedouanement': { bg: '#0284C7', accent: '#BAE6FD', label: 'Dédouanement des Marchandises' },

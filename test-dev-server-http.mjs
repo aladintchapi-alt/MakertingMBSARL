@@ -28,9 +28,9 @@ try {
   const r1 = await fetchUrl('/');
   console.log(`Test 1 [GET /] : Status ${r1.status}, HTML? ${r1.body.includes('<!DOCTYPE html>')}`);
 
-  // Test 2: Virtual SPA route /gestion-immobiliere
-  const r2 = await fetchUrl('/gestion-immobiliere');
-  console.log(`Test 2 [GET /gestion-immobiliere] : Status ${r2.status}, Fallback HTML? ${r2.body.includes('<!DOCTYPE html>')}`);
+  // Test 2: Virtual SPA route /gestion-locative
+  const r2 = await fetchUrl('/gestion-locative');
+  console.log(`Test 2 [GET /gestion-locative] : Status ${r2.status}, Fallback HTML? ${r2.body.includes('<!DOCTYPE html>')}`);
 
   // Test 3: Trailing slash /contact/
   const r3 = await fetchUrl('/contact/');
