@@ -90,7 +90,7 @@ export default {
                   ${icon('building', { class: 'w-5 h-5 text-emerald-800' })}
                 </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Bailleurs</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement garanti le 5 du mois et tableau de bord en ligne 24/7.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement garanti chaque mois et tableau de bord en ligne 24/7.</p>
               </div>
 
               <!-- Carte Vocation 2 : Entrepreneurs -->
@@ -471,15 +471,15 @@ export default {
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-xs font-medium text-slate-700">
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-                  <span>Akwa & Akwa-Nord</span>
+                  <span>Ndogpassi</span>
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-                  <span>Bonanjo & Centre</span>
+                  <span>Logbaba & Plateau</span>
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-                  <span>Bonapriso & Bali</span>
+                  <span>Ndogbon</span>
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
@@ -487,7 +487,7 @@ export default {
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-                  <span>Dakar (Express Union)</span>
+                  <span>Shell & Dakar</span>
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
@@ -495,7 +495,7 @@ export default {
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-                  <span>Logbessou & PK14</span>
+                  <span>Logbessou & PK10</span>
                 </div>
                 <div class="p-3 rounded-xl bg-white border border-slate-200 shadow-2xs flex items-center gap-2">
                   ${icon('map-pin', { class: 'w-3.5 h-3.5 text-emerald-700' })}

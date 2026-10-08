@@ -161,10 +161,11 @@ export default {
           <div class="mb-10 text-center">
             <span class="text-xs font-bold uppercase tracking-widest text-slate-400 block mb-4">Partenaires Institutionnels & Écosystème Agréé</span>
             <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12 opacity-85 text-xs font-mono font-bold text-slate-600">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">Autorités Judiciaires</span>
               <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">DGI Cameroun (Fiscalité)</span>
               <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">CFCE (Création Entreprise)</span>
               <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">Douane Camerounaise & Port</span>
-              <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">Chambre des Huissiers (1ère & 2e charges)</span>
+              <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">Huissiers & Avocats</span>
               <span class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200">Orange Money & MTN MoMo</span>
             </div>
           </div>
@@ -177,7 +178,7 @@ export default {
             </div>
 
             <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
-              <div class="font-mono text-3xl md:text-4xl font-extrabold text-marine-900 mb-1" data-counter="98" data-suffix="%">98%</div>
+              <div class="font-mono text-3xl md:text-4xl font-extrabold text-marine-900 mb-1" data-counter="100" data-suffix="%">98%</div>
               <span class="text-xs md:text-sm font-semibold text-slate-700">Taux de recouvrement ponctuel</span>
             </div>
 
@@ -188,7 +189,7 @@ export default {
 
             <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
               <div class="font-mono text-3xl md:text-4xl font-extrabold text-indigo-600 mb-1" data-counter="10" data-prefix="+" data-suffix=" ans">10 ans</div>
-              <span class="text-xs md:text-sm font-semibold text-slate-700">D'expertise à Douala</span>
+              <span class="text-xs md:text-sm font-semibold text-slate-700">D'expertise au cameroun</span>
             </div>
           </div>
 
@@ -890,7 +891,7 @@ export default {
                 <img src="./assets/images/portrait-pdg.jpg" alt="Directeur Général MULTI BUSINESS SARL" class="w-16 h-16 rounded-full object-cover border-2 border-mint-500 shadow-md" />
                 <div class="space-y-0.5">
                   <h4 class="font-serif font-bold text-sm text-marine-900">Direction Générale</h4>
-                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Douala</p>
+                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Yaoundé</p>
                   <a href="tel:+237690843497" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
                     Ligne directe : (+237) 690 84 34 97
                   </a>
@@ -930,8 +931,8 @@ export default {
             
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up">
               <span class="text-xs font-bold text-mint-800 block">Pôle Gestion Locative</span>
-              <h4 class="font-bold text-sm text-marine-900">Études d'Huissiers Assermentés</h4>
-              <p class="text-xs text-slate-600">Huissiers de justice de 1ère et 2e charges pour sécuriser les baux et exécuter les procédures légales.</p>
+              <h4 class="font-bold text-sm text-marine-900">Autorités Judiciaires</h4>
+              <p class="text-xs text-slate-600">Huissiers de justice & avocats pour sécuriser les baux et exécuter les procédures légales.</p>
             </div>
 
             <div class="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-3 text-left" data-reveal="up" data-delay="0.1">
@@ -1008,7 +1009,7 @@ export default {
                     <span class="text-mint-700 text-lg transition-transform group-open:rotate-45">+</span>
                   </summary>
                   <p class="text-xs text-slate-600 pt-3 leading-relaxed">
-                    Nous réalisons un audit de votre bien, fixons le loyer optimal du marché, rédigeons le mandat de gestion et assurons la sélection des locataires avec signature d'un bail conforme OHADA.
+                    Nous réalisons un audit de votre bien, rédigeons le mandat de gestion et assurons la sélection des locataires avec signature d'un bail conforme OHADA.
                   </p>
                 </details>
 
@@ -1054,7 +1055,7 @@ export default {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Votre Nom & Prénom *</label>
-                    <input type="text" required placeholder="Ex: Jean Dupont" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50" />
+                    <input type="text" required placeholder="Ex: Kamga Baurel" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50" />
                   </div>
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Numéro Téléphone / WhatsApp *</label>
@@ -1076,7 +1077,7 @@ export default {
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Ville d'intervention *</label>
                     <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
-                      <option value="douala">Douala (Siège)</option>
+                      <option value="douala">Douala</option>
                       <option value="yaounde">Yaoundé</option>
                       <option value="autre">Autre ville au Cameroun</option>
                     </select>
