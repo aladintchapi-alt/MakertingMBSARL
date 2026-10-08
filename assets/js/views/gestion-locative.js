@@ -31,7 +31,7 @@ export default {
           
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold tracking-wider uppercase mb-6 shadow-sm">
             ${icon('star', { class: 'w-3.5 h-3.5 text-emerald-700 fill-current' })}
-            <span>PÔLE MAJEUR • 70&nbsp;% DE NOTRE EXPERTISE MÉTIER</span>
+            <span>UN NOM - UNE VISION - UNE STRATEGIE</span>
           </div>
 
           <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marine-900 leading-[1.12] tracking-tight mb-6 max-w-4xl mx-auto">
@@ -56,7 +56,7 @@ export default {
           </div>
 
           <div class="flex flex-wrap items-center justify-center gap-6 text-xs md:text-sm font-semibold text-slate-700 pt-6 border-t border-slate-200">
-            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Reversement garanti le 5 du mois</span>
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Reversement garanti chaque mois</span>
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Orange Money & MTN MoMo</span>
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Baux conformes droit OHADA</span>
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Plateforme Digitale Bailleurs 24/7</span>
@@ -111,7 +111,7 @@ export default {
               </div>
               <h3 class="font-serif text-xl font-bold text-marine-900">Encaissement & Reversement Garanti</h3>
               <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                Encaissement par Orange Money, MTN MoMo et virements. Vos loyers sont reversés ponctuellement sur votre compte le 5 de chaque mois.
+                Encaissement par Orange Money, MTN MoMo et virements. Vos loyers sont reversés ponctuellement sur votre compte chaque mois.
               </p>
             </div>
 
@@ -139,9 +139,9 @@ export default {
               <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">
                 ${icon('wrench', { class: 'w-6 h-6 text-emerald-800' })}
               </div>
-              <h3 class="font-serif text-xl font-bold text-marine-900">Maintenance & Artisans des Biens Gérés</h3>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Maintenance des Biens Gérés</h3>
               <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
-                Réseau d'artisans qualifiés pour les réparations d'électricité, plomberie et réfection avec devis préalablement validés.
+                Réseau de techniciens qualifiés pour les réparations d'électricité, plomberie et réfection avec devis préalablement validés.
               </p>
             </div>
 
@@ -263,7 +263,7 @@ export default {
               <div class="p-6 space-y-2">
                 <h3 class="font-serif text-lg font-bold text-marine-900">Immeubles de Rapport & Résidences R+4 / R+8</h3>
                 <p class="text-xs text-slate-600 leading-relaxed">Administration globale : baux individuels, gardiennage, syndic, entretien des parties communes et reversements groupés.</p>
-                <div class="pt-2 text-xs font-bold text-emerald-800">Douala (Akwa, Bonapriso, Kotto) & Yaoundé</div>
+                <div class="pt-2 text-xs font-bold text-emerald-800">Douala (Ndogbon, Deido, Ndogpassi, ...) & Yaoundé</div>
               </div>
             </div>
 
@@ -277,7 +277,7 @@ export default {
                 </span>
               </div>
               <div class="p-6 space-y-2">
-                <h3 class="font-serif text-lg font-bold text-marine-900">Appartements Meublés & Non Meublés</h3>
+                <h3 class="font-serif text-lg font-bold text-marine-900">Appartements Modernes Non Meublés</h3>
                 <p class="text-xs text-slate-600 leading-relaxed">Sélection rigoureuse des dossiers locataires (solvabilité vérifiée, fiches de paie, garanties), états des lieux d'entrée et sortie numérisés.</p>
                 <div class="pt-2 text-xs font-bold text-emerald-800">Résidentiel & Standing</div>
               </div>
@@ -327,7 +327,7 @@ export default {
               <div class="p-6 space-y-2">
                 <h3 class="font-serif text-lg font-bold text-marine-900">Bureaux d'Affaires & Sièges Sociaux</h3>
                 <p class="text-xs text-slate-600 leading-relaxed">Baux commerciaux conformes Acte Uniforme OHADA, indexation des loyers, facturation de TVA et quittances conformes DGI.</p>
-                <div class="pt-2 text-xs font-bold text-indigo-800">Akwa, Bonanjo, Bastos</div>
+                <div class="pt-2 text-xs font-bold text-indigo-800">Ndogbon, Yassa, Dakar,...</div>
               </div>
             </div>
 
@@ -384,18 +384,18 @@ export default {
             <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold uppercase tracking-wider">Sécurisation Juridique Ultime</span>
             
             <h2 class="font-serif text-3xl font-extrabold text-marine-900 leading-tight">
-              Partenariat Permanent avec Huissiers de 1ère et 2e Charges
+              Partenariat Permanent avec Huissiers de justice & Avocats
             </h2>
 
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              Pour garantir le principe du <strong>zéro litige et zéro impayé</strong>, MULTI BUSINESS SARL collabore en direct avec des études d'huissiers de justice de 1ère et 2e charges assermentées au Cameroun.
+              Pour garantir le principe du <strong>zéro litige et zéro impayé</strong>, MULTI BUSINESS SARL collabore en direct avec les autorités judiriques qualifiées au Cameroun.
             </p>
 
             <div class="space-y-3 text-xs md:text-sm text-slate-700">
               <div class="flex items-start gap-3">
                 <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0">1</span>
                 <div>
-                  <strong class="text-slate-900">Sommations de payer & Mise en demeure sans délai :</strong> Dès 5 jours de retard non régularisé.
+                  <strong class="text-slate-900">Sommations de payer & Mise en demeure sans délai :</strong> Dès lors que de lourds retards de paiement non régularisé sont remarqués.
                 </div>
               </div>
               <div class="flex items-start gap-3">
@@ -455,7 +455,7 @@ export default {
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
               <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-bold text-sm tabular-nums">05</span>
-              <h4 class="font-bold text-sm text-slate-900">Reversement le 5</h4>
+              <h4 class="font-bold text-sm text-slate-900">Versement chaque mois</h4>
               <p class="text-[11px] text-slate-500 leading-snug">Transfert direct de vos loyers nets avec rapport complet téléchargeable sur votre espace en ligne.</p>
             </div>
 
@@ -551,9 +551,9 @@ export default {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
             <div class="flex items-center gap-3">
-              <img src="./assets/images/temoin-1.jpg" alt="Jean-Paul N. - Propriétaire" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <img src="./assets/images/pexels-temoin4.jpg" alt="Ibrahim K. - Propriétaire" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
               <div>
-                <h4 class="font-bold text-sm text-slate-900">Jean-Paul N.</h4>
+                <h4 class="font-bold text-sm text-slate-900">M. Ibrahim K.</h4>
                 <p class="text-[11px] text-slate-500">Propriétaire d'un immeuble R+3 à Bonapriso</p>
               </div>
             </div>
@@ -563,9 +563,9 @@ export default {
 
           <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
             <div class="flex items-center gap-3">
-              <img src="./assets/images/temoin-2.jpg" alt="Aïssatou M. - Diaspora France" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <img src="./assets/images/temoin-4.jpg" alt="Sophie M. - Diaspora France" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
               <div>
-                <h4 class="font-bold text-sm text-slate-900">Aïssatou M.</h4>
+                <h4 class="font-bold text-sm text-slate-900">Mme Sophie M.</h4>
                 <p class="text-[11px] text-slate-500">Diaspora (Paris) • 4 appartements à Bastos</p>
               </div>
             </div>
@@ -575,9 +575,9 @@ export default {
 
           <div class="card-light p-6 rounded-3xl border border-slate-200 space-y-4 shadow-sm bg-[#FAF9F5]" data-reveal="up">
             <div class="flex items-center gap-3">
-              <img src="./assets/images/temoin-3.jpg" alt="Samuel E. - Locataire professionnel" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+              <img src="./assets/images/pexels-temoin5.jpg" alt="Kamga B. - Locataire professionnel" class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
               <div>
-                <h4 class="font-bold text-sm text-slate-900">Samuel E.</h4>
+                <h4 class="font-bold text-sm text-slate-900">M. Kamga B.</h4>
                 <p class="text-[11px] text-slate-500">Locataire de bureau à Akwa</p>
               </div>
             </div>
@@ -607,7 +607,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Nos honoraires sont prélevés sous forme de pourcentage transparent sur les loyers effectivement encaissés (généralement entre 8&nbsp;% et 10&nbsp;% selon le volume de lots et les prestations incluses). Si un bien est vacant, aucun honoraire n'est facturé.
+                Chez MULTI BUSINESS SARL, nos honoraires se définissent sur mesure, de gré à gré avec le bailleur, selon la nature de votre patrimoine, le nombre de lots et l'étendue des prestations que vous nous confiez. Réglés par le bailleur en contrepartie du service de gestion locative rendu, ils sont convenus en toute transparence, avant le début de notre collaboration.
               </div>
             </div>
 
@@ -637,7 +637,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Il vous suffit de fournir une copie de votre pièce d'identité (CNI ou Passeport), le titre de propriété ou certificat d'attribution du bien, et les clés pour l'état des lieux d'entrée. Nous rédigeons le mandat de gestion en toute simplicité.
+                Il vous suffit de fournir une copie de votre pièce d'identité (CNI ou Passeport), le titre de propriété ou certificat d'attribution du bien, ou tout document attestant que le bien vous appartient, et les clés pour l'état des lieux d'entrée. Nous rédigeons le mandat de gestion en toute simplicité.
               </div>
             </div>
 

@@ -525,12 +525,12 @@ export default {
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
               <img src="./assets/images/partenaire-justice.jpg" alt="Chambre Nationale des Huissiers de Justice" class="h-12 w-auto object-contain" />
-              <span class="text-[11px] font-bold text-slate-800">Huissiers Assermentés</span>
-              <span class="text-[9px] text-slate-500 font-mono">1ère & 2e Charges</span>
+              <span class="text-[11px] font-bold text-slate-800">Autorités judiciaires</span>
+              <span class="text-[9px] text-slate-500 font-mono">Huissiers de Justice & Avocats...</span>
             </div>
 
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
-              <img src="./assets/images/partenaire-cfce.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-12 w-auto object-contain" />
+              <img src="./assets/images/service-creation.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-12 w-auto object-contain" />
               <span class="text-[11px] font-bold text-slate-800">CFCE Cameroun</span>
               <span class="text-[9px] text-slate-500 font-mono">Guichet Unique Entreprises</span>
             </div>

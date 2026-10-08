@@ -38,7 +38,7 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
-            De la <strong>gestion locative intelligente (70&nbsp;% de notre activité)</strong> aux formalités de <strong>création d'entreprise</strong>, de <strong>transit douanier</strong> et de <strong>fiscalité</strong>, bénéficiez d'un accompagnement d'élite et sécurisé.
+            De la <strong>gestion locative</strong> aux formalités de <strong>création d'entreprise</strong>, de <strong>transit douanier</strong> et de <strong>fiscalité</strong>, bénéficiez d'un accompagnement d'élite et sécurisé.
           </p>
 
           <!-- Barre de Navigation Rapide par Ancres Fluides -->
@@ -72,7 +72,7 @@ export default {
           <div class="lg:col-span-6 space-y-6" data-reveal="left">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-bold uppercase tracking-wider">
               ${icon('star', { class: 'w-3.5 h-3.5 text-emerald-700 fill-current' })}
-              <span>Pôle Majeur • 70&nbsp;% de notre Activité</span>
+              <span>Pôle Majeur de notre Activité</span>
             </div>
 
             <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 leading-tight">
@@ -98,7 +98,7 @@ export default {
                   ${icon('check', { class: 'w-3.5 h-3.5' })}
                 </div>
                 <div>
-                  <h4 class="text-slate-900 font-bold text-sm">Reversement Programmé le 5 du Mois</h4>
+                  <h4 class="text-slate-900 font-bold text-sm">Reversement Programmé chaque du Mois</h4>
                   <p class="text-xs text-slate-600">Sur votre compte bancaire ou compte Mobile Money sans déplacement.</p>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default {
                   <span class="text-xs font-bold text-slate-900 block">Délai Record Guichet Unique</span>
                   <span class="text-[11px] text-slate-500">CFCE • RCCM • NIU</span>
                 </div>
-                <span class="px-2.5 py-1 bg-amber-100 text-amber-950 text-xs font-bold rounded-lg tabular-nums">72h Chrono</span>
+                <span class="px-2.5 py-1 bg-amber-100 text-amber-950 text-xs font-bold rounded-lg tabular-nums">Délai Chrono</span>
               </div>
             </div>
           </div>
@@ -339,21 +339,7 @@ export default {
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="card-light p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-4 shadow-sm" data-reveal="up">
               <div class="flex items-center gap-3">
-                <img src="./assets/images/temoin-1.jpg" alt="M. Pierre T." class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
-                <div>
-                  <h4 class="font-bold text-sm text-slate-900">M. Pierre T.</h4>
-                  <p class="text-xs text-slate-500">Bailleur à Bonapriso</p>
-                </div>
-              </div>
-              <p class="text-xs text-slate-600 leading-relaxed italic">
-                « Depuis que MULTI BUSINESS SARL gère mon immeuble de 12 appartements, je reçois mon reversement Orange Money sans faute de chaque mois. Zéro souci avec les locataires. »
-              </p>
-              <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
-            </div>
-
-            <div class="card-light p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-4 shadow-sm" data-reveal="up">
-              <div class="flex items-center gap-3">
-                <img src="./assets/images/temoin-2.jpg" alt="Mme Sophie M." class="w-12 h-12 rounded-full object-cover border-2 border-amber-500" />
+                <img src="./assets/images/temoin-4.jpg" alt="Mme Sophie M." class="w-12 h-12 rounded-full object-cover border-2 border-amber-500" />
                 <div>
                   <h4 class="font-bold text-sm text-slate-900">Mme Sophie M.</h4>
                   <p class="text-xs text-slate-500">Directrice SARL Agro</p>
@@ -364,10 +350,26 @@ export default {
               </p>
               <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
             </div>
+            
+            <div class="card-light p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-4 shadow-sm" data-reveal="up">
+              <div class="flex items-center gap-3">
+                <img src="./assets/images/pexels-temoin5.jpg" alt="M. Kamga B." class="w-12 h-12 rounded-full object-cover border-2 border-emerald-500" />
+                <div>
+                  <h4 class="font-bold text-sm text-slate-900">M. Kamga B.</h4>
+                  <p class="text-xs text-slate-500">Bailleur à Ndogbon</p>
+                </div>
+              </div>
+              <p class="text-xs text-slate-600 leading-relaxed italic">
+                « Depuis que MULTI BUSINESS SARL gère mon immeuble de 12 appartements, je reçois mon reversement Orange Money sans faute de chaque mois. Zéro souci avec les locataires. »
+              </p>
+              <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
+            </div>
+
+            
 
             <div class="card-light p-6 rounded-2xl border border-slate-200 bg-slate-50 space-y-4 shadow-sm" data-reveal="up">
               <div class="flex items-center gap-3">
-                <img src="./assets/images/temoin-3.jpg" alt="M. Ibrahim K." class="w-12 h-12 rounded-full object-cover border-2 border-sky-500" />
+                <img src="./assets/images/pexels-temoin4.jpg" alt="M. Ibrahim K." class="w-12 h-12 rounded-full object-cover border-2 border-sky-500" />
                 <div>
                   <h4 class="font-bold text-sm text-slate-900">M. Ibrahim K.</h4>
                   <p class="text-xs text-slate-500">Importateur Électronique</p>
