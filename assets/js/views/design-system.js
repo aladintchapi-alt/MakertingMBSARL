@@ -228,7 +228,7 @@ export default {
               </button>
 
               <button class="btn-primary w-full !bg-marine-900 !text-lime-400 border border-lime-400/40">
-                <span>Espace SaaS 3D</span>
+                <span>Application 3D</span>
               </button>
             </div>
 
@@ -257,7 +257,7 @@ export default {
             <!-- Carte 1 : Gestion Locative (Phare - Menthe) -->
             <div class="card-light p-8 border-mint-200 bg-gradient-to-b from-mint-50/60 to-white relative overflow-hidden group">
               <div class="badge-pill badge-mint mb-4">Phare • 70%</div>
-              <h3 class="text-xl font-serif font-bold text-marine-900 mb-2">Gestion Locative & SaaS</h3>
+              <h3 class="text-xl font-serif font-bold text-marine-900 mb-2">Gestion Locative Digitale</h3>
               <p class="text-slate-600 text-sm leading-relaxed mb-6">
                 Bailleurs & locataires : immeubles, appartements, studios et magasins. Recouvrement Orange Money / MTN MoMo, quittances certifiées et huissiers de 1ère et 2e charges.
               </p>
@@ -322,7 +322,7 @@ export default {
             <!-- Carte 6 : L'Unique Bloc Sombre Autorisé (Marine Encre) -->
             <div class="card-marine-dark p-8 relative overflow-hidden group">
               <div class="badge-pill badge-lime mb-4">Bloc Sombre Max 10%</div>
-              <h3 class="text-xl font-serif font-bold text-white mb-2">Espace SaaS Propriétaire</h3>
+              <h3 class="text-xl font-serif font-bold text-white mb-2">Espace Propriétaire en Ligne</h3>
               <p class="text-slate-300 text-sm leading-relaxed mb-6">
                 Application mobile et web pour bailleurs : suivi des loyers en direct, relances WhatsApp diplomatiques et encaissements automatisés.
               </p>

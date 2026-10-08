@@ -230,21 +230,6 @@ export class iPhone18ProMaxViewer {
     this.screenMesh.position.z = depth / 2 + 0.052;
     this.phoneGroup.add(this.screenMesh);
 
-    // Verre protecteur frontal Ceramic Shield 2 avec léger reflet
-    const frontGlassGeo = new THREE.PlaneGeometry(width * 0.95, height * 0.955);
-    const frontGlassMat = new THREE.MeshPhysicalMaterial({
-      color: 0xFFFFFF,
-      transmission: 0.92,
-      opacity: 1,
-      transparent: true,
-      roughness: 0.04,
-      ior: 1.52,
-      reflectivity: 0.4
-    });
-    const frontGlass = new THREE.Mesh(frontGlassGeo, frontGlassMat);
-    frontGlass.position.z = depth / 2 + 0.056;
-    this.phoneGroup.add(frontGlass);
-
     // --- D. Dynamic Island proportionnée 6.9" ---
     const islandGeo = new THREE.CapsuleGeometry(0.065, 0.36, 4, 12);
     const islandMat = new THREE.MeshBasicMaterial({ color: 0x000000 });
@@ -406,10 +391,14 @@ export class iPhone18ProMaxViewer {
       return this.texturesCache.get(screenType);
     }
 
+    const scale = 2; // Rendu Retina Ultra-Net (1320 × 2868)
     const canvas = document.createElement('canvas');
-    canvas.width = 660;
-    canvas.height = 1434;
+    canvas.width = 660 * scale;
+    canvas.height = 1434 * scale;
     const ctx = canvas.getContext('2d');
+    ctx.scale(scale, scale);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
 
     // Fond général blanc immaculé
     ctx.fillStyle = '#FFFFFF';
@@ -425,7 +414,7 @@ export class iPhone18ProMaxViewer {
     ctx.fillRect(570, 36, 32, 16);
     ctx.fillRect(602, 40, 3, 8);
 
-    // 2. En-tête de l'application SaaS MULTI BUSINESS
+    // 2. En-tête de l'application MULTI BUSINESS
     const headerGrad = ctx.createLinearGradient(0, 70, 660, 220);
     headerGrad.addColorStop(0, '#0B1B2B');
     headerGrad.addColorStop(1, '#13354E');
@@ -445,7 +434,7 @@ export class iPhone18ProMaxViewer {
 
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 22px -apple-system, sans-serif';
-    ctx.fillText('MULTI BUSINESS SAAS', 106, 118);
+    ctx.fillText('MULTI BUSINESS APP', 106, 118);
 
     ctx.fillStyle = '#94A3B8';
     ctx.font = '14px -apple-system, sans-serif';
@@ -500,7 +489,7 @@ export class iPhone18ProMaxViewer {
       const lots = [
         { name: 'Résidence Les Palmiers', badge: '12/12 Loué', amount: '3 800 000 FCFA', tag: 'Immeuble R+4' },
         { name: 'Duplex Prestige Golf', badge: '1/1 Loué', amount: '1 200 000 FCFA', tag: 'Villa Bastos' },
-        { name: 'Complexe Dakar CCC', badge: '6/6 Loué', amount: '2 100 000 FCFA', tag: 'Commerces' },
+        { name: 'Complexe Dakar Express Union', badge: '6/6 Loué', amount: '2 100 000 FCFA', tag: 'Commerces' },
         { name: 'Résidence Belvédère', badge: '7/8 Loué', amount: '2 450 000 FCFA', tag: 'Appartements' }
       ];
 
@@ -551,12 +540,12 @@ export class iPhone18ProMaxViewer {
 
       ctx.fillStyle = '#0B1B2B';
       ctx.font = 'bold 32px -apple-system, sans-serif';
-      ctx.fillText('48 Biens Immobiliers & Commerciaux', 56, 360);
+      ctx.fillText('48 Lots Résidentiels & Commerciaux', 56, 360);
 
       const items = [
         { title: 'Appartement F4 Standing - Bonapriso', price: '450 000 FCFA/mois', tenant: 'M. Jean-Paul T.', status: 'Occupé' },
         { title: 'Duplex Meublé Contemporain - Bastos', price: '1 200 000 FCFA/mois', tenant: 'Dr. Ewane Samuel', status: 'Occupé' },
-        { title: 'Magasin Commercial 80m² - Dakar CCC', price: '350 000 FCFA/mois', tenant: 'Sté Cam Logistique', status: 'Occupé' },
+        { title: 'Magasin Commercial 80m² - Dakar Express Union', price: '350 000 FCFA/mois', tenant: 'Sté Cam Logistique', status: 'Occupé' },
         { title: 'Studio Confort Climatisé - Akwa', price: '180 000 FCFA/mois', tenant: 'Mlle Bih Clarisse', status: 'Occupé' }
       ];
 
@@ -611,7 +600,7 @@ export class iPhone18ProMaxViewer {
 
       const locs = [
         { name: 'Dr. Ewane Samuel', unit: 'Palmiers Apt 3A', deposit: 'Caution : 900 000 FCFA', score: 'Score 100/100' },
-        { name: 'Sté Cameroun Logistique', unit: 'Magasin 03 Dakar CCC', deposit: 'Caution : 1 500 000 FCFA', score: 'Score 98/100' },
+        { name: 'Sté Cameroun Logistique', unit: 'Magasin 03 Dakar Express Union', deposit: 'Caution : 1 500 000 FCFA', score: 'Score 98/100' },
         { name: 'Mme Ngo Mandeng', unit: 'Résidence Akwa 4B', deposit: 'Caution : 900 000 FCFA', score: 'Score 100/100' },
         { name: 'Mlle Bih Clarisse', unit: 'Studio Bonapriso S1', deposit: 'Caution : 440 000 FCFA', score: 'Score 100/100' }
       ];
@@ -777,8 +766,12 @@ export class iPhone18ProMaxViewer {
     ctx.fill();
 
     const tex = new THREE.CanvasTexture(canvas);
-    tex.minFilter = THREE.LinearFilter;
     tex.generateMipmaps = true;
+    tex.minFilter = THREE.LinearMipmapLinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    if (this.renderer && this.renderer.capabilities) {
+      tex.anisotropy = this.renderer.capabilities.getMaxAnisotropy();
+    }
     this.texturesCache.set(screenType, tex);
     return tex;
   }
@@ -1021,7 +1014,7 @@ export class iPhone18ProMaxViewer {
       <div class="relative w-full max-w-sm mx-auto p-6 bg-white rounded-3xl shadow-2xl border border-slate-200 text-left">
         <div class="bg-marine-900 text-white p-4 rounded-2xl mb-4">
           <span class="text-xs font-mono text-lime-400">APPS.MULTIBUSINESS.CM</span>
-          <h4 class="font-bold text-lg">Plateforme SaaS de Gestion Locative</h4>
+          <h4 class="font-bold text-lg">Application MULTI BUSINESS Gestion Locative</h4>
         </div>
         <p class="text-xs text-slate-600 mb-4">Suivi des baux, relances automatisées, quittances et reversements Orange Money & MTN MoMo.</p>
         <div class="p-3 bg-mint-50 rounded-xl border border-mint-200 text-mint-800 text-xs font-semibold">

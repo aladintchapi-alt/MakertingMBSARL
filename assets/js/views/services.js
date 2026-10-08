@@ -76,7 +76,7 @@ export default {
             </div>
 
             <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 leading-tight">
-              Gestion Locative Intelligente & Plateforme SaaS Propriétaire
+              Gestion Locative Intelligente & Espace Propriétaire
             </h2>
 
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
@@ -119,7 +119,7 @@ export default {
                 ${icon('arrow-right', { class: 'w-4 h-4' })}
               </a>
               <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="btn-outline !px-5 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
-                <span>Espace SaaS</span>
+                <span>Espace en Ligne</span>
                 ${icon('external-link', { class: 'w-3.5 h-3.5' })}
               </a>
             </div>
@@ -130,7 +130,7 @@ export default {
               <img src="./assets/images/service-immo.jpg" alt="Gestion Locative MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
-                  <span class="text-xs font-bold text-slate-900 block">Plateforme SaaS Propriétaire</span>
+                  <span class="text-xs font-bold text-slate-900 block">Plateforme Digitale Propriétaire</span>
                   <span class="text-[11px] text-slate-500">apps.multibusiness.cm</span>
                 </div>
                 <span class="px-2.5 py-1 bg-emerald-100 text-emerald-900 text-xs font-bold rounded-lg tabular-nums">100&nbsp;% Traçable</span>

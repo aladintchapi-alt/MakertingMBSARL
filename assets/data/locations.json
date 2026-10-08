@@ -6,17 +6,17 @@
       "id": "siege-douala",
       "geometry": {
         "type": "Point",
-        "coordinates": [9.7125, 4.0325]
+        "coordinates": [9.7355, 4.0282]
       },
       "properties": {
         "title": "MULTI BUSINESS SARL — Siège Social",
         "subtitle": "Direction Générale & Pôle Gestion Locative",
         "building": "Immeuble Express Union, 1er Étage",
-        "landmark": "Face Rond-Point CCC",
-        "district": "Quartier Dakar",
+        "landmark": "Près du commissariat du 8ᵉ arrondissement",
+        "district": "Dakar",
         "city": "Douala",
         "country": "Cameroun",
-        "fullAddress": "Rond-point CCC (Dakar), Immeuble Express Union, 1er Étage, Douala, Cameroun",
+        "fullAddress": "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er Étage, Douala, Cameroun",
         "hours": {
           "weekdays": "Lundi – Vendredi : 08h00 – 17h00",
           "saturday": "Samedi : 08h00 – 14h00",
@@ -29,9 +29,9 @@
         ],
         "email": "contacts@multibusiness.cm",
         "directions": {
-          "google": "https://www.google.com/maps/search/?api=1&query=4.0325,9.7125",
-          "apple": "https://maps.apple.com/?ll=4.0325,9.7125&q=MULTI+BUSINESS+SARL",
-          "waze": "https://waze.com/ul?ll=4.0325,9.7125&navigate=yes"
+          "google": "https://www.google.com/maps/dir/?api=1&destination=4.0282,9.7355",
+          "apple": "https://maps.apple.com/?daddr=4.0282,9.7355&dirflg=d",
+          "waze": "https://waze.com/ul?ll=4.0282,9.7355&navigate=yes"
         }
       }
     }

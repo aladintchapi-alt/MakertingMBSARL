@@ -10,7 +10,7 @@ export const CONFIG = {
     status: "Société à Responsabilité Limitée (SARL)",
     category: "Entreprise Camerounaise de Prestations de Services Intellectuels & Gestion de Patrimoine",
     slogan: "L'Excellence Opérationnelle, la Rigueur Juridique & l'Innovation au Cameroun",
-    tagline: "Plateforme SaaS de Gestion Locative & Conseil Stratégique aux Entreprises",
+    tagline: "Gestion Locative Numérique & Conseil Stratégique aux Entreprises",
     yearFounded: 2020,
     rccm: "RC/DLA/2020/B/243",
     niu: "M012014379280U",
@@ -51,18 +51,18 @@ export const CONFIG = {
     phonePrimary: "(+237) 690 84 34 97",
     phoneSecondary: "(+237) 671 46 17 91",
     emailMain: "contacts@multibusiness.cm",
-    hours: "Lundi – Vendredi : 08h00 – 17h00; Samedi : 08h00 – 14h00",
+    hours: "Lundi – Vendredi : 08h00 – 17h00 | Samedi : 08h00 – 14h00",
     headquarters: {
       city: "Douala",
       country: "Cameroun",
       district: "Dakar",
-      landmark: "à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
+      landmark: "près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
       addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union",
-      addressFull: "Dakar (Douala, Cameroun), à quelques mètres du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
-      mapUrl: "https://maps.google.com/?q=Express+Union+Dakar+Commissariat+8eme+arrondissement+Douala+Cameroun",
+      addressFull: "Dakar (Douala, Cameroun), près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
+      mapUrl: "https://maps.google.com/?q=4.0282,9.7355",
       coordinates: {
-        lng: 9.7125,
-        lat: 4.0325
+        lng: 9.7355,
+        lat: 4.0282
       }
     },
     whatsapp: {
@@ -90,7 +90,7 @@ export const CONFIG = {
     }
   },
 
-  // Configuration Officielle de l'Application SaaS Bailleurs & Locataires
+  // Configuration Officielle de l'Application Bailleurs & Locataires
   app: {
     url: "https://apps.multibusiness.cm/",
     mobileUrl: "https://apps.multibusiness.cm/mobile",
@@ -99,15 +99,15 @@ export const CONFIG = {
   },
 
   appUrls: {
-    saasWeb: "https://apps.multibusiness.cm/",
-    saasMobile: "https://apps.multibusiness.cm/mobile",
+    web: "https://apps.multibusiness.cm/",
+    mobile: "https://apps.multibusiness.cm/mobile",
     currentLiveSite: "https://multibusiness.cm/"
   },
 
   // Configuration Interactive de la Carte MapLibre & MapTiler
   map: {
     maptilerKey: "", // Clé gratuite MapTiler facultative - repli OSM / Satellite automatique
-    center: [9.7125, 4.0325], // [lng, lat] Siège Dakar (Douala), Immeuble Express Union
+    center: [9.7355, 4.0282], // [lng, lat] Siège Dakar (Douala), Immeuble Express Union
     zoom: 15.5,
     pitch: 0,
     pitch3D: 60,
@@ -150,7 +150,7 @@ export const CONFIG = {
     {
       id: "gestion-locative",
       route: "/gestion-locative",
-      title: "Gestion Locative & SaaS Propriétaire",
+      title: "Gestion Locative & Espace Propriétaire",
       isPrimary: true, // SERVICE PHARE (70% du site)
       weight: "70%",
       badge: "Pôle d'Excellence Majeur • 70%",
@@ -225,9 +225,9 @@ export const CONFIG = {
   ],
 
   seo: {
-    siteTitle: "MULTI BUSINESS SARL | Gestion Locative Intelligente, SaaS & Conseil - Douala, Cameroun",
-    siteDescription: "Leader de la gestion locative et du conseil aux entreprises au Cameroun (Douala, Dakar). Bailleurs, locataires, application SaaS, quittances certifiées, CFCE, douane et fiscalité.",
-    keywords: "gestion locative douala, multibusiness sarl, bailleur cameroun, huissier expulsion cameroun, saas gestion locative, creation entreprise cfce douala, dedouanement port douala, fiscalite dgi cameroun"
+    siteTitle: "MULTI BUSINESS SARL | Gestion Locative Intelligente & Conseil - Douala, Cameroun",
+    siteDescription: "Leader de la gestion locative et du conseil aux entreprises au Cameroun (Douala, Dakar). Bailleurs, locataires, quittances certifiées, CFCE, douane et fiscalité.",
+    keywords: "gestion locative douala, multibusiness sarl, bailleur cameroun, huissier expulsion cameroun, application gestion locative, creation entreprise cfce douala, dedouanement port douala, fiscalite dgi cameroun"
   }
 };
 

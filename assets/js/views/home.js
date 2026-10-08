@@ -87,16 +87,16 @@ export default {
             </div>
           </div>
 
-          <!-- Colonne Droite : Carte Flottante d'Accès à l'Application SaaS -->
+          <!-- Colonne Droite : Carte Flottante d'Accès à l'Application Digitale -->
           <div class="lg:col-span-5 relative" data-stagger-item>
             <div class="relative mx-auto max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 overflow-hidden">
               
-              <!-- Header de la carte SaaS -->
+              <!-- Header de la carte application -->
               <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
                 <div class="flex items-center gap-2.5">
                   <div class="w-9 h-9 rounded-xl bg-mint-500 flex items-center justify-center text-white font-black text-sm shadow-sm">MB</div>
                   <div>
-                    <h3 class="font-bold text-xs text-slate-900 leading-tight">Espace SaaS Propriétaire</h3>
+                    <h3 class="font-bold text-xs text-slate-900 leading-tight">Espace Propriétaire en Ligne</h3>
                     <span class="text-[11px] font-semibold text-mint-700">apps.multibusiness.cm</span>
                   </div>
                 </div>
@@ -106,7 +106,7 @@ export default {
                 </span>
               </div>
 
-              <!-- Aperçu Métrique SaaS -->
+              <!-- Aperçu Métrique Financière -->
               <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 mb-4">
                 <div class="flex justify-between items-center text-xs text-slate-600 font-medium">
                   <span>Loyers reversés (Mois en cours)</span>
@@ -140,9 +140,9 @@ export default {
                 </div>
               </div>
 
-              <!-- Bouton d'accès direct au SaaS -->
+              <!-- Bouton d'accès direct à l'application -->
               <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="w-full btn-primary !py-3 text-xs flex items-center justify-center gap-2">
-                <span>Accéder à la plateforme SaaS</span>
+                <span>Accéder à l'application en ligne</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
             </div>
@@ -183,7 +183,7 @@ export default {
 
             <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
               <div class="font-mono text-3xl md:text-4xl font-extrabold text-amber-600 mb-1" data-counter="72" data-suffix="h">72h</div>
-              <span class="text-xs md:text-sm font-semibold text-slate-700">Délai Création Entreprise (CFCE)</span>
+              <span class="text-xs md:text-sm font-semibold text-slate-700">Création Entreprise (CFCE)</span>
             </div>
 
             <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
@@ -219,7 +219,7 @@ export default {
                 <img src="./assets/images/hero-gestion-locative.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1.5 bg-mint-600 text-white font-bold text-xs rounded-full shadow-md flex items-center gap-1.5">
                   ${icon('star', { class: 'w-3.5 h-3.5 fill-current' })}
-                  <span>PÔLE PHARE (70% DE L'ACTIVITÉ)</span>
+                  <span>PÔLE PHARE</span>
                 </span>
               </div>
               <div class="w-full lg:w-7/12 space-y-4 text-left">
@@ -228,15 +228,15 @@ export default {
                   <span class="text-xs font-bold text-mint-800 uppercase tracking-wider">Gestion Locative • Conciergerie • Suivi Technique</span>
                 </div>
                 <h3 class="font-serif text-2xl md:text-3xl font-bold text-marine-900">
-                  Gestion Locative Intelligente & Espace SaaS Bailleurs
+                  Gestion Locative Intelligente & Espace Propriétaire
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
                   Confiez-nous vos immeubles, duplex, appartements, studios et espaces commerciaux. Nous prenons en charge la sélection rigoureuse des locataires, les baux conformes OHADA, les quittances certifiées et le reversement garanti de vos loyers chaque 5 du mois via virement, Orange Money ou MTN MoMo.
                 </p>
                 <div class="flex flex-wrap gap-2 pt-1">
-                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Huissiers 1ère & 2e charges</span>
+                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Huissiers & Avocats</span>
                   <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Zéro litige locatif</span>
-                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Reporting SaaS 24/7</span>
+                  <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Reporting en Ligne 24/7</span>
                   <span class="text-[11px] px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded-lg font-medium border border-emerald-200 inline-flex items-center gap-1.5">
                     ${icon('wrench', { class: 'w-3 h-3 text-emerald-700' })}
                     <span>Entretien technique & maintenance des biens gérés</span>
@@ -256,7 +256,7 @@ export default {
               <div class="space-y-4">
                 <div class="h-48 rounded-2xl overflow-hidden relative">
                   <img src="./assets/images/service-creation.jpg" alt="Création Entreprise CFCE" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-500 text-white font-bold text-[10px] rounded-md">72H CHRONO</span>
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-500 text-white font-bold text-[10px] rounded-md">EXPRESS</span>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-bold text-amber-800">
                   ${icon('landmark', { class: 'w-3.5 h-3.5 text-amber-600' })}
@@ -344,7 +344,7 @@ export default {
               <div class="w-12 h-12 rounded-2xl bg-mint-100 text-mint-700 flex items-center justify-center text-xl font-bold font-mono">01</div>
               <h3 class="font-serif text-2xl font-bold text-marine-900">Dynamisme</h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                Une équipe réactive et proactive, intégrant les nouvelles technologies (SaaS, Mobile Money) pour accélérer chaque procédure sans délai inutile.
+                Une équipe réactive et proactive, intégrant les nouvelles technologies (Application web & mobile, Mobile Money) pour accélérer chaque procédure sans délai inutile.
               </p>
             </div>
 
@@ -362,7 +362,7 @@ export default {
               <div class="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center text-xl font-bold font-mono">03</div>
               <h3 class="font-serif text-2xl font-bold text-marine-900">Disponibilité</h3>
               <p class="text-slate-600 text-sm leading-relaxed">
-                Un interlocuteur dédié accessible 6j/7 de 08h à 17h, par téléphone, WhatsApp ou au siège de Douala (Dakar, Immeuble Express Union).
+                Un interlocuteur dédié accessible Lun–Ven 08h–17h et Sam 08h–14h, par téléphone, WhatsApp ou au siège de Douala (Dakar, Immeuble Express Union).
               </p>
             </div>
 
@@ -414,7 +414,7 @@ export default {
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
-                  <span><strong>Recouvrement ponctuel & Relances automatiques :</strong> virement sur compte bancaire, Orange Money ou MTN MoMo le 5 du mois.</span>
+                  <span><strong>Recouvrement ponctuel & Relances automatiques :</strong> virement sur compte bancaire, Orange Money ou MTN MoMo chaque mois.</span>
                 </li>
                 <li class="flex items-start gap-3">
                   <span class="w-5 h-5 rounded-full bg-mint-100 text-mint-800 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">${icon('check', { class: 'w-3 h-3' })}</span>
@@ -478,7 +478,7 @@ export default {
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Appartements</h4>
-                  <p class="text-[11px] text-slate-500">Résidences meublées ou nues haut standing.</p>
+                  <p class="text-[11px] text-slate-500">Résidences modernes non meublées (cadre de vie agréable).</p>
                 </div>
               </div>
 
@@ -691,7 +691,7 @@ export default {
                   ${icon('lock', { class: 'w-3.5 h-3.5 text-mint-700' })}
                   <span>https://apps.multibusiness.cm/dashboard</span>
                 </div>
-                <span class="text-xs font-semibold text-slate-400">MULTI BUSINESS SAAS</span>
+                <span class="text-xs font-semibold text-slate-400">APPLICATION MULTI BUSINESS</span>
               </div>
 
               <!-- Corps de l'interface bureau -->
@@ -738,7 +738,7 @@ export default {
                       <h3 class="font-bold text-lg text-marine-900">Tableau de Bord Portefeuille Locatif</h3>
                       <p class="text-xs text-slate-500">Mise à jour en temps réel • Partout au Cameroun</p>
                     </div>
-                    <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder au SaaS</a>
+                    <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder à l'application</a>
                   </div>
 
                   <!-- Métriques financières en cartes -->
@@ -1152,11 +1152,11 @@ export default {
                 Nous Trouver à Douala (Dakar)
               </h2>
               <p class="text-xs md:text-sm text-slate-600 max-w-xl">
-                Rond-point CCC, Immeuble Express Union, 1er Étage. Basculez en mode Satellite ou vue 3D pour explorer nos locaux.
+                Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau. Basculez en mode Satellite ou vue 3D pour explorer nos locaux.
               </p>
             </div>
             <div class="flex flex-wrap items-center gap-2">
-              <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2 !px-4 text-xs inline-flex items-center gap-1.5 bg-white">
+              <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2 !px-4 text-xs inline-flex items-center gap-1.5 bg-white">
                 <span>Itinéraire Google Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>

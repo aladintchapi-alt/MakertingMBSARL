@@ -9,7 +9,7 @@ import { icon } from '../icons.js';
 
 export default {
   meta: {
-    title: "Gestion Locative & Espace SaaS Bailleurs | Cameroun",
+    title: "Gestion Locative & Application Bailleurs | Cameroun",
     description: "MULTI BUSINESS SARL : Leader de la gestion locative intelligente au Cameroun. Recherche de locataires, encaissement Orange Money & MTN MoMo, quittances certifiées et reversements ponctuels le 5 du mois.",
     image: "./assets/images/hero-gestion-locative.jpg"
   },
@@ -42,7 +42,7 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
-            Bailleurs résidents et de la diaspora : confiez-nous vos immeubles, appartements, studios et commerces au Cameroun. Encaissez vos loyers chaque mois à date fixe en toute transparence grâce à notre plateforme SaaS propriétaire.
+            Bailleurs résidents et de la diaspora : confiez-nous vos immeubles, appartements, studios et commerces au Cameroun. Encaissez vos loyers chaque mois à date fixe en toute transparence grâce à notre application propriétaire.
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
@@ -59,7 +59,7 @@ export default {
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Reversement garanti le 5 du mois</span>
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Orange Money & MTN MoMo</span>
             <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Baux conformes droit OHADA</span>
-            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Plateforme SaaS Bailleurs 24/7</span>
+            <span class="flex items-center gap-2">${icon('check', { class: 'w-4 h-4 text-emerald-700' })} Plateforme Digitale Bailleurs 24/7</span>
           </div>
 
         </div>
@@ -119,7 +119,7 @@ export default {
               <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-xl">
                 ${icon('bar-chart-3', { class: 'w-6 h-6 text-emerald-800' })}
               </div>
-              <h3 class="font-serif text-xl font-bold text-marine-900">Tableau de Bord SaaS 24/7</h3>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Tableau de Bord en Ligne 24/7</h3>
               <p class="text-slate-600 text-xs md:text-sm leading-relaxed">
                 Suivez en direct l'état d'occupation de vos lots, l'historique des quittances émises et téléchargez vos rapports comptables en 1 clic.
               </p>
@@ -157,7 +157,7 @@ export default {
 
           </div>
 
-          <!-- Aperçu Visuel Espace SaaS Bailleur -->
+          <!-- Aperçu Visuel Espace Bailleur -->
           <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-md bg-white p-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7 space-y-3">
               <span class="text-xs font-bold text-emerald-800 uppercase tracking-wider">Aperçu Espace Propriétaire</span>
@@ -165,13 +165,13 @@ export default {
               <p class="text-xs md:text-sm text-slate-600 leading-relaxed">Visualisez le statut de chaque lot, les loyers collectés, les quittances générées et les reversements effectués chaque mois à date fixe.</p>
             </div>
             <div class="lg:col-span-5 rounded-2xl overflow-hidden border border-slate-200">
-              <img src="./assets/images/app-preview-dashboard.jpg" alt="Tableau de bord SaaS Propriétaire" class="w-full h-48 object-cover" />
+              <img src="./assets/images/app-preview-dashboard.jpg" alt="Tableau de bord Propriétaire" class="w-full h-48 object-cover" />
             </div>
           </div>
 
           <div class="text-center pt-4">
             <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-sm font-bold inline-flex items-center gap-2">
-              <span>Accéder à l'Espace Propriétaire SaaS</span>
+              <span>Accéder à l'Espace Propriétaire en Ligne</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
           </div>
@@ -456,7 +456,7 @@ export default {
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-3 relative" data-reveal="up">
               <span class="w-8 h-8 rounded-xl bg-lime-500 text-marine-950 flex items-center justify-center font-bold text-sm tabular-nums">05</span>
               <h4 class="font-bold text-sm text-slate-900">Reversement le 5</h4>
-              <p class="text-[11px] text-slate-500 leading-snug">Transfert direct de vos loyers nets avec rapport complet téléchargeable sur le SaaS.</p>
+              <p class="text-[11px] text-slate-500 leading-snug">Transfert direct de vos loyers nets avec rapport complet téléchargeable sur votre espace en ligne.</p>
             </div>
 
           </div>
@@ -569,7 +569,7 @@ export default {
                 <p class="text-[11px] text-slate-500">Diaspora (Paris) • 4 appartements à Bastos</p>
               </div>
             </div>
-            <p class="text-xs text-slate-600 italic leading-relaxed">« Vivant en France, le tableau de bord SaaS me permet de suivre mes biens en direct. La transparence et le professionnalisme sont remarquables. »</p>
+            <p class="text-xs text-slate-600 italic leading-relaxed">« Vivant en France, le tableau de bord en ligne me permet de suivre mes biens en direct. La transparence et le professionnalisme sont remarquables. »</p>
             <div class="flex text-amber-400 gap-1">${Array(5).fill(icon('star', { class: 'w-3.5 h-3.5 fill-amber-400 text-amber-400' })).join('')}</div>
           </div>
 
@@ -627,7 +627,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Vous bénéficiez d'un accès direct à votre tableau de bord SaaS 24/7 sur <a href="https://apps.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">apps.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
+                Vous bénéficiez d'un accès direct à votre tableau de bord en ligne 24/7 sur <a href="https://apps.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">apps.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
               </div>
             </div>
 

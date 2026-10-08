@@ -90,7 +90,7 @@ export default {
                   ${icon('building', { class: 'w-5 h-5 text-emerald-800' })}
                 </div>
                 <h4 class="font-bold text-sm text-slate-900 mb-1">Pour les Bailleurs</h4>
-                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement garanti le 5 du mois et tableau de bord SaaS 24/7.</p>
+                <p class="text-xs text-slate-600 leading-relaxed">Gestion locative totale, zéro impayé, reversement garanti le 5 du mois et tableau de bord en ligne 24/7.</p>
               </div>
 
               <!-- Carte Vocation 2 : Entrepreneurs -->
@@ -208,7 +208,7 @@ export default {
               <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-800 text-white tabular-nums">02</span>
             </div>
             <div class="p-6 space-y-3">
-              <h3 class="font-serif text-xl font-bold text-marine-900">Dynamisme & Innovation SaaS</h3>
+              <h3 class="font-serif text-xl font-bold text-marine-900">Dynamisme & Innovation Digitale</h3>
               <p class="text-xs md:text-sm text-slate-600 leading-relaxed">
                 Nous repoussons les limites de la gestion traditionnelle grâce à notre plateforme propriétaire, les alertes automatisées et le reversement direct Orange Money & MTN MoMo.
               </p>
@@ -269,7 +269,7 @@ export default {
             <div class="relative pl-8 md:pl-12" data-reveal="left">
               <div class="absolute -left-3.5 top-1.5 w-7 h-7 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold shadow-md tabular-nums">3</div>
               <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2024</span>
-              <h4 class="font-serif text-xl font-bold text-marine-900">Digitalisation SaaS & Reversements Mobile Money</h4>
+              <h4 class="font-serif text-xl font-bold text-marine-900">Digitalisation & Reversements Mobile Money</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
                 Lancement de la plateforme logicielle <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">apps.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
               </p>

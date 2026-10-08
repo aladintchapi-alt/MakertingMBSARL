@@ -28,7 +28,7 @@ export default {
               Scène Three.js & Mémoire GPU WebGL
             </h1>
             <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-base">
-              Cette vue instancie le modèle 3D de l'iPhone avec l'application SaaS. Lors de la navigation vers une autre page, le moteur détruit le canvas, libère les géométries et textures, et appelle <code class="bg-slate-100 px-2 py-0.5 rounded font-mono text-ocean-600 font-bold">forceContextLoss()</code> pour éviter l'erreur des 16 contextes WebGL maximum.
+              Cette vue instancie le modèle 3D de l'iPhone avec l'application mobile 3D. Lors de la navigation vers une autre page, le moteur détruit le canvas, libère les géométries et textures, et appelle <code class="bg-slate-100 px-2 py-0.5 rounded font-mono text-ocean-600 font-bold">forceContextLoss()</code> pour éviter l'erreur des 16 contextes WebGL maximum.
             </p>
           </div>
 

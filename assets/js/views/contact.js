@@ -38,7 +38,7 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-2xl mx-auto leading-relaxed">
-            Notre siège de <strong>Dakar (Douala, Immeuble Express Union)</strong> vous accueille du lundi au samedi de 08h00 à 17h00.
+            Notre siège de <strong>Dakar (Douala), près du commissariat du 8ᵉ arrondissement (Immeuble Express Union)</strong> vous accueille du lundi au vendredi de 08h00 à 17h00 et le samedi de 08h00 à 14h00.
           </p>
         </div>
       </section>
@@ -136,7 +136,7 @@ export default {
                     ${icon('clock', { class: 'w-4 h-4 text-emerald-700' })}
                     <span>Horaires d'Ouverture :</span>
                   </strong>
-                  <p class="leading-relaxed pl-6">Lundi – Samedi : 08h00 – 17h00 (Permanence 24/7 pour les bailleurs sous contrat).</p>
+                  <p class="leading-relaxed pl-6">Lundi – Vendredi : 08h00 – 17h00 | Samedi : 08h00 – 14h00 (Permanence en ligne 24/7 pour les bailleurs sous contrat).</p>
                 </div>
 
                 <div>
@@ -195,11 +195,11 @@ export default {
             <div class="card-light p-6 rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider font-mono">Repère Physique</span>
-                <span class="text-[10px] font-mono text-slate-500">4.0325° N, 9.7125° E</span>
+                <span class="text-[10px] font-mono text-slate-500">4.0282° N, 9.7355° E</span>
               </div>
               <div class="space-y-1">
-                <h4 class="font-bold text-sm text-marine-900">Rond-point CCC • Quartier Dakar</h4>
-                <p class="text-xs text-slate-600">Immeuble Express Union, 1er Étage (Face Rond-point CCC, près du Commissariat du 8ᵉ arr.), Douala.</p>
+                <h4 class="font-bold text-sm text-marine-900">Dakar • Douala III</h4>
+                <p class="text-xs text-slate-600">Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau.</p>
               </div>
               <a href="#map-section" class="btn-outline !py-2 !px-4 text-xs text-center w-full flex items-center justify-center gap-1.5 bg-white">
                 <span>Explorer la carte interactive ci-dessous ↓</span>
@@ -232,15 +232,15 @@ export default {
 
             <!-- Boutons Rapides Navigation GPS -->
             <div class="flex flex-wrap items-center gap-2">
-              <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Google Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
-              <a href="https://maps.apple.com/?ll=4.0325,9.7125&q=MULTI+BUSINESS+SARL" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="https://maps.apple.com/?ll=4.0282,9.7355&q=MULTI+BUSINESS+SARL" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Apple Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
-              <a href="https://waze.com/ul?ll=4.0325,9.7125&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="https://waze.com/ul?ll=4.0282,9.7355&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Waze</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>

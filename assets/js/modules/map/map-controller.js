@@ -51,8 +51,8 @@ export class PremiumMapController {
       : options.container;
 
     this.options = Object.assign({
-      center: CONFIG.map?.center || [9.7125, 4.0325],
-      zoom: CONFIG.map?.zoom || 15.8,
+      center: CONFIG.map?.center || [9.7355, 4.0282],
+      zoom: CONFIG.map?.zoom || 16,
       pitch: CONFIG.map?.pitch || 0,
       pitch3D: CONFIG.map?.pitch3D || 60,
       bearing: CONFIG.map?.bearing || -17.6,
@@ -93,7 +93,7 @@ export class PremiumMapController {
             type: 'raster',
             source: 'osm',
             minzoom: 0,
-            maxzoom: 19
+            maxzoom: 18
           }
         ]
       },
@@ -115,31 +115,29 @@ export class PremiumMapController {
             type: 'raster',
             source: 'esri',
             minzoom: 0,
-            maxzoom: 19
+            maxzoom: 18
           }
         ]
       },
       nuit: {
         version: 8,
         sources: {
-          cartoDark: {
+          esriDark: {
             type: 'raster',
             tiles: [
-              'https://a.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png',
-              'https://b.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png',
-              'https://c.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}@2x.png'
+              'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
             ],
             tileSize: 256,
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
+            attribution: 'Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
           }
         },
         layers: [
           {
             id: 'dark-layer',
             type: 'raster',
-            source: 'cartoDark',
+            source: 'esriDark',
             minzoom: 0,
-            maxzoom: 20
+            maxzoom: 18
           }
         ]
       }
@@ -184,6 +182,7 @@ export class PremiumMapController {
         style: styles[this.currentMode],
         center: this.options.autoFlyIn ? this.options.flyFromCenter : this.options.center,
         zoom: this.options.autoFlyIn ? this.options.flyFromZoom : this.options.zoom,
+        maxZoom: 18,
         pitch: this.options.pitch,
         bearing: this.options.bearing,
         attributionControl: false,
@@ -269,7 +268,7 @@ export class PremiumMapController {
           <div class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></div>
           <div>
             <span class="font-bold text-marine-900 block leading-tight">Siège Social • Douala</span>
-            <span class="text-[10px] text-slate-500 leading-none">Rond-point CCC, Immeuble Express Union</span>
+            <span class="text-[10px] text-slate-500 leading-none">Dakar, Immeuble Express Union (près Commissariat 8ᵉ)</span>
           </div>
         </div>
 
@@ -305,12 +304,12 @@ export class PremiumMapController {
           </div>
         </div>
         <div class="text-[11px] text-slate-600 space-y-1">
-          <p class="font-medium text-slate-800">Rond-point CCC (Dakar), Immeuble Express Union, 1er Étage</p>
+          <p class="font-medium text-slate-800">Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er Étage</p>
           <p class="text-slate-500">Douala, Cameroun</p>
-          <p class="text-[10px] text-slate-500 pt-1">Lun – Ven : 08h–17h | Sam : 08h–14h</p>
+          <p class="text-[10px] text-slate-500 pt-1">Lun – Ven : 08h00 – 17h00 | Sam : 08h00 – 14h00</p>
         </div>
         <div class="pt-2 flex flex-col gap-1.5">
-          <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-primary !py-1.5 !px-3 text-[11px] text-center w-full flex items-center justify-center gap-1.5">
+          <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-primary !py-1.5 !px-3 text-[11px] text-center w-full flex items-center justify-center gap-1.5">
             <span>Itinéraire Google Maps</span>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
@@ -449,10 +448,10 @@ export class PremiumMapController {
         </div>
         <h3 class="font-serif text-2xl font-bold">Siège Social — MULTI BUSINESS SARL</h3>
         <p class="text-sm text-slate-300 max-w-md">
-          Rond-point CCC (Quartier Dakar), Immeuble Express Union, 1er Étage, Douala, Cameroun.
+          Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er Étage, Douala, Cameroun.
         </p>
         <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <a href="https://www.google.com/maps/search/?api=1&query=4.0325,9.7125" target="_blank" rel="noopener noreferrer" class="btn-primary !px-5 !py-2.5 text-xs inline-flex items-center gap-2">
+          <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-primary !px-5 !py-2.5 text-xs inline-flex items-center gap-2">
             <span>Ouvrir sur Google Maps</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>

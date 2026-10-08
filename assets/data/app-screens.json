@@ -1,5 +1,5 @@
 {
-  "appName": "MULTI BUSINESS SaaS",
+  "appName": "MULTI BUSINESS",
   "appUrl": "https://apps.multibusiness.cm/",
   "version": "4.2.0 (Build 2026)",
   "resolution": {
@@ -26,7 +26,7 @@
       "recentTransactions": [
         { "tenant": "Mme Ngo Mandeng", "unit": "Apt 4B - Résidence Akwa", "amount": "450 000 FCFA", "method": "Orange Money", "date": "Aujourd'hui, 09:14", "receiptId": "MB-REC-2026-0891" },
         { "tenant": "M. Talla Eric", "unit": "Studio 2A - Bonapriso", "amount": "220 000 FCFA", "method": "MTN MoMo", "date": "Hier, 17:42", "receiptId": "MB-REC-2026-0890" },
-        { "tenant": "Sté Cameroun Logistique", "unit": "Magasin 03 - Dakar CCC", "amount": "850 000 FCFA", "method": "Virement Bancaire", "date": "04/10, 11:20", "receiptId": "MB-REC-2026-0889" }
+        { "tenant": "Sté Cameroun Logistique", "unit": "Magasin 03 - Dakar Express Union", "amount": "850 000 FCFA", "method": "Virement Bancaire", "date": "04/10, 11:20", "receiptId": "MB-REC-2026-0889" }
       ]
     },
     {
@@ -35,14 +35,14 @@
       "navLabel": "Logements",
       "header": {
         "title": "Patrimoine Locatif Géré",
-        "role": "48 Biens Répartis à Douala et Yaoundé",
+        "role": "48 Lots Répartis à Douala et Yaoundé",
         "notificationCount": 0
       },
       "filters": ["Tous (48)", "Immeubles (3)", "Appartements (24)", "Studios (15)", "Commerces (6)"],
       "items": [
         { "name": "Résidence Les Palmiers", "type": "Immeuble R+4", "units": "12 appartements", "occupancy": "100%", "address": "Douala, Bonapriso", "revenue": "3 800 000 FCFA/mois" },
         { "name": "Duplex Prestige Golf", "type": "Villa Meublée", "units": "1 lot autonome", "occupancy": "Loué", "address": "Yaoundé, Bastos", "revenue": "1 200 000 FCFA/mois" },
-        { "name": "Complexe Dakar CCC", "type": "Espace Commercial", "units": "6 magasins", "occupancy": "100%", "address": "Douala, Dakar Rond-point CCC", "revenue": "2 100 000 FCFA/mois" },
+        { "name": "Complexe Dakar Express Union", "type": "Espace Commercial", "units": "6 magasins", "occupancy": "100%", "address": "Douala, Dakar Immeuble Express Union", "revenue": "2 100 000 FCFA/mois" },
         { "name": "Résidence Belvédère", "type": "Appartements F4", "units": "8 appartements", "occupancy": "7/8 Loués", "address": "Douala, Bonamoussadi", "revenue": "2 450 000 FCFA/mois" }
       ]
     },

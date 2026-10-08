@@ -35,7 +35,7 @@ Le design s'appuie sur une esthétique **Light Luxury** lumineuse, épurée et m
 
 L'application est construite en **Vanilla Single Page Application (SPA)** ultra-légère, sans framework lourd, pilotée par un routeur dynamique ES Modules :
 
-1. **Accueil (`/`)** : Hero photo plein écran cinématique, bandeau de confiance animé, présentation des 5 services par cartes immersives, vitrine 3D de l'application SaaS, grille de types de biens gérés, storytelling du processus en 4 étapes, témoignages clients et CTA.
+1. **Accueil (`/`)** : Hero photo plein écran cinématique, bandeau de confiance animé, présentation des 5 services par cartes immersives, vitrine 3D de l'application mobile et web, grille de types de biens gérés, storytelling du processus en 4 étapes, témoignages clients et CTA.
 2. **Qui Sommes-Nous (`/qui-sommes-nous`, `/a-propos`)** : Histoire de MULTI BUSINESS SARL, message du PDG, valeurs d'entreprise (Expertise, Rigueur, Disponibilité), timeline d'évolution, galerie photos haute définition (équipe, bureaux, terrains), zones d'intervention (Douala, Yaoundé, CEMAC) et partenaires.
 3. **Hub Nos Services (`/nos-services`, `/services`)** : Vue d'ensemble structurée des 5 métiers avec sections alternées, palettes chromatiques différenciées et accès direct vers chaque page dédiée.
 4. **Gestion Locative (`/gestion-locative`)** : Pôle phare (70% de l'activité). Offre double Bailleurs / Locataires avec bascule interactive, catalogue filtrable des 7 types de biens (immeubles, appartements, studios, chambres, bureaux, magasins, entrepôts), partenariat juridique avec huissiers de justice de 1ère et 2e charges, scène 3D Three.js de l'iPhone interactif, avis vérifiés et FAQ.
