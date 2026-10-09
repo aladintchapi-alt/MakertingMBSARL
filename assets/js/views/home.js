@@ -1157,7 +1157,7 @@ export default {
               </p>
             </div>
             <div class="flex flex-wrap items-center gap-2">
-              <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2 !px-4 text-xs inline-flex items-center gap-1.5 bg-white">
+              <a href="${CONFIG.contact.headquarters.googleDirectionsUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2 !px-4 text-xs inline-flex items-center gap-1.5 bg-white">
                 <span>Itinéraire Google Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>

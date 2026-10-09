@@ -6,7 +6,7 @@
       "id": "siege-douala",
       "geometry": {
         "type": "Point",
-        "coordinates": [9.7355, 4.0282]
+        "coordinates": [9.7370284, 4.0300055]
       },
       "properties": {
         "title": "MULTI BUSINESS SARL — Siège Social",
@@ -29,9 +29,10 @@
         ],
         "email": "contacts@multibusiness.cm",
         "directions": {
-          "google": "https://www.google.com/maps/dir/?api=1&destination=4.0282,9.7355",
-          "apple": "https://maps.apple.com/?daddr=4.0282,9.7355&dirflg=d",
-          "waze": "https://waze.com/ul?ll=4.0282,9.7355&navigate=yes"
+          "google": "https://www.google.com/maps/dir/?api=1&destination=4.0300055,9.7370284",
+          "apple": "https://maps.apple.com/?daddr=4.0300055,9.7370284",
+          "waze": "https://waze.com/ul?ll=4.0300055,9.7370284&navigate=yes",
+          "googleProfile": "https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl"
         }
       }
     }

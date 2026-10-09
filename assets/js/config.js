@@ -59,11 +59,15 @@ export const CONFIG = {
       landmark: "près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
       addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union",
       addressFull: "Dakar (Douala, Cameroun), près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
-      mapUrl: "https://maps.google.com/?q=4.0282,9.7355",
+      mapUrl: "https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl",
+      googleDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=4.0300055,9.7370284",
+      appleMapsUrl: "https://maps.apple.com/?daddr=4.0300055,9.7370284",
+      wazeUrl: "https://waze.com/ul?ll=4.0300055,9.7370284&navigate=yes",
       coordinates: {
-        lng: 9.7355,
-        lat: 4.0282
-      }
+        lng: 9.7370284,
+        lat: 4.0300055
+      },
+      formattedCoords: "4.0300055° N, 9.7370284° E"
     },
     whatsapp: {
       number: "237651559411",
@@ -107,8 +111,8 @@ export const CONFIG = {
   // Configuration Interactive de la Carte MapLibre & MapTiler
   map: {
     maptilerKey: "", // Clé gratuite MapTiler facultative - repli OSM / Satellite automatique
-    center: [9.7355, 4.0282], // [lng, lat] Siège Dakar (Douala), Immeuble Express Union
-    zoom: 15.5,
+    center: [9.7370284, 4.0300055], // [lng, lat] Siège Dakar (Douala), Immeuble Express Union
+    zoom: 17.5,
     pitch: 0,
     pitch3D: 60,
     bearing: -17.6,

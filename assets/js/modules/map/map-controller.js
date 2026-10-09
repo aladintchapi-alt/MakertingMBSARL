@@ -46,6 +46,90 @@ function loadMapLibreAssets() {
 }
 
 /**
+ * Toast de notification discret pour les actions cartographiques
+ */
+function showMapToast(message) {
+  if (typeof document === 'undefined') return;
+  let toast = document.getElementById('mb-map-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'mb-map-toast';
+    toast.className = 'fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl bg-marine-900 text-white text-xs font-semibold shadow-2xl border border-slate-700/60 transition-all duration-300 pointer-events-none flex items-center gap-2 transform translate-y-0 opacity-0';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = `<span class="w-2 h-2 rounded-full bg-lime-400 animate-pulse"></span><span>${message}</span>`;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateY(0)';
+  setTimeout(() => {
+    if (toast) {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(8px)';
+    }
+  }, 3200);
+}
+
+/**
+ * Action : Partager la position officielle de MULTI BUSINESS SARL
+ */
+export function shareCompanyLocation() {
+  const hq = CONFIG.contact?.headquarters || {};
+  const mapUrl = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+  const shareData = {
+    title: 'MULTI BUSINESS SARL — Siège Social Douala',
+    text: `Retrouvez MULTI BUSINESS SARL à Dakar (Douala), Immeuble Express Union (${hq.formattedCoords || '4.0300055° N, 9.7370284° E'})`,
+    url: mapUrl
+  };
+
+  if (typeof navigator !== 'undefined' && navigator.share) {
+    navigator.share(shareData).catch(() => {});
+  } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
+    navigator.clipboard.writeText(mapUrl).then(() => {
+      showMapToast('Position copiée dans le presse-papier !');
+    }).catch(() => {
+      window.open(mapUrl, '_blank');
+    });
+  } else if (typeof window !== 'undefined') {
+    window.open(mapUrl, '_blank');
+  }
+}
+
+/**
+ * Action : Itinéraire depuis la géolocalisation de l'utilisateur
+ */
+export function routeFromUserLocation() {
+  const hq = CONFIG.contact?.headquarters || {};
+  const lat = hq.coordinates?.lat || 4.0300055;
+  const lng = hq.coordinates?.lng || 9.7370284;
+  const fallbackUrl = hq.googleDirectionsUrl || `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+
+  if (typeof navigator === 'undefined' || !navigator.geolocation) {
+    if (typeof window !== 'undefined') window.open(fallbackUrl, '_blank');
+    return;
+  }
+
+  showMapToast('Recherche de votre position GPS...');
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      const { latitude, longitude } = pos.coords;
+      const url = `https://www.google.com/maps/dir/?api=1&origin=${latitude},${longitude}&destination=${lat},${lng}`;
+      window.open(url, '_blank');
+    },
+    err => {
+      console.warn('Géolocalisation indisponible :', err?.message);
+      showMapToast('Ouverture de l\'itinéraire direct...');
+      window.open(fallbackUrl, '_blank');
+    },
+    { enableHighAccuracy: true, timeout: 7000 }
+  );
+}
+
+if (typeof window !== 'undefined') {
+  window.mbShareLocation = shareCompanyLocation;
+  window.mbRouteFromHere = routeFromUserLocation;
+}
+
+
+/**
  * Générateur du thème Nuit dérivé dynamiquement du style vectoriel de base.
  * Garantit un passage Plan <-> Nuit instantané sans nouvelle requête réseau de tuiles.
  */
@@ -224,8 +308,8 @@ export class PremiumMapController {
       : options.container;
 
     this.options = Object.assign({
-      center: CONFIG.map?.center || [9.7355, 4.0282],
-      zoom: CONFIG.map?.zoom || 16,
+      center: CONFIG.map?.center || [9.7370284, 4.0300055],
+      zoom: CONFIG.map?.zoom || 17.5,
       pitch: CONFIG.map?.pitch || 0,
       pitch3D: CONFIG.map?.pitch3D || 60,
       bearing: CONFIG.map?.bearing || -17.6,
@@ -515,7 +599,7 @@ export class PremiumMapController {
           <div class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></div>
           <div>
             <span class="font-bold text-marine-900 block leading-tight">Siège Social • Douala</span>
-            <span class="text-[10px] text-slate-500 leading-none">Dakar, Immeuble Express Union (près Commissariat 8ᵉ)</span>
+            <span class="text-[10px] text-slate-500 leading-none">Dakar, Immeuble Express Union</span>
           </div>
         </div>
 
@@ -558,29 +642,63 @@ export class PremiumMapController {
       </div>
     `;
 
+    const hq = CONFIG.contact?.headquarters || {};
+    const coordsStr = hq.formattedCoords || '4.0300055° N, 9.7370284° E';
+    const gDirections = hq.googleDirectionsUrl || 'https://www.google.com/maps/dir/?api=1&destination=4.0300055,9.7370284';
+    const gProfile = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+    const hours = CONFIG.contact?.hours || 'Lun – Ven : 08h00 – 17h00 | Sam : 08h00 – 14h00';
+
     // Popup informative officielle
     const popupHtml = `
-      <div class="p-3 max-w-xs space-y-2 text-left font-sans">
-        <div class="flex items-center gap-2 pb-2 border-b border-slate-100">
-          <div class="w-7 h-7 rounded-lg bg-marine-900 text-lime-400 font-bold flex items-center justify-center text-xs">MB</div>
+      <div class="p-3.5 max-w-xs space-y-2.5 text-left font-sans">
+        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100">
+          <div class="w-8 h-8 rounded-xl bg-marine-900 text-lime-400 font-black flex items-center justify-center text-xs shadow-sm">MB</div>
           <div>
             <h4 class="font-bold text-xs text-slate-900 leading-tight">MULTI BUSINESS SARL</h4>
-            <span class="text-[10px] text-emerald-800 font-bold">Siège Direction Générale</span>
+            <span class="text-[10px] text-emerald-800 font-bold">Siège & Pôle Gestion Locative</span>
           </div>
         </div>
         <div class="text-[11px] text-slate-600 space-y-1">
-          <p class="font-medium text-slate-800">Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er Étage</p>
-          <p class="text-slate-500">Douala, Cameroun</p>
-          <p class="text-[10px] text-slate-500 pt-1">Lun – Ven : 08h00 – 17h00 | Sam : 08h00 – 14h00</p>
+          <p class="font-medium text-slate-800 leading-tight">Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau</p>
+          <div class="flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            <span>${coordsStr}</span>
+          </div>
+          <p class="text-[10px] text-slate-500 pt-0.5">${hours}</p>
         </div>
-        <div class="pt-2 flex flex-col gap-1.5">
-          <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-primary !py-1.5 !px-3 text-[11px] text-center w-full flex items-center justify-center gap-1.5">
+        
+        <!-- Téléphones cliquables -->
+        <div class="grid grid-cols-2 gap-1.5 pt-0.5">
+          <a href="tel:+237690843497" class="text-[10px] font-semibold text-slate-800 hover:text-orange-600 bg-orange-50/70 hover:bg-orange-100/70 border border-orange-200/60 rounded-lg px-2 py-1 flex items-center gap-1 transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FF7900]"></span>
+            <span>Orange</span>
+          </a>
+          <a href="tel:+237671461791" class="text-[10px] font-semibold text-slate-800 hover:text-amber-600 bg-amber-50/70 hover:bg-amber-100/70 border border-amber-200/60 rounded-lg px-2 py-1 flex items-center gap-1 transition-colors">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#FFCC00]"></span>
+            <span>MTN</span>
+          </a>
+        </div>
+
+        <!-- Boutons d'Action Principaux -->
+        <div class="pt-1 flex flex-col gap-1.5">
+          <a href="${gDirections}" target="_blank" rel="noopener noreferrer" class="btn-primary !py-1.5 !px-3 text-[11px] text-center w-full flex items-center justify-center gap-1.5 shadow-sm">
             <span>Itinéraire Google Maps</span>
             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </a>
-          <a href="tel:+237690843497" class="btn-outline !py-1 !px-3 text-[10px] text-center w-full bg-white">
-            Appeler : (+237) 690 84 34 97
+          <a href="${gProfile}" target="_blank" rel="noopener noreferrer" class="btn-outline !py-1 !px-3 text-[10px] text-center w-full bg-white flex items-center justify-center gap-1">
+            <span>Ouvrir dans Google Maps</span>
+            <svg class="w-2.5 h-2.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
+          <div class="grid grid-cols-2 gap-1 pt-0.5">
+            <button type="button" onclick="window.mbShareLocation && window.mbShareLocation()" class="btn-outline !py-1 !px-2 text-[9px] text-center bg-slate-50 hover:bg-slate-100 flex items-center justify-center gap-1 border-slate-200 cursor-pointer">
+              <svg class="w-2.5 h-2.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              <span>Partager</span>
+            </button>
+            <button type="button" onclick="window.mbRouteFromHere && window.mbRouteFromHere()" class="btn-outline !py-1 !px-2 text-[9px] text-center bg-slate-50 hover:bg-slate-100 flex items-center justify-center gap-1 border-slate-200 cursor-pointer">
+              <svg class="w-2.5 h-2.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              <span>Ma position</span>
+            </button>
+          </div>
         </div>
       </div>
     `;
@@ -788,6 +906,10 @@ export class PremiumMapController {
   _renderOfflineFallback() {
     if (!this.container || this._isDestroyed) return;
 
+    const hq = CONFIG.contact?.headquarters || {};
+    const coordsStr = hq.formattedCoords || '4.0300055° N, 9.7370284° E';
+    const mapUrl = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+
     this.container.innerHTML = `
       <div class="relative w-full h-full min-h-[420px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 text-white flex flex-col items-center justify-center p-8 text-center space-y-4">
         <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-lime-400 mb-2">
@@ -796,10 +918,10 @@ export class PremiumMapController {
         <h3 class="font-serif text-2xl font-bold">Siège Social — MULTI BUSINESS SARL</h3>
         <p class="text-sm text-slate-300 max-w-md">
           Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau.<br/>
-          Coordonnées : 4.0282° N, 9.7355° E
+          Coordonnées : ${coordsStr}
         </p>
         <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-          <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-primary !py-2.5 !px-5 text-xs">
+          <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary !py-2.5 !px-5 text-xs">
             Ouvrir dans Google Maps
           </a>
           <button id="btn-map-retry" class="btn-outline !py-2.5 !px-5 text-xs text-white border-white/40 hover:bg-white/10">

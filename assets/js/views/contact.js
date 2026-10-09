@@ -195,11 +195,11 @@ export default {
             <div class="card-light p-6 rounded-3xl border border-slate-200 bg-gradient-to-b from-white to-slate-50 space-y-3">
               <div class="flex items-center justify-between">
                 <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider font-mono">Repère Physique</span>
-                <span class="text-[10px] font-mono text-slate-500">4.0282° N, 9.7355° E</span>
+                <span class="text-[10px] font-mono text-slate-500">${CONFIG.contact.headquarters.formattedCoords}</span>
               </div>
               <div class="space-y-1">
                 <h4 class="font-bold text-sm text-marine-900">Dakar • Douala III</h4>
-                <p class="text-xs text-slate-600">Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union, 1er niveau.</p>
+                <p class="text-xs text-slate-600">${CONFIG.contact.headquarters.addressShort}, 1er niveau.</p>
               </div>
               <a href="#map-section" class="btn-outline !py-2 !px-4 text-xs text-center w-full flex items-center justify-center gap-1.5 bg-white">
                 <span>Explorer la carte interactive ci-dessous ↓</span>
@@ -232,18 +232,30 @@ export default {
 
             <!-- Boutons Rapides Navigation GPS -->
             <div class="flex flex-wrap items-center gap-2">
-              <a href="https://www.google.com/maps/search/?api=1&query=4.0282,9.7355" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="${CONFIG.contact.headquarters.googleDirectionsUrl}" target="_blank" rel="noopener noreferrer" class="btn-primary !py-2.5 !px-4 text-xs inline-flex items-center gap-2 shadow-sm">
+                <span>Itinéraire Google</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+              <a href="${CONFIG.contact.headquarters.mapUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Google Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
-              <a href="https://maps.apple.com/?ll=4.0282,9.7355&q=MULTI+BUSINESS+SARL" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="${CONFIG.contact.headquarters.appleMapsUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Apple Maps</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
-              <a href="https://waze.com/ul?ll=4.0282,9.7355&navigate=yes" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
+              <a href="${CONFIG.contact.headquarters.wazeUrl}" target="_blank" rel="noopener noreferrer" class="btn-outline !py-2.5 !px-4 text-xs inline-flex items-center gap-2 bg-white">
                 <span>Waze</span>
                 <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               </a>
+              <button type="button" onclick="window.mbShareLocation && window.mbShareLocation()" class="btn-outline !py-2.5 !px-3.5 text-xs inline-flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100 cursor-pointer" title="Partager la position">
+                <svg class="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+                <span>Partager</span>
+              </button>
+              <button type="button" onclick="window.mbRouteFromHere && window.mbRouteFromHere()" class="btn-outline !py-2.5 !px-3.5 text-xs inline-flex items-center gap-1.5 bg-slate-50 hover:bg-slate-100 cursor-pointer" title="Itinéraire depuis ma position GPS">
+                <svg class="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <span>Ma position</span>
+              </button>
             </div>
           </div>
 

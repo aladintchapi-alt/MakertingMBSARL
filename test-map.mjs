@@ -324,7 +324,7 @@ try {
       new Promise(resolve => {
         const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
         if (ctrl?.map) {
-          ctrl.map.jumpTo({ center: [9.7355, 4.0282], zoom: 16 });
+          ctrl.map.jumpTo({ center: [9.7370284, 4.0300055], zoom: 17.5 });
           ctrl.map.once('idle', () => resolve());
           setTimeout(resolve, 3500);
         } else {
@@ -384,7 +384,7 @@ try {
       new Promise(resolve => {
         const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
         if (ctrl?.map) {
-          ctrl.map.flyTo({ center: [9.7355, 4.0282], zoom: 16, essential: true });
+          ctrl.map.flyTo({ center: [9.7370284, 4.0300055], zoom: 17.5, essential: true });
           ctrl.map.once('idle', () => resolve());
           setTimeout(resolve, 3500);
         } else {
@@ -433,7 +433,7 @@ try {
       new Promise(resolve => {
         const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
         if (ctrl?.map) {
-          ctrl.map.flyTo({ center: [9.7355, 4.0282], zoom: 17, essential: true });
+          ctrl.map.flyTo({ center: [9.7370284, 4.0300055], zoom: 17.5, essential: true });
           ctrl.map.once('idle', () => resolve());
           setTimeout(resolve, 3500);
         } else {
@@ -502,10 +502,34 @@ try {
       (() => {
         const marker = document.querySelector('.custom-map-marker');
         const badge = document.querySelector('#contact-interactive-map span');
+        const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+        const center = ctrl?.map ? ctrl.map.getCenter() : null;
+        const gDirBtn = document.querySelector('a[href*="destination=4.0300055,9.7370284"]');
+        const gProfileBtn = document.querySelector('a[href*="maps/place/multibusiness"]');
+        
+        // Vérification Schema.org
+        const ldJsonEl = document.querySelector('script[type="application/ld+json"]');
+        let schemaGeoValid = false;
+        if (ldJsonEl) {
+          try {
+            const data = JSON.parse(ldJsonEl.textContent);
+            const graph = data['@graph'] || [data];
+            const localBiz = graph.find(item => item.geo && item.geo.latitude);
+            if (localBiz && localBiz.geo.latitude === 4.0300055 && localBiz.geo.longitude === 9.7370284) {
+              schemaGeoValid = true;
+            }
+          } catch (e) {}
+        }
+
         return {
           hasMarker: !!marker,
           markerText: marker ? marker.innerText.trim() : '',
-          hasBadge: !!badge
+          hasBadge: !!badge,
+          centerLng: center ? center.lng : null,
+          centerLat: center ? center.lat : null,
+          hasGDirBtn: !!gDirBtn,
+          hasGProfileBtn: !!gProfileBtn,
+          schemaGeoValid
         };
       })()
     `,
@@ -513,6 +537,15 @@ try {
   });
   assert(markerCheck.result.value.hasMarker, 'Marqueur officiel MB présent sur la carte');
   assert(markerCheck.result.value.markerText.includes('MB'), 'Marqueur affiche les initiales officielles MB');
+  assert(
+    markerCheck.result.value.centerLng &&
+    Math.abs(markerCheck.result.value.centerLng - 9.7370284) < 0.005 &&
+    Math.abs(markerCheck.result.value.centerLat - 4.0300055) < 0.005,
+    `Centre de la carte calé sur les coordonnées exactes du siège : [${markerCheck.result.value.centerLng?.toFixed(7)}, ${markerCheck.result.value.centerLat?.toFixed(7)}]`
+  );
+  assert(markerCheck.result.value.hasGDirBtn, 'Bouton Itinéraire Google Maps configuré avec destination 4.0300055,9.7370284');
+  assert(markerCheck.result.value.hasGProfileBtn, 'Lien Fiche Google Maps officielle de l\'entreprise vérifié');
+  assert(markerCheck.result.value.schemaGeoValid, 'Données structurées Schema.org LocalBusiness vérifiées avec geo {4.0300055, 9.7370284}');
 
   // Capture Zoom Dakar
   await captureMapScreen('capture_map_dakar_zoom.png');
