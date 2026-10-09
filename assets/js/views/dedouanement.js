@@ -167,7 +167,7 @@ export default {
       <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/bien-commercial.jpg" alt="Hangars de stockage et transit portuaire" class="w-full h-56 object-cover" />
+            <img src="./assets/images/dedouanement/pexels-jeffreysoh-4628583.jpg" alt="Hangars de stockage et transit portuaire" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Entrepôts & Hangars Sécurisés</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Surfaces de stockage temporaire gardiennées 24/7 en zone portuaire et industrielle pour vos marchandises sous douane.</p>
@@ -175,7 +175,7 @@ export default {
           </div>
 
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/galerie-terrain.jpg" alt="Parc logistique et plateformes de déchargement" class="w-full h-56 object-cover" />
+            <img src="./assets/images/dedouanement/pexels-marcin-jozwiak-199600-2804929.jpg" alt="Parc logistique et plateformes de déchargement" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Parc Logistique & Flotte de Remorques</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Moyens de levage et camions porte-conteneurs pour assurer l'acheminement direct jusqu'à votre usine ou magasin.</p>
@@ -203,9 +203,9 @@ export default {
 
         <!-- Témoignage Importateur -->
         <div class="card-light p-6 rounded-3xl border border-slate-200 shadow-sm bg-[#FAF9F5] mt-8 flex flex-col sm:flex-row items-center gap-5">
-          <img src="./assets/images/temoin-3.jpg" alt="Guy M. - Directeur Import" class="w-16 h-16 rounded-full object-cover border-2 border-sky-500 flex-shrink-0" />
+          <img src="./assets/images/pexels-temoin3.jpg" alt="Guy M. - Directeur Import" class="w-16 h-16 rounded-full object-cover border-2 border-sky-500 flex-shrink-0" />
           <div class="space-y-1 text-center sm:text-left">
-            <h4 class="font-bold text-sm text-slate-900">Guy M. • Directeur Logistique Groupe Agroalimentaire</h4>
+            <h4 class="font-bold text-sm text-slate-900">M. Guy francklin. • Directeur Logistique Groupe Agroalimentaire</h4>
             <p class="text-xs text-slate-600 italic leading-relaxed">« Nous importons plus de 20 conteneurs par mois. Avec MULTI BUSINESS SARL, nous avons divisé nos frais de surestaries par 5 et les marchandises sont livrées en un temps record. »</p>
           </div>
         </div>
@@ -264,7 +264,7 @@ export default {
       <!-- CTA Final -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Port de Douala" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/dedouanement/pexels-david-slaager-3875806-5759145.jpg" alt="Port de Douala" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">

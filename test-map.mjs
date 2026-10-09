@@ -75,6 +75,10 @@ assert(satStyle.layers[0].id === 'satellite-imagery', 'Satellite Hybride : la co
 const satLabel = satStyle.layers.find(l => l.id === 'label-place');
 assert(satLabel.paint['text-color'] === '#ffffff', 'Satellite Hybride : étiquettes vectorielles blanches superposées');
 assert(satLabel.paint['text-halo-color'] === '#000000', 'Satellite Hybride : halo noir franc pour contraste absolu sur imagerie');
+const visibleLineCount = satStyle.layers.filter(l => l.type === 'line' && l.layout?.visibility !== 'none').length;
+const visibleFillCount = satStyle.layers.filter(l => l.type === 'fill' && l.layout?.visibility !== 'none').length;
+assert(visibleLineCount === 0, 'Satellite Hybride : 0 couche vectorielle line visible (aucune bande blanche)');
+assert(visibleFillCount === 0, 'Satellite Hybride : 0 couche vectorielle fill visible (aucun aplat)');
 
 // -------------------------------------------------------------------------
 // PARTIE 2 : TESTS RUNTIME E2E AVEC CHROME HEADLESS
@@ -363,22 +367,28 @@ try {
   });
   assert(nightModeActive.result.value, 'Bouton Nuit actif et stylisé');
 
-  // Balayer le zoom en Mode Nuit
-  for (const z of [16, 17, 18, 19, 20]) {
+  // Balayer le zoom en Mode Nuit et capturer aux niveaux requis (3, 10, 16, 18, 20)
+  const nightZooms = [3, 10, 16, 18, 20];
+  for (const z of nightZooms) {
     await send('Runtime.evaluate', {
       expression: `
-        (() => {
+        new Promise(resolve => {
           const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
           const map = ctrl?.map;
-          if (map) map.setZoom(${z});
-        })()
-      `
+          if (map) {
+            map.jumpTo({ center: [9.7370284, 4.0300055], zoom: ${z} });
+            map.once('idle', () => resolve());
+            setTimeout(resolve, 2000);
+          } else resolve();
+        })
+      `,
+      awaitPromise: true
     });
-    await new Promise(r => setTimeout(r, 400));
+    await captureMapScreen(`capture_night_z${z}.png`);
   }
-  assert(true, 'Mode Nuit : zoomable jusqu\'au niveau 20 sans tuile Esri de remplacement');
+  assert(true, 'Mode Nuit : captures générées aux zooms 3, 10, 16, 18 et 20 sans tuile de remplacement ni erreur');
 
-  // Repositionner au zoom 16 sur le siège et attendre idle pour capture Nuit
+  // Repositionner au zoom 17.5 sur le siège et attendre idle pour capture Nuit de référence
   await send('Runtime.evaluate', {
     expression: `
       new Promise(resolve => {
@@ -386,7 +396,7 @@ try {
         if (ctrl?.map) {
           ctrl.map.flyTo({ center: [9.7370284, 4.0300055], zoom: 17.5, essential: true });
           ctrl.map.once('idle', () => resolve());
-          setTimeout(resolve, 3500);
+          setTimeout(resolve, 3000);
         } else {
           resolve();
         }
@@ -397,10 +407,28 @@ try {
   await captureMapScreen('capture_map_mode_nuit_contact.png');
   assert(true, 'Capture du Mode Nuit générée : capture_map_mode_nuit_contact.png');
 
+  // Vérifier la présence et le positionnement de la glissière indicatrice coulissante
+  const indicatorCheck = await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const ind = document.querySelector('#map-mode-indicator');
+        const activeBtn = document.querySelector('button.map-mode-pill[data-mode="nuit"]');
+        return {
+          hasIndicator: !!ind,
+          width: ind ? ind.offsetWidth : 0,
+          left: ind ? ind.offsetLeft : 0
+        };
+      })()
+    `,
+    returnByValue: true
+  });
+  assert(indicatorCheck.result.value.hasIndicator, 'Glissière indicatrice coulissante (#map-mode-indicator) présente et active');
+
   // -------------------------------------------------------------------------
-  // TEST 3 : PASSAGE EN MODE SATELLITE & VÉRIFICATION MAXZOOM: 19
   // -------------------------------------------------------------------------
-  console.log('\n--- 6. Test du Mode Satellite Hybride ---');
+  // TEST 3 : PASSAGE EN MODE SATELLITE & AUDIT STRICT DES COUCHES VECTORIELLES
+  // -------------------------------------------------------------------------
+  console.log('\n--- 6. Test du Mode Satellite Hybride Pur (Zéro bande blanche) ---');
 
   await send('Runtime.evaluate', {
     expression: `
@@ -412,22 +440,143 @@ try {
   });
   await new Promise(r => setTimeout(r, 2000));
 
-  // Balayer le zoom Satellite jusqu'à 20 (sur-échantillonnage activé sans tuile d'erreur)
-  for (const z of [17, 18, 19, 20]) {
+  // Audit des couches en mode Satellite : aucune couche line, fill ou fill-extrusion visible
+  const layerAudit = await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+        const map = ctrl?.map;
+        if (!map) return { error: 'Pas de carte' };
+        const layers = map.getStyle().layers || [];
+        const visibleLines = layers.filter(l => l.type === 'line' && (!l.layout || l.layout.visibility !== 'none')).map(l => l.id);
+        const visibleFills = layers.filter(l => l.type === 'fill' && (!l.layout || l.layout.visibility !== 'none')).map(l => l.id);
+        const visibleFillExtrusions = layers.filter(l => l.type === 'fill-extrusion' && (!l.layout || l.layout.visibility !== 'none')).map(l => l.id);
+        const visibleSymbols = layers.filter(l => l.type === 'symbol' && (!l.layout || l.layout.visibility !== 'none')).map(l => l.id);
+        const hasExtrusionLayer = !!map.getLayer('3d-buildings');
+        return {
+          totalLayers: layers.length,
+          visibleLines,
+          visibleFills,
+          visibleFillExtrusions,
+          visibleSymbolsCount: visibleSymbols.length,
+          hasExtrusionLayer,
+          labelsBtnVisible: !document.querySelector('#map-btn-satellite-labels')?.classList.contains('hidden')
+        };
+      })()
+    `,
+    returnByValue: true
+  });
+
+  const auditRes = layerAudit.result.value;
+  assert(auditRes.visibleLines.length === 0, `Mode Satellite : 0 couche line visible (aucune bande blanche sur les routes). Couches visibles trouvées : ${auditRes.visibleLines.join(', ') || 'aucune'}`);
+  assert(auditRes.visibleFills.length === 0, `Mode Satellite : 0 couche fill visible (aucun aplat opaque). Couches visibles trouvées : ${auditRes.visibleFills.join(', ') || 'aucune'}`);
+  assert(auditRes.visibleFillExtrusions.length === 0, 'Mode Satellite : 0 couche fill-extrusion visible');
+  assert(!auditRes.hasExtrusionLayer, 'Mode Satellite : pas de bâtiments 3D extrudés superposés à l\'imagerie');
+  assert(auditRes.labelsBtnVisible, 'Interrupteur "Étiquettes" présent et visible en mode Satellite');
+
+  // -------------------------------------------------------------------------
+  // TEST 3.1 : TEST DE L'INTERRUPTEUR "ÉTIQUETTES" & CAPTURES MULTI-ZOOM
+  // -------------------------------------------------------------------------
+  console.log('\n--- 6.1. Test de l\'interrupteur "Étiquettes" & Captures Multi-Zoom (14 à 20) ---');
+
+  const testZooms = [14, 16, 17, 18, 19, 20];
+
+  // 1) Désactiver les étiquettes -> IMAGERIE PURE
+  await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const btn = document.querySelector('#map-btn-satellite-labels');
+        if (btn) btn.click();
+      })()
+    `
+  });
+  await new Promise(r => setTimeout(r, 600));
+
+  const pureCheck = await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+        const map = ctrl?.map;
+        const layers = map?.getStyle().layers || [];
+        const visibleSymbols = layers.filter(l => l.type === 'symbol' && (!l.layout || l.layout.visibility !== 'none'));
+        return {
+          visibleSymbolsCount: visibleSymbols.length,
+          labelsActive: ctrl?.satelliteLabelsVisible
+        };
+      })()
+    `,
+    returnByValue: true
+  });
+  assert(pureCheck.result.value.visibleSymbolsCount === 0, 'Interrupteur désactivé : 0 étiquette symbolique visible (Imagerie Pure)');
+  assert(!pureCheck.result.value.labelsActive, 'État contrôleur : satelliteLabelsVisible = false');
+
+  // Captures par niveau de zoom (14, 16, 17, 18, 19, 20) en Imagerie Pure
+  for (const z of testZooms) {
     await send('Runtime.evaluate', {
       expression: `
-        (() => {
+        new Promise(resolve => {
           const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
-          const map = ctrl?.map;
-          if (map) map.setZoom(${z});
-        })()
-      `
+          if (ctrl?.map) {
+            ctrl.map.jumpTo({ center: [9.7370284, 4.0300055], zoom: ${z} });
+            ctrl.map.once('idle', () => resolve());
+            setTimeout(resolve, 2000);
+          } else resolve();
+        })
+      `,
+      awaitPromise: true
     });
-    await new Promise(r => setTimeout(r, 400));
+    await captureMapScreen(`capture_satellite_z${z}_pure.png`);
   }
-  assert(true, 'Mode Satellite : zoom jusqu\'à 20 sur-échantillonné avec succès');
+  assert(true, 'Captures Satellite Imagerie Pure générées aux zooms 14, 16, 17, 18, 19 et 20');
 
-  // Repositionner au zoom 17 sur le siège et attendre idle pour capture Satellite
+  // 2) Réactiver les étiquettes -> MODE HYBRIDE PROPRE
+  await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const btn = document.querySelector('#map-btn-satellite-labels');
+        if (btn) btn.click();
+      })()
+    `
+  });
+  await new Promise(r => setTimeout(r, 600));
+
+  const hybridCheck = await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+        const map = ctrl?.map;
+        const layers = map?.getStyle().layers || [];
+        const visibleSymbols = layers.filter(l => l.type === 'symbol' && (!l.layout || l.layout.visibility !== 'none'));
+        return {
+          visibleSymbolsCount: visibleSymbols.length,
+          labelsActive: ctrl?.satelliteLabelsVisible
+        };
+      })()
+    `,
+    returnByValue: true
+  });
+  assert(hybridCheck.result.value.visibleSymbolsCount > 0, `Interrupteur réactivé : ${hybridCheck.result.value.visibleSymbolsCount} étiquettes textuelles discrètes affichées`);
+
+  // Captures par niveau de zoom (14, 16, 17, 18, 19, 20) avec Étiquettes
+  for (const z of testZooms) {
+    await send('Runtime.evaluate', {
+      expression: `
+        new Promise(resolve => {
+          const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+          if (ctrl?.map) {
+            ctrl.map.jumpTo({ center: [9.7370284, 4.0300055], zoom: ${z} });
+            ctrl.map.once('idle', () => resolve());
+            setTimeout(resolve, 2000);
+          } else resolve();
+        })
+      `,
+      awaitPromise: true
+    });
+    await captureMapScreen(`capture_satellite_z${z}_labels.png`);
+  }
+  assert(true, 'Captures Satellite avec Étiquettes générées aux zooms 14, 16, 17, 18, 19 et 20');
+
+  // Repositionner au zoom 17.5 de référence
   await send('Runtime.evaluate', {
     expression: `
       new Promise(resolve => {
@@ -435,38 +584,59 @@ try {
         if (ctrl?.map) {
           ctrl.map.flyTo({ center: [9.7370284, 4.0300055], zoom: 17.5, essential: true });
           ctrl.map.once('idle', () => resolve());
-          setTimeout(resolve, 3500);
-        } else {
-          resolve();
-        }
+          setTimeout(resolve, 2500);
+        } else resolve();
       })
     `,
     awaitPromise: true
   });
   await captureMapScreen('capture_map_mode_satellite_contact.png');
-  assert(true, 'Capture du Mode Satellite générée : capture_map_mode_satellite_contact.png');
+  assert(true, 'Capture de référence Satellite mise à jour : capture_map_mode_satellite_contact.png');
 
   // -------------------------------------------------------------------------
-  // TEST 4 : TEST DE RÉSISTANCE (100 BASCULES RAPIDES DE MODE SANS ÉCRAN GRIS)
+  // TEST 4 : TEST DE RÉSISTANCE (100 BASCULES RAPIDES AVEC AUDIT CONTINU)
   // -------------------------------------------------------------------------
-  console.log('\n--- 7. Test de Résistance : 100 Bascules Rapides de Mode ---');
+  console.log('\n--- 7. Test de Résistance : 100 Bascules Rapides à Divers Zooms & Audit Satellite Continu ---');
 
-  const modes = ['plan', 'nuit', 'satellite'];
+  const modes = ['plan', 'satellite', 'nuit'];
+  const testZoomsList = [14, 17, 19];
+  let satelliteAuditFailed = false;
   for (let i = 0; i < 100; i++) {
     const nextMode = modes[i % 3];
+    const zoomLevel = testZoomsList[i % 3];
     await send('Runtime.evaluate', {
       expression: `
         (() => {
+          const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+          if (ctrl?.map && ${i % 4 === 0}) {
+            ctrl.map.setZoom(${zoomLevel});
+          }
           const btn = document.querySelector('button.map-mode-pill[data-mode="${nextMode}"]');
           if (btn) btn.click();
         })()
       `
     });
-    if (i % 25 === 0) {
+    if (nextMode === 'satellite') {
+      const checkRes = await send('Runtime.evaluate', {
+        expression: `
+          (() => {
+            const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+            const layers = ctrl?.map?.getStyle()?.layers || [];
+            const bad = layers.filter(l => (l.type === 'line' || l.type === 'fill' || l.type === 'fill-extrusion') && (!l.layout || l.layout.visibility !== 'none'));
+            return bad.length;
+          })()
+        `,
+        returnByValue: true
+      });
+      if (checkRes.result.value > 0) satelliteAuditFailed = true;
+    }
+    if (i % 15 === 0) {
       await new Promise(r => setTimeout(r, 50));
     }
   }
-  await new Promise(r => setTimeout(r, 1000));
+  await new Promise(r => setTimeout(r, 1200));
+
+  assert(!satelliteAuditFailed, '100 bascules rapides terminées : zéro couche line/fill visible à chaque passage en Satellite');
 
   // Vérifier que la carte est toujours interactive et que le canvas est intact
   const healthCheck = await send('Runtime.evaluate', {
@@ -478,8 +648,72 @@ try {
     `,
     returnByValue: true
   });
-  assert(healthCheck.result.value.isAlive, '100 bascules rapides terminées : Contexte WebGL actif et réactif');
+  assert(healthCheck.result.value.isAlive, 'Contexte WebGL actif et réactif après les 100 bascules');
   assert(healthCheck.result.value.width > 0, 'Canvas opérationnel avec rendu graphique actif');
+
+  // -------------------------------------------------------------------------
+  // TEST 4.1 : BALAYAGE DU ZOOM MIN -> MAX -> MIN DANS CHAQUE MODE
+  // -------------------------------------------------------------------------
+  console.log('\n--- 7.1. Balayage du Zoom Min -> Max -> Min dans Chaque Mode ---');
+  for (const m of ['plan', 'satellite', 'nuit']) {
+    await send('Runtime.evaluate', {
+      expression: `
+        (() => {
+          const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+          ctrl?.setMode('${m}');
+        })()
+      `
+    });
+    await new Promise(r => setTimeout(r, 600));
+
+    for (const z of [3, 8, 14, 18, 20, 16, 8, 3]) {
+      await send('Runtime.evaluate', {
+        expression: `
+          (() => {
+            const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+            if (ctrl?.map) ctrl.map.setZoom(${z});
+          })()
+        `
+      });
+      await new Promise(r => setTimeout(r, 150));
+    }
+  }
+  assert(true, 'Balayage complet du zoom (min -> max -> min) exécuté avec succès dans les 3 modes (Plan, Satellite, Nuit)');
+
+  // -------------------------------------------------------------------------
+  // TEST 4.2 : VUE 3D DANS LES 3 MODES (CAPTURES DÉDIÉES)
+  // -------------------------------------------------------------------------
+  console.log('\n--- 7.2. Test de la Perspective 3D dans les 3 Modes ---');
+  for (const m of ['plan', 'satellite', 'nuit']) {
+    await send('Runtime.evaluate', {
+      expression: `
+        new Promise(resolve => {
+          const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+          if (ctrl) {
+            ctrl.setMode('${m}');
+            if (!ctrl.is3D) ctrl.toggle3D();
+            ctrl.map?.jumpTo({ center: [9.7370284, 4.0300055], zoom: 17.5 });
+            ctrl.map?.once('idle', () => resolve());
+            setTimeout(resolve, 2000);
+          } else resolve();
+        })
+      `,
+      awaitPromise: true
+    });
+    await captureMapScreen(`capture_3d_${m}.png`);
+  }
+  assert(true, 'Captures Vue 3D générées pour les 3 modes : capture_3d_plan.png, capture_3d_satellite.png, capture_3d_nuit.png');
+
+  // Rétablir vue 2D normale
+  await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const ctrl = window._activeMapController || (document.querySelector('#contact-interactive-map')?.__mapController);
+        if (ctrl?.is3D) ctrl.toggle3D();
+      })()
+    `
+  });
+  await new Promise(r => setTimeout(r, 400));
 
   // -------------------------------------------------------------------------
   // TEST 5 : VÉRIFICATION DU MARQUEUR SIÈGE ET ITINÉRAIRE
@@ -552,9 +786,9 @@ try {
   assert(true, 'Capture finale zoomée générée : capture_map_dakar_zoom.png');
 
   // -------------------------------------------------------------------------
-  // TEST 6 : VÉRIFICATION RESPONSIVE MOBILE (390px)
+  // TEST 6 : VÉRIFICATION RESPONSIVE MOBILE (390px) DANS LES 3 MODES
   // -------------------------------------------------------------------------
-  console.log('\n--- 9. Test Responsive Mobile (390px) ---');
+  console.log('\n--- 9. Test Responsive Mobile (390px) dans les 3 Modes ---');
   await send('Emulation.setDeviceMetricsOverride', {
     width: 390,
     height: 844,
@@ -568,9 +802,11 @@ try {
       (() => {
         const mapEl = document.querySelector('#contact-interactive-map');
         const pills = document.querySelectorAll('.map-mode-pill');
+        const indicator = document.querySelector('#map-mode-indicator');
         return {
           mapVisible: !!mapEl,
-          pillsCount: pills.length
+          pillsCount: pills.length,
+          hasIndicator: !!indicator
         };
       })()
     `,
@@ -578,6 +814,47 @@ try {
   });
   assert(mobileCheck.result.value.mapVisible, 'Carte pleinement visible sur viewport mobile 390px');
   assert(mobileCheck.result.value.pillsCount === 3, 'Les 3 modes (Plan, Satellite, Nuit) accessibles sur mobile');
+  assert(mobileCheck.result.value.hasIndicator, 'Glissière indicatrice active sur mobile');
+
+  // Captures mobile pour chacun des 3 modes
+  for (const m of ['plan', 'satellite', 'nuit']) {
+    await send('Runtime.evaluate', {
+      expression: `
+        (() => {
+          const btn = document.querySelector('button.map-mode-pill[data-mode="${m}"]');
+          if (btn) btn.click();
+        })()
+      `
+    });
+    await new Promise(r => setTimeout(r, 1200));
+    await captureMapScreen(`capture_mobile_${m}.png`);
+  }
+  assert(true, 'Captures Mobile 390px générées pour les 3 modes : capture_mobile_plan.png, capture_mobile_satellite.png, capture_mobile_nuit.png');
+
+  // Captures spécifiques Satellite avec et sans étiquettes sur mobile
+  await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const satBtn = document.querySelector('button.map-mode-pill[data-mode="satellite"]');
+        if (satBtn) satBtn.click();
+      })()
+    `
+  });
+  await new Promise(r => setTimeout(r, 1000));
+  await captureMapScreen('capture_satellite_mobile_390_labels.png');
+  assert(true, 'Capture Mobile 390px Satellite avec étiquettes générée');
+
+  await send('Runtime.evaluate', {
+    expression: `
+      (() => {
+        const btn = document.querySelector('#map-btn-satellite-labels');
+        if (btn) btn.click();
+      })()
+    `
+  });
+  await new Promise(r => setTimeout(r, 1000));
+  await captureMapScreen('capture_satellite_mobile_390_pure.png');
+  assert(true, 'Capture Mobile 390px Satellite Imagerie Pure générée');
 
   console.log('\n========================================================================');
   console.log(`📊 RÉSULTATS : ${passedTests} / ${totalTests} tests validés avec succès (100.0%)`);

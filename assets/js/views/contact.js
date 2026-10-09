@@ -23,7 +23,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[50vh] flex items-center justify-center pt-hero pb-14 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-apropos.jpg" alt="Siège MULTI BUSINESS SARL Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/gestionlocative/pexels-lucasandrade-17639682.jpg" alt="Siège MULTI BUSINESS SARL Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -74,7 +74,7 @@ export default {
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label for="form-name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Nom & Prénom *</label>
-                    <input type="text" id="form-name" class="input-light font-medium" placeholder="Ex. M. Tchapi Aladin" required />
+                    <input type="text" id="form-name" class="input-light font-medium" placeholder="Ex. M. Kamba Baurel" required />
                   </div>
                   <div>
                     <label for="form-phone" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Numéro Téléphone / WhatsApp *</label>

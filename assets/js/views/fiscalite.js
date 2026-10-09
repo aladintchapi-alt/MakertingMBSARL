@@ -99,7 +99,7 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-              <img src="./assets/images/audit-fiscal.jpg" alt="Séance d'audit fiscal avec un expert MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[480px]" />
+              <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Séance d'audit fiscal avec un expert MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[480px]" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Expertise & Conformité CGI</span>
@@ -163,7 +163,7 @@ export default {
       <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/portrait-pdg.jpg" alt="Direction du pôle fiscalité et conseil" class="w-full h-56 object-cover object-top" />
+            <img src="./assets/images/fiscalite/pexels-pavel-danilyuk-7654163.jpg" alt="Direction du pôle fiscalité et conseil" class="w-full h-56 object-cover object-top" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Conseillers Fiscaux Émérites</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Une expertise approfondie de la fiscalité locale et sous-régionale CEMAC pour vous faire bénéficier de tous les avantages prévus par la loi de finances.</p>
@@ -171,7 +171,7 @@ export default {
           </div>
 
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/galerie-bureau-douala.jpg" alt="Locaux de consultation fiscale à Douala" class="w-full h-56 object-cover" />
+            <img src="./assets/images/fiscalite/pexels-leeloothefirst-8962478.jpg" alt="Locaux de consultation fiscale à Douala" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Confidentialité & Déontologie</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Nos entretiens se déroulent en toute discrétion dans nos bureaux de Douala avec une protection stricte de vos données financières.</p>
@@ -199,7 +199,7 @@ export default {
 
         <!-- Témoignage PME Fiscale -->
         <div class="card-light p-6 rounded-3xl border border-slate-200 shadow-sm bg-[#FAF9F5] mt-8 flex flex-col sm:flex-row items-center gap-5">
-          <img src="./assets/images/temoin-1.jpg" alt="M. Tchakounté - PDG" class="w-16 h-16 rounded-full object-cover border-2 border-indigo-500 flex-shrink-0" />
+          <img src="./assets/images/pexels-temoin6.jpg" alt="M. Tchakounté - PDG" class="w-16 h-16 rounded-full object-cover border-2 border-indigo-500 flex-shrink-0" />
           <div class="space-y-1 text-center sm:text-left">
             <h4 class="font-bold text-sm text-slate-900">M. Tchakounté • PDG Société d'Import-Export (Douala)</h4>
             <p class="text-xs text-slate-600 italic leading-relaxed">« L'audit préventif de MULTI BUSINESS SARL nous a épargné un redressement fiscal majeur lors d'un contrôle DGI. Leur rigueur comptable est exemplaire. »</p>
@@ -257,7 +257,7 @@ export default {
       <!-- CTA Final -->
       <section class="relative py-20 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Fiscalité Cameroun" class="w-full h-full object-cover object-center brightness-75" />
+          <img src="./assets/images/fiscalite/pexels-leeloothefirst-8962518.jpg" alt="Fiscalité Cameroun" class="w-full h-full object-cover object-center brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">

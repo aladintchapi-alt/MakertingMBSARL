@@ -190,7 +190,7 @@ export default {
           <!-- Valeur 1 : Rigueur & Expertise -->
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
-              <img src="./assets/images/valeur-expertise.jpg" alt="Rigueur & Expertise Juridique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/creationentreprise/pexels-ekaterina-bolovtsova-6077861.jpg" alt="Rigueur & Expertise Juridique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-900 text-white tabular-nums">01</span>
             </div>
             <div class="p-6 space-y-3">
@@ -204,7 +204,7 @@ export default {
           <!-- Valeur 2 : Dynamisme & Innovation -->
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
-              <img src="./assets/images/valeur-dynamisme.jpg" alt="Dynamisme & Innovation Technologique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/app-preview-dashboard.jpg" alt="Dynamisme & Innovation Technologique" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-amber-800 text-white tabular-nums">02</span>
             </div>
             <div class="p-6 space-y-3">
@@ -305,7 +305,7 @@ export default {
           
           <!-- Photo 1 : Équipe consulting -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-equipe.jpg" data-caption="Équipe de consultants et gestionnaires de patrimoine MULTI BUSINESS SARL en réunion stratégique à Douala">
-            <img src="./assets/images/galerie-equipe.jpg" alt="Équipe MULTI BUSINESS SARL" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/valeur-disponibilite.jpg" alt="Équipe MULTI BUSINESS SARL" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -316,7 +316,7 @@ export default {
 
           <!-- Photo 2 : Bureaux & Réception -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-bureau-douala.jpg" data-caption="Espace d'accueil et bureaux de prestige de MULTI BUSINESS SARL à Douala (Dakar)">
-            <img src="./assets/images/galerie-bureau-douala.jpg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -327,7 +327,7 @@ export default {
 
           <!-- Photo 3 : Inspection terrain -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-terrain.jpg" data-caption="Audit technique et état des lieux sur un immeuble de rapport sous gestion à Bonapriso">
-            <img src="./assets/images/galerie-terrain.jpg" alt="Inspection terrain à Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/gestionlocative/pexels-mohammadhu1-12983570.jpg" alt="Inspection terrain à Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -338,7 +338,7 @@ export default {
 
           <!-- Photo 4 : Immeuble sous mandat -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/bien-immeuble.jpg" data-caption="Immeuble résidentiel et commercial neuf de 8 étages sous mandat de gestion locative exclusif">
-            <img src="./assets/images/bien-immeuble.jpg" alt="Immeuble résidentiel moderne sous mandat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/fiscalite/pexels-pavel-danilyuk-7654163.jpg" alt="Immeuble résidentiel moderne sous mandat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -349,7 +349,7 @@ export default {
 
           <!-- Photo 5 : Bureaux & Logistique -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/bien-bureaux.jpg" data-caption="Plateau de bureaux d'affaires d'une entreprise partenaire installée par MULTI BUSINESS SARL">
-            <img src="./assets/images/bien-bureaux.jpg" alt="Plateaux de bureaux d'affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/dedouanement/pexels-simon-r-minshall-1673444001-28438334.jpg" alt="Plateaux de bureaux d'affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -360,7 +360,7 @@ export default {
 
           <!-- Photo 6 : Panorama de la ville de Douala -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/hero-accueil.jpg" data-caption="Vue panoramique du centre d'affaires de Douala, cœur économique du Cameroun">
-            <img src="./assets/images/hero-accueil.jpg" alt="Douala Centre d'Affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/fiscalite/pexels-leeloothefirst-8962518.jpg" alt="Douala Centre d'Affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -386,7 +386,7 @@ export default {
 
           <!-- Lecteur Vidéo / Card Interactive -->
           <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-slate-900 aspect-video max-w-4xl mx-auto group cursor-pointer" data-modal-target="video-modal" data-reveal="up">
-            <img src="./assets/images/video-cover.jpg" alt="Aperçu vidéo MULTI BUSINESS SARL" class="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-opacity" />
+            <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-29568695.jpg" alt="Aperçu vidéo MULTI BUSINESS SARL" class="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-opacity" />
             <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
               <div class="w-20 h-20 rounded-full bg-lime-400 text-marine-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
                 ${icon('play', { class: 'w-8 h-8 text-marine-950 fill-current ml-1' })}
@@ -555,7 +555,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-33305177.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 

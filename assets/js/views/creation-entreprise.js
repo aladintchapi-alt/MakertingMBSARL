@@ -33,7 +33,7 @@ export default {
           </div>
 
           <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-marine-900 leading-[1.12] tracking-tight mb-6 max-w-4xl mx-auto">
-            Créez et immatriculez votre société au Cameroun en <span class="text-amber-800">72h chrono</span>.
+            Créez et immatriculez votre entreprise au Cameroun en <span class="text-amber-800">Délai chrono</span>.
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
@@ -71,7 +71,7 @@ export default {
               Toutes les Formes Juridiques Adaptées à Votre Ambition
             </h2>
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              Que vous lanciez une startup, une société commerciale, une PME industrielle ou une activité de consultant indépendant, nous vous orientons vers la structure juridique optimale et gérons l'ensemble du dossier administratif.
+              Que vous lanciez une startup, une entreprise commerciale, une PME industrielle ou une activité de consultant indépendant, nous vous orientons vers la structure juridique optimale et gérons l'ensemble du dossier administratif.
             </p>
 
             <div class="space-y-4 pt-2">
@@ -103,7 +103,7 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-              <img src="./assets/images/creation-formalites.jpg" alt="Remise des documents officiels de création d'entreprise" class="w-full h-auto object-cover max-h-[480px]" />
+              <img src="./assets/images/creationentreprise/pexels-tima-miroshnichenko-6914016.jpg" alt="Remise des documents officiels de création d'entreprise" class="w-full h-auto object-cover max-h-[480px]" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Dossier Complet Certifié</span>
@@ -167,7 +167,7 @@ export default {
       <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/galerie-bureau-douala.jpg" alt="Bureaux MULTI BUSINESS SARL Douala" class="w-full h-56 object-cover" />
+            <img src="./assets/images/creationentreprise/pexels-contact-me-923323219715-262056873-12703094.jpg" alt="Bureaux MULTI BUSINESS SARL Douala" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Bureaux d'Affaires & Domiciliation</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Nos locaux à Dakar (Douala, Immeuble Express Union) vous accueillent pour vos entretiens et vous offrent une adresse prestigieuse pour votre siège social.</p>
@@ -175,7 +175,7 @@ export default {
           </div>
 
           <div class="card-light rounded-3xl overflow-hidden border border-slate-200 shadow-sm" data-reveal="up">
-            <img src="./assets/images/galerie-equipe.jpg" alt="Juristes et formalistes MULTI BUSINESS SARL" class="w-full h-56 object-cover" />
+            <img src="./assets/images/creationentreprise/pexels-ekaterina-bolovtsova-6077861.jpg" alt="Juristes et formalistes MULTI BUSINESS SARL" class="w-full h-56 object-cover" />
             <div class="p-6 space-y-2">
               <h4 class="font-serif text-lg font-bold text-marine-900">Juristes et Formalistes Assermentés</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Des spécialistes en droit des affaires OHADA qui rédigent vos statuts avec précision et réalisent les démarches au greffe.</p>
@@ -190,7 +190,7 @@ export default {
       <section class="py-20 px-4 md:px-8 max-w-7xl mx-auto bg-white border-t border-slate-200">
         <div class="card-light p-8 md:p-12 rounded-3xl border border-slate-200 bg-amber-50/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-4 text-center lg:text-left flex flex-col items-center lg:items-start gap-4">
-            <img src="./assets/images/partenaire-cfce.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-16 w-auto object-contain bg-white p-3 rounded-2xl border border-slate-200 shadow-sm" />
+            <img src="./assets/images/cfce.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-16 w-auto object-contain bg-white p-3 rounded-2xl border border-slate-200 shadow-sm" />
             <span class="text-xs font-bold text-slate-900">Centre de Formalités de Création d'Entreprises (CFCE)</span>
           </div>
           <div class="lg:col-span-8 space-y-3">
@@ -203,7 +203,7 @@ export default {
 
         <!-- Témoignage Créateur d'entreprise -->
         <div class="card-light p-6 rounded-3xl border border-slate-200 shadow-sm bg-[#FAF9F5] mt-8 flex flex-col sm:flex-row items-center gap-5">
-          <img src="./assets/images/temoin-2.jpg" alt="Armel K. - Fondateur SARL" class="w-16 h-16 rounded-full object-cover border-2 border-amber-500 flex-shrink-0" />
+          <img src="./assets/images/pexels-temoin2.jpg" alt="Armel K. - Fondateur SARL" class="w-16 h-16 rounded-full object-cover border-2 border-amber-500 flex-shrink-0" />
           <div class="space-y-1 text-center sm:text-left">
             <h4 class="font-bold text-sm text-slate-900">Armel K. • Fondateur d'une SARL de distribution</h4>
             <p class="text-xs text-slate-600 italic leading-relaxed">« J'ai reçu mon RCCM, mon NIU et mes statuts enregistrés en exactement 3 jours ouvrés. Équipe très professionnelle et réactive. Je recommande les yeux fermés ! »</p>
@@ -261,7 +261,7 @@ export default {
       <!-- CTA Final -->
       <section class="relative py-20 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Business Cameroun" class="w-full h-full object-cover object-center brightness-75" />
+          <img src="./assets/images/creationentreprise/pexels-walls-io-440716388-15635240.jpg" alt="Business Cameroun" class="w-full h-full object-cover object-center brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
         <div class="container max-w-4xl mx-auto text-center relative z-10 space-y-6">

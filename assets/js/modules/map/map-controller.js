@@ -233,8 +233,10 @@ export function buildNightStyleFromVector(baseStyle) {
 }
 
 /**
- * Générateur du style Satellite Hybride.
- * Insère le raster satellite avec maxzoom: 19 (zoom natif Douala) et superpose les routes et étiquettes.
+ * Générateur du style Satellite Hybride Pur & Élégant.
+ * Insère le raster satellite avec maxzoom: 19 (zoom natif Douala avec sur-échantillonnage natif).
+ * Masque INTÉGRALEMENT les couches vectorielles line, fill, fill-extrusion (routes, cours d'eau, bâtiments).
+ * Conserve UNIQUEMENT des étiquettes textuelles discrètes, fines et lisibles (quartiers, rues, repères).
  */
 export function buildSatelliteHybridStyle(baseVectorStyle) {
   if (!baseVectorStyle) return null;
@@ -262,39 +264,84 @@ export function buildSatelliteHybridStyle(baseVectorStyle) {
     maxzoom: 22
   });
 
-  // Conserver les routes et étiquettes vectorielles avec fort contraste
+  // Liste des identifiants d'icônes ou de symboles invasifs non textuels à masquer
+  const excludedSymbolIds = [
+    'road_oneway',
+    'road_oneway_opposite',
+    'highway-shield-non-us',
+    'highway-shield-us-interstate',
+    'road_shield_us'
+  ];
+
+  // Parcours de toutes les couches du style vectoriel de base
   for (const layer of sat.layers) {
     const type = layer.type;
-    const sl = layer['source-layer'] || '';
     const id = layer.id || '';
+    const l = JSON.parse(JSON.stringify(layer));
+    l.layout = l.layout || {};
+    l.paint = l.paint || {};
 
-    // Filtrer les aplats terrestres opaques pour laisser transparaître la photo satellite
-    if (type === 'background' || id.includes('natural_earth') || sl === 'water' || sl === 'park' || sl === 'landcover' || sl === 'landuse' || sl === 'building') {
+    // 1. MASQUAGE STRICT DE TOUTES LES COUCHES NON-TEXTUELLES :
+    // Toutes les couches line (routes, voies, cours d'eau, limites), fill (bâtiments, sols, eau),
+    // fill-extrusion et background sont désactivées avec visibility: 'none'.
+    if (type === 'line' || type === 'fill' || type === 'fill-extrusion' || type === 'background' || id.includes('natural_earth')) {
+      l.layout.visibility = 'none';
+      newLayers.push(l);
       continue;
     }
 
-    const l = JSON.parse(JSON.stringify(layer));
-    l.paint = l.paint || {};
-
-    if (sl === 'transportation') {
-      if (l.paint['line-color']) {
-        l.paint['line-color'] = '#ffffff';
-        l.paint['line-opacity'] = 0.6;
-      }
-    } else if (sl === 'boundary') {
-      if (l.paint['line-color']) {
-        l.paint['line-color'] = '#38bdf8';
-        l.paint['line-opacity'] = 0.8;
-      }
-    } else if (type === 'symbol') {
-      l.paint['text-color'] = '#ffffff';
-      l.paint['text-halo-color'] = '#000000';
-      l.paint['text-halo-width'] = 3;
-      l.paint['text-halo-blur'] = 1;
-      if (l.paint['icon-opacity']) l.paint['icon-opacity'] = 0.95;
+    // 2. MASQUAGE DES SYMBOLES NON DÉSIRÉS (icônes flèches sens unique, badges autoroutiers)
+    const isIconOnly = !l.layout['text-field'] && !!l.layout['icon-image'];
+    if (excludedSymbolIds.includes(id) || isIconOnly) {
+      l.layout.visibility = 'none';
+      newLayers.push(l);
+      continue;
     }
 
-    newLayers.push(l);
+    // 3. ÉTIQUETTES TEXTUELLES CONSERVÉES : BLANC PUR + HALO NOIR FRANC, TAILLE MODESTE
+    if (type === 'symbol') {
+      l.layout.visibility = 'visible';
+
+      // Noms de rues (suivant les axes routiers)
+      if (id.startsWith('highway-name-')) {
+        l.layout['text-size'] = 11;
+        l.paint['text-color'] = '#ffffff';
+        l.paint['text-halo-color'] = '#000000';
+        l.paint['text-halo-width'] = 2.0;
+        l.paint['text-halo-blur'] = 0.5;
+        l.paint['text-opacity'] = 0.85;
+        // Se masquent à très fort zoom (> 19.3) pour ne pas encombrer le bâtiment du siège
+        l.maxzoom = 19.3;
+      }
+      // Noms de lieux et quartiers (Dakar, Douala, Akwa, etc.)
+      else if (id.startsWith('label_') || id.includes('place')) {
+        l.paint['text-color'] = '#ffffff';
+        l.paint['text-halo-color'] = '#000000';
+        l.paint['text-halo-width'] = 2.5;
+        l.paint['text-halo-blur'] = 0.8;
+        l.paint['text-opacity'] = 0.92;
+        if (l.paint['icon-opacity'] !== undefined) l.paint['icon-opacity'] = 0.5;
+      }
+      // Points d'intérêt utiles (stations, banques, transports)
+      else if (id.startsWith('poi_') || id === 'airport') {
+        l.paint['text-color'] = '#f8fafc';
+        l.paint['text-halo-color'] = '#000000';
+        l.paint['text-halo-width'] = 1.8;
+        l.paint['text-halo-blur'] = 0.5;
+        l.paint['text-opacity'] = 0.80;
+        if (l.paint['icon-opacity'] !== undefined) l.paint['icon-opacity'] = 0.55;
+      }
+      // Autres étiquettes (ex: cours d'eau)
+      else {
+        l.paint['text-color'] = '#ffffff';
+        l.paint['text-halo-color'] = '#000000';
+        l.paint['text-halo-width'] = 2.0;
+        l.paint['text-halo-blur'] = 0.5;
+        l.paint['text-opacity'] = 0.80;
+      }
+
+      newLayers.push(l);
+    }
   }
 
   sat.layers = newLayers;
@@ -325,6 +372,7 @@ export class PremiumMapController {
     this.popup = null;
     this.currentMode = 'plan'; // 'plan' | 'satellite' | 'nuit'
     this.is3D = false;
+    this.satelliteLabelsVisible = true; // Étiquettes satellite activées par défaut
     this.activeProvider = 'openfreemap'; // 'maptiler' | 'openfreemap'
     this.styles = {};
     this._observer = null;
@@ -346,25 +394,8 @@ export class PremiumMapController {
       window._activeMapController = this;
     }
 
-    if (this.options.immediate || (typeof window !== 'undefined' && window.__FORCE_MAP_INIT__)) {
-      await this._createMap();
-      return;
-    }
-
-    if ('IntersectionObserver' in window) {
-      this._observer = new IntersectionObserver((entries) => {
-        if (entries[0] && (entries[0].isIntersecting || entries[0].intersectionRatio > 0)) {
-          if (this._observer) {
-            this._observer.disconnect();
-            this._observer = null;
-          }
-          this._createMap();
-        }
-      }, { rootMargin: '300px' });
-      this._observer.observe(this.container);
-    } else {
-      await this._createMap();
-    }
+    // Initialisation immédiate et inconditionnelle : garantit la présence instantanée du sélecteur et des contrôles
+    await this._createMap();
   }
 
   async ensureReady() {
@@ -459,14 +490,15 @@ export class PremiumMapController {
     if (this._isDestroyed || !this.container) return;
 
     try {
-      const maplibregl = await loadMapLibreAssets();
-      if (this._isDestroyed) return;
-
-      // Construction du DOM enveloppe
+      // 1. Construction immédiate du squelette d'interface : le sélecteur et les contrôles s'affichent instantanément
       this._buildUiShell();
+      this._bindUiEvents();
 
       const mapContainer = this.container.querySelector('.maplibre-canvas-target');
       if (!mapContainer) return;
+
+      const maplibregl = await loadMapLibreAssets();
+      if (this._isDestroyed) return;
 
       // Résolution des styles vectoriels
       await this._resolveStyles();
@@ -498,10 +530,23 @@ export class PremiumMapController {
       });
 
       // Gestion résiliente des erreurs réseau / tuiles
+      let consecutiveErrors = 0;
       this.map.on('error', (e) => {
         const msg = e?.error?.message || '';
         // Filtrer les erreurs non critiques pour éviter les blocages
-        if (msg.includes('404') || msg.includes('403') || msg.includes('tile')) {
+        if (msg.includes('404') || msg.includes('tile') || msg.includes('AbortError')) {
+          return;
+        }
+        if (msg.includes('403') || msg.includes('429') || msg.includes('Failed to fetch')) {
+          consecutiveErrors++;
+          if (consecutiveErrors >= 3 && this.currentMode !== 'plan') {
+            console.warn('[PremiumMap] Échec répété sur mode alternatif, bascule douce vers Plan.');
+            consecutiveErrors = 0;
+            this.setMode('plan');
+            this._showTransientNotice('Connexion réseau limitée : bascule optimisée en mode Plan.', () => {
+              this.setMode(this.currentMode);
+            });
+          }
           return;
         }
         console.warn('[PremiumMap] Info gestionnaire carte:', msg);
@@ -543,7 +588,7 @@ export class PremiumMapController {
         }
       });
 
-      this._bindUiEvents();
+      // UI et événements déjà initialisés au démarrage de _createMap()
     } catch (err) {
       console.warn('[PremiumMap] Repli cartographique élégant:', err.message);
       this._renderOfflineFallback();
@@ -557,40 +602,62 @@ export class PremiumMapController {
         <!-- Canvas Cible MapLibre -->
         <div class="maplibre-canvas-target w-full h-full"></div>
 
-        <!-- Sélecteur de Mode (Segmented Pill : Plan / Satellite / Nuit) -->
-        <div class="absolute top-4 left-4 z-20 flex items-center gap-1.5 p-1 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80">
-          <button data-mode="plan" class="map-mode-pill px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${this.currentMode === 'plan' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}">
-            Plan
-          </button>
-          <button data-mode="satellite" class="map-mode-pill px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${this.currentMode === 'satellite' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}">
-            Satellite
-          </button>
-          <button data-mode="nuit" class="map-mode-pill px-3.5 py-1.5 rounded-full text-xs font-bold transition-all ${this.currentMode === 'nuit' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}">
-            Nuit
-          </button>
+        <!-- Barre de Contrôles Supérieure (Haut Gauche & Droite Responsive) -->
+        <div style="position: absolute; top: 12px; left: 12px; right: 12px; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 8px; pointer-events: none;">
+          <!-- Sélecteur de Mode (Plan / Satellite / Nuit) avec Glissière Coulissante + Interrupteur Étiquettes -->
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px; pointer-events: auto;">
+            <div id="map-mode-selector-wrapper" class="rounded-full shadow-lg border border-slate-200/90" style="position: relative; display: inline-flex; align-items: center; padding: 4px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 2;">
+              <!-- Glissière / Indicateur coulissant animé -->
+              <div id="map-mode-indicator" style="position: absolute; border-radius: 9999px; background: #0B1B2B; box-shadow: 0 1px 3px rgba(0,0,0,0.25); transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1); pointer-events: none; z-index: 1;"></div>
+
+              <button type="button" data-mode="plan" class="map-mode-pill ${this.currentMode === 'plan' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}" style="position: relative; z-index: 2; padding: 5px 14px; border-radius: 9999px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; outline: none; background: transparent; color: ${this.currentMode === 'plan' ? '#ffffff' : '#475569'}; transition: color 0.2s ease;">
+                Plan
+              </button>
+              <button type="button" data-mode="satellite" class="map-mode-pill ${this.currentMode === 'satellite' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}" style="position: relative; z-index: 2; padding: 5px 14px; border-radius: 9999px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; outline: none; background: transparent; color: ${this.currentMode === 'satellite' ? '#ffffff' : '#475569'}; transition: color 0.2s ease;">
+                Satellite
+              </button>
+              <button type="button" data-mode="nuit" class="map-mode-pill ${this.currentMode === 'nuit' ? 'bg-marine-900 text-white shadow-xs' : 'text-slate-600 hover:text-slate-900'}" style="position: relative; z-index: 2; padding: 5px 14px; border-radius: 9999px; font-size: 12px; font-weight: 700; cursor: pointer; border: none; outline: none; background: transparent; color: ${this.currentMode === 'nuit' ? '#ffffff' : '#475569'}; transition: color 0.2s ease;">
+                Nuit
+              </button>
+            </div>
+
+            <!-- Interrupteur Élégant "Étiquettes" (spécifique au mode Satellite, activé par défaut) -->
+            <button id="map-btn-satellite-labels" class="${this.currentMode === 'satellite' ? 'inline-flex' : 'hidden'} items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 text-xs font-bold transition-all hover:bg-slate-50 cursor-pointer ${this.satelliteLabelsVisible ? 'text-marine-900' : 'text-slate-400'}" style="position: relative; z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.12);" title="Afficher ou masquer les noms de rues et lieux">
+              <span class="w-2 h-2 rounded-full transition-colors ${this.satelliteLabelsVisible ? 'bg-emerald-600' : 'bg-slate-300'}" style="background-color: ${this.satelliteLabelsVisible ? '#059669' : '#cbd5e1'};"></span>
+              <span>Étiquettes</span>
+            </button>
+          </div>
+
+          <!-- Bouton Bascule Perspective 3D -->
+          <div style="pointer-events: auto; flex-shrink: 0;">
+            <button id="map-btn-3d" class="px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 text-xs font-bold text-slate-800 hover:text-marine-900 flex items-center gap-1.5 transition-all" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12); cursor: pointer;">
+              <span class="w-2 h-2 rounded-full ${this.is3D ? 'bg-emerald-600' : 'bg-slate-300'}" style="background-color: ${this.is3D ? '#059669' : '#cbd5e1'};"></span>
+              <span>Vue 3D</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Bouton Bascule Perspective 3D (Haut Droite) -->
-        <div class="absolute top-4 right-4 z-20 flex items-center gap-2">
-          <button id="map-btn-3d" class="px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 text-xs font-bold text-slate-800 hover:text-marine-900 flex items-center gap-1.5 transition-all">
-            <span class="w-2 h-2 rounded-full ${this.is3D ? 'bg-emerald-600' : 'bg-slate-300'}"></span>
-            <span>Vue 3D</span>
-          </button>
-        </div>
-
-        <!-- Commandes Tactiles / Zoom / Recentrage Flottantes (Bas Droite) -->
-        <div class="absolute bottom-6 right-4 z-20 flex flex-col items-center gap-2">
-          <div class="flex flex-col rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 overflow-hidden">
-            <button id="map-btn-zoom-in" class="w-10 h-10 flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-marine-900 font-bold text-lg transition-colors border-b border-slate-100" title="Zoom avant">
+        <!-- Commandes Tactiles / Zoom / Recentrage / Ma Position / Plein Écran (Bas Droite) -->
+        <div style="position: absolute; bottom: 24px; right: 16px; z-index: 30; display: flex; flex-direction: column; align-items: center; gap: 8px; pointer-events: auto;">
+          <div class="flex flex-col rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 overflow-hidden" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+            <button id="map-btn-zoom-in" class="w-10 h-10 flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-marine-900 font-bold text-lg transition-colors border-b border-slate-100" style="cursor: pointer;" title="Zoom avant">
               +
             </button>
-            <button id="map-btn-zoom-out" class="w-10 h-10 flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-marine-900 font-bold text-lg transition-colors" title="Zoom arrière">
+            <button id="map-btn-zoom-out" class="w-10 h-10 flex items-center justify-center text-slate-700 hover:bg-slate-100 hover:text-marine-900 font-bold text-lg transition-colors" style="cursor: pointer;" title="Zoom arrière">
               −
             </button>
           </div>
 
-          <button id="map-btn-recenter" class="w-10 h-10 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 flex items-center justify-center text-slate-700 hover:text-marine-900 hover:bg-slate-100 transition-all" title="Recentrer sur le siège">
+          <button id="map-btn-recenter" class="w-10 h-10 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 flex items-center justify-center text-slate-700 hover:text-marine-900 hover:bg-slate-100 transition-all" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12); cursor: pointer;" title="Recentrer sur le siège">
             ${icon('navigation', { class: 'w-4 h-4 text-emerald-800' })}
+          </button>
+
+          <button id="map-btn-locate" class="w-10 h-10 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 flex items-center justify-center text-slate-700 hover:text-marine-900 hover:bg-slate-100 transition-all" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12); cursor: pointer;" title="Ma position géographique">
+            <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </button>
+
+          <button id="map-btn-fullscreen" class="w-10 h-10 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 flex items-center justify-center text-slate-700 hover:text-marine-900 hover:bg-slate-100 transition-all" style="box-shadow: 0 4px 16px rgba(0,0,0,0.12); cursor: pointer;" title="Plein écran">
+            <svg class="w-4 h-4 text-slate-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
           </button>
         </div>
 
@@ -748,6 +815,14 @@ export class PremiumMapController {
       this._cleanups.push(() => btn3D.removeEventListener('click', handler3D));
     }
 
+    // Interrupteur Étiquettes Satellite
+    const btnLabels = this.container.querySelector('#map-btn-satellite-labels');
+    if (btnLabels) {
+      const handlerLabels = () => this.toggleSatelliteLabels();
+      btnLabels.addEventListener('click', handlerLabels);
+      this._cleanups.push(() => btnLabels.removeEventListener('click', handlerLabels));
+    }
+
     // Zoom
     const btnZoomIn = this.container.querySelector('#map-btn-zoom-in');
     const btnZoomOut = this.container.querySelector('#map-btn-zoom-out');
@@ -782,6 +857,154 @@ export class PremiumMapController {
       btnRecenter.addEventListener('click', handler);
       this._cleanups.push(() => btnRecenter.removeEventListener('click', handler));
     }
+
+    // Plein écran
+    const btnFullscreen = this.container.querySelector('#map-btn-fullscreen');
+    if (btnFullscreen) {
+      const handlerFs = () => {
+        const target = this.container;
+        if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+          if (target.requestFullscreen) target.requestFullscreen();
+          else if (target.webkitRequestFullscreen) target.webkitRequestFullscreen();
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+        }
+      };
+      btnFullscreen.addEventListener('click', handlerFs);
+      this._cleanups.push(() => btnFullscreen.removeEventListener('click', handlerFs));
+    }
+
+    // Ma position géographique
+    const btnLocate = this.container.querySelector('#map-btn-locate');
+    if (btnLocate) {
+      const handlerLocate = () => {
+        if (!navigator.geolocation) {
+          if (window.mbRouteFromHere) window.mbRouteFromHere();
+          return;
+        }
+        btnLocate.classList.add('animate-pulse');
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            btnLocate.classList.remove('animate-pulse');
+            if (!this.map || this._isDestroyed) return;
+            this.map.flyTo({
+              center: [pos.coords.longitude, pos.coords.latitude],
+              zoom: 16,
+              essential: true
+            });
+          },
+          (err) => {
+            btnLocate.classList.remove('animate-pulse');
+            console.warn('[PremiumMap] Géolocalisation directe non disponible, redirection itinéraire:', err.message);
+            if (window.mbRouteFromHere) window.mbRouteFromHere();
+          },
+          { enableHighAccuracy: true, timeout: 8000 }
+        );
+      };
+      btnLocate.addEventListener('click', handlerLocate);
+      this._cleanups.push(() => btnLocate.removeEventListener('click', handlerLocate));
+    }
+
+    // Initialisation et repositionnement de la glissière indicatrice
+    requestAnimationFrame(() => this._updateModeIndicator(this.currentMode));
+    setTimeout(() => this._updateModeIndicator(this.currentMode), 200);
+
+    const resizeHandler = () => this._updateModeIndicator(this.currentMode);
+    window.addEventListener('resize', resizeHandler);
+    this._cleanups.push(() => window.removeEventListener('resize', resizeHandler));
+  }
+
+  /**
+   * Met à jour la position et la dimension de la glissière indicatrice coulissante
+   */
+  _updateModeIndicator(mode = this.currentMode) {
+    if (!this.container || this._isDestroyed) return;
+    const indicator = this.container.querySelector('#map-mode-indicator');
+    const activeBtn = this.container.querySelector(`.map-mode-pill[data-mode="${mode}"]`);
+    if (!indicator || !activeBtn) return;
+
+    const left = activeBtn.offsetLeft;
+    const top = activeBtn.offsetTop;
+    const width = activeBtn.offsetWidth;
+    const height = activeBtn.offsetHeight;
+
+    if (width > 0 && height > 0) {
+      indicator.style.left = `${left}px`;
+      indicator.style.top = `${top}px`;
+      indicator.style.width = `${width}px`;
+      indicator.style.height = `${height}px`;
+      indicator.style.opacity = '1';
+    }
+  }
+
+  /**
+   * Affiche une notification transitoire discrète avec option de réessai
+   */
+  _showTransientNotice(message, retryCallback) {
+    if (!this.container || this._isDestroyed) return;
+    let toast = this.container.querySelector('#map-transient-notice');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'map-transient-notice';
+      toast.className = 'absolute top-16 left-1/2 -translate-x-1/2 z-30 px-3.5 py-1.5 rounded-full bg-slate-900/90 text-white text-[11px] font-medium shadow-lg backdrop-blur-md flex items-center gap-2 border border-white/20 transition-all duration-300 pointer-events-auto';
+      this.container.appendChild(toast);
+    }
+    toast.innerHTML = `
+      <span>${message}</span>
+      ${retryCallback ? '<button id="map-notice-retry" class="underline text-lime-400 hover:text-lime-300 font-bold ml-1 cursor-pointer">Réessayer</button>' : ''}
+    `;
+    const retryBtn = toast.querySelector('#map-notice-retry');
+    if (retryBtn && retryCallback) {
+      retryBtn.addEventListener('click', () => {
+        toast.remove();
+        retryCallback();
+      }, { once: true });
+    }
+    setTimeout(() => {
+      if (toast && toast.parentNode) toast.remove();
+    }, 6000);
+  }
+
+  /**
+   * Bascule de l'affichage des étiquettes en mode Satellite
+   */
+  toggleSatelliteLabels(forcedValue) {
+    const nextState = typeof forcedValue === 'boolean' ? forcedValue : !this.satelliteLabelsVisible;
+    this.satelliteLabelsVisible = nextState;
+    this._applySatelliteLabelsVisibility();
+    this._updateSatelliteLabelsBtn();
+  }
+
+  _applySatelliteLabelsVisibility() {
+    if (!this.map || this.currentMode !== 'satellite' || this._isDestroyed) return;
+    const style = this.map.getStyle();
+    if (!style || !style.layers) return;
+    const excludedSymbolIds = ['road_oneway', 'road_oneway_opposite', 'highway-shield-non-us', 'highway-shield-us-interstate', 'road_shield_us'];
+    style.layers.forEach(l => {
+      if (l.type === 'symbol') {
+        if (excludedSymbolIds.includes(l.id)) {
+          try { this.map.setLayoutProperty(l.id, 'visibility', 'none'); } catch (e) {}
+        } else {
+          try { this.map.setLayoutProperty(l.id, 'visibility', this.satelliteLabelsVisible ? 'visible' : 'none'); } catch (e) {}
+        }
+      }
+    });
+  }
+
+  _updateSatelliteLabelsBtn() {
+    const btn = this.container?.querySelector('#map-btn-satellite-labels');
+    if (!btn) return;
+    if (this.currentMode === 'satellite') {
+      btn.classList.remove('hidden');
+      btn.classList.add('inline-flex');
+      const dot = btn.querySelector('span');
+      if (dot) dot.className = `w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-colors ${this.satelliteLabelsVisible ? 'bg-emerald-600' : 'bg-slate-300'}`;
+      btn.className = `inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-white/95 backdrop-blur-md shadow-lg border border-slate-200/80 text-[11px] sm:text-xs font-bold transition-all hover:bg-slate-50 cursor-pointer ${this.satelliteLabelsVisible ? 'text-marine-900' : 'text-slate-400'}`;
+    } else {
+      btn.classList.remove('inline-flex');
+      btn.classList.add('hidden');
+    }
   }
 
   /**
@@ -790,6 +1013,11 @@ export class PremiumMapController {
   setMode(mode) {
     if (!this.map || this.currentMode === mode || this._isDestroyed) return;
     this.currentMode = mode;
+
+    // Règle 4 : Pas d'extrusions 3D en mode Satellite
+    if (mode === 'satellite') {
+      this._remove3DExtrusions();
+    }
 
     const targetStyle = this.styles[mode];
     if (targetStyle) {
@@ -808,22 +1036,33 @@ export class PremiumMapController {
       this.map.once('style.load', () => {
         if (this._isDestroyed) return;
         this._updateAttribution();
+        if (this.currentMode === 'satellite') {
+          this._applySatelliteLabelsVisibility();
+        }
         if (this.is3D) {
-          this._apply3DExtrusions();
+          if (this.currentMode !== 'satellite') {
+            this._apply3DExtrusions();
+          } else {
+            this._remove3DExtrusions();
+          }
         }
       });
     }
 
-    // Mettre à jour l'apparence des pills
+    // Mettre à jour l'apparence des pills et glisser l'indicateur
     const pills = this.container.querySelectorAll('.map-mode-pill');
     pills.forEach(p => {
       if (p.getAttribute('data-mode') === mode) {
-        p.className = 'map-mode-pill px-3.5 py-1.5 rounded-full text-xs font-bold transition-all bg-marine-900 text-white shadow-xs';
+        p.className = 'map-mode-pill relative z-10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer bg-marine-900 text-white shadow-xs';
+        p.style.color = '#ffffff';
       } else {
-        p.className = 'map-mode-pill px-3.5 py-1.5 rounded-full text-xs font-bold transition-all text-slate-600 hover:text-slate-900';
+        p.className = 'map-mode-pill relative z-10 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold transition-all cursor-pointer text-slate-600 hover:text-slate-900';
+        p.style.color = '#475569';
       }
     });
 
+    this._updateModeIndicator(mode);
+    this._updateSatelliteLabelsBtn();
     this._updateAttribution();
   }
 
@@ -841,7 +1080,8 @@ export class PremiumMapController {
       essential: true
     });
 
-    if (this.is3D) {
+    // Règle 4 : Pas de bâtiments 3D extrudés en mode Satellite (imagerie inclinée pure)
+    if (this.is3D && this.currentMode !== 'satellite') {
       this._apply3DExtrusions();
     } else {
       this._remove3DExtrusions();
@@ -858,6 +1098,11 @@ export class PremiumMapController {
 
   _apply3DExtrusions() {
     if (!this.map || this._isDestroyed) return;
+    // Règle 4 : Pas de bâtiments 3D extrudés en mode Satellite
+    if (this.currentMode === 'satellite') {
+      this._remove3DExtrusions();
+      return;
+    }
     try {
       if (this.map.getLayer('3d-buildings')) return;
 

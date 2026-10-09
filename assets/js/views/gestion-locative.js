@@ -23,7 +23,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[85vh] lg:min-h-[80vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-gestion-locative.jpg" alt="Gestion Locative de Prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/gestionlocative/pexels-mohammadhu1-12983570.jpg" alt="Gestion Locative de Prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -254,7 +254,7 @@ export default {
             <!-- Bien 1 : Immeuble -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="immeuble" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-immeuble.jpg" alt="Immeubles de rapport" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-mohammadhu1-12983570.jpg" alt="Immeubles de rapport" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white flex items-center gap-1.5">
                   ${icon('building', { class: 'w-3.5 h-3.5' })}
                   <span>Immeuble Entier</span>
@@ -270,7 +270,7 @@ export default {
             <!-- Bien 2 : Appartement -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="appartement" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-appartement.jpg" alt="Appartements de standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-21297744.jpg" alt="Appartements de standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white flex items-center gap-1.5">
                   ${icon('home', { class: 'w-3.5 h-3.5' })}
                   <span>Appartements T2 à T5</span>
@@ -286,14 +286,14 @@ export default {
             <!-- Bien 3 : Studio -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="studio" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-studio.jpg" alt="Studios modernes" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-27650742.jpg" alt="Studios modernes" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white flex items-center gap-1.5">
                   ${icon('bed', { class: 'w-3.5 h-3.5' })}
                   <span>Studios Modernes</span>
                 </span>
               </div>
               <div class="p-6 space-y-2">
-                <h3 class="font-serif text-lg font-bold text-marine-900">Studios Américains & Suites</h3>
+                <h3 class="font-serif text-lg font-bold text-marine-900">Studios & Suites</h3>
                 <p class="text-xs text-slate-600 leading-relaxed">Gestion de haute rotation, relocation rapide sous 15 jours en cas de préavis, suivi des charges d'eau et d'électricité.</p>
                 <div class="pt-2 text-xs font-bold text-emerald-800 tabular-nums">Taux d'occupation 98&nbsp;%</div>
               </div>
@@ -302,7 +302,7 @@ export default {
             <!-- Bien 4 : Chambres -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="studio" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-chambre.jpg" alt="Chambres standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-20600277.jpg" alt="Chambres standing" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-emerald-800 text-white flex items-center gap-1.5">
                   ${icon('bed', { class: 'w-3.5 h-3.5' })}
                   <span>Chambres Modernes</span>
@@ -318,7 +318,7 @@ export default {
             <!-- Bien 5 : Bureaux -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-bureaux.jpg" alt="Plateaux de bureaux" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-davegarcia-37241151.jpg" alt="Plateaux de bureaux" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white flex items-center gap-1.5">
                   ${icon('briefcase', { class: 'w-3.5 h-3.5' })}
                   <span>Plateaux de Bureaux</span>
@@ -334,7 +334,7 @@ export default {
             <!-- Bien 6 : Magasins -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-magasin.jpg" alt="Boutiques et magasins" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-sami-aksu-48867324-9212993.jpg" alt="Boutiques et magasins" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white flex items-center gap-1.5">
                   ${icon('store', { class: 'w-3.5 h-3.5' })}
                   <span>Boutiques & Magasins</span>
@@ -350,7 +350,7 @@ export default {
             <!-- Bien 7 : Espaces Commerciaux & Hangars -->
             <div class="property-card card-light overflow-hidden rounded-3xl border border-slate-200 shadow-sm hover:shadow-xl transition-all" data-cat="commercial" data-reveal="up">
               <div class="relative h-56 overflow-hidden">
-                <img src="./assets/images/bien-commercial.jpg" alt="Hangars et entrepôts" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-matreding-11666903.jpg" alt="Hangars et entrepôts" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold bg-indigo-800 text-white flex items-center gap-1.5">
                   ${icon('layers', { class: 'w-3.5 h-3.5' })}
                   <span>Entrepôts & Hangars</span>
@@ -651,7 +651,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/gestionlocative/pexels-sami-aksu-48867324-17872459.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 

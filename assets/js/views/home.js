@@ -26,7 +26,7 @@ export default {
       <section class="relative min-h-[100svh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <!-- Photo d'arrière-plan HD nette avec voile asymétrique protégeant le texte -->
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-accueil.jpg" alt="Patrimoine locatif de prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/gestionlocative/pexels-sami-aksu-48867324-17872459.jpg" alt="Patrimoine locatif de prestige au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -217,7 +217,7 @@ export default {
             <!-- SERVICE 1 : GESTION LOCATIVE (Pôle Phare - Pleine Largeur) -->
             <div class="col-span-1 md:col-span-2 lg:col-span-3 rounded-3xl bg-white border-2 border-mint-400 p-8 shadow-card flex flex-col lg:flex-row gap-8 items-center relative overflow-hidden group" data-reveal="up">
               <div class="w-full lg:w-5/12 h-64 lg:h-full min-h-[280px] rounded-2xl overflow-hidden relative">
-                <img src="./assets/images/hero-gestion-locative.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-34811748.jpg" alt="Gestion Locative au Cameroun" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <span class="absolute top-3 left-3 px-3 py-1.5 bg-mint-600 text-white font-bold text-xs rounded-full shadow-md flex items-center gap-1.5">
                   ${icon('star', { class: 'w-3.5 h-3.5 fill-current' })}
                   <span>PÔLE PHARE</span>
@@ -232,7 +232,7 @@ export default {
                   Gestion Locative Intelligente & Espace Propriétaire
                 </h3>
                 <p class="text-slate-600 text-sm leading-relaxed">
-                  Confiez-nous vos immeubles, duplex, appartements, studios et espaces commerciaux. Nous prenons en charge la sélection rigoureuse des locataires, les baux conformes OHADA, les quittances certifiées et le reversement garanti de vos loyers chaque 5 du mois via virement, Orange Money ou MTN MoMo.
+                  Confiez-nous vos immeubles, duplex, appartements, studios et espaces commerciaux. Nous prenons en charge la sélection rigoureuse des locataires, les baux conformes OHADA, les quittances certifiées et le reversement garanti de vos loyers chaque mois via virement, Orange Money ou MTN MoMo.
                 </p>
                 <div class="flex flex-wrap gap-2 pt-1">
                   <span class="text-[11px] px-2.5 py-1 bg-mint-50 text-mint-800 rounded-lg font-medium border border-mint-200">Huissiers & Avocats</span>
@@ -430,7 +430,7 @@ export default {
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl" data-reveal="right">
-              <img src="./assets/images/hero-gestion-locative.jpg" alt="Bailleurs au Cameroun" class="w-full h-80 object-cover" />
+              <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-29568695.jpg" alt="Bailleurs au Cameroun" class="w-full h-80 object-cover" />
             </div>
           </div>
 
@@ -462,7 +462,7 @@ export default {
               </div>
             </div>
             <div class="rounded-3xl overflow-hidden border border-slate-200 shadow-xl">
-              <img src="./assets/images/bien-appartement.jpg" alt="Locataires au Cameroun" class="w-full h-80 object-cover" />
+              <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-20849804.jpg" alt="Locataires au Cameroun" class="w-full h-80 object-cover" />
             </div>
           </div>
 
@@ -475,7 +475,7 @@ export default {
               <!-- Bien 1 : Appartements -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up">
                 <div class="h-40 overflow-hidden">
-                  <img src="./assets/images/bien-appartement.jpg" alt="Appartements standing Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-21297744.jpg" alt="Appartements standing Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Appartements</h4>
@@ -486,7 +486,7 @@ export default {
               <!-- Bien 2 : Studios -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.1">
                 <div class="h-40 overflow-hidden">
-                  <img src="./assets/images/bien-studio.jpg" alt="Studios modernes Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="./assets/images/gestionlocative/pexels-alexander-f-ungerer-157458816-20600277.jpg" alt="Studios modernes Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Studios & Chambres</h4>
@@ -497,7 +497,7 @@ export default {
               <!-- Bien 3 : Magasins & Commerces -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.2">
                 <div class="h-40 overflow-hidden">
-                  <img src="./assets/images/bien-commercial.jpg" alt="Commerces Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="./assets/images/gestionlocative/pexels-matreding-11666903.jpg" alt="Commerces Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Magasins & Boutiques</h4>
@@ -508,7 +508,7 @@ export default {
               <!-- Bien 4 : Bureaux d'Affaires -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.3">
                 <div class="h-40 overflow-hidden">
-                  <img src="./assets/images/bien-bureaux.jpg" alt="Bureaux d'affaires Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="./assets/images/gestionlocative/pexels-davegarcia-37241151.jpg" alt="Bureaux d'affaires Douala" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Bureaux d'Affaires</h4>
@@ -519,7 +519,7 @@ export default {
               <!-- Bien 5 : Immeubles & Ensembles -->
               <div class="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-sm group text-left" data-reveal="up" data-delay="0.4">
                 <div class="h-40 overflow-hidden">
-                  <img src="./assets/images/bien-immeuble.jpg" alt="Immeubles collectifs au Cameroun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src="./assets/images/gestionlocative/pexels-mohammadhu1-12983570.jpg" alt="Immeubles collectifs au Cameroun" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div class="p-3.5 space-y-1">
                   <h4 class="font-bold text-sm text-marine-900">Immeubles Complets</h4>
@@ -902,7 +902,7 @@ export default {
             <!-- Lecteur Vidéo d'Entreprise Stylisé -->
             <div class="lg:col-span-6" data-reveal="right">
               <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-                <img src="./assets/images/video-cover.jpg" alt="Vidéo d'entreprise MULTI BUSINESS SARL" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-34811748.jpg" alt="Vidéo d'entreprise MULTI BUSINESS SARL" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div class="absolute inset-0 bg-marine-900/40 flex flex-col items-center justify-center p-6 text-center text-white">
                   <button id="btn-play-video" class="w-16 h-16 rounded-full bg-white text-marine-900 flex items-center justify-center shadow-xl hover:scale-110 transition-transform mb-3" aria-label="Lire la vidéo d'entreprise">
                     <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -973,9 +973,9 @@ export default {
               <div class="space-y-4">
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="./assets/images/temoin-1.jpg" alt="M. Jean Paul T." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
+                    <img src="./assets/images/pexels-temoin4.jpg" alt="M. Ibrahim K." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
                     <div>
-                      <span class="block text-xs font-bold text-marine-900">M. Jean Paul T.</span>
+                      <span class="block text-xs font-bold text-marine-900">M. Ibrahim K.</span>
                       <span class="block text-[11px] text-slate-500">Propriétaire d'un immeuble (Akwa)</span>
                     </div>
                   </div>
@@ -985,9 +985,9 @@ export default {
 
                 <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
                   <div class="flex items-center gap-3">
-                    <img src="./assets/images/temoin-2.jpg" alt="Mme Sandrine E." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
+                    <img src="./assets/images/temoin-4.jpg" alt="Mme Sophie M." class="w-11 h-11 rounded-full object-cover border-2 border-mint-500 shadow-sm" />
                     <div>
-                      <span class="block text-xs font-bold text-marine-900">Mme Sandrine E.</span>
+                      <span class="block text-xs font-bold text-marine-900">Mme Sophie M.</span>
                       <span class="block text-[11px] text-slate-500">Dirigeante PME (Douala)</span>
                     </div>
                   </div>
@@ -1176,7 +1176,7 @@ export default {
       <!-- ================================================================= -->
       <section id="cta-final-section" data-theme="photo" class="relative py-28 px-4 overflow-hidden">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/gestionlocative/pexels-sami-aksu-48867324-17872459.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 
