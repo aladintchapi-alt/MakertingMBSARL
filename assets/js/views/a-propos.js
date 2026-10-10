@@ -22,7 +22,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-apropos.jpg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/gestionlocative/pexels-lucasandrade-17639678.jpg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -135,7 +135,7 @@ export default {
             <!-- Photo du PDG -->
             <div class="lg:col-span-5 relative" data-reveal="left">
               <div class="relative rounded-2xl overflow-hidden shadow-lg border-2 border-emerald-500/30 max-h-[460px]">
-                <img src="./assets/images/portrait-pdg.jpg" alt="Président Directeur Général MULTI BUSINESS SARL" class="w-full h-full object-cover object-top" />
+                <img src="./assets/images/gestionlocative/multibusiness2.jpeg" alt="Président Directeur Général MULTI BUSINESS SARL" class="w-full h-full object-cover object-top" />
                 <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/80 to-transparent p-4 text-white">
                   <p class="font-serif font-bold text-sm">Direction Générale</p>
                   <p class="text-xs text-slate-300">MULTI BUSINESS SARL • Douala, Cameroun</p>
@@ -218,7 +218,7 @@ export default {
           <!-- Valeur 3 : Disponibilité & Proximité -->
           <div class="card-light overflow-hidden rounded-3xl border border-slate-200 group hover:shadow-xl transition-all" data-reveal="up">
             <div class="relative h-48 overflow-hidden">
-              <img src="./assets/images/valeur-disponibilite.jpg" alt="Disponibilité & Proximité Humaine" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/gestionlocative/equipe.jpeg" alt="Disponibilité & Proximité Humaine" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
               <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-sky-800 text-white tabular-nums">03</span>
             </div>
             <div class="p-6 space-y-3">
@@ -305,7 +305,7 @@ export default {
           
           <!-- Photo 1 : Équipe consulting -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-equipe.jpg" data-caption="Équipe de consultants et gestionnaires de patrimoine MULTI BUSINESS SARL en réunion stratégique à Douala">
-            <img src="./assets/images/valeur-disponibilite.jpg" alt="Équipe MULTI BUSINESS SARL" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/gestionlocative/equipe.jpeg" alt="Équipe MULTI BUSINESS SARL" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -360,7 +360,7 @@ export default {
 
           <!-- Photo 6 : Panorama de la ville de Douala -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/hero-accueil.jpg" data-caption="Vue panoramique du centre d'affaires de Douala, cœur économique du Cameroun">
-            <img src="./assets/images/fiscalite/pexels-leeloothefirst-8962518.jpg" alt="Douala Centre d'Affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/gestionlocative/multibusiness2.jpeg" alt="Douala Centre d'Affaires" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -524,25 +524,25 @@ export default {
 
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
-              <img src="./assets/images/partenaire-justice.jpg" alt="Chambre Nationale des Huissiers de Justice" class="h-12 w-auto object-contain" />
+              <img src="./assets/images/partenaire-justice.jpg" alt="Chambre Nationale des Huissiers de Justice" class="h-12 rounded-xl w-auto object-contain" />
               <span class="text-[11px] font-bold text-slate-800">Autorités judiciaires</span>
               <span class="text-[9px] text-slate-500 font-mono">Huissiers de Justice & Avocats...</span>
             </div>
 
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
-              <img src="./assets/images/service-creation.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-12 w-auto object-contain" />
+              <img src="./assets/images/service-creation.jpg" alt="Centre de Formalités de Création d'Entreprises" class="h-12 rounded-xl w-auto object-contain" />
               <span class="text-[11px] font-bold text-slate-800">CFCE Cameroun</span>
               <span class="text-[9px] text-slate-500 font-mono">Guichet Unique Entreprises</span>
             </div>
 
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
-              <img src="./assets/images/partenaire-fiscalite.jpg" alt="Direction Générale des Impôts DGI" class="h-12 w-auto object-contain" />
+              <img src="./assets/images/partenaire-fiscalite.jpg" alt="Direction Générale des Impôts DGI" class="h-12 rounded-xl w-auto object-contain" />
               <span class="text-[11px] font-bold text-slate-800">DGI & Centres Fiscaux</span>
               <span class="text-[9px] text-slate-500 font-mono">Télé-déclarations & DSF</span>
             </div>
 
             <div class="card-light p-6 rounded-2xl border border-slate-200 flex flex-col items-center justify-center gap-3 bg-white">
-              <img src="./assets/images/partenaire-douane.jpg" alt="Direction Générale des Douanes DGD" class="h-12 w-auto object-contain" />
+              <img src="./assets/images/partenaire-douane.jpg" alt="Direction Générale des Douanes DGD" class="h-12 rounded-xl w-auto object-contain" />
               <span class="text-[11px] font-bold text-slate-800">Douanes Camerounaises</span>
               <span class="text-[9px] text-slate-500 font-mono">Ports Douala & Kribi</span>
             </div>

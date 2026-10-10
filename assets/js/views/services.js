@@ -23,7 +23,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/hero-services.jpg" alt="Services d'affaires au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/gestionlocative/equipe.jpeg" alt="Services d'affaires au Cameroun" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -127,7 +127,7 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-              <img src="./assets/images/service-immo.jpg" alt="Gestion Locative MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/gestionlocative/pexels-mohammadhu1-12983570.jpg" alt="Gestion Locative MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Plateforme Digitale Propriétaire</span>
@@ -149,7 +149,7 @@ export default {
           
           <div class="lg:col-span-6 order-2 lg:order-1" data-reveal="left">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-              <img src="./assets/images/service-creation.jpg" alt="Création d'Entreprise au Cameroun" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/creationentreprise/pexels-contact-me-923323219715-262056873-12703094.jpg" alt="Création d'Entreprise au Cameroun" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Délai Record Guichet Unique</span>
@@ -311,7 +311,7 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-              <img src="./assets/images/service-fiscalite.jpg" alt="Fiscalité et Conseil d'Entreprise" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
+              <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Fiscalité et Conseil d'Entreprise" class="w-full h-auto object-cover max-h-[460px] transition-transform duration-500 group-hover:scale-105" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Conformité DGI Cameroun</span>
@@ -390,7 +390,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/cta-final-bg.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/gestionlocative/pexels-lucasandrade-17639678.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 

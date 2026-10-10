@@ -256,7 +256,7 @@ export default {
             <div class="rounded-3xl bg-white border border-amber-200 p-6 shadow-card flex flex-col justify-between group text-left" data-reveal="up" data-delay="0.1">
               <div class="space-y-4">
                 <div class="h-48 rounded-2xl overflow-hidden relative">
-                  <img src="./assets/images/service-creation.jpg" alt="Création Entreprise CFCE" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src="./assets/images/creationentreprise/pexels-contact-me-923323219715-262056873-12703094.jpg" alt="Création Entreprise CFCE" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                   <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-amber-500 text-white font-bold text-[10px] rounded-md">EXPRESS</span>
                 </div>
                 <div class="flex items-center gap-2 text-xs font-bold text-amber-800">
@@ -888,12 +888,19 @@ export default {
 
               <!-- Bloc Portrait du PDG avec Téléphone Direct -->
               <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-5">
-                <img src="./assets/images/portrait-pdg.jpg" alt="Directeur Général MULTI BUSINESS SARL" class="w-16 h-16 rounded-full object-cover border-2 border-mint-500 shadow-md" />
+                <img src="./assets/images/gestionlocative/multibusiness2.jpeg" alt="Directeur Général MULTI BUSINESS SARL" class="w-16 h-16 rounded-full object-cover border-2 border-mint-500 shadow-md" />
                 <div class="space-y-0.5">
-                  <h4 class="font-serif font-bold text-sm text-marine-900">Direction Générale</h4>
-                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Yaoundé</p>
+                  <h4 class="font-serif font-bold text-sm text-marine-900">SIEGE</h4>
+                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Dakar, Douala</p>
                   <a href="tel:+237690843497" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
-                    Ligne directe : (+237) 690 84 34 97
+                    Ligne directe : (+237) 690 843 497
+                  </a>
+                  <a href="tel:+237671461791" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
+                    | 671 461 791
+                  </a>
+                  <br>
+                  <a href="tel:+237651589411" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
+                    Whatsapp : <span class="text-slate-500">+237 651 589 411</span>
                   </a>
                 </div>
               </div>
