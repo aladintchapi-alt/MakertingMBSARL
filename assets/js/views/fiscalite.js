@@ -41,11 +41,14 @@ export default {
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <a href="#audit-fiscal" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg" data-magnetic>
-              <span>Prendre rendez-vous avec un fiscaliste</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <a href="https://apps.multibusiness.cm/locataire/fiscalite-conseils" target="_blank" rel="noopener noreferrer" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic aria-label="Être conseillé en fiscalité sur l'application, s'ouvre dans un nouvel onglet">
+              <span>Être conseillé sur l'application</span>
+              ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
-            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20un%20conseil%20fiscal%20pour%20mon%20entreprise" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+            <a href="#audit-fiscal" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+              <span>Découvrir l'offre</span>
+            </a>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20un%20conseil%20fiscal%20pour%20mon%20entreprise" target="_blank" rel="noopener noreferrer" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Consultation WhatsApp</span>
             </a>
           </div>

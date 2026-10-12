@@ -271,7 +271,7 @@ export default {
               <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 inline-block mb-1 tabular-nums">2024</span>
               <h4 class="font-serif text-xl font-bold text-marine-900">Digitalisation & Reversements Mobile Money</h4>
               <p class="text-xs md:text-sm text-slate-600 mt-1 leading-relaxed">
-                Lancement de la plateforme logicielle <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">apps.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
+                Lancement de la plateforme logicielle <a href="https://apps.multibusiness.cm/locataire" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline" aria-label="Accéder à l'application Multi Business, s'ouvre dans un nouvel onglet">apps.multibusiness.cm</a> avec intégration des API Orange Money & MTN Mobile Money pour les encaissements instantanés.
               </p>
             </div>
 

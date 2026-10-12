@@ -8,6 +8,7 @@ import { showToast } from '../ui.js';
 import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
 import { icon, iconBadge } from '../icons.js';
 import { PremiumMapController } from '../modules/map/map-controller.js';
+import { renderAppReferralCard } from '../components/app-referral-card.js';
 
 export default {
   meta: {
@@ -87,65 +88,9 @@ export default {
             </div>
           </div>
 
-          <!-- Colonne Droite : Carte Flottante d'Accès à l'Application Digitale -->
+          <!-- Colonne Droite : Système de Référencement Direct vers l'Application Digitale -->
           <div class="lg:col-span-5 relative" data-stagger-item>
-            <div class="relative mx-auto max-w-md bg-white rounded-3xl shadow-2xl border border-slate-200 p-6 overflow-hidden">
-              
-              <!-- Header de la carte application -->
-              <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-9 h-9 rounded-xl bg-mint-500 flex items-center justify-center text-white font-black text-sm shadow-sm">MB</div>
-                  <div>
-                    <h3 class="font-bold text-xs text-slate-900 leading-tight">Espace Propriétaire en Ligne</h3>
-                    <span class="text-[11px] font-semibold text-mint-700">apps.multibusiness.cm</span>
-                  </div>
-                </div>
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-mint-50 text-mint-800 text-[10px] font-bold border border-mint-200">
-                  <span class="w-1.5 h-1.5 rounded-full bg-mint-500 animate-ping"></span>
-                  En direct
-                </span>
-              </div>
-
-              <!-- Aperçu Métrique Financière -->
-              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-3 mb-4">
-                <div class="flex justify-between items-center text-xs text-slate-600 font-medium">
-                  <span>Loyers reversés (Mois en cours)</span>
-                  <span class="text-mint-700 font-bold">100% à date fixe</span>
-                </div>
-                <div class="text-2xl md:text-3xl font-extrabold tabular-nums text-marine-900 tracking-tight">
-                  14 850 000 <span class="text-xs text-slate-500 font-semibold">FCFA</span>
-                </div>
-                <div class="flex items-center gap-2 text-[11px] text-slate-600 font-medium">
-                  <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 text-[9px] font-bold">Orange Money</span>
-                  <span class="px-1.5 py-0.5 rounded bg-yellow-100 text-yellow-900 text-[9px] font-bold">MTN MoMo</span>
-                  <span class="text-slate-500">• Quittance instantanée</span>
-                </div>
-              </div>
-
-              <!-- Lots témoins sous gestion (Icônes vectorielles propres, noms neutres sans emoji) -->
-              <div class="space-y-2 mb-5">
-                <div class="p-2.5 rounded-xl bg-white border border-slate-100 flex items-center justify-between text-xs">
-                  <div class="flex items-center gap-2 text-slate-800">
-                    ${icon('building', { class: 'w-4 h-4 text-emerald-700' })}
-                    <span class="font-medium">Résidence Les Palmiers</span>
-                  </div>
-                  <span class="text-[10px] font-bold px-2 py-0.5 bg-mint-100 text-mint-800 rounded-md">9/9 Loué</span>
-                </div>
-                <div class="p-2.5 rounded-xl bg-white border border-slate-100 flex items-center justify-between text-xs">
-                  <div class="flex items-center gap-2 text-slate-800">
-                    ${icon('store', { class: 'w-4 h-4 text-emerald-700' })}
-                    <span class="font-medium">Complexe Commercial Central</span>
-                  </div>
-                  <span class="text-[10px] font-bold px-2 py-0.5 bg-mint-100 text-mint-800 rounded-md">4/4 Loué</span>
-                </div>
-              </div>
-
-              <!-- Bouton d'accès direct à l'application -->
-              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="w-full btn-primary !py-3 text-xs flex items-center justify-center gap-2">
-                <span>Accéder à l'application en ligne</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
+            ${renderAppReferralCard()}
           </div>
 
         </div>
@@ -584,10 +529,10 @@ export default {
                     <span class="w-3 h-3 rounded-full bg-mint-500"></span>
                     <h4 class="font-bold text-sm text-marine-900">1. Tableau de Bord Bailleurs</h4>
                   </div>
-                  <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-mint-50 text-mint-700">Revenus en direct</span>
+                  <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-mint-50 text-mint-700">Revenus garantis</span>
                 </div>
                 <p class="text-xs text-slate-600 leading-relaxed">
-                  Visualisez le montant total des loyers recouvrés (14 850 000 FCFA), le taux d'occupation de 100% et la date de reversement garantie le 5 du mois.
+                  Visualisez en temps réel l'ensemble des loyers collectés, l'état d'occupation de vos biens et la date de reversement garanti le 5 du mois.
                 </p>
               </div>
 
@@ -634,7 +579,7 @@ export default {
               </div>
 
               <div class="flex flex-wrap items-center gap-4 pt-2">
-                <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs flex items-center gap-2">
+                <a href="${CONFIG.app.url}" target="_blank" rel="noopener noreferrer" class="btn-primary !px-6 !py-3 text-xs flex items-center gap-2" aria-label="Ouvrir l'application mobile Multi Business, s'ouvre dans un nouvel onglet">
                   <span>Ouvrir l'application mobile</span>
                   ${icon('arrow-right', { class: 'w-3.5 h-3.5' })}
                 </a>
@@ -690,7 +635,7 @@ export default {
                 </div>
                 <div class="px-6 py-1 rounded-lg bg-white border border-slate-200 text-xs font-mono text-slate-600 flex items-center gap-2 w-72 justify-center shadow-inner">
                   ${icon('lock', { class: 'w-3.5 h-3.5 text-mint-700' })}
-                  <span>https://apps.multibusiness.cm/dashboard</span>
+                  <span>https://apps.multibusiness.cm/locataire</span>
                 </div>
                 <span class="text-xs font-semibold text-slate-400">APPLICATION MULTI BUSINESS</span>
               </div>
@@ -739,20 +684,20 @@ export default {
                       <h3 class="font-bold text-lg text-marine-900">Tableau de Bord Portefeuille Locatif</h3>
                       <p class="text-xs text-slate-500">Mise à jour en temps réel • Partout au Cameroun</p>
                     </div>
-                    <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-4 !py-2 text-xs">Accéder à l'application</a>
+                    <a href="https://apps.multibusiness.cm/locataire" target="_blank" rel="noopener noreferrer" class="btn-primary !px-4 !py-2 text-xs" aria-label="Accéder à l'application Multi Business, s'ouvre dans un nouvel onglet">Accéder à l'application</a>
                   </div>
 
                   <!-- Métriques financières en cartes -->
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                      <span class="text-[11px] text-slate-500 font-semibold block mb-1">Revenus Collectés (Mois)</span>
-                      <div class="text-xl font-bold text-marine-900 tabular-nums">14 850 000 FCFA</div>
-                      <span class="text-[10px] text-mint-700 font-bold block mt-1">↑ 100% encaissé</span>
+                      <span class="text-[11px] text-slate-500 font-semibold block mb-1">Recouvrement des Loyers</span>
+                      <div class="text-xl font-bold text-marine-900 tabular-nums">100% à date fixe</div>
+                      <span class="text-[10px] text-mint-700 font-bold block mt-1">↑ Zéro impayé garanti</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                       <span class="text-[11px] text-slate-500 font-semibold block mb-1">Taux d'Occupation</span>
-                      <div class="text-xl font-bold text-mint-700 tabular-nums">100%</div>
-                      <span class="text-[10px] text-slate-500 block mt-1">48 lots occupés</span>
+                      <div class="text-xl font-bold text-mint-700 tabular-nums">Optimal</div>
+                      <span class="text-[10px] text-slate-500 block mt-1">Sélection stricte des dossiers</span>
                     </div>
                     <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm">
                       <span class="text-[11px] text-slate-500 font-semibold block mb-1">Reversement Garanti</span>

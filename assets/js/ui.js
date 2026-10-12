@@ -132,36 +132,98 @@ export const initHeader = () => {
 };
 
 /**
- * Mise à jour de l'état actif dans la barre de navigation
+ * Mise à jour de l'état actif dans la barre de navigation et le menu mobile (y compris l'accordéon des services)
  */
 export const updateActiveNavLink = (currentPath) => {
-  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-nav-item');
+  const normCurrent = (currentPath || '/').replace(/\/+$/, '') || '/';
+  
+  // 1. Liens standards
+  const allNavLinks = document.querySelectorAll('.nav-link, .mobile-cascade-item, .mobile-subnav-link');
   allNavLinks.forEach((link) => {
+    if (link.tagName.toLowerCase() !== 'a') return;
     const href = link.getAttribute('href');
-    const isMatch = href === currentPath || (currentPath === '/' && (href === '/' || href === ''));
+    if (!href) return;
+    const normHref = href.replace(/\/+$/, '') || '/';
+    const isMatch = normHref === normCurrent;
+
     if (isMatch) {
-      link.classList.add('text-marine-900', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
-      link.classList.remove('text-slate-600');
+      link.setAttribute('aria-current', 'page');
+      link.classList.add('nav-link-active');
+      if (link.classList.contains('mobile-subnav-link')) {
+        link.classList.add('bg-slate-100', 'font-bold', 'text-emerald-800');
+      } else if (link.classList.contains('nav-link')) {
+        link.classList.add('text-marine-950', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+        link.classList.remove('text-slate-700', 'text-slate-600');
+      }
     } else {
-      link.classList.remove('text-marine-900', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
-      link.classList.add('text-slate-600');
+      link.removeAttribute('aria-current');
+      link.classList.remove('nav-link-active');
+      if (link.classList.contains('mobile-subnav-link')) {
+        link.classList.remove('bg-slate-100', 'font-bold', 'text-emerald-800');
+      } else if (link.classList.contains('nav-link')) {
+        link.classList.remove('text-marine-950', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+        link.classList.add('text-slate-700');
+      }
     }
   });
 
+  // 2. Vérification si la route courante est un service
+  const serviceRoutes = ['/services', '/nos-services', '/gestion-locative', '/creation-entreprise', '/dedouanement', '/fiscalite-conseil', '/fiscalite'];
+  const isServicePage = serviceRoutes.some(r => r === normCurrent);
+
+  // Synchronisation de l'accordéon mobile
+  const accordionToggle = document.getElementById('mobile-services-accordion-toggle');
+  const accordionPanel = document.getElementById('mobile-services-accordion-panel');
+  const accordionChevron = document.getElementById('mobile-services-accordion-chevron');
+  const accordionBox = document.getElementById('mobile-services-accordion');
+
+  if (accordionToggle && accordionPanel) {
+    if (isServicePage) {
+      // Ouvre automatiquement l'accordéon si on est sur une page de service
+      accordionPanel.classList.remove('hidden');
+      accordionToggle.setAttribute('aria-expanded', 'true');
+      if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
+      if (accordionBox) accordionBox.classList.add('border-emerald-300', 'shadow-sm');
+    } else {
+      // Referme si on navigue hors services
+      accordionPanel.classList.add('hidden');
+      accordionToggle.setAttribute('aria-expanded', 'false');
+      if (accordionChevron) accordionChevron.style.transform = 'rotate(0deg)';
+      if (accordionBox) accordionBox.classList.remove('border-emerald-300', 'shadow-sm');
+    }
+  }
+
+  // Marquer le parent "Nos services" dans le méga-menu desktop si page de service
+  const desktopHubLink = document.getElementById('desktop-services-hub-link');
+  if (desktopHubLink) {
+    if (isServicePage) {
+      desktopHubLink.classList.add('text-marine-950', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+      desktopHubLink.setAttribute('aria-current', 'page');
+    } else {
+      desktopHubLink.classList.remove('text-marine-950', 'font-bold', 'bg-mint-50', 'border', 'border-mint-200/80', 'shadow-sm');
+      desktopHubLink.removeAttribute('aria-current');
+    }
+  }
+
   // Fermer le menu mobile lors d'une navigation
   closeMobileMenu();
+  closeDesktopMegaMenu();
 };
 
 /**
- * Menu Mobile Overlay avec animation GSAP en cascade, blocage Lenis & gestion du focus
+ * Menu Mobile Overlay : Accordéon fluide, Piégeage du Focus, Fermetures Échap / Clics
  */
 export const initMobileMenu = () => {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const closeBtn = document.getElementById('mobile-menu-close');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
+  const accordionToggle = document.getElementById('mobile-services-accordion-toggle');
+  const accordionPanel = document.getElementById('mobile-services-accordion-panel');
+  const accordionChevron = document.getElementById('mobile-services-accordion-chevron');
 
   if (!toggleBtn || !menuOverlay) return;
 
+  // 1. Bouton ouverture / fermeture hamburger
   toggleBtn.addEventListener('click', () => {
     if (menuOverlay.classList.contains('hidden')) {
       openMobileMenu();
@@ -174,19 +236,64 @@ export const initMobileMenu = () => {
     closeBtn.addEventListener('click', closeMobileMenu);
   }
 
-  // Fermeture à la touche Échap
+  // 2. Gestion de l'accordéon "Nos services"
+  if (accordionToggle && accordionPanel) {
+    accordionToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isExpanded = accordionToggle.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        accordionPanel.classList.add('hidden');
+        accordionToggle.setAttribute('aria-expanded', 'false');
+        if (accordionChevron) accordionChevron.style.transform = 'rotate(0deg)';
+      } else {
+        accordionPanel.classList.remove('hidden');
+        accordionToggle.setAttribute('aria-expanded', 'true');
+        if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
+      }
+    });
+  }
+
+  // 3. Fermeture et piège à focus au clavier (Échap et Tab)
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menuOverlay.classList.contains('hidden')) {
+    if (menuOverlay.classList.contains('hidden')) return;
+
+    if (e.key === 'Escape') {
       closeMobileMenu();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      const focusableEls = menuOverlay.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      const focusable = Array.from(focusableEls).filter(el => el.offsetParent !== null);
+      if (focusable.length === 0) return;
+
+      const firstEl = focusable[0];
+      const lastEl = focusable[focusable.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          lastEl.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          firstEl.focus();
+          e.preventDefault();
+        }
+      }
     }
   });
 
-  // Fermeture au clic sur n'importe quel lien du menu mobile
+  // 4. Fermeture au clic sur n'importe quel lien du menu mobile (sauf le bouton chevron)
   menuOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       closeMobileMenu();
     });
   });
+
+  // 5. Initialiser également le gestionnaire méga-menu desktop tactile / clavier
+  initDesktopMegaMenuTactile();
 };
 
 export const openMobileMenu = () => {
@@ -218,8 +325,8 @@ export const openMobileMenu = () => {
     );
     window.gsap.fromTo(
       menuOverlay.querySelectorAll('.mobile-cascade-item'),
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.35, stagger: 0.05, ease: "power2.out", delay: 0.08 }
+      { opacity: 0, y: 15 },
+      { opacity: 1, y: 0, duration: 0.35, stagger: 0.04, ease: "power2.out", delay: 0.05 }
     );
   }
 };
@@ -232,7 +339,6 @@ export const closeMobileMenu = () => {
   if (toggleBtn) {
     toggleBtn.classList.remove('is-active');
     toggleBtn.setAttribute('aria-expanded', 'false');
-    toggleBtn.focus();
   }
 
   const finalizeClose = () => {
@@ -247,7 +353,7 @@ export const closeMobileMenu = () => {
     window.gsap.to(menuOverlay, {
       opacity: 0,
       scale: 0.98,
-      duration: 0.25,
+      duration: 0.22,
       ease: "power2.in",
       onComplete: finalizeClose
     });
@@ -255,6 +361,109 @@ export const closeMobileMenu = () => {
     finalizeClose();
   }
 };
+
+/**
+ * Tablette & Écrans Tactiles Larges (iPad paysage >= 1024px) & Clavier pour le Méga-Menu
+ * Détecte (hover: none) ou (pointer: coarse) : 
+ * - Premier appui sur le bouton chevron ou sur "Nos services" ouvre le méga-menu
+ * - Second appui sur le libellé mène au hub
+ * - Clic extérieur ou Échap ferme
+ * - Support clavier : Entrée/Espace ouvre, Échap ferme
+ */
+export const initDesktopMegaMenuTactile = () => {
+  const container = document.getElementById('desktop-services-menu-container');
+  const trigger = document.getElementById('desktop-services-trigger');
+  const hubLink = document.getElementById('desktop-services-hub-link');
+  const dropdown = document.getElementById('desktop-services-dropdown');
+  const chevron = document.getElementById('desktop-mega-chevron');
+
+  if (!container || !dropdown) return;
+
+  const isTouchDevice = () => {
+    return window.matchMedia('(hover: none), (pointer: coarse)').matches || ('ontouchstart' in window);
+  };
+
+  const openDropdown = () => {
+    dropdown.classList.remove('pointer-events-none', 'opacity-0', 'translate-y-2');
+    dropdown.classList.add('pointer-events-auto', 'opacity-100', 'translate-y-0');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+  };
+
+  const closeDropdown = () => {
+    dropdown.classList.add('pointer-events-none', 'opacity-0', 'translate-y-2');
+    dropdown.classList.remove('pointer-events-auto', 'opacity-100', 'translate-y-0');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
+  };
+
+  // Toggle au clic sur le bouton chevron (tactile, souris ou clavier)
+  if (trigger) {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeDropdown();
+      } else {
+        openDropdown();
+      }
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        if (isOpen) closeDropdown(); else openDropdown();
+      }
+    });
+  }
+
+  // Sur tactile : si le dropdown est fermé, le premier appui sur le lien ouvre le méga-menu
+  if (hubLink) {
+    hubLink.addEventListener('click', (e) => {
+      if (isTouchDevice() && dropdown.classList.contains('pointer-events-none')) {
+        e.preventDefault();
+        e.stopPropagation();
+        openDropdown();
+      }
+    });
+  }
+
+  // Fermeture au clic extérieur
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      closeDropdown();
+    }
+  });
+
+  // Fermeture par touche Échap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDropdown();
+    }
+  });
+
+  // Fermeture lors d'un clic sur un lien du méga-menu
+  dropdown.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      closeDropdown();
+    });
+  });
+};
+
+export const closeDesktopMegaMenu = () => {
+  const trigger = document.getElementById('desktop-services-trigger');
+  const dropdown = document.getElementById('desktop-services-dropdown');
+  const chevron = document.getElementById('desktop-mega-chevron');
+  if (dropdown) {
+    dropdown.classList.add('pointer-events-none', 'opacity-0', 'translate-y-2');
+    dropdown.classList.remove('pointer-events-auto', 'opacity-100', 'translate-y-0');
+  }
+  if (trigger) trigger.setAttribute('aria-expanded', 'false');
+  if (chevron) chevron.style.transform = 'rotate(0deg)';
+};
+
 
 /**
  * Accordéons (FAQ, détails techniques)

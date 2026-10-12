@@ -41,11 +41,14 @@ export default {
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <a href="#estimer-dedouanement" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic>
-              <span>Estimer mes frais de dédouanement</span>
+            <a href="https://apps.multibusiness.cm/locataire/dedouanement" target="_blank" rel="noopener noreferrer" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic aria-label="Lancer mon dédouanement sur l'application, s'ouvre dans un nouvel onglet">
+              <span>Lancer mon dédouanement sur l'application</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
-            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20d%C3%A9douaner%20un%20conteneur%20au%20port" target="_blank" rel="noopener" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+            <a href="#estimer-dedouanement" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white flex items-center gap-2" data-magnetic>
+              <span>Estimer mes frais</span>
+            </a>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20d%C3%A9douaner%20un%20conteneur%20au%20port" target="_blank" rel="noopener noreferrer" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Échanger avec un déclarant WhatsApp</span>
             </a>
           </div>

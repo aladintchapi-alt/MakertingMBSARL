@@ -41,24 +41,69 @@ export default {
             De la <strong>gestion locative</strong> aux formalités de <strong>création d'entreprise</strong>, de <strong>transit douanier</strong> et de <strong>fiscalité</strong>, bénéficiez d'un accompagnement d'élite et sécurisé.
           </p>
 
-          <!-- Barre de Navigation Rapide par Ancres Fluides -->
-          <div class="flex flex-wrap items-center justify-center gap-2.5 max-w-4xl mx-auto">
-            <a href="/gestion-locative" data-link class="px-4 py-2 rounded-full bg-emerald-50 border border-emerald-300 text-xs font-bold text-emerald-900 shadow-sm transition-all hover:bg-emerald-100 flex items-center gap-1.5">
-              ${icon('building', { class: 'w-3.5 h-3.5 text-emerald-700' })}
-              <span>1. Gestion Locative (Phare)</span>
+          <!-- 4 Cartes d'Accès Direct aux Pages Dédiées des 4 Pôles -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto text-left" role="navigation" aria-label="Accès aux 4 pages de services">
+            
+            <!-- Carte 1 : Gestion Locative (Pôle Phare) -->
+            <a href="/gestion-locative" data-link class="group p-4 rounded-2xl bg-white border-2 border-emerald-300 hover:border-emerald-500 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                    ${icon('building', { class: 'w-5 h-5 text-emerald-700' })}
+                  </div>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-black uppercase bg-emerald-600 text-white">Phare</span>
+                </div>
+                <h3 class="font-bold text-sm text-marine-900 group-hover:text-emerald-800 transition-colors">Gestion Locative</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-snug">Sécurisation des loyers, baux OHADA, quittances certifiées.</p>
+              </div>
+              <span class="text-xs font-bold text-emerald-700 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Voir la page dédiée →</span>
             </a>
-            <a href="#creation-entreprise" class="px-4 py-2 rounded-full bg-amber-50 border border-amber-300 text-xs font-bold text-amber-950 shadow-sm transition-all hover:bg-amber-100 flex items-center gap-1.5">
-              ${icon('landmark', { class: 'w-3.5 h-3.5 text-amber-700' })}
-              <span>2. Création d'Entreprise</span>
+
+            <!-- Carte 2 : Création d'Entreprise -->
+            <a href="/creation-entreprise" data-link class="group p-4 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 flex items-center justify-center font-bold">
+                    ${icon('landmark', { class: 'w-5 h-5 text-amber-700' })}
+                  </div>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-900">72h Chrono</span>
+                </div>
+                <h3 class="font-bold text-sm text-marine-900 group-hover:text-amber-800 transition-colors">Création d'Entreprise</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-snug">CFCE, RCCM, NIU & formalités expresses PME-PMI.</p>
+              </div>
+              <span class="text-xs font-bold text-amber-800 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Voir la page dédiée →</span>
             </a>
-            <a href="#dedouanement" class="px-4 py-2 rounded-full bg-sky-50 border border-sky-300 text-xs font-bold text-sky-950 shadow-sm transition-all hover:bg-sky-100 flex items-center gap-1.5">
-              ${icon('ship', { class: 'w-3.5 h-3.5 text-sky-700' })}
-              <span>3. Dédouanement & Transit</span>
+
+            <!-- Carte 3 : Dédouanement -->
+            <a href="/dedouanement" data-link class="group p-4 rounded-2xl bg-white border border-slate-200 hover:border-sky-400 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 rounded-xl bg-sky-50 text-sky-800 border border-sky-200 flex items-center justify-center font-bold">
+                    ${icon('ship', { class: 'w-5 h-5 text-sky-700' })}
+                  </div>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-sky-100 text-sky-900">Douala / Kribi</span>
+                </div>
+                <h3 class="font-bold text-sm text-marine-900 group-hover:text-sky-800 transition-colors">Dédouanement</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-snug">Transit maritime FCL/LCL, fret aérien express.</p>
+              </div>
+              <span class="text-xs font-bold text-sky-800 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Voir la page dédiée →</span>
             </a>
-            <a href="#fiscalite" class="px-4 py-2 rounded-full bg-indigo-50 border border-indigo-300 text-xs font-bold text-indigo-950 shadow-sm transition-all hover:bg-indigo-100 flex items-center gap-1.5">
-              ${icon('scale', { class: 'w-3.5 h-3.5 text-indigo-700' })}
-              <span>4. Fiscalité & Conseil</span>
+
+            <!-- Carte 4 : Fiscalité et Conseil -->
+            <a href="/fiscalite-conseil" data-link class="group p-4 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 hover:shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-800 border border-indigo-200 flex items-center justify-center font-bold">
+                    ${icon('scale', { class: 'w-5 h-5 text-indigo-700' })}
+                  </div>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-900">DGI / DSF</span>
+                </div>
+                <h3 class="font-bold text-sm text-marine-900 group-hover:text-indigo-800 transition-colors">Fiscalité & Conseil</h3>
+                <p class="text-xs text-slate-600 mt-1 leading-snug">DSF, audit fiscal, déclarations et sécurité foncière.</p>
+              </div>
+              <span class="text-xs font-bold text-indigo-800 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Voir la page dédiée →</span>
             </a>
+
           </div>
         </div>
       </section>
@@ -80,7 +125,7 @@ export default {
             </h2>
 
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              Nous prenons en charge la gestion intégrale de vos immeubles, appartements, studios, bureaux et magasins au Cameroun. Baux conformes OHADA, recouvrement automatisé par <strong>Orange Money</strong> et <strong>MTN MoMo</strong>, reversement ponctuel et suivi en direct sur <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline">apps.multibusiness.cm</a>.
+              Nous prenons en charge la gestion intégrale de vos immeubles, appartements, studios, bureaux et magasins au Cameroun. Baux conformes OHADA, recouvrement automatisé par <strong>Orange Money</strong> et <strong>MTN MoMo</strong>, reversement ponctuel et suivi en direct sur <a href="https://apps.multibusiness.cm/locataire/gestion-locative" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold hover:underline" aria-label="Accéder à l'application de gestion locative, s'ouvre dans un nouvel onglet">apps.multibusiness.cm</a>.
             </p>
 
             <div class="space-y-3.5 pt-2">
@@ -98,7 +143,7 @@ export default {
                   ${icon('check', { class: 'w-3.5 h-3.5' })}
                 </div>
                 <div>
-                  <h4 class="text-slate-900 font-bold text-sm">Reversement Programmé chaque du Mois</h4>
+                  <h4 class="text-slate-900 font-bold text-sm">Reversement Programmé chaque Mois</h4>
                   <p class="text-xs text-slate-600">Sur votre compte bancaire ou compte Mobile Money sans déplacement.</p>
                 </div>
               </div>
@@ -118,7 +163,7 @@ export default {
                 <span>Découvrir l'offre Bailleurs & Locataires</span>
                 ${icon('arrow-right', { class: 'w-4 h-4' })}
               </a>
-              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener noreferrer" class="btn-outline !px-5 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
+              <a href="https://apps.multibusiness.cm/locataire/gestion-locative" target="_blank" rel="noopener noreferrer" class="btn-outline !px-5 !py-3.5 text-xs font-bold inline-flex items-center gap-2" aria-label="Accéder à l'application de gestion locative, s'ouvre dans un nouvel onglet">
                 <span>Espace en Ligne</span>
                 ${icon('external-link', { class: 'w-3.5 h-3.5' })}
               </a>

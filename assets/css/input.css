@@ -610,5 +610,30 @@ body.cursor-hover #custom-cursor-ring {
   transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Styles dédiés pour les lignes de référencement d'application (Hero & composants) */
+.referral-link-row {
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.referral-link-row:hover {
+  transform: translateY(-1px);
+}
+
+.referral-link-row:focus-visible {
+  outline: 2px solid #26C992;
+  outline-offset: 2px;
+}
+
+.referral-link-row:active {
+  transform: scale(0.99);
+}
+
+/* Transition d'accordéon pour le sous-menu mobile */
+#mobile-services-accordion-panel {
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+
+
 
 

@@ -170,8 +170,8 @@ export default {
           </div>
 
           <div class="text-center pt-4">
-            <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-8 !py-4 text-sm font-bold inline-flex items-center gap-2">
-              <span>Accéder à l'Espace Propriétaire en Ligne</span>
+            <a href="https://apps.multibusiness.cm/locataire/gestion-locative" target="_blank" rel="noopener noreferrer" class="btn-primary !px-8 !py-4 text-sm font-bold inline-flex items-center gap-2" aria-label="Accéder à l'application de gestion locative, s'ouvre dans un nouvel onglet">
+              <span>Accéder à l'application de gestion locative</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
           </div>
@@ -499,7 +499,7 @@ export default {
             </div>
 
             <div class="pt-2">
-              <a href="https://apps.multibusiness.cm/" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3.5 text-xs font-bold inline-flex items-center gap-2">
+              <a href="https://apps.multibusiness.cm/locataire/gestion-locative" target="_blank" rel="noopener noreferrer" class="btn-primary !px-6 !py-3.5 text-xs font-bold inline-flex items-center gap-2" aria-label="Tester la plateforme de gestion locative, s'ouvre dans un nouvel onglet">
                 <span>Tester la plateforme en direct</span>
                 ${icon('arrow-right', { class: 'w-4 h-4' })}
               </a>
@@ -627,7 +627,7 @@ export default {
                 <span class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-xs transition-transform" data-accordion-icon>▼</span>
               </button>
               <div class="px-6 pb-6 text-xs md:text-sm text-slate-600 leading-relaxed hidden" data-accordion-content>
-                Vous bénéficiez d'un accès direct à votre tableau de bord en ligne 24/7 sur <a href="https://apps.multibusiness.cm/" target="_blank" class="text-emerald-700 font-bold underline">apps.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
+                Vous bénéficiez d'un accès direct à votre tableau de bord en ligne 24/7 sur <a href="https://apps.multibusiness.cm/locataire/gestion-locative" target="_blank" rel="noopener noreferrer" class="text-emerald-700 font-bold underline" aria-label="Accéder à l'application de gestion locative, s'ouvre dans un nouvel onglet">apps.multibusiness.cm</a>. Vous y consultez l'état d'occupation, les quittances générées et recevez vos loyers par virement international ou compte bancaire local le 5 de chaque mois.
               </div>
             </div>
 

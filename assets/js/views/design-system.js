@@ -195,7 +195,7 @@ export default {
             <div>
               <span class="text-xs font-mono text-slate-400 block mb-2">Données Chiffrées / Monétaires — font-mono (JetBrains Mono)</span>
               <div class="flex items-center gap-6 font-mono text-lg font-bold">
-                <span class="text-mint-700">14 850 000 FCFA</span>
+                <span class="text-mint-700">100% Reversé</span>
                 <span class="text-slate-600">Taux : 98.7%</span>
                 <span class="text-marine-900">Lots : 500+</span>
               </div>
@@ -322,7 +322,7 @@ export default {
             <!-- Carte 6 : L'Unique Bloc Sombre Autorisé (Marine Encre) -->
             <div class="card-marine-dark p-8 relative overflow-hidden group">
               <div class="badge-pill badge-lime mb-4">Bloc Sombre Max 10%</div>
-              <h3 class="text-xl font-serif font-bold text-white mb-2">Espace Propriétaire en Ligne</h3>
+              <h3 class="text-xl font-serif font-bold text-white mb-2">Application Multi Business</h3>
               <p class="text-slate-300 text-sm leading-relaxed mb-6">
                 Application mobile et web pour bailleurs : suivi des loyers en direct, relances WhatsApp diplomatiques et encaissements automatisés.
               </p>

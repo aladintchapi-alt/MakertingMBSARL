@@ -475,22 +475,22 @@ export class iPhone18ProMaxViewer {
 
       ctx.fillStyle = '#065F46';
       ctx.font = 'bold 15px -apple-system, monospace';
-      ctx.fillText('LOYERS COLLECTÉS • OCTOBRE 2026', 56, 320);
+      ctx.fillText('RECOUVREMENT DES LOYERS • MENSUEL', 56, 320);
 
       ctx.fillStyle = '#0B1B2B';
-      ctx.font = 'bold 44px -apple-system, monospace';
-      ctx.fillText('14 850 000 FCFA', 56, 380);
+      ctx.font = 'bold 36px -apple-system, sans-serif';
+      ctx.fillText('100% À DATE FIXE', 56, 380);
 
       ctx.fillStyle = '#15803D';
       ctx.font = 'bold 16px -apple-system, sans-serif';
-      ctx.fillText('✓ Reversé le 5 du mois • 0 impayé • 98.7% loué', 56, 420);
+      ctx.fillText('✓ Reversé le 5 du mois • 0 impayé • Baux OHADA', 56, 420);
 
       // Cartes lots récents
       const lots = [
-        { name: 'Résidence Les Palmiers', badge: '12/12 Loué', amount: '3 800 000 FCFA', tag: 'Immeuble R+4' },
-        { name: 'Duplex Prestige Golf', badge: '1/1 Loué', amount: '1 200 000 FCFA', tag: 'Villa Bastos' },
-        { name: 'Complexe Dakar Express Union', badge: '6/6 Loué', amount: '2 100 000 FCFA', tag: 'Commerces' },
-        { name: 'Résidence Belvédère', badge: '7/8 Loué', amount: '2 450 000 FCFA', tag: 'Appartements' }
+        { name: 'Résidence Océane Bonapriso', badge: '100% Loué', amount: 'Revenus garantis', tag: 'Immeuble R+4' },
+        { name: 'Duplex Prestige Golf', badge: '1/1 Loué', amount: 'Revenus garantis', tag: 'Villa Bastos' },
+        { name: 'Complexe Dakar Express Union', badge: '100% Loué', amount: 'Revenus garantis', tag: 'Commerces' },
+        { name: 'Résidence Belvédère', badge: 'Loué', amount: 'Revenus garantis', tag: 'Appartements' }
       ];
 
       lots.forEach((lot, i) => {
@@ -599,7 +599,7 @@ export class iPhone18ProMaxViewer {
       ctx.fillText('47 Locataires Vérifiés • 0 Litige', 56, 360);
 
       const locs = [
-        { name: 'Dr. Ewane Samuel', unit: 'Palmiers Apt 3A', deposit: 'Caution : 900 000 FCFA', score: 'Score 100/100' },
+        { name: 'Dr. Ewane Samuel', unit: 'Résidence Océane Apt 3A', deposit: 'Caution sécurisée', score: 'Score 100/100' },
         { name: 'Sté Cameroun Logistique', unit: 'Magasin 03 Dakar Express Union', deposit: 'Caution : 1 500 000 FCFA', score: 'Score 98/100' },
         { name: 'Mme Ngo Mandeng', unit: 'Résidence Akwa 4B', deposit: 'Caution : 900 000 FCFA', score: 'Score 100/100' },
         { name: 'Mlle Bih Clarisse', unit: 'Studio Bonapriso S1', deposit: 'Caution : 440 000 FCFA', score: 'Score 100/100' }
@@ -720,7 +720,7 @@ export class iPhone18ProMaxViewer {
       ctx.fillText('N° Quittance : MB-QUITTANCE-2026-10-0418', 56, 525);
       ctx.fillText('Bailleur Mandant : SCI Baobab Patrimoine', 56, 565);
       ctx.fillText('Locataire : M. Aladin Tchapi', 56, 605);
-      ctx.fillText('Bien : Résidence Les Palmiers, Apt 4B', 56, 645);
+      ctx.fillText('Bien : Résidence Océane Bonapriso, Apt 4B', 56, 645);
       ctx.fillText('Période : Octobre 2026', 56, 685);
 
       ctx.fillStyle = '#065F46';

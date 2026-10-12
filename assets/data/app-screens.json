@@ -1,6 +1,6 @@
 {
   "appName": "MULTI BUSINESS",
-  "appUrl": "https://apps.multibusiness.cm/",
+  "appUrl": "https://apps.multibusiness.cm/locataire",
   "version": "4.2.0 (Build 2026)",
   "resolution": {
     "width": 1320,
@@ -14,12 +14,12 @@
       "navLabel": "Tableau de bord",
       "header": {
         "title": "Bonjour, M. Mbarga",
-        "role": "Bailleur Propriétaire • 48 Lots sous Mandat",
+        "role": "Bailleur Propriétaire • Mandat Certifié",
         "notificationCount": 3
       },
       "kpis": [
-        { "label": "Loyers Encaissés (Mois)", "value": "14 850 000 FCFA", "trend": "+100% collecté", "status": "success" },
-        { "label": "Taux d'Occupation", "value": "98.7%", "subtext": "47/48 lots loués", "status": "highlight" },
+        { "label": "Recouvrement Loyers", "value": "100% garanti", "trend": "À date fixe", "status": "success" },
+        { "label": "Taux d'Occupation", "value": "Optimal", "subtext": "Gestion rigoureuse", "status": "highlight" },
         { "label": "Reversement Garanti", "value": "05 du mois", "subtext": "Virement bancaire / OM", "status": "info" },
         { "label": "Impayés / Litiges", "value": "0 FCFA", "subtext": "Couverture huissiers 1ère & 2e charges", "status": "shield" }
       ],
@@ -38,12 +38,12 @@
         "role": "48 Lots Répartis à Douala et Yaoundé",
         "notificationCount": 0
       },
-      "filters": ["Tous (48)", "Immeubles (3)", "Appartements (24)", "Studios (15)", "Commerces (6)"],
+      "filters": ["Tous", "Immeubles", "Appartements", "Studios", "Commerces"],
       "items": [
-        { "name": "Résidence Les Palmiers", "type": "Immeuble R+4", "units": "12 appartements", "occupancy": "100%", "address": "Douala, Bonapriso", "revenue": "3 800 000 FCFA/mois" },
-        { "name": "Duplex Prestige Golf", "type": "Villa Meublée", "units": "1 lot autonome", "occupancy": "Loué", "address": "Yaoundé, Bastos", "revenue": "1 200 000 FCFA/mois" },
-        { "name": "Complexe Dakar Express Union", "type": "Espace Commercial", "units": "6 magasins", "occupancy": "100%", "address": "Douala, Dakar Immeuble Express Union", "revenue": "2 100 000 FCFA/mois" },
-        { "name": "Résidence Belvédère", "type": "Appartements F4", "units": "8 appartements", "occupancy": "7/8 Loués", "address": "Douala, Bonamoussadi", "revenue": "2 450 000 FCFA/mois" }
+        { "name": "Résidence Océane Bonapriso", "type": "Immeuble R+4", "units": "Lots gérés", "occupancy": "100%", "address": "Douala, Bonapriso", "revenue": "Revenus garantis" },
+        { "name": "Duplex Prestige Golf", "type": "Villa Meublée", "units": "1 lot autonome", "occupancy": "Loué", "address": "Yaoundé, Bastos", "revenue": "Revenus garantis" },
+        { "name": "Complexe Dakar Express Union", "type": "Espace Commercial", "units": "Locaux commerciaux", "occupancy": "100%", "address": "Douala, Dakar Immeuble Express Union", "revenue": "Revenus garantis" },
+        { "name": "Résidence Belvédère", "type": "Appartements", "units": "Lots résidentiels", "occupancy": "Loués", "address": "Douala, Bonamoussadi", "revenue": "Revenus garantis" }
       ]
     },
     {

@@ -94,17 +94,98 @@ export const CONFIG = {
     }
   },
 
-  // Configuration Officielle de l'Application Bailleurs & Locataires
+  // Configuration Officielle de Référencement vers l'Application Web & Mobile
   app: {
-    url: "https://apps.multibusiness.cm/",
-    mobileUrl: "https://apps.multibusiness.cm/mobile",
-    loginUrl: "https://apps.multibusiness.cm/login",
-    demoUrl: "https://apps.multibusiness.cm/demo"
+    baseUrl: "https://apps.multibusiness.cm",
+    domain: "apps.multibusiness.cm",
+    url: "https://apps.multibusiness.cm/locataire",
+    mobileUrl: "https://apps.multibusiness.cm/locataire",
+    loginUrl: "https://apps.multibusiness.cm/locataire",
+    links: [
+      {
+        id: "choix",
+        serviceId: "recherche-local",
+        url: "https://apps.multibusiness.cm/locataire/choix",
+        question: "Vous recherchez un local ?",
+        subtext: "Trouvez le local qui vous correspond, en quelques clics.",
+        cta: "Trouver mon local",
+        icon: "search",
+        color: "mint",
+        accentHex: "#26C992",
+        isPrimary: true,
+        ariaLabel: "Trouver mon local sur l'application Multi Business, s'ouvre dans un nouvel onglet"
+      },
+      {
+        id: "gestion-locative",
+        serviceId: "gestion-locative",
+        url: "https://apps.multibusiness.cm/locataire/gestion-locative",
+        question: "Besoin de nos services de gestion locative ?",
+        subtext: "Confiez-nous vos biens, nous nous occupons de tout.",
+        cta: "Découvrir l'offre",
+        icon: "building",
+        color: "mint",
+        accentHex: "#10B981",
+        isPrimary: false,
+        ariaLabel: "Découvrir l'offre de gestion locative sur l'application, s'ouvre dans un nouvel onglet"
+      },
+      {
+        id: "creation-entreprise",
+        serviceId: "creation-entreprise",
+        url: "https://apps.multibusiness.cm/locataire/creation-entreprise",
+        question: "Un projet d'entreprise ?",
+        subtext: "Lancez votre société en toute sérénité.",
+        cta: "Créer mon entreprise",
+        icon: "landmark",
+        color: "amber",
+        accentHex: "#F59E0B",
+        isPrimary: false,
+        ariaLabel: "Créer mon entreprise sur l'application, s'ouvre dans un nouvel onglet"
+      },
+      {
+        id: "fiscalite-conseils",
+        serviceId: "fiscalite-conseil",
+        url: "https://apps.multibusiness.cm/locataire/fiscalite-conseils",
+        question: "Une question fiscale ?",
+        subtext: "Conseils et accompagnement sur mesure.",
+        cta: "Être conseillé",
+        icon: "scale",
+        color: "indigo",
+        accentHex: "#6366F1",
+        isPrimary: false,
+        ariaLabel: "Être conseillé en fiscalité sur l'application, s'ouvre dans un nouvel onglet"
+      },
+      {
+        id: "dedouanement",
+        serviceId: "dedouanement",
+        url: "https://apps.multibusiness.cm/locataire/dedouanement",
+        question: "Une marchandise à dédouaner ?",
+        subtext: "Passez vos formalités sans stress.",
+        cta: "Lancer mon dédouanement",
+        icon: "ship",
+        color: "ocean",
+        accentHex: "#0EA5E9",
+        isPrimary: false,
+        ariaLabel: "Lancer mon dédouanement sur l'application, s'ouvre dans un nouvel onglet"
+      },
+      {
+        id: "accueil-app",
+        serviceId: "app-home",
+        url: "https://apps.multibusiness.cm/locataire",
+        question: "Accédez à votre espace",
+        subtext: "Toute la plateforme Multi Business à portée de main.",
+        cta: "Ouvrir l'application",
+        icon: "smartphone",
+        color: "lime",
+        accentHex: "#9AFF01",
+        isPrimary: false,
+        ariaLabel: "Ouvrir l'application Multi Business, s'ouvre dans un nouvel onglet"
+      }
+    ]
   },
 
   appUrls: {
-    web: "https://apps.multibusiness.cm/",
-    mobile: "https://apps.multibusiness.cm/mobile",
+    web: "https://apps.multibusiness.cm/locataire",
+    mobile: "https://apps.multibusiness.cm/locataire",
     currentLiveSite: "https://multibusiness.cm/"
   },
 
@@ -248,3 +329,18 @@ export function resolveAsset(path) {
   const cleanPath = path.replace(/^\.?\//, '');
   return `${cleanBase}${cleanPath}`;
 }
+
+/**
+ * Récupère un lien d'application spécifique par son identifiant ou identifiant de service
+ */
+export function getAppLink(idOrServiceId) {
+  return CONFIG.app.links.find(l => l.id === idOrServiceId || l.serviceId === idOrServiceId) || CONFIG.app.links[0];
+}
+
+/**
+ * Récupère l'ensemble des liens officiels de l'application
+ */
+export function getAppLinks() {
+  return CONFIG.app.links;
+}
+
