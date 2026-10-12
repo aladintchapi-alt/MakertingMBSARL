@@ -111,22 +111,39 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 1. Contrôle d'intégrité CSS
   checkCssIntegrity();
 
-  // 2. Initialiser le défilement fluide Lenis
-  initSmoothScroll();
+  // 2. Initialisation des composants critiques autonomes d'interface (Menu Mobile, Header)
+  // S'exécutent en premier dans leur propre frontière try/catch pour garantir la réactivité
+  try {
+    initMobileMenu();
+    initHeader();
+  } catch (err) {
+    console.error('[App] Erreur lors de l\'initialisation des composants critiques UI:', err);
+  }
 
-  // 3. Initialiser les interactions d'interface permanentes
-  initHeader();
-  initMobileMenu();
-  initScrollProgressBar();
-  initCustomCursor();
-
+  // 3. Initialiser le défilement fluide Lenis et les gadgets interactifs desktop (non bloquants)
+  try {
+    initSmoothScroll();
+    initScrollProgressBar();
+    initCustomCursor();
+  } catch (err) {
+    // Non bloquant : l'utilisateur conserve le défilement natif fluide
+  }
 
   // 4. Initialiser le routeur SPA
-  const router = new Router(routes);
-  window.appRouter = router;
+  try {
+    const router = new Router(routes);
+    window.appRouter = router;
+  } catch (err) {
+    console.error('[App] Erreur lors de l\'initialisation du routeur SPA:', err);
+  }
 
   // 5. Exécuter le preloader élégant
-  handlePreloader();
+  try {
+    handlePreloader();
+  } catch (err) {
+    const p = document.getElementById('app-preloader');
+    if (p && p.parentNode) p.parentNode.removeChild(p);
+  }
 
   // 6. Filet de sécurité visuel pour les images : évite tout bloc vide ou blanc
   window.addEventListener('error', (e) => {
@@ -140,8 +157,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }
   }, true);
-
-  console.log(`[App] MULTI BUSINESS SARL SPA Engine Running smoothly.`);
 });
 
 

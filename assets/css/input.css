@@ -634,6 +634,43 @@ body.cursor-hover #custom-cursor-ring {
   transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
 }
 
+/* ========================================================================= */
+/* MENU MOBILE PLEIN ÉCRAN : HAUTEUR DYNAMIQUE ET DÉFILEMENT IMPERMÉABLE      */
+/* ========================================================================= */
+#mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;      /* Repli initial */
+  height: 100svh;     /* Repli petits écrans */
+  height: 100dvh;     /* Hauteur dynamique exacte (iOS Safari / Android Chrome) */
+  display: none;      /* FERMÉ PAR DÉFAUT en CSS sans dépendre de JavaScript */
+  flex-direction: column;
+  overflow: hidden;   /* Le conteneur racine ne défile pas, c'est son corps interne qui défile */
+}
 
+/* L'état ouvert n'existe que si explicitement activé via data-open='true' et sans attribut hidden */
+#mobile-menu-overlay[data-open="true"]:not([hidden]):not(.hidden) {
+  display: flex !important;
+}
 
+#mobile-menu-overlay[hidden],
+#mobile-menu-overlay.hidden {
+  display: none !important;
+}
 
+#mobile-menu-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  flex-shrink: 0;
+}
+
+#mobile-menu-scroll-container {
+  flex: 1 1 0%;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
+}

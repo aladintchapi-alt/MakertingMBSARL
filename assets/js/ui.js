@@ -211,9 +211,70 @@ export const updateActiveNavLink = (currentPath) => {
 };
 
 /**
- * Menu Mobile Overlay : Accordéon fluide, Piégeage du Focus, Fermetures Échap / Clics
+ * État interne de la machine à états du menu mobile
+ * 'closed' | 'opening' | 'open' | 'closing'
+ */
+let mobileMenuState = 'closed';
+let savedPageScrollY = 0;
+let menuCloseWatchdog = null;
+
+/**
+ * Routine de nettoyage au démarrage : élimine tout résidu d'un état précédent
+ */
+export const cleanTransientUiState = () => {
+  try {
+    // Purger tout drapeau d'état transitoire stocké
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem('mb_menu_open');
+      sessionStorage.removeItem('mb_modal_open');
+      sessionStorage.removeItem('mb_curtain_active');
+    }
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('mb_menu_state');
+    }
+  } catch (_) {}
+
+  // Nettoyer les styles résiduels sur html et body
+  if (typeof document !== 'undefined') {
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.left = '';
+    document.body.style.right = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    if (menuOverlay) {
+      menuOverlay.classList.add('hidden');
+      menuOverlay.setAttribute('hidden', '');
+      menuOverlay.setAttribute('data-open', 'false');
+      menuOverlay.style.display = '';
+      menuOverlay.removeAttribute('aria-hidden');
+    }
+
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    if (toggleBtn) {
+      toggleBtn.classList.remove('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    const mainContent = document.getElementById('app') || document.querySelector('main');
+    if (mainContent) {
+      mainContent.removeAttribute('inert');
+    }
+  }
+
+  mobileMenuState = 'closed';
+};
+
+/**
+ * Menu Mobile Overlay : Accordéon fluide, Piégeage du Focus, Fermetures Multi-Chemins
  */
 export const initMobileMenu = () => {
+  // Exécuter immédiatement la routine de nettoyage au démarrage
+  cleanTransientUiState();
+
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const closeBtn = document.getElementById('mobile-menu-close');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
@@ -224,19 +285,31 @@ export const initMobileMenu = () => {
   if (!toggleBtn || !menuOverlay) return;
 
   // 1. Bouton ouverture / fermeture hamburger
-  toggleBtn.addEventListener('click', () => {
-    if (menuOverlay.classList.contains('hidden')) {
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (mobileMenuState === 'closed' || mobileMenuState === 'closing') {
       openMobileMenu();
     } else {
       closeMobileMenu();
     }
   });
 
+  // 2. Bouton fermer (X)
   if (closeBtn) {
-    closeBtn.addEventListener('click', closeMobileMenu);
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileMenu();
+    });
   }
 
-  // 2. Gestion de l'accordéon "Nos services"
+  // 3. Clic sur la zone hors du contenu du menu
+  menuOverlay.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) {
+      closeMobileMenu();
+    }
+  });
+
+  // 4. Gestion de l'accordéon "Nos services"
   if (accordionToggle && accordionPanel) {
     accordionToggle.addEventListener('click', (e) => {
       e.preventDefault();
@@ -250,15 +323,29 @@ export const initMobileMenu = () => {
         accordionPanel.classList.remove('hidden');
         accordionToggle.setAttribute('aria-expanded', 'true');
         if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
+
+        // Défilement doux automatique pour que les sous-éléments soient bien visibles
+        setTimeout(() => {
+          const scrollContainer = document.getElementById('mobile-menu-scroll-container');
+          const firstSubLink = accordionPanel.querySelector('.mobile-subnav-link');
+          if (scrollContainer && firstSubLink) {
+            const containerRect = scrollContainer.getBoundingClientRect();
+            const elRect = firstSubLink.getBoundingClientRect();
+            if (elRect.bottom > containerRect.bottom || elRect.top < containerRect.top) {
+              firstSubLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
+        }, 80);
       }
     });
   }
 
-  // 3. Fermeture et piège à focus au clavier (Échap et Tab)
+  // 5. Fermeture et piège à focus au clavier (Échap et Tab)
   document.addEventListener('keydown', (e) => {
-    if (menuOverlay.classList.contains('hidden')) return;
+    if (mobileMenuState === 'closed') return;
 
     if (e.key === 'Escape') {
+      e.preventDefault();
       closeMobileMenu();
       return;
     }
@@ -285,14 +372,41 @@ export const initMobileMenu = () => {
     }
   });
 
-  // 4. Fermeture au clic sur n'importe quel lien du menu mobile (sauf le bouton chevron)
+  // 6. Fermeture au clic sur n'importe quel lien du menu mobile (sauf le bouton chevron)
   menuOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       closeMobileMenu();
     });
   });
 
-  // 5. Initialiser également le gestionnaire méga-menu desktop tactile / clavier
+  // 7. Chemins de fermeture indépendants et robustes :
+  // (a) popstate (retour arrière navigateur)
+  window.addEventListener('popstate', () => {
+    if (mobileMenuState !== 'closed') closeMobileMenu();
+  });
+
+  // (b) redimensionnement au-delà du breakpoint desktop (>= 1280px)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1280 && mobileMenuState !== 'closed') {
+      closeMobileMenu();
+    }
+  }, { passive: true });
+
+  // (c) reprise depuis le bfcache
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted || mobileMenuState !== 'closed') {
+      closeMobileMenu();
+    }
+  });
+
+  // (d) onglet passant en arrière-plan
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden' && mobileMenuState !== 'closed') {
+      closeMobileMenu();
+    }
+  });
+
+  // 8. Initialiser le méga-menu desktop tactile / clavier
   initDesktopMegaMenuTactile();
 };
 
@@ -300,63 +414,157 @@ export const openMobileMenu = () => {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const closeBtn = document.getElementById('mobile-menu-close');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
+  const mainContent = document.getElementById('app') || document.querySelector('main');
   if (!menuOverlay) return;
 
-  menuOverlay.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
+  mobileMenuState = 'opening';
+
+  // Sauvegarder la position de scroll actuelle de la page
+  savedPageScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+
+  // Stopper Lenis s'il est actif
   if (window.lenis) {
     try { window.lenis.stop(); } catch (e) {}
   }
+
+  // Verrouillage imperméable du body sans décaler la page
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${savedPageScrollY}px`;
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.width = '100%';
+  document.body.style.overflow = 'hidden';
+
+  // Rendre le reste de la page inerte pour les lecteurs d'écran et la navigation clavier
+  if (mainContent) {
+    try { mainContent.setAttribute('inert', ''); } catch (_) {}
+  }
+
+  // Révéler le menu en HTML et CSS
+  menuOverlay.classList.remove('hidden');
+  menuOverlay.removeAttribute('hidden');
+  menuOverlay.setAttribute('data-open', 'true');
+
   if (toggleBtn) {
     toggleBtn.classList.add('is-active');
     toggleBtn.setAttribute('aria-expanded', 'true');
   }
 
-  // Focus sur le bouton fermer pour l'accessibilité
+  // Restitution du focus sur le bouton fermer
   if (closeBtn) {
-    setTimeout(() => closeBtn.focus(), 50);
+    setTimeout(() => {
+      try { closeBtn.focus(); } catch (_) {}
+    }, 50);
   }
 
+  // Animation fluide GSAP
   if (window.gsap) {
-    window.gsap.fromTo(
-      menuOverlay,
-      { opacity: 0, scale: 0.98 },
-      { opacity: 1, scale: 1, duration: 0.35, ease: "power3.out" }
-    );
-    window.gsap.fromTo(
-      menuOverlay.querySelectorAll('.mobile-cascade-item'),
-      { opacity: 0, y: 15 },
-      { opacity: 1, y: 0, duration: 0.35, stagger: 0.04, ease: "power2.out", delay: 0.05 }
-    );
+    try {
+      window.gsap.fromTo(
+        menuOverlay,
+        { opacity: 0, scale: 0.98 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.3,
+          ease: "power3.out",
+          onComplete: () => {
+            mobileMenuState = 'open';
+          }
+        }
+      );
+      window.gsap.fromTo(
+        menuOverlay.querySelectorAll('.mobile-cascade-item'),
+        { opacity: 0, y: 15 },
+        { opacity: 1, y: 0, duration: 0.3, stagger: 0.03, ease: "power2.out", delay: 0.05 }
+      );
+    } catch (_) {
+      mobileMenuState = 'open';
+    }
+  } else {
+    mobileMenuState = 'open';
   }
 };
 
 export const closeMobileMenu = () => {
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const menuOverlay = document.getElementById('mobile-menu-overlay');
-  if (!menuOverlay || menuOverlay.classList.contains('hidden')) return;
+  const mainContent = document.getElementById('app') || document.querySelector('main');
+  if (!menuOverlay) return;
+
+  mobileMenuState = 'closing';
 
   if (toggleBtn) {
     toggleBtn.classList.remove('is-active');
     toggleBtn.setAttribute('aria-expanded', 'false');
   }
 
+  // Chien de garde de fermeture forcée absolue (400ms max)
+  if (menuCloseWatchdog) clearTimeout(menuCloseWatchdog);
+
   const finalizeClose = () => {
-    menuOverlay.classList.add('hidden');
-    document.body.style.overflow = '';
-    if (window.lenis) {
-      try { window.lenis.start(); } catch (e) {}
+    if (menuCloseWatchdog) {
+      clearTimeout(menuCloseWatchdog);
+      menuCloseWatchdog = null;
+    }
+
+    try {
+      // Masquage HTML et CSS garanti
+      menuOverlay.classList.add('hidden');
+      menuOverlay.setAttribute('hidden', '');
+      menuOverlay.setAttribute('data-open', 'false');
+
+      // Retirer l'état inerte du contenu principal
+      if (mainContent) {
+        mainContent.removeAttribute('inert');
+      }
+
+      // Restauration exacte du scroll de la page sans saut
+      let scrollY = savedPageScrollY;
+      if (document.body.style.top) {
+        const parsed = Math.abs(parseInt(document.body.style.top, 10));
+        if (!isNaN(parsed) && parsed > 0) {
+          scrollY = parsed;
+        }
+      }
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, scrollY);
+
+      if (window.lenis) {
+        try {
+          window.lenis.start();
+          window.lenis.scrollTo(scrollY, { immediate: true });
+        } catch (_) {}
+      }
+
+      // Restituer le focus au bouton burger pour l'accessibilité
+      if (toggleBtn) {
+        try { toggleBtn.focus(); } catch (_) {}
+      }
+    } finally {
+      mobileMenuState = 'closed';
     }
   };
 
+  menuCloseWatchdog = setTimeout(finalizeClose, 400);
+
   if (window.gsap) {
-    window.gsap.to(menuOverlay, {
-      opacity: 0,
-      scale: 0.98,
-      duration: 0.22,
-      ease: "power2.in",
-      onComplete: finalizeClose
-    });
+    try {
+      window.gsap.to(menuOverlay, {
+        opacity: 0,
+        scale: 0.98,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: finalizeClose
+      });
+    } catch (_) {
+      finalizeClose();
+    }
   } else {
     finalizeClose();
   }

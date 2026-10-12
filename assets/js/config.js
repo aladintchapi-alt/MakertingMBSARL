@@ -7,6 +7,7 @@ export const CONFIG = {
   company: {
     name: "MULTI BUSINESS SARL",
     legalName: "MULTI BUSINESS SARL",
+    mapsUrl: "https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D",
     status: "Société à Responsabilité Limitée (SARL)",
     category: "Entreprise Camerounaise de Prestations de Services Intellectuels & Gestion de Patrimoine",
     slogan: "L'Excellence Opérationnelle, la Rigueur Juridique & l'Innovation au Cameroun",
@@ -59,7 +60,7 @@ export const CONFIG = {
       landmark: "près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
       addressShort: "Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union",
       addressFull: "Dakar (Douala, Cameroun), près du commissariat du 8e arrondissement, Immeuble Express Union, 1er niveau",
-      mapUrl: "https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl",
+      mapUrl: "https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D",
       googleDirectionsUrl: "https://www.google.com/maps/dir/?api=1&destination=4.0300055,9.7370284",
       appleMapsUrl: "https://maps.apple.com/?daddr=4.0300055,9.7370284",
       wazeUrl: "https://waze.com/ul?ll=4.0300055,9.7370284&navigate=yes",
@@ -145,14 +146,14 @@ export const CONFIG = {
         id: "fiscalite-conseils",
         serviceId: "fiscalite-conseil",
         url: "https://apps.multibusiness.cm/locataire/fiscalite-conseils",
-        question: "Une question fiscale ?",
-        subtext: "Conseils et accompagnement sur mesure.",
-        cta: "Être conseillé",
+        question: "Besoin d'une gestion fiscale pour votre entreprise ?",
+        subtext: "Déclarations, relations avec la DGI et conformité : nous gérons votre fiscalité pour vous.",
+        cta: "Confier ma gestion fiscale",
         icon: "scale",
         color: "indigo",
         accentHex: "#6366F1",
         isPrimary: false,
-        ariaLabel: "Être conseillé en fiscalité sur l'application, s'ouvre dans un nouvel onglet"
+        ariaLabel: "Gestion fiscale de votre entreprise (s'ouvre dans un nouvel onglet)"
       },
       {
         id: "dedouanement",
@@ -297,14 +298,14 @@ export const CONFIG = {
       colorHex: "#6366F1",
       pastelBg: "#EEF2FF",
       gradient: "from-[#6366F1] to-[#4F46E5]",
-      shortDesc: "Gestion fiscale proactive, déclarations mensuelles DGI, déclarations statistiques et fiscales (DSF), conformité foncière et sécurisation patrimoniale.",
-      fullPitch: "Pour toute entreprise et investisseur au Cameroun, la maîtrise de sa situation fiscale est le gage d'une croissance sereine. En collaboration continue avec la Direction Générale des Impôts et les centres des impôts compétents, nous prenons en charge l'ensemble de vos obligations fiscales et assurons un conseil avisé.",
+      shortDesc: "Gestion fiscale de votre entreprise : déclarations, DGI, DSF et conformité.",
+      fullPitch: "Pour toute entreprise et investisseur au Cameroun, la maîtrise de sa situation fiscale est le gage d'une croissance sereine. En collaboration continue avec la Direction Générale des Impôts et les centres des impôts compétents, nous prenons en charge la gestion fiscale complète de votre entreprise.",
       partner: "DGI (Direction Générale des Impôts) & Centres des Impôts de rattachement",
       servicesList: [
         "Déclarations fiscales mensuelles et télépaiements DGI",
         "Montage et dépôt de la Déclaration Statistique et Fiscale (DSF)",
-        "Audit fiscal préventif et assistance lors des contrôles",
-        "Fiscalité des revenus fonciers pour bailleurs et investisseurs"
+        "Assistance et défense lors des contrôles fiscaux DGI",
+        "Fiscalité foncière des loyers et conformité des entreprises"
       ]
     }
   ],

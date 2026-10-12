@@ -8,8 +8,8 @@ import { icon } from '../icons.js';
 
 export default {
   meta: {
-    title: "Conseil Fiscal, Déclarations DGI & DSF | Cameroun",
-    description: "MULTI BUSINESS SARL : Optimisation fiscale légale, déclarations mensuelles, liasse DSF et fiscalité foncière des bailleurs au Cameroun. Zéro pénalité et audit préventif.",
+    title: "Gestion Fiscale, Déclarations DGI & DSF | Cameroun",
+    description: "MULTI BUSINESS SARL : Gestion fiscale de votre entreprise, déclarations mensuelles DGI, liasse DSF et fiscalité foncière des bailleurs au Cameroun. Zéro pénalité et conformité garantie.",
     image: "./assets/images/service-fiscalite.jpg"
   },
 
@@ -37,15 +37,15 @@ export default {
           </h1>
 
           <p class="text-base sm:text-lg md:text-xl text-slate-700 font-normal max-w-3xl mx-auto mb-10 leading-relaxed">
-            Entreprises, professions libérales et propriétaires fonciers au Cameroun : confiez vos liasses DSF, télé-déclarations mensuelles DGI et audits fiscaux à des experts assermentés.
+            Entreprises, professions libérales et propriétaires fonciers au Cameroun : confiez vos liasses DSF, télé-déclarations mensuelles DGI et la gestion fiscale de votre entreprise à des professionnels chevronnés.
           </p>
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
-            <a href="https://apps.multibusiness.cm/locataire/fiscalite-conseils" target="_blank" rel="noopener noreferrer" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic aria-label="Être conseillé en fiscalité sur l'application, s'ouvre dans un nouvel onglet">
-              <span>Être conseillé sur l'application</span>
+            <a href="https://apps.multibusiness.cm/locataire/fiscalite-conseils" target="_blank" rel="noopener noreferrer" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic aria-label="Gestion fiscale de votre entreprise (s'ouvre dans un nouvel onglet)">
+              <span>Confier ma gestion fiscale</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
-            <a href="#audit-fiscal" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
+            <a href="#gestion-fiscale" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
               <span>Découvrir l'offre</span>
             </a>
             <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20un%20conseil%20fiscal%20pour%20mon%20entreprise" target="_blank" rel="noopener noreferrer" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white" data-magnetic>
@@ -65,16 +65,16 @@ export default {
       <!-- ================================================================= -->
       <!-- 2. NOS DOMAINES D'EXPERTISE FISCALE                               -->
       <!-- ================================================================= -->
-      <section id="audit-fiscal" class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white">
+      <section id="gestion-fiscale" class="py-24 px-4 md:px-8 max-w-7xl mx-auto bg-white">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           <div class="lg:col-span-6 space-y-6" data-reveal="left">
-            <span class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-950 border border-indigo-300 text-xs font-bold uppercase tracking-wider">Expertise Fiscale Précise</span>
+            <span class="inline-block px-3 py-1 rounded-full bg-indigo-100 text-indigo-950 border border-indigo-300 text-xs font-bold uppercase tracking-wider">Gestion Fiscale Rigoureuse</span>
             <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900 leading-tight">
               Une Prise en Charge Rigoureuse de Toutes Vos Obligations
             </h2>
             <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-              La complexité du paysage fiscal camerounais requiert une veille permanente. Nous protégeons la rentabilité de votre entreprise en optimisant légalement votre charge d'impôt et en sécurisant vos déclarations périodiques.
+              La complexité du paysage fiscal camerounais requiert une veille permanente. Nous protégeons la rentabilité de votre entreprise en gérant efficacement votre fiscalité et en sécurisant vos déclarations périodiques.
             </p>
 
             <div class="space-y-4 pt-2">
@@ -102,7 +102,7 @@ export default {
 
           <div class="lg:col-span-6" data-reveal="right">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-              <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Séance d'audit fiscal avec un expert MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[480px]" />
+              <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Séance de gestion fiscale avec un expert MULTI BUSINESS SARL" class="w-full h-auto object-cover max-h-[480px]" />
               <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200 shadow-lg flex items-center justify-between">
                 <div>
                   <span class="text-xs font-bold text-slate-900 block">Expertise & Conformité CGI</span>
@@ -130,7 +130,7 @@ export default {
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
               <span class="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-sans font-bold tabular-nums text-sm">01</span>
               <h4 class="font-bold text-sm text-slate-900">Diagnostic Fiscal</h4>
-              <p class="text-[11px] text-slate-500 leading-snug">Audit complet de vos déclarations antérieures et détection des éventuels risques de redressement.</p>
+              <p class="text-[11px] text-slate-500 leading-snug">Examen complet de vos déclarations antérieures et sécurisation des éventuels risques de redressement.</p>
             </div>
 
             <div class="card-light p-6 rounded-2xl bg-white border border-slate-200 space-y-2.5" data-reveal="up">
@@ -205,7 +205,7 @@ export default {
           <img src="./assets/images/pexels-temoin6.jpg" alt="M. Tchakounté - PDG" class="w-16 h-16 rounded-full object-cover border-2 border-indigo-500 flex-shrink-0" />
           <div class="space-y-1 text-center sm:text-left">
             <h4 class="font-bold text-sm text-slate-900">M. Tchakounté • PDG Société d'Import-Export (Douala)</h4>
-            <p class="text-xs text-slate-600 italic leading-relaxed">« L'audit préventif de MULTI BUSINESS SARL nous a épargné un redressement fiscal majeur lors d'un contrôle DGI. Leur rigueur comptable est exemplaire. »</p>
+            <p class="text-xs text-slate-600 italic leading-relaxed">« La gestion fiscale rigoureuse de MULTI BUSINESS SARL nous a épargné un redressement fiscal majeur lors d'un contrôle DGI. Leur suivi comptable et déclaratif est exemplaire. »</p>
           </div>
         </div>
       </section>
@@ -267,11 +267,11 @@ export default {
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-[11px] font-bold tracking-wider uppercase">
             <span>MULTI BUSINESS SARL • CAMEROUN</span>
           </div>
-          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-white drop-shadow-md">Besoin d'un Conseil Fiscal ou d'un Bilan d'Entreprise ?</h2>
-          <p class="text-sm md:text-base text-slate-100 max-w-xl mx-auto leading-relaxed">Échangez confidentiellement avec nos fiscalistes pour auditer et optimiser vos déclarations.</p>
+          <h2 class="font-serif text-3xl md:text-5xl font-extrabold text-white drop-shadow-md">Besoin d'une Gestion Fiscale pour Votre Entreprise ?</h2>
+          <p class="text-sm md:text-base text-slate-100 max-w-xl mx-auto leading-relaxed">Échangez confidentiellement avec nos experts pour sécuriser vos déclarations et confier votre fiscalité.</p>
           <div class="pt-2 flex flex-wrap justify-center gap-4">
-            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl">Prendre rendez-vous avec un fiscaliste</a>
-            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20un%20conseil%20fiscal" target="_blank" rel="noopener" class="btn-ghost-photo !px-7 !py-4 text-sm font-semibold">Consultation WhatsApp</a>
+            <a href="/contact" data-link class="btn-primary !px-8 !py-4 text-sm font-bold shadow-xl">Confier ma gestion fiscale</a>
+            <a href="https://wa.me/237651559411?text=Bonjour%20je%20souhaite%20confier%20la%20gestion%20fiscale%20de%20mon%20entreprise" target="_blank" rel="noopener" class="btn-ghost-photo !px-7 !py-4 text-sm font-semibold">Consultation WhatsApp</a>
           </div>
         </div>
       </section>

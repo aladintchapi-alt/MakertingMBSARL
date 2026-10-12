@@ -15,6 +15,8 @@
     "test:map": "node test-map.mjs",
     "test:console": "node test-console.mjs",
     "test:nav-coverage": "node test-nav-coverage.mjs",
+    "test:menu": "node test-menu.mjs",
+    "test:stability": "node test-stability.mjs",
     "prebuild": "npm run audit && npm run test:nav && npm run test:runtime && npm run audit:final",
     "build": "npm run build:css",
     "test": "npm run audit:final"

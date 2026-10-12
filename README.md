@@ -144,4 +144,31 @@ Grâce à la détection dynamique du `<base href>`, toutes les routes SPA foncti
 
 ---
 
+## 8. Procédure de Diagnostic & Mode de Dépannage
+
+En cas d'anomalie locale ou de cache corrompu :
+
+1. **Purge du stockage & réinitialisation locale :**
+   Ouvrez la console navigateur (`F12`) et exécutez la routine de nettoyage :
+   ```javascript
+   localStorage.clear();
+   sessionStorage.clear();
+   location.reload(true);
+   ```
+2. **Navigation Privée / Incognito :**
+   Ouvrez une fenêtre de navigation privée pour tester sans extension tierce ni cache résiduel.
+3. **Mode Débogage Détaillé (`?debug=1`) :**
+   Ajoutez le paramètre `?debug=1` dans l'URL pour activer les logs détaillés de développement :
+   ```text
+   http://localhost/MakertingMBSARL/?debug=1
+   ```
+4. **Validation Automatisée de Stabilité & Défilement :**
+   ```bash
+   npm run test:menu         # Validation du défilement tactile et des 5 viewports mobiles
+   npm run test:stability    # Chaos testing (200 cycles, poison de stockage, perte WebGL)
+   npm run audit             # Audit d'intégrité WCAG AAA et conformité visuelle
+   ```
+
+---
+
 © 2026 **MULTI BUSINESS SARL** — Tous droits réservés.

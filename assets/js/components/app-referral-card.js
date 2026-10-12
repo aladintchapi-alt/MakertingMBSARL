@@ -33,7 +33,7 @@ export function renderAppReferralCard(options = {}) {
                alt="Logo MULTI BUSINESS SARL" 
                class="w-11 h-11 object-contain rounded-2xl bg-white shadow-xs border border-slate-100 p-1 flex-shrink-0" />
           <div class="text-left">
-            <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight">Application Multi Business</h3>
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight">App Multi Business</h3>
             <p class="text-[11px] text-slate-500 font-medium">Vos services en ligne, en quelques clics</p>
           </div>
         </div>
@@ -52,6 +52,9 @@ export function renderAppReferralCard(options = {}) {
 
         <!-- 4 Lignes de services clés -->
         ${secondaryLinks.map((link, idx) => renderReferralRow(link, idx)).join('')}
+
+        <!-- Ligne dédiée à la Localisation : Visite / Fiche Google Maps -->
+        ${renderLocationReferralRow()}
 
       </div>
 
@@ -164,6 +167,41 @@ function renderReferralRow(link, index) {
       </div>
       <div class="flex items-center gap-1 flex-shrink-0 ${scheme.arrow} text-xs font-semibold">
         <span class="hidden md:inline text-[10px] text-slate-500 group-hover:text-slate-800 transition-colors">${link.cta}</span>
+        <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </div>
+    </a>
+  `;
+}
+
+/**
+ * Ligne dédiée à la Localisation Google Maps (Visite physique)
+ */
+function renderLocationReferralRow() {
+  const mapsUrl = CONFIG.company?.mapsUrl || CONFIG.contact?.headquarters?.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D';
+
+  return `
+    <a href="${mapsUrl}" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       role="listitem"
+       class="group referral-link-row flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:border-emerald-400 hover:bg-emerald-50/30 hover:shadow-xs transition-all duration-200 min-h-[56px]"
+       aria-label="Voir MULTI BUSINESS SARL sur Google Maps (s'ouvre dans un nouvel onglet)">
+      <div class="flex items-center gap-3 min-w-0 pr-2">
+        <div class="w-9 h-9 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105 group-hover:bg-emerald-100" aria-hidden="true">
+          ${icon('map-pin', { class: 'w-4 h-4 text-emerald-700' })}
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <h4 class="font-bold text-xs text-marine-900 group-hover:text-emerald-950 transition-colors leading-tight truncate">Vous cherchez notre adresse ?</h4>
+            <span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase bg-slate-200 text-slate-700 leading-tight">Siège</span>
+          </div>
+          <p class="text-[11px] text-slate-500 truncate mt-0.5">Retrouvez-nous à Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1 flex-shrink-0 text-emerald-800 text-xs font-semibold">
+        <span class="hidden md:inline text-[10px] text-emerald-700 group-hover:text-emerald-900 transition-colors">Voir sur Google Maps</span>
         <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
         </svg>

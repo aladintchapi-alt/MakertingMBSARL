@@ -73,7 +73,7 @@ function showMapToast(message) {
  */
 export function shareCompanyLocation() {
   const hq = CONFIG.contact?.headquarters || {};
-  const mapUrl = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+  const mapUrl = CONFIG.company?.mapsUrl || hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D';
   const shareData = {
     title: 'MULTI BUSINESS SARL — Siège Social Douala',
     text: `Retrouvez MULTI BUSINESS SARL à Dakar (Douala), Immeuble Express Union (${hq.formattedCoords || '4.0300055° N, 9.7370284° E'})`,
@@ -163,6 +163,21 @@ export function sanitizeVectorStyle(style) {
       if (layer.paint['line-width'][1] && layer.paint['line-width'][1][0] === 'linear') {
         layer.paint['line-width'][1] = ['linear'];
       }
+    }
+
+    // 3. Sécurisation des filtres comparatifs numériques (évite "Expected value to be of type number, but found null instead")
+    if (layer.filter && Array.isArray(layer.filter)) {
+      const sanitizeFilterClause = (clause) => {
+        if (!Array.isArray(clause)) return clause;
+        const op = clause[0];
+        if (['>=', '<=', '>', '<'].includes(op) && Array.isArray(clause[1]) && clause[1][0] === 'get') {
+          const propName = clause[1][1];
+          // Remplacer ['get', propName] par ['coalesce', ['to-number', ['get', propName], -9999], -9999]
+          return [op, ['coalesce', ['to-number', ['get', propName], -9999], -9999], clause[2]];
+        }
+        return clause.map(item => (Array.isArray(item) ? sanitizeFilterClause(item) : item));
+      };
+      layer.filter = sanitizeFilterClause(layer.filter);
     }
   });
 
@@ -617,12 +632,16 @@ export class PremiumMapController {
       if (canvas) {
         canvas.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          console.warn('[PremiumMap] Contexte WebGL perdu, sauvegarde de l\'état...');
+          logger.debug('[PremiumMap] Contexte WebGL perdu, mise en pause du rendu.');
         });
         canvas.addEventListener('webglcontextrestored', () => {
-          console.info('[PremiumMap] Contexte WebGL restauré, actualisation du style.');
+          logger.debug('[PremiumMap] Contexte WebGL restauré avec succès.');
           if (this.map && !this._isDestroyed) {
-            this.map.setStyle(this.styles[this.currentMode]);
+            try {
+              this.map.setStyle(this.styles[this.currentMode]);
+            } catch (_) {
+              this._renderOfflineFallback();
+            }
           }
         });
       }
@@ -772,7 +791,7 @@ export class PremiumMapController {
     const hq = CONFIG.contact?.headquarters || {};
     const coordsStr = hq.formattedCoords || '4.0300055° N, 9.7370284° E';
     const gDirections = hq.googleDirectionsUrl || 'https://www.google.com/maps/dir/?api=1&destination=4.0300055,9.7370284';
-    const gProfile = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+    const gProfile = CONFIG.company?.mapsUrl || hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D';
     const hours = CONFIG.contact?.hours || 'Lun – Ven : 08h00 – 17h00 | Sam : 08h00 – 14h00';
 
     // Popup informative officielle
@@ -1213,7 +1232,7 @@ export class PremiumMapController {
 
     const hq = CONFIG.contact?.headquarters || {};
     const coordsStr = hq.formattedCoords || '4.0300055° N, 9.7370284° E';
-    const mapUrl = hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0299706,9.7367761,52m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl';
+    const mapUrl = CONFIG.company?.mapsUrl || hq.mapUrl || 'https://www.google.com/maps/place/multibusiness/@4.0309087,9.7352805,837m/data=!3m1!1e3!4m6!3m5!1s0x4ba9e03f6fac8b13:0x36fdaca035b5355b!8m2!3d4.0300055!4d9.7370284!16s%2Fg%2F11tp937fdl!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MTAwNy4wIKXMDSoASAFQAw%3D%3D';
 
     this.container.innerHTML = `
       <div class="relative w-full h-full min-h-[420px] rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 text-white flex flex-col items-center justify-center p-8 text-center space-y-4">

@@ -142,7 +142,10 @@ export function installProductionConsoleGuard() {
       msg.includes('ResizeObserver loop completed') ||
       msg.includes('ResizeObserver loop limit') ||
       msg.includes('AbortError') ||
-      msg.includes('signal is aborted')
+      msg.includes('signal is aborted') ||
+      msg.includes('[Scene3D]') ||
+      msg.includes('Contexte WebGL perdu') ||
+      msg.includes('build/three')
     ) {
       return;
     }

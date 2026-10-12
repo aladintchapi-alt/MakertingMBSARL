@@ -80,13 +80,22 @@ export class iPhone18ProMaxViewer {
 
     this.screensData = await getScreensData();
 
-    if (typeof window.THREE === 'undefined') {
-      console.warn('[Scene3D] Three.js non chargé. Affichage du repli.');
-      this.renderFallback();
-      return;
+    // Chargement paresseux autonome de Three.js en pur module ES (sans warning build/three.js)
+    let THREE = window.THREE;
+    if (!THREE) {
+      try {
+        const threeModule = await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
+        THREE = threeModule;
+        window.THREE = threeModule;
+      } catch (err) {
+        console.warn('[Scene3D] Module ES Three.js indisponible. Affichage du repli élégant.');
+        this.renderFallback();
+        return;
+      }
     }
 
-    const THREE = window.THREE;
+    if (this.isDestroyed || !this.container) return;
+
     const width = this.container.clientWidth || 380;
     const height = this.container.clientHeight || 520;
 

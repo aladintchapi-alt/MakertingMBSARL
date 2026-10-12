@@ -99,7 +99,7 @@ export default {
                   <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-100 text-indigo-900">DGI / DSF</span>
                 </div>
                 <h3 class="font-bold text-sm text-marine-900 group-hover:text-indigo-800 transition-colors">Fiscalité & Conseil</h3>
-                <p class="text-xs text-slate-600 mt-1 leading-snug">DSF, audit fiscal, déclarations et sécurité foncière.</p>
+                <p class="text-xs text-slate-600 mt-1 leading-snug">Gestion fiscale de votre entreprise : DGI, DSF et conformité.</p>
               </div>
               <span class="text-xs font-bold text-indigo-800 mt-3 inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">Voir la page dédiée →</span>
             </a>
