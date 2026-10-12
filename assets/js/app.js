@@ -7,6 +7,10 @@ import Router from './router.js';
 import { CONFIG } from './config.js';
 import { initSmoothScroll } from './animations.js';
 import { initHeader, initMobileMenu, initScrollProgressBar, initCustomCursor } from './ui.js';
+import { installProductionConsoleGuard } from './utils/logger.js';
+
+// Activer le filtre console de production silencieux et fluide
+installProductionConsoleGuard();
 
 // Table de routage SPA exhaustive (avec gestion stricte de toutes les URLs et alias)
 const routes = {
@@ -116,21 +120,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initScrollProgressBar();
   initCustomCursor();
 
-  // Mesure dynamique de la hauteur réelle du header pour les paddings des heroes
-  const siteHeader = document.querySelector('#site-header');
-  if (siteHeader) {
-    const updateHeaderH = () => {
-      const h = siteHeader.offsetHeight;
-      if (h > 0) {
-        document.documentElement.style.setProperty('--header-h', `${h}px`);
-      }
-    };
-    updateHeaderH();
-    if (typeof ResizeObserver !== 'undefined') {
-      new ResizeObserver(updateHeaderH).observe(siteHeader);
-    }
-    window.addEventListener('resize', updateHeaderH);
-  }
 
   // 4. Initialiser le routeur SPA
   const router = new Router(routes);

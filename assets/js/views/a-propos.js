@@ -164,10 +164,10 @@ export default {
 
               <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div>
-                  <h4 class="font-serif font-bold text-base text-marine-900">La Direction Générale</h4>
+                  <h4 class="font-serif font-bold text-base text-marine-900">Le Siege</h4>
                   <p class="text-xs text-slate-500">MULTI BUSINESS SARL</p>
                 </div>
-                <span class="text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Dakar, Douala</span>
+                <span class="text-xs text-emerald-700 font-bold bg-emerald-50 px-3 py-1.5 rounded-lg border border-emerald-200">Dakar, Dla</span>
               </div>
             </div>
 

@@ -1062,18 +1062,18 @@ export default {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Votre Nom & Prénom *</label>
-                    <input type="text" required placeholder="Ex: Kamga Baurel" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50" />
+                    <input type="text" id="home-form-name" required placeholder="Ex: Kamga Baurel" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50" />
                   </div>
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Numéro Téléphone / WhatsApp *</label>
-                    <input type="tel" required placeholder="Ex: 690 84 34 97 ou 671 46 17 91" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 tabular-nums" />
+                    <input type="tel" id="home-form-phone" required placeholder="Ex: 690 84 34 97 ou 671 46 17 91" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50 tabular-nums" />
                   </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Service Concerné *</label>
-                    <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
+                    <select id="home-form-service" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
                       <option value="gestion-locative">Gestion Locative (Bailleurs)</option>
                       <option value="locataire">Recherche Logement (Locataire)</option>
                       <option value="creation">Création d'Entreprise (CFCE)</option>
@@ -1083,7 +1083,7 @@ export default {
                   </div>
                   <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">Ville d'intervention *</label>
-                    <select class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
+                    <select id="home-form-city" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50">
                       <option value="douala">Douala</option>
                       <option value="yaounde">Yaoundé</option>
                       <option value="autre">Autre ville au Cameroun</option>
@@ -1093,7 +1093,7 @@ export default {
 
                 <div>
                   <label class="block text-xs font-semibold text-slate-700 mb-1">Détails de votre demande</label>
-                  <textarea rows="3" placeholder="Décrivez brièvement votre besoin (type de bien, localisation, délai souhaité)..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50"></textarea>
+                  <textarea id="home-form-details" rows="3" placeholder="Décrivez brièvement votre besoin (type de bien, localisation, délai souhaité)..." class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-mint-500 bg-slate-50"></textarea>
                 </div>
 
                 <button type="submit" class="btn-primary w-full !py-3 text-xs flex items-center justify-center gap-2">
@@ -1317,12 +1317,43 @@ export default {
     }
 
     // 5. Formulaire de prise de rendez-vous
+    // 5. Formulaire de prise de rendez-vous avec redirection WhatsApp et vidage
     const form = container.querySelector('#home-appointment-form');
     if (form) {
       const handleForm = (e) => {
         e.preventDefault();
-        showToast('Votre demande a bien été envoyée. Un conseiller vous contactera sous 24h.', 'success');
+
+        const nameInput = form.querySelector('#home-form-name') || form.querySelector('input[type="text"]');
+        const phoneInput = form.querySelector('#home-form-phone') || form.querySelector('input[type="tel"]');
+        const serviceSelect = form.querySelector('#home-form-service') || form.querySelector('select');
+        const citySelect = form.querySelector('#home-form-city') || form.querySelectorAll('select')[1];
+        const detailsTextarea = form.querySelector('#home-form-details') || form.querySelector('textarea');
+
+        const name = nameInput ? nameInput.value.trim() : '';
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+        const serviceText = serviceSelect && serviceSelect.selectedOptions && serviceSelect.selectedOptions[0] ? serviceSelect.selectedOptions[0].text : 'Gestion Locative';
+        const cityText = citySelect && citySelect.selectedOptions && citySelect.selectedOptions[0] ? citySelect.selectedOptions[0].text : 'Douala';
+        const details = detailsTextarea ? detailsTextarea.value.trim() : '';
+
+        if (!name || !phone) {
+          showToast('Veuillez renseigner votre nom et votre numéro de téléphone.', 'error');
+          return;
+        }
+
+        const formattedMsg = `*Demande de Rendez-vous / Devis - MULTI BUSINESS SARL*%0A%0A` +
+          `👤 *Nom & Prénom :* ${encodeURIComponent(name)}%0A` +
+          `📞 *Téléphone / WhatsApp :* ${encodeURIComponent(phone)}%0A` +
+          `💼 *Service concerné :* ${encodeURIComponent(serviceText)}%0A` +
+          `📍 *Ville d'intervention :* ${encodeURIComponent(cityText)}%0A` +
+          (details ? `📝 *Détails du besoin :*%0A${encodeURIComponent(details)}` : `📝 *Détails :* Demande de contact direct.`);
+
+        showToast('Demande envoyée avec succès ! Redirection vers WhatsApp...', 'success');
         form.reset();
+
+        const whatsappUrl = `https://wa.me/237651559411?text=${formattedMsg}`;
+        setTimeout(() => {
+          window.open(whatsappUrl, '_blank');
+        }, 500);
       };
       form.addEventListener('submit', handleForm);
       this._cleanups.push(() => form.removeEventListener('submit', handleForm));

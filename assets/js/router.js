@@ -22,6 +22,8 @@ import {
 } from './animations.js';
 import { updateActiveNavLink } from './ui.js';
 import { destroy3DPhoneViewer } from './scene3d.js';
+import { closestFromEvent } from './utils/dom.js';
+import { logger } from './utils/logger.js';
 
 class Router {
   constructor(routes = {}) {
@@ -176,17 +178,67 @@ class Router {
       forceResetOverlays();
     });
 
-    // 5. Filets de sécurité globaux sur erreurs JavaScript non capturées
+    // 5. Filets de sécurité globaux sur erreurs JavaScript non capturées avec filtre, déduplication et coupe-circuit
+    const errorHistory = [];
+    const loggedErrors = new Set();
+    const BENIGN_ERRORS = [
+      'ResizeObserver loop completed with undelivered notifications',
+      'ResizeObserver loop limit exceeded',
+      'Script error.',
+      'AbortError',
+      'chrome-extension://',
+      'moz-extension://'
+    ];
+
+    const isBenignError = (msg) => {
+      if (!msg || typeof msg !== 'string') return false;
+      return BENIGN_ERRORS.some(b => msg.includes(b));
+    };
+
+    const handleGlobalError = (msg, source = 'JS') => {
+      if (isBenignError(msg)) return; // Ignorer immédiatement les notifications de boucle bénignes
+
+      const now = Date.now();
+      errorHistory.push(now);
+
+      // Conserver les erreurs des 2 dernières secondes
+      while (errorHistory.length > 0 && now - errorHistory[0] > 2000) {
+        errorHistory.shift();
+      }
+
+      // Coupe-circuit : si plus de 5 erreurs en 2 secondes, arrêter de réagir
+      if (errorHistory.length > 5) {
+        if (!loggedErrors.has('circuit-breaker-tripped')) {
+          loggedErrors.add('circuit-breaker-tripped');
+          logger.warn('[Router:CircuitBreaker] Seuil de 5 erreurs/2s atteint : coupe-circuit actif.');
+        }
+        return;
+      }
+
+      // Déduplication : chaque signature d'erreur n'est traitée qu'une fois
+      if (!loggedErrors.has(msg)) {
+        loggedErrors.add(msg);
+        logger.warn(`[Router:GlobalErrorCatch] Erreur ${source} capturée :`, msg);
+      }
+
+      // Ne déclencher le nettoyage forcé des overlays QUE si une transition est réellement bloquée
+      if (this.state !== 'idle') {
+        const isStuck = this.transitionStartTime && (now - this.transitionStartTime > 2500);
+        if (isStuck) {
+          logger.warn('[Router:GlobalErrorCatch] Transition bloquée au-delà du watchdog : nettoyage.');
+          forceResetOverlays();
+          this.state = 'idle';
+        }
+      }
+    };
+
     window.addEventListener('error', (err) => {
-      console.warn('[Router:GlobalErrorCatch] Nettoyage forcé suite à une erreur JS :', err.message);
-      forceResetOverlays();
-      this.state = 'idle';
+      handleGlobalError(err?.message || String(err), 'JS');
     });
 
     window.addEventListener('unhandledrejection', (event) => {
-      console.warn('[Router:UnhandledRejection] Nettoyage forcé suite à un rejet de promesse :', event.reason);
-      forceResetOverlays();
-      this.state = 'idle';
+      const reason = event?.reason?.message || String(event?.reason || '');
+      handleGlobalError(reason, 'Promise');
     });
 
     // 6. Test d'intégrité périodique léger (toutes les secondes)
@@ -198,7 +250,6 @@ class Router {
           const visibility = window.getComputedStyle(curtain).visibility;
           const opacity = parseFloat(window.getComputedStyle(curtain).opacity || '0');
           if (pointerEvents !== 'none' || visibility === 'visible' || opacity > 0.05) {
-            console.warn('[Router:IntegrityCheck] Incohérence overlay détectée à l\'état idle : réinitialisation.');
             forceResetOverlays();
           }
         }
@@ -213,9 +264,9 @@ class Router {
    * Initialise l'écoute des clics et des événements popstate
    */
   initListeners() {
-    // Interception globale des clics
+    // Interception globale des clics sécurisée (support Document, Window, TextNode, SVG, Canvas)
     document.addEventListener('click', (e) => {
-      const link = e.target.closest('a');
+      const link = closestFromEvent(e, 'a');
       if (!link) return;
 
       const href = link.getAttribute('href');
@@ -262,11 +313,15 @@ class Router {
   }
 
   /**
-   * Système de Prefetch intelligent au survol des liens (mouseenter / touchstart)
+   * Système de Prefetch intelligent au survol des liens (mouseover / touchstart)
+   * Debounce d'intention ~65ms, écouteurs passifs, une seule fois par URL.
    */
   initPrefetching() {
+    const prefetchedUrls = new Set();
+    let prefetchTimer = null;
+
     const handlePrefetch = (e) => {
-      const link = e.target.closest('a[href], a[data-link]');
+      const link = closestFromEvent(e, 'a[href], a[data-link]');
       if (!link) return;
 
       const href = link.getAttribute('href');
@@ -275,11 +330,19 @@ class Router {
       }
 
       const normalized = this.stripBasePath(href);
-      this.prefetchRoute(normalized);
+      if (prefetchedUrls.has(normalized)) return;
+
+      clearTimeout(prefetchTimer);
+      prefetchTimer = setTimeout(() => {
+        if (!prefetchedUrls.has(normalized)) {
+          prefetchedUrls.add(normalized);
+          this.prefetchRoute(normalized);
+        }
+      }, 65);
     };
 
-    document.addEventListener('mouseenter', handlePrefetch, true);
-    document.addEventListener('touchstart', handlePrefetch, { passive: true, capture: true });
+    document.addEventListener('mouseover', handlePrefetch, { passive: true });
+    document.addEventListener('touchstart', handlePrefetch, { passive: true });
   }
 
   /**

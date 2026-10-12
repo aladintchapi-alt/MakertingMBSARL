@@ -305,32 +305,43 @@ export default {
           return;
         }
 
-        const formattedMsg = `*Nouvelle Demande de Rendez-Vous - MULTI BUSINESS SARL*%0A%0A` +
-          `*Nom :* ${encodeURIComponent(name)}%0A` +
-          `*Téléphone :* ${encodeURIComponent(phone)}%0A` +
-          (email ? `*E-mail :* ${encodeURIComponent(email)}%0A` : '') +
-          `*Service :* ${encodeURIComponent(service)}%0A` +
-          (date ? `*Date souhaitée :* ${encodeURIComponent(date)}%0A` : '') +
-          `*Message :* ${encodeURIComponent(message)}`;
+        const formattedMsg = `*Demande de Contact & Rendez-vous - MULTI BUSINESS SARL*%0A%0A` +
+          `👤 *Nom & Prénom :* ${encodeURIComponent(name)}%0A` +
+          `📞 *Téléphone / WhatsApp :* ${encodeURIComponent(phone)}%0A` +
+          (email ? `📧 *E-mail :* ${encodeURIComponent(email)}%0A` : '') +
+          `💼 *Service concerné :* ${encodeURIComponent(service)}%0A` +
+          (date ? `📅 *Date souhaitée :* ${encodeURIComponent(date)}%0A` : '') +
+          `📝 *Message / Détails :*%0A${encodeURIComponent(message)}`;
 
-        showToast('Redirection vers WhatsApp...', 'success');
+        showToast('Demande enregistrée avec succès ! Redirection vers WhatsApp...', 'success');
+        contactForm.reset();
         
         const whatsappUrl = `https://wa.me/237651559411?text=${formattedMsg}`;
         setTimeout(() => {
           window.open(whatsappUrl, '_blank');
-        }, 600);
+        }, 500);
       });
     }
 
-    // Gestion du formulaire newsletter
+    // Gestion du formulaire newsletter avec redirection WhatsApp et vidage
     const newsletterForm = container.querySelector('#newsletter-form');
     if (newsletterForm) {
       newsletterForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const emailInput = container.querySelector('#newsletter-email');
         if (emailInput && emailInput.value.includes('@')) {
-          showToast('Merci pour votre inscription à la newsletter !', 'success');
-          emailInput.value = '';
+          const email = emailInput.value.trim();
+          const formattedMsg = `*Inscription Newsletter & Veille Stratégique - MULTI BUSINESS SARL*%0A%0A` +
+            `📧 *E-mail abonné :* ${encodeURIComponent(email)}%0A` +
+            `Bonjour, je souhaite m'abonner à la veille d'actualité locative, fiscale et juridique au Cameroun.`;
+          
+          showToast('Inscription confirmée ! Redirection vers WhatsApp...', 'success');
+          newsletterForm.reset();
+          
+          const whatsappUrl = `https://wa.me/237651559411?text=${formattedMsg}`;
+          setTimeout(() => {
+            window.open(whatsappUrl, '_blank');
+          }, 500);
         }
       });
     }

@@ -13,6 +13,7 @@
     "test:nav": "node test-nav.mjs",
     "test:runtime": "node test-spa-runtime.mjs",
     "test:map": "node test-map.mjs",
+    "test:console": "node test-console.mjs",
     "prebuild": "npm run audit && npm run test:nav && npm run test:runtime && npm run audit:final",
     "build": "npm run build:css",
     "test": "npm run audit:final"

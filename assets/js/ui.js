@@ -4,6 +4,7 @@
  */
 
 import { isReducedMotion } from './animations.js';
+import { closestFromEvent } from './utils/dom.js';
 
 export const initUIComponents = (scope = (typeof document !== 'undefined' ? document : null)) => {
   if (!scope) return;
@@ -60,9 +61,9 @@ export const initCustomCursor = () => {
   };
   requestAnimationFrame(renderCursor);
 
-  // Détection du survol des éléments interactifs
+  // Détection du survol des éléments interactifs sécurisée (support Document, Window, SVG, Canvas, Text)
   const handleHoverState = (e) => {
-    const isInteractive = e.target.closest('a, button, input, textarea, select, [data-magnetic], [data-tab-btn], [data-accordion-trigger]');
+    const isInteractive = closestFromEvent(e, 'a, button, input, textarea, select, [data-magnetic], [data-tab-btn], [data-accordion-trigger]');
     if (isInteractive) {
       document.body.classList.add('cursor-hover');
     } else {
@@ -81,13 +82,29 @@ export const initHeader = () => {
   const topBar = document.getElementById('top-bar');
   if (!siteHeader) return;
 
-  // Mesure et mise à jour dynamique des variables CSS de hauteur
+  // Mesure et mise à jour dynamique des variables CSS de hauteur (anti-boucle ResizeObserver)
+  let lastHeaderH = -1;
+  let lastTopbarH = -1;
+  let rafDimensionsId = null;
+
   const updateHeaderDimensions = () => {
-    const isDesktop = window.innerWidth >= 1024;
-    const headerHeight = siteHeader ? siteHeader.offsetHeight : 64;
-    const topBarHeight = (topBar && isDesktop && topBar.offsetParent !== null) ? topBar.offsetHeight : 0;
-    document.documentElement.style.setProperty('--header-h', `${headerHeight}px`);
-    document.documentElement.style.setProperty('--topbar-h', `${topBarHeight}px`);
+    if (rafDimensionsId) return;
+    rafDimensionsId = requestAnimationFrame(() => {
+      rafDimensionsId = null;
+      const isDesktop = window.innerWidth >= 1024;
+      const headerHeight = siteHeader ? siteHeader.offsetHeight : 64;
+      const topBarHeight = (topBar && isDesktop && topBar.offsetParent !== null) ? topBar.offsetHeight : 0;
+
+      // Écriture conditionnelle stricte : uniquement si changement mesurable (>= 0.5px)
+      if (Math.abs(headerHeight - lastHeaderH) >= 0.5) {
+        lastHeaderH = headerHeight;
+        document.documentElement.style.setProperty('--header-h', `${headerHeight}px`);
+      }
+      if (Math.abs(topBarHeight - lastTopbarH) >= 0.5) {
+        lastTopbarH = topBarHeight;
+        document.documentElement.style.setProperty('--topbar-h', `${topBarHeight}px`);
+      }
+    });
   };
 
   if (window.ResizeObserver) {
@@ -346,7 +363,7 @@ export const openLightbox = (src, caption = '') => {
     document.body.appendChild(lightbox);
 
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || e.target.closest('#lightbox-close')) {
+      if (e.target === lightbox || closestFromEvent(e, '#lightbox-close')) {
         closeLightbox();
       }
     });

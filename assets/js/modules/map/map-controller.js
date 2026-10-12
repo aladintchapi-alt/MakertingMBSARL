@@ -130,12 +130,54 @@ if (typeof window !== 'undefined') {
 
 
 /**
+ * Assainit les expressions d'un style vectoriel (MapTiler ou OpenFreeMap)
+ * Enveloppe les hauteurs d'extrusion 3D et propriétés numériques avec coalesce et to-number
+ * Évite définitivement l'erreur MapLibre worker : "Expected value to be of type number, but found null instead."
+ */
+export function sanitizeVectorStyle(style) {
+  if (!style || !Array.isArray(style.layers)) return style;
+
+  style.layers.forEach(layer => {
+    // 1. Couches d'extrusion de bâtiments 3D
+    if (layer.type === 'fill-extrusion' && layer.paint) {
+      if (layer.paint['fill-extrusion-height']) {
+        layer.paint['fill-extrusion-height'] = [
+          'coalesce',
+          ['to-number', ['get', 'render_height'], 0],
+          ['to-number', ['get', 'height'], 0],
+          12
+        ];
+      }
+      if (layer.paint['fill-extrusion-base']) {
+        layer.paint['fill-extrusion-base'] = [
+          'coalesce',
+          ['to-number', ['get', 'render_min_height'], 0],
+          ['to-number', ['get', 'min_height'], 0],
+          0
+        ];
+      }
+    }
+
+    // 2. Correction de la syntaxe interpolate linear sur boundary_3
+    if (layer.id === 'boundary_3' && layer.paint && Array.isArray(layer.paint['line-width'])) {
+      if (layer.paint['line-width'][1] && layer.paint['line-width'][1][0] === 'linear') {
+        layer.paint['line-width'][1] = ['linear'];
+      }
+    }
+  });
+
+  return style;
+}
+
+/**
  * Générateur du thème Nuit dérivé dynamiquement du style vectoriel de base.
  * Garantit un passage Plan <-> Nuit instantané sans nouvelle requête réseau de tuiles.
  */
 export function buildNightStyleFromVector(baseStyle) {
   if (!baseStyle || !baseStyle.layers) return baseStyle;
   const dark = JSON.parse(JSON.stringify(baseStyle));
+  if (baseStyle.sprite) dark.sprite = baseStyle.sprite;
+  if (baseStyle.glyphs) dark.glyphs = baseStyle.glyphs;
 
   // Palette Nuit Hyper-Premium (Marine Encre, Émeraude & Menthe Marque)
   const PALETTE = {
@@ -241,6 +283,8 @@ export function buildNightStyleFromVector(baseStyle) {
 export function buildSatelliteHybridStyle(baseVectorStyle) {
   if (!baseVectorStyle) return null;
   const sat = JSON.parse(JSON.stringify(baseVectorStyle));
+  if (baseVectorStyle.sprite) sat.sprite = baseVectorStyle.sprite;
+  if (baseVectorStyle.glyphs) sat.glyphs = baseVectorStyle.glyphs;
 
   // Source satellite Esri avec limitation stricte au zoom natif réel (19) pour activer le sur-échantillonnage natif
   sat.sources['esriSat'] = {
@@ -475,7 +519,10 @@ export class PremiumMapController {
       };
     }
 
-    // 3. Dériver le style NUIT et le style SATELLITE
+    // 3. Assainir le style vectoriel contre les expressions nulles
+    basePlanStyle = sanitizeVectorStyle(basePlanStyle);
+
+    // 4. Dériver le style NUIT et le style SATELLITE
     const nightStyle = buildNightStyleFromVector(basePlanStyle);
     const satelliteStyle = buildSatelliteHybridStyle(basePlanStyle);
 
@@ -526,6 +573,19 @@ export class PremiumMapController {
             return { url: `${url}${sep}key=${key}` };
           }
           return { url };
+        }
+      });
+
+      // Gestionnaire universel d'images de sprites manquantes (office, atm, gate, etc.)
+      this.map.on('styleimagemissing', (e) => {
+        const id = e?.id;
+        if (id && !this.map.hasImage(id)) {
+          // Injection immédiate d'un pixel transparent 1x1 pour neutraliser tout avertissement
+          this.map.addImage(id, {
+            width: 1,
+            height: 1,
+            data: new Uint8Array([0, 0, 0, 0])
+          });
         }
       });
 
@@ -1121,14 +1181,14 @@ export class PremiumMapController {
           'fill-extrusion-color': extrusionColor,
           'fill-extrusion-height': [
             'coalesce',
-            ['get', 'render_height'],
-            ['get', 'height'],
+            ['to-number', ['get', 'render_height'], 0],
+            ['to-number', ['get', 'height'], 0],
             12
           ],
           'fill-extrusion-base': [
             'coalesce',
-            ['get', 'render_min_height'],
-            ['get', 'min_height'],
+            ['to-number', ['get', 'render_min_height'], 0],
+            ['to-number', ['get', 'min_height'], 0],
             0
           ],
           'fill-extrusion-opacity': 0.85
@@ -1204,7 +1264,10 @@ export class PremiumMapController {
       this.popup = null;
     }
     if (this.map) {
-      try { this.map.remove(); } catch (e) {}
+      try {
+        this.map.off('error');
+        this.map.remove();
+      } catch (e) {}
       this.map = null;
     }
   }

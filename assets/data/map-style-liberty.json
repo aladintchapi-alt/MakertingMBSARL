@@ -3931,13 +3931,45 @@
       "minzoom": 14,
       "paint": {
         "fill-extrusion-base": [
-          "get",
-          "render_min_height"
+          "coalesce",
+          [
+            "to-number",
+            [
+              "get",
+              "render_min_height"
+            ],
+            0
+          ],
+          [
+            "to-number",
+            [
+              "get",
+              "min_height"
+            ],
+            0
+          ],
+          0
         ],
         "fill-extrusion-color": "hsl(35,8%,85%)",
         "fill-extrusion-height": [
-          "get",
-          "render_height"
+          "coalesce",
+          [
+            "to-number",
+            [
+              "get",
+              "render_height"
+            ],
+            0
+          ],
+          [
+            "to-number",
+            [
+              "get",
+              "height"
+            ],
+            0
+          ],
+          12
         ],
         "fill-extrusion-opacity": 0.8
       }
@@ -3999,8 +4031,7 @@
         "line-width": [
           "interpolate",
           [
-            "linear",
-            1
+            "linear"
           ],
           [
             "zoom"
