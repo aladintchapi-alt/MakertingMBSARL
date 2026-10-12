@@ -148,7 +148,7 @@ export const CONFIG = {
         url: "https://apps.multibusiness.cm/locataire/fiscalite-conseils",
         question: "Besoin d'une gestion fiscale pour votre entreprise ?",
         subtext: "Déclarations, relations avec la DGI et conformité : nous gérons votre fiscalité pour vous.",
-        cta: "Confier ma gestion fiscale",
+        cta: "Confier ma fiscalité",
         icon: "scale",
         color: "indigo",
         accentHex: "#6366F1",

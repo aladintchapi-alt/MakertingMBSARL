@@ -34,7 +34,7 @@ export function renderAppReferralCard(options = {}) {
                class="w-11 h-11 object-contain rounded-2xl bg-white shadow-xs border border-slate-100 p-1 flex-shrink-0" />
           <div class="text-left">
             <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight">App Multi Business</h3>
-            <p class="text-[11px] text-slate-500 font-medium">Vos services en ligne, en quelques clics</p>
+            <p class="text-[11px] text-slate-500 font-medium">Vos services en ligne, en un clic</p>
           </div>
         </div>
         <div class="text-right flex-shrink-0">
