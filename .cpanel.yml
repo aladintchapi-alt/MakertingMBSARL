@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export GIT_WORK_TREE=/home/multibusiness/public_html
+    - git checkout -f
