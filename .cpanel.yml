@@ -1,4 +1,4 @@
 deployment:
   tasks:
-    - export GIT_WORK_TREE=/home/multibusiness/public_html
+    - export GIT_WORK_TREE=/home/multibusiness/public_html/MakertingMBSARL
     - git checkout -f
