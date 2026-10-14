@@ -225,7 +225,7 @@ export const CONFIG = {
   },
 
   media: {
-    videoEntreprise: "./assets/images/video-cover.jpg",
+    slideshowId: "gestion-locative",
     photoPdg: "./assets/images/portrait-pdg.jpg",
     logoOriginal: "./assets/images/logo.jpeg",
     logoTransparent: "./assets/images/logo-transparent.png"

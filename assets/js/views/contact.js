@@ -23,7 +23,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[50vh] flex items-center justify-center pt-hero pb-14 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/gestionlocative/pexels-lucasandrade-17639682.jpg" alt="Siège MULTI BUSINESS SARL Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
+          <img src="./assets/images/gestionlocative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg" alt="Siège MULTI BUSINESS SARL Douala" class="w-full h-full object-cover object-center filter brightness-[0.97] contrast-[1.03]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 

@@ -1,0 +1,24 @@
+{
+  "slideshows": {
+    "gestion-locative": {
+      "title": "Présentation Institutionnelle MULTI BUSINESS SARL",
+      "folder": "assets/images/gestionlocative",
+      "aspectRatio": "16/9",
+      "defaultDuration": 5000,
+      "transitionDuration": 1200,
+      "loop": true,
+      "kenBurns": true,
+      "priorityFiles": [
+        "Gemini_Generated_Image_vrq7m3vrq7m3vrq7.jpeg",
+        "Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg",
+        "multibusiness2.jpeg",
+        "multibusiness1.jpeg"
+      ],
+      "ignorePatterns": [
+        "^pexels-",
+        "^equipe\\.",
+        "^Gemini_Generated_Image_ezd61"
+      ]
+    }
+  }
+}

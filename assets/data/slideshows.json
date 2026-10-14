@@ -1,0 +1,149 @@
+{
+  "gestion-locative": {
+    "id": "gestion-locative",
+    "title": "Présentation Institutionnelle MULTI BUSINESS SARL",
+    "folder": "assets/images/gestionlocative",
+    "options": {
+      "defaultDuration": 5000,
+      "transitionDuration": 1200,
+      "loop": true,
+      "aspectRatio": "16/9",
+      "kenBurns": true
+    },
+    "updatedAt": "2026-10-14T12:58:13.806Z",
+    "images": [
+      {
+        "file": "Gemini_Generated_Image_vrq7m3vrq7m3vrq7.jpeg",
+        "path": "assets/images/gestionlocative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7.jpeg",
+        "alt": "Accueil et réception des bureaux de MULTI BUSINESS SARL à Douala",
+        "title": "Accueil & Réception Professionnelle",
+        "caption": "Nos locaux au Cameroun : un espace moderne dédié à la gestion locative et aux affaires.",
+        "duration": 5000,
+        "focalPoint": {
+          "x": 50,
+          "y": 45
+        },
+        "dimensions": {
+          "width": 1024,
+          "height": 1024
+        },
+        "fileSize": 623064,
+        "dominantColor": "#E8E8E8",
+        "lqip": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAYABgDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAQFAgP/xAAkEAACAQUAAQMFAAAAAAAAAAABAgMABAURITESE4EWIlGR4f/EABUBAQEAAAAAAAAAAAAAAAAAAAIB/8QAGhEBAQACAwAAAAAAAAAAAAAAAAECESExQf/aAAwDAQACEQMRAD8AsSFGzs8Ui7R4zsfArRt4o4U9KoSIwPJ81Azj6k2vQ8XP1/K7myFtaTPDPOoceR065RDH1pMFmcIFMZAJ2Ap3SorHJR3V23tKxT0ccDhP4pVNk4+OY52P73mREG5G7oEHXxUl7hchPezye2jB3JDMw6N0pQtsWYx5LjbmyDLMoDP1Qp2DSlKPfJy6f//Z",
+        "variants": {
+          "webp": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7_jpeg/640w.webp",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7_jpeg/1024w.webp"
+          },
+          "avif": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7_jpeg/640w.avif",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7_jpeg/1024w.avif"
+          }
+        },
+        "warnings": [
+          "Résolution native 1024x1024 < 1600px recommandés."
+        ]
+      },
+      {
+        "file": "Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg",
+        "path": "assets/images/gestionlocative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg",
+        "alt": "Bureaux administratifs et direction de MULTI BUSINESS SARL",
+        "title": "Pôles Opérationnels & Direction",
+        "caption": "Gestion rigoureuse et centralisée : fiscalité, baux OHADA et suivi patrimonial.",
+        "duration": 5000,
+        "focalPoint": {
+          "x": 55,
+          "y": 50
+        },
+        "dimensions": {
+          "width": 1195,
+          "height": 896
+        },
+        "fileSize": 676276,
+        "dominantColor": "#E8E8E8",
+        "lqip": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAASABgDASIAAhEBAxEB/8QAGQABAQEAAwAAAAAAAAAAAAAAAAYDAgQF/8QAJBAAAgIDAAECBwAAAAAAAAAAAQIAAwQRIRMFMRQiQlGhsdH/xAAWAQEBAQAAAAAAAAAAAAAAAAACAAH/xAAXEQEBAQEAAAAAAAAAAAAAAAAAEQEC/9oADAMBAAIRAxEAPwCqRVNY5wjYmb1oiFmr1r8yWxPVbkzUstzX8GgTVwD21qd5b2Wq1/PeRa5YKe67vghuKa9Stspc3SCj4YA6785bX9icMS82VLZajVMelWO9RNqiAbuUoPtoS2qAOBVz6F/URD2XLSviDX2iIha//9k=",
+        "variants": {
+          "webp": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/640w.webp",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/1024w.webp",
+            "1195w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/1195w.webp"
+          },
+          "avif": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/640w.avif",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/1024w.avif",
+            "1195w": "assets/images/slideshows-cache/gestion-locative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c_jpeg/1195w.avif"
+          }
+        },
+        "warnings": [
+          "Résolution native 1195x896 < 1600px recommandés."
+        ]
+      },
+      {
+        "file": "multibusiness2.jpeg",
+        "path": "assets/images/gestionlocative/multibusiness2.jpeg",
+        "alt": "Façade extérieure et parking du siège MULTI BUSINESS SARL",
+        "title": "Siège Social — Façade & Infrastructure",
+        "caption": "Immeuble Express Union, 1er niveau à Dakar (Douala) avec parking sécurisé.",
+        "duration": 5000,
+        "focalPoint": {
+          "x": 50,
+          "y": 40
+        },
+        "dimensions": {
+          "width": 848,
+          "height": 1264
+        },
+        "fileSize": 725824,
+        "dominantColor": "#B8D8F8",
+        "lqip": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAAYABADASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAIDBAUG/8QAJRAAAgIBAgQHAAAAAAAAAAAAAQIAAxEEIQUSMUETMlFhcYGR/8QAFgEBAQEAAAAAAAAAAAAAAAAAAwIE/8QAFxEBAQEBAAAAAAAAAAAAAAAAAQACEv/aAAwDAQACEQMRAD8A6K6ypWKmxAR2JlW01tnDr+zP1GpruusdLKbFDbZryR8mILAS3N4CIMeanv7xDaUORlr4TpVUgs7feAZK2jpKFdwu3RvTpCEz9M/Jf//Z",
+        "variants": {
+          "webp": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/multibusiness2_jpeg/640w.webp",
+            "848w": "assets/images/slideshows-cache/gestion-locative/multibusiness2_jpeg/848w.webp"
+          },
+          "avif": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/multibusiness2_jpeg/640w.avif",
+            "848w": "assets/images/slideshows-cache/gestion-locative/multibusiness2_jpeg/848w.avif"
+          }
+        },
+        "warnings": [
+          "Résolution native 848x1264 < 1600px recommandés."
+        ]
+      },
+      {
+        "file": "multibusiness1.jpeg",
+        "path": "assets/images/gestionlocative/multibusiness1.jpeg",
+        "alt": "Vue d'ensemble extérieure des locaux de MULTI BUSINESS SARL",
+        "title": "Ancrage Stratégique au Cameroun",
+        "caption": "Une équipe de proximité à vos côtés pour valoriser et sécuriser votre patrimoine.",
+        "duration": 5000,
+        "focalPoint": {
+          "x": 50,
+          "y": 45
+        },
+        "dimensions": {
+          "width": 1200,
+          "height": 896
+        },
+        "fileSize": 717732,
+        "dominantColor": "#B8B8C8",
+        "lqip": "data:image/jpeg;base64,/9j/2wBDABQODxIPDRQSEBIXFRQYHjIhHhwcHj0sLiQySUBMS0dARkVQWnNiUFVtVkVGZIhlbXd7gYKBTmCNl4x9lnN+gXz/2wBDARUXFx4aHjshITt8U0ZTfHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHz/wAARCAASABgDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAUDBP/EACYQAAEDAwMCBwAAAAAAAAAAAAEAAgMEERIhIjEFQTJCUVJxkfD/xAAVAQEBAAAAAAAAAAAAAAAAAAABA//EABkRAQEAAwEAAAAAAAAAAAAAAAABAhESUf/aAAwDAQACEQMRAD8Ao1dbjUujE4jcANpZdZGtxYHPq4ce5LCFNj6rNI+QycE+Vt9PnutYaiSVt8XixAs4WGPqNNSndGooNna6+UsRINtt/wBdFOqa6UPdHlaP3EAaInu+jmVrSsZh4W/S7CAIwALccIihktAtDji4AtPIPCIiIX//2Q==",
+        "variants": {
+          "webp": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/640w.webp",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/1024w.webp",
+            "1200w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/1200w.webp"
+          },
+          "avif": {
+            "640w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/640w.avif",
+            "1024w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/1024w.avif",
+            "1200w": "assets/images/slideshows-cache/gestion-locative/multibusiness1_jpeg/1200w.avif"
+          }
+        },
+        "warnings": [
+          "Résolution native 1200x896 < 1600px recommandés."
+        ]
+      }
+    ]
+  }
+}

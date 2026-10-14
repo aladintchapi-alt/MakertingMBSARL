@@ -133,16 +133,46 @@ npm run dev
 
 ---
 
-## 7. Déploiement
+## 7. Système de Diaporama Hyper Premium & Gestion des Médias
 
-### Déploiement sous XAMPP / Apache Local
-Le projet fonctionne directement dans le sous-dossier `c:/xampp/htdocs/MakertingMBSARL/`.
-Grâce à la détection dynamique du `<base href>`, toutes les routes SPA fonctionnent à la fois sous `http://localhost/MakertingMBSARL/` et sous la racine d'un serveur dédié.
+Le site intègre un système de diaporama photographique cinématographique remplaçant tout lecteur ou espace réservé vidéo. Il propose des transitions fluides en fondu croisé (1.2 s), un effet Ken Burns orienté avec point focal, une barre de progression segmentée interactive, un arrière-plan ambiant flouté adaptatif pour tous les ratios d'images, et une compatibilité tactile, clavier et plein écran.
 
-### Déploiement Cloud (Vercel, Netlify, Nginx)
-- Les fichiers `vercel.json` et `_redirects` sont pré-configurés pour rediriger toutes les requêtes vers `index.html` (Error Document 200).
+### Ajouter ou Modifier des Images dans le Diaporama
+
+1. **Déposer vos images sources :**
+   Déposez simplement vos photos (formats `.jpg`, `.jpeg`, `.png`, `.webp`, `.avif`) dans le dossier :
+   ```text
+   assets/images/gestionlocative/
+   ```
+   *Recommandations qualité :* Privilégiez des clichés haute définition avec une largeur minimale de **1600 px** (jusqu'à 4K) pour un rendu d'une clarté optimale sur écrans Retina et moniteurs de bureau. Les images de ratios carrés ou verticaux sont automatiquement sublimées grâce au voile d'ambiance flouté.
+
+2. **Synchroniser et générer les formats optimisés (WebP / AVIF) :**
+   Exécutez la commande dédiée :
+   ```bash
+   npm run slides:sync
+   ```
+   *(Note : cette synchronisation s'exécute également en continu lors de `npm run dev` via un watcher de dossier et automatiquement avant chaque `npm run build`).*
+   
+   Le synchroniseur génère automatiquement les déclinaisons multi-résolutions (640px, 1024px, 1600px, 2400px), calcule la miniature ultra-légère LQIP en base64, détermine la couleur dominante, et inscrit la photo à la fin du fichier source de vérité :
+   ```text
+   assets/data/slideshows.json
+   ```
+
+3. **Personnaliser l'ordre, les légendes et le cadrage Ken Burns :**
+   Ouvrez le fichier `assets/data/slideshows.json` pour personnaliser chaque diapositive sans risque d'écrasement :
+   - **Ordre d'affichage :** Réorganisez l'ordre des objets dans le tableau `images` selon votre convenance.
+   - **Titre & Légende :** Renseignez les champs `"title"` et `"caption"` pour afficher des descriptions textuelles élégantes en surimpression.
+   - **Point focal Ken Burns :** Ajustez le centre du zoom cinématographique avec `"focalPoint": { "x": 50, "y": 30 }` (en pourcentages de 0 à 100).
+   - **Durée personnalisée :** Modifiez `"duration": 6000` (en millisecondes) pour afficher une photo plus longtemps.
+
+4. **Créer un nouveau diaporama sur une autre page :**
+   Déclarez un nouvel identifiant dans `assets/data/slideshows.config.json`, puis insérez simplement dans votre vue HTML :
+   ```html
+   <div data-slideshow="identifiant-du-diaporama" data-aspect-ratio="16/9"></div>
+   ```
 
 ---
+
 
 ## 8. Procédure de Diagnostic & Mode de Dépannage
 

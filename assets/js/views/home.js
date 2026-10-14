@@ -9,6 +9,7 @@ import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
 import { icon, iconBadge } from '../icons.js';
 import { PremiumMapController } from '../modules/map/map-controller.js';
 import { renderAppReferralCard, renderLiveBadge } from '../components/app-referral-card.js';
+import { PremiumSlideshow } from '../modules/slideshow/index.js';
 
 export default {
   meta: {
@@ -39,7 +40,7 @@ export default {
             <!-- Badge Live Institutionnel avec vraie respiration au-dessus -->
             <div id="hero-badge" class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-mint-50/95 border border-mint-300 text-emerald-900 text-xs font-bold tracking-wider uppercase shadow-xs backdrop-blur-xs" data-stagger-item>
               <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
-              <span>Votre Partenaire d'Affaire</span>
+              <span>Votre Partenaire d'Affaires</span>
             </div>
 
             <!-- Titre Révélé Mot par Mot avec Nuances Harmoniques Premium -->
@@ -853,19 +854,11 @@ export default {
               </div>
             </div>
 
-            <!-- Lecteur Vidéo d'Entreprise Stylisé -->
+            <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
             <div class="lg:col-span-6" data-reveal="right">
-              <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200 group">
-                <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-34811748.jpg" alt="Vidéo d'entreprise MULTI BUSINESS SARL" class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 bg-marine-900/40 flex flex-col items-center justify-center p-6 text-center text-white">
-                  <button id="btn-play-video" class="w-16 h-16 rounded-full bg-white text-marine-900 flex items-center justify-center shadow-xl hover:scale-110 transition-transform mb-3" aria-label="Lire la vidéo d'entreprise">
-                    <svg class="w-6 h-6 fill-current translate-x-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                  </button>
-                  <span class="font-bold text-sm">Découvrir MULTI BUSINESS SARL en vidéo</span>
-                  <span class="text-xs text-slate-300">Présentation des équipes et des services à Douala</span>
-                </div>
-              </div>
+              <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
             </div>
+
 
           </div>
         </div>
@@ -1306,15 +1299,17 @@ export default {
       this._cleanups.push(() => form.removeEventListener('submit', handleForm));
     }
 
-    // 6. Bouton Play Vidéo (Modal stylisé)
-    const playBtn = container.querySelector('#btn-play-video');
-    if (playBtn) {
-      const handleVideo = () => {
-        showToast('Lecture de la vidéo d\'entreprise MULTI BUSINESS SARL en cours...', 'info');
-      };
-      playBtn.addEventListener('click', handleVideo);
-      this._cleanups.push(() => playBtn.removeEventListener('click', handleVideo));
-    }
+    // 6. Diaporamas Photographiques Haute Définition
+    const slideshowEls = container.querySelectorAll('[data-slideshow]');
+    slideshowEls.forEach(el => {
+      try {
+        const ss = new PremiumSlideshow(el);
+        this._cleanups.push(() => ss.destroy());
+      } catch (err) {
+        console.warn('[Home] Erreur init slideshow:', err);
+      }
+    });
+
 
     // 7. Carte interactive compacte
     const homeMapEl = container.querySelector('#home-interactive-map');

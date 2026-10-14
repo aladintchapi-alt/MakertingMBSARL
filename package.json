@@ -7,7 +7,8 @@
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
     "serve": "node dev-server.mjs",
-    "dev": "concurrently \"npm run dev:css\" \"node dev-server.mjs\"",
+    "slides:sync": "node scripts/sync-slideshows.mjs",
+    "dev": "concurrently \"npm run dev:css\" \"node dev-server.mjs\" \"node scripts/watch-slideshows.mjs\"",
     "audit": "node audit-all-pages.mjs",
     "audit:final": "node final-compliance-audit.mjs",
     "test:nav": "node test-nav.mjs",
@@ -17,8 +18,9 @@
     "test:nav-coverage": "node test-nav-coverage.mjs",
     "test:menu": "node test-menu.mjs",
     "test:stability": "node test-stability.mjs",
+    "test:slideshow": "node test-slideshow.mjs",
     "prebuild": "npm run audit && npm run test:nav && npm run test:runtime && npm run audit:final",
-    "build": "npm run build:css",
+    "build": "npm run slides:sync && npm run build:css",
     "test": "npm run audit:final"
   },
   "keywords": [
@@ -32,7 +34,9 @@
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^9.1.2",
-    "tailwindcss": "^3.4.17"
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.17",
+    "ws": "^8.22.0"
   },
   "dependencies": {
     "gsap": "^3.12.7",

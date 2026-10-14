@@ -5,6 +5,7 @@
 import { CONFIG } from '../config.js';
 import { initUIComponents } from '../ui.js';
 import { icon } from '../icons.js';
+import { PremiumSlideshow } from '../modules/slideshow/index.js';
 
 export default {
   meta: {
@@ -22,7 +23,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative min-h-[75vh] lg:min-h-[70vh] flex items-center justify-center pt-hero pb-16 px-4 md:px-8 overflow-hidden bg-white" data-theme="light">
         <div class="hero-photo-bg">
-          <img src="./assets/images/gestionlocative/pexels-lucasandrade-17639678.jpg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
+          <img src="./assets/images/gestionlocative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg" alt="Siège MULTI BUSINESS SARL à Douala" class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02]" />
           <div class="hero-photo-overlay-light"></div>
         </div>
 
@@ -316,7 +317,7 @@ export default {
 
           <!-- Photo 2 : Bureaux & Réception -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/galerie-bureau-douala.jpg" data-caption="Espace d'accueil et bureaux de prestige de MULTI BUSINESS SARL à Douala (Dakar)">
-            <img src="./assets/images/fiscalite/pexels-tima-miroshnichenko-5439140.jpg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/gestionlocative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg" alt="Accueil et Bureaux Douala" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -338,7 +339,7 @@ export default {
 
           <!-- Photo 4 : Immeuble sous mandat -->
           <div class="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 transition-all cursor-pointer h-72" data-lightbox="./assets/images/bien-immeuble.jpg" data-caption="Immeuble résidentiel et commercial neuf de 8 étages sous mandat de gestion locative exclusif">
-            <img src="./assets/images/fiscalite/pexels-pavel-danilyuk-7654163.jpg" alt="Immeuble résidentiel moderne sous mandat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="./assets/images/gestionlocative/Gemini_Generated_Image_vrq7m3vrq7m3vrq7.jpeg" alt="Immeuble résidentiel moderne sous mandat" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-5">
               <span class="text-white text-xs font-semibold flex items-center gap-2">
                 ${icon('search', { class: 'w-4 h-4 text-mint-400' })}
@@ -379,47 +380,19 @@ export default {
         <div class="container max-w-5xl mx-auto text-center space-y-8">
           
           <div class="space-y-3" data-reveal="up">
-            <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">Vidéo Institutionnelle</span>
-            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Découvrez MULTI BUSINESS SARL en Action</h2>
-            <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto">Comprenez en 2 minutes comment notre modèle protège vos investissements et fluidifie vos formalités.</p>
+            <span class="inline-block px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 border border-emerald-200 text-xs font-bold uppercase tracking-wider">Immersion Visuelle & Présentation</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">Découvrez MULTI BUSINESS SARL en Images</h2>
+            <p class="text-slate-600 text-sm md:text-base max-w-2xl mx-auto">Explorez nos bureaux à Douala, nos équipes sur le terrain et la rigueur avec laquelle nous protégeons vos intérêts.</p>
           </div>
 
-          <!-- Lecteur Vidéo / Card Interactive -->
-          <div class="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-slate-200 bg-slate-900 aspect-video max-w-4xl mx-auto group cursor-pointer" data-modal-target="video-modal" data-reveal="up">
-            <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-29568695.jpg" alt="Aperçu vidéo MULTI BUSINESS SARL" class="w-full h-full object-cover opacity-85 group-hover:opacity-95 transition-opacity" />
-            <div class="absolute inset-0 bg-slate-950/30 flex items-center justify-center">
-              <div class="w-20 h-20 rounded-full bg-lime-400 text-marine-950 flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform duration-300">
-                ${icon('play', { class: 'w-8 h-8 text-marine-950 fill-current ml-1' })}
-              </div>
-            </div>
-            <div class="absolute bottom-4 left-6 right-6 flex items-center justify-between text-white text-xs font-semibold">
-              <span class="bg-slate-950/80 px-3 py-1.5 rounded-full border border-white/20">Présentation Officielle • 02:45</span>
-              <span class="bg-emerald-600 px-3 py-1.5 rounded-full font-bold">HD 1080p</span>
-            </div>
+          <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
+          <div class="max-w-4xl mx-auto" data-reveal="up">
+            <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
           </div>
 
         </div>
       </section>
 
-      <!-- Modale Vidéo Interactive -->
-      <div id="video-modal" data-modal class="fixed inset-0 z-[9999] bg-slate-950/90 backdrop-blur-xl hidden items-center justify-center p-4">
-        <div class="modal-box relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-700">
-          <button data-modal-close class="absolute top-4 right-4 z-20 p-2.5 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all">
-            ${icon('x', { class: 'w-6 h-6' })}
-          </button>
-          <div class="aspect-video bg-black flex flex-col items-center justify-center p-8 text-center text-white">
-            <div class="w-16 h-16 rounded-full bg-lime-400/20 text-lime-400 flex items-center justify-center mb-4">
-              ${icon('video', { class: 'w-8 h-8 text-lime-400' })}
-            </div>
-            <h3 class="font-serif text-xl md:text-2xl font-bold mb-2">Présentation Institutionnelle MULTI BUSINESS SARL</h3>
-            <p class="text-xs md:text-sm text-slate-300 max-w-md mb-6">Gestion locative intelligente, baux OHADA, recouvrement Orange/MTN et prestations d'affaires au Cameroun.</p>
-            <a href="https://wa.me/237651559411" target="_blank" rel="noopener" class="btn-primary !px-6 !py-3 text-xs inline-flex items-center gap-2">
-              ${icon('phone', { class: 'w-3.5 h-3.5' })}
-              <span>Échanger avec un conseiller vidéo</span>
-            </a>
-          </div>
-        </div>
-      </div>
 
       <!-- ================================================================= -->
       <!-- 8. ZONES D'INTERVENTION (Douala, Yaoundé, Kribi & Régions)         -->
@@ -555,7 +528,7 @@ export default {
       <!-- ================================================================= -->
       <section class="relative py-28 px-4 md:px-8 overflow-hidden" data-theme="photo">
         <div class="absolute inset-0 z-0">
-          <img src="./assets/images/gestionlocative/pexels-jakubzerdzicki-33305177.jpg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
+          <img src="./assets/images/gestionlocative/Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg" alt="MULTI BUSINESS SARL Cameroun" class="w-full h-full object-cover object-center filter brightness-75" />
           <div class="cta-photo-overlay"></div>
         </div>
 
@@ -590,10 +563,22 @@ export default {
 
   async init(container) {
     initUIComponents(container);
+    const slideshowEls = container.querySelectorAll('[data-slideshow]');
+    slideshowEls.forEach(el => {
+      try {
+        const ss = new PremiumSlideshow(el);
+        this._cleanups.push(() => ss.destroy());
+      } catch (err) {
+        console.warn('[APropos] Erreur init slideshow:', err);
+      }
+    });
   },
 
   destroy() {
-    this._cleanups.forEach(fn => fn());
+    this._cleanups.forEach(fn => {
+      try { fn(); } catch (e) {}
+    });
     this._cleanups = [];
   }
 };
+
