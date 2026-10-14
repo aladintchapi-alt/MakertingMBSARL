@@ -35,12 +35,15 @@ export function renderAppReferralCard(options = {}) {
           <div class="text-left">
             <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight">App Multi Business</h3>
             <p class="text-[11px] text-slate-500 font-medium">Vos services en ligne, en un clic</p>
+            <div class="text-right flex-shrink-0">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
+                ${CONFIG.app.domain}
+              </span>
+            </div>
           </div>
         </div>
-        <div class="text-right flex-shrink-0">
-          <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
-            ${CONFIG.app.domain}
-          </span>
+        <div class="flex items-center gap-1 flex-shrink-0 text-emerald-800 text-xs font-semibold">
+          <span class="px-1.5 py-0.2 rounded text-[9px] font-black uppercase bg-emerald-600 text-white"><span class="animate-pulse duration-1000 "></span> En direct</span>
         </div>
       </div>
 

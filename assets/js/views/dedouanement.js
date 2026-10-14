@@ -42,7 +42,7 @@ export default {
 
           <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
             <a href="https://apps.multibusiness.cm/locataire/dedouanement" target="_blank" rel="noopener noreferrer" class="btn-primary !px-7 !py-4 text-sm md:text-base shadow-lg flex items-center gap-2" data-magnetic aria-label="Lancer mon dédouanement sur l'application, s'ouvre dans un nouvel onglet">
-              <span>Lancer mon dédouanement sur l'application</span>
+              <span>Lancer mon dédouanement</span>
               ${icon('arrow-right', { class: 'w-4 h-4' })}
             </a>
             <a href="#estimer-dedouanement" class="btn-outline !px-7 !py-4 text-sm md:text-base bg-white flex items-center gap-2" data-magnetic>
