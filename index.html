@@ -426,8 +426,8 @@
           <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
 
-        <!-- Accordéon "Nos services" (Deux zones tactiles distinctes : lien hub + chevron 44x44px) -->
-        <div class="mobile-cascade-item rounded-2xl border border-slate-200/90 bg-white overflow-hidden transition-all duration-200" id="mobile-services-accordion">
+        <!-- Accordéon "Nos services" (Déplié par défaut à chaque ouverture) -->
+        <div class="mobile-cascade-item rounded-2xl border border-emerald-300 bg-white overflow-hidden shadow-xs transition-all duration-200" id="mobile-services-accordion">
           <div class="flex items-stretch justify-between bg-slate-50/70">
             <a href="/nos-services" data-link class="flex-grow py-3 px-3.5 text-lg font-serif font-bold text-marine-900 hover:text-emerald-700 transition-colors flex items-center gap-2">
               <span>Nos services</span>
@@ -435,17 +435,17 @@
             <button type="button" 
                     id="mobile-services-accordion-toggle" 
                     class="w-12 h-12 flex items-center justify-center text-slate-600 hover:text-marine-900 hover:bg-slate-100 transition-colors border-l border-slate-200/80 cursor-pointer flex-shrink-0" 
-                    aria-expanded="false" 
+                    aria-expanded="true" 
                     aria-controls="mobile-services-accordion-panel" 
-                    aria-label="Afficher les services">
-              <svg class="w-5 h-5 transition-transform duration-300 transform" id="mobile-services-accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    aria-label="Masquer les services">
+              <svg class="w-5 h-5 transition-transform duration-300 transform rotate-180" id="mobile-services-accordion-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="transform: rotate(180deg);">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/>
               </svg>
             </button>
           </div>
 
           <!-- Sous-menu dépliable fluide (Tous nos services, Gestion locative [PHARE], Création, Dédouanement, Fiscalité) -->
-          <div id="mobile-services-accordion-panel" class="hidden flex-col divide-y divide-slate-100 bg-white border-t border-slate-100" role="region" aria-labelledby="mobile-services-accordion-toggle">
+          <div id="mobile-services-accordion-panel" class="flex flex-col divide-y divide-slate-100 bg-white border-t border-slate-100" role="region" aria-labelledby="mobile-services-accordion-toggle">
             
             <!-- 1. Tous nos services (Lien vers le Hub) -->
             <a href="/nos-services" data-link class="mobile-subnav-link p-3 flex items-center justify-between hover:bg-slate-50 transition-colors">

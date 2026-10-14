@@ -159,7 +159,7 @@ async function run() {
 
   // Recharger la page (F5) avec le poison actif
   await send('Page.reload', { ignoreCache: true });
-  await new Promise(r => setTimeout(r, 1500));
+  await new Promise(r => setTimeout(r, 2200));
 
   const isMenuClosedAfterPoison = await evaluate(`
     (() => {
@@ -178,11 +178,14 @@ async function run() {
   // =========================================================================
   console.log('\n--- 2. Rechargement forcé (Ctrl+F5) pendant que le menu est ouvert ---');
   await send('Emulation.setDeviceMetricsOverride', { width: 417, height: 844, deviceScaleFactor: 2, mobile: true });
-  await new Promise(r => setTimeout(r, 300));
+  await new Promise(r => setTimeout(r, 600));
 
   // Ouvrir le menu
-  await evaluate(`document.querySelector('#mobile-menu-toggle').click();`);
-  await new Promise(r => setTimeout(r, 400));
+  await evaluate(`
+    const btn = document.querySelector('#mobile-menu-toggle');
+    if (btn) btn.click();
+  `);
+  await new Promise(r => setTimeout(r, 500));
   const isMenuOpenBeforeReload = await evaluate(`document.querySelector('#mobile-menu-overlay').getAttribute('data-open') === 'true'`);
   assert(isMenuOpenBeforeReload, 'Menu mobile ouvert avec succès avant rechargement');
   await capture('capture_mobile_menu_open_before_reload.png');

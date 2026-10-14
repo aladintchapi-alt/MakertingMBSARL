@@ -178,19 +178,12 @@ export const updateActiveNavLink = (currentPath) => {
   const accordionBox = document.getElementById('mobile-services-accordion');
 
   if (accordionToggle && accordionPanel) {
-    if (isServicePage) {
-      // Ouvre automatiquement l'accordéon si on est sur une page de service
-      accordionPanel.classList.remove('hidden');
-      accordionToggle.setAttribute('aria-expanded', 'true');
-      if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
-      if (accordionBox) accordionBox.classList.add('border-emerald-300', 'shadow-sm');
-    } else {
-      // Referme si on navigue hors services
-      accordionPanel.classList.add('hidden');
-      accordionToggle.setAttribute('aria-expanded', 'false');
-      if (accordionChevron) accordionChevron.style.transform = 'rotate(0deg)';
-      if (accordionBox) accordionBox.classList.remove('border-emerald-300', 'shadow-sm');
-    }
+    // Par défaut, l'accordéon reste déplié pour garantir un accès immédiat à tous les services
+    accordionPanel.classList.remove('hidden');
+    accordionToggle.setAttribute('aria-expanded', 'true');
+    accordionToggle.setAttribute('aria-label', 'Masquer les services');
+    if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
+    if (accordionBox) accordionBox.classList.add('border-emerald-300', 'shadow-sm');
   }
 
   // Marquer le parent "Nos services" dans le méga-menu desktop si page de service
@@ -318,10 +311,12 @@ export const initMobileMenu = () => {
       if (isExpanded) {
         accordionPanel.classList.add('hidden');
         accordionToggle.setAttribute('aria-expanded', 'false');
+        accordionToggle.setAttribute('aria-label', 'Afficher les services');
         if (accordionChevron) accordionChevron.style.transform = 'rotate(0deg)';
       } else {
         accordionPanel.classList.remove('hidden');
         accordionToggle.setAttribute('aria-expanded', 'true');
+        accordionToggle.setAttribute('aria-label', 'Masquer les services');
         if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
 
         // Défilement doux automatique pour que les sous-éléments soient bien visibles
@@ -444,6 +439,26 @@ export const openMobileMenu = () => {
   menuOverlay.classList.remove('hidden');
   menuOverlay.removeAttribute('hidden');
   menuOverlay.setAttribute('data-open', 'true');
+
+  // Déplier systématiquement l'accordéon "Nos services" par défaut à chaque ouverture
+  const accordionToggle = document.getElementById('mobile-services-accordion-toggle');
+  const accordionPanel = document.getElementById('mobile-services-accordion-panel');
+  const accordionChevron = document.getElementById('mobile-services-accordion-chevron');
+  const accordionBox = document.getElementById('mobile-services-accordion');
+
+  if (accordionToggle && accordionPanel) {
+    accordionPanel.classList.remove('hidden');
+    accordionToggle.setAttribute('aria-expanded', 'true');
+    accordionToggle.setAttribute('aria-label', 'Masquer les services');
+    if (accordionChevron) accordionChevron.style.transform = 'rotate(180deg)';
+    if (accordionBox) accordionBox.classList.add('border-emerald-300', 'shadow-sm');
+  }
+
+  // Remise à zéro impérative du défilement du menu mobile
+  const scrollContainer = document.getElementById('mobile-menu-scroll-container');
+  if (scrollContainer) {
+    scrollContainer.scrollTop = 0;
+  }
 
   if (toggleBtn) {
     toggleBtn.classList.add('is-active');

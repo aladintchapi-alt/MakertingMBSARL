@@ -7,6 +7,7 @@
 
 import { CONFIG } from '../../config.js';
 import { icon } from '../../icons.js';
+import { logger } from '../../utils/logger.js';
 
 let maplibreLoadedPromise = null;
 
@@ -630,19 +631,32 @@ export class PremiumMapController {
       // Gestionnaire WebGL Context Lost & Restored
       const canvas = this.map.getCanvas();
       if (canvas) {
-        canvas.addEventListener('webglcontextlost', (e) => {
+        this._onContextLost = (e) => {
           e.preventDefault();
+          if (this._isDestroyed || this._destroyed) return;
           logger.debug('[PremiumMap] Contexte WebGL perdu, mise en pause du rendu.');
-        });
-        canvas.addEventListener('webglcontextrestored', () => {
+        };
+
+        this._onContextRestored = () => {
+          if (this._isDestroyed || this._destroyed) return;
           logger.debug('[PremiumMap] Contexte WebGL restauré avec succès.');
-          if (this.map && !this._isDestroyed) {
+          if (this.map) {
             try {
               this.map.setStyle(this.styles[this.currentMode]);
             } catch (_) {
               this._renderOfflineFallback();
             }
           }
+        };
+
+        canvas.addEventListener('webglcontextlost', this._onContextLost);
+        canvas.addEventListener('webglcontextrestored', this._onContextRestored);
+
+        this._cleanups.push(() => {
+          try {
+            canvas.removeEventListener('webglcontextlost', this._onContextLost);
+            canvas.removeEventListener('webglcontextrestored', this._onContextRestored);
+          } catch (_) {}
         });
       }
 
@@ -1265,6 +1279,19 @@ export class PremiumMapController {
 
   destroy() {
     this._isDestroyed = true;
+    this._destroyed = true;
+
+    // Retirer les écouteurs du canvas WebGL explicitement avant toute destruction
+    if (this.map) {
+      try {
+        const canvas = this.map.getCanvas();
+        if (canvas) {
+          if (this._onContextLost) canvas.removeEventListener('webglcontextlost', this._onContextLost);
+          if (this._onContextRestored) canvas.removeEventListener('webglcontextrestored', this._onContextRestored);
+        }
+      } catch (_) {}
+    }
+
     if (this._observer) {
       this._observer.disconnect();
       this._observer = null;

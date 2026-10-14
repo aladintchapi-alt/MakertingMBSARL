@@ -8,7 +8,7 @@ import { showToast } from '../ui.js';
 import { init3DPhoneViewer, destroy3DPhoneViewer } from '../scene3d.js';
 import { icon, iconBadge } from '../icons.js';
 import { PremiumMapController } from '../modules/map/map-controller.js';
-import { renderAppReferralCard } from '../components/app-referral-card.js';
+import { renderAppReferralCard, renderLiveBadge } from '../components/app-referral-card.js';
 
 export default {
   meta: {
@@ -42,9 +42,9 @@ export default {
               <span>Votre Partenaire d'Affaire</span>
             </div>
 
-            <!-- Titre Révélé Mot par Mot -->
+            <!-- Titre Révélé Mot par Mot avec Nuances Harmoniques Premium -->
             <h1 id="hero-split-title" class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#0B1B2B] leading-[1.12] tracking-tight" data-stagger-item>
-              Bienvenue chez <span class="text-transparent bg-clip-text bg-gradient-to-r from-marine-900 via-mint-700 to-mint-600">MULTI BUSINESS SARL</span>
+              Bienvenue chez <span class="brand-wordmark"><span class="brand-word-multi">MULTI</span> <span class="brand-word-business">BUSINESS</span> <span class="brand-word-sarl">SARL</span></span>
             </h1>
 
             <!-- Accroche Métier Complète avec Contraste Renforcé -->
@@ -489,11 +489,13 @@ export default {
 
         <div class="container max-w-7xl mx-auto px-4 relative z-10">
           
-          <!-- En-tête de la section -->
+          <!-- En-tête de la section avec bulle En direct synchronisée -->
           <div class="max-w-3xl mx-auto text-center mb-12" data-reveal="up">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold uppercase tracking-wider mb-4 border border-mint-200">
-              <span class="w-2 h-2 rounded-full bg-mint-500 animate-pulse"></span>
-              <span>Plateforme Digitale Propriétaire • apps.multibusiness.cm</span>
+            <div class="inline-flex items-center gap-3 mb-4 flex-wrap justify-center">
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-100 text-mint-800 text-xs font-bold uppercase tracking-wider border border-mint-200">
+                <span>Plateforme Digitale Propriétaire • apps.multibusiness.cm</span>
+              </div>
+              ${renderLiveBadge()}
             </div>
             <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-extrabold text-marine-900 mb-4">
               L'Application Qui Révolutionne la Gestion Locative au Cameroun

@@ -35,6 +35,24 @@
   --color-brand-lime: #9AFF01;
   --color-brand-mint: #26C992;
   --color-brand-marine: #0B1B2B;
+
+  /* Tokens Sémantiques : Titre Hero Nuances Harmoniques (Contraste AAA/AA >= 5.4:1 sur fond clair) */
+  --brand-word-multi-from: #0A2E6E;   /* Saphir bleu nuit profond */
+  --brand-word-multi-to: #1E40AF;     /* Bleu royal élégant */
+  --brand-word-business-from: #044E3D; /* Émeraude impériale profonde */
+  --brand-word-business-to: #0F766E;   /* Sarcelle noble / Teal */
+  --brand-word-sarl-from: #78350F;     /* Ambre ambré profond */
+  --brand-word-sarl-to: #9A3412;       /* Bronze chaud / Or cuivré */
+
+  /* Tokens Sémantiques : Bulle Animée "En direct" */
+  --live-badge-bg: rgba(255, 255, 255, 0.92);
+  --live-badge-border: rgba(16, 185, 129, 0.35);
+  --live-badge-text: #064E3B;          /* Émeraude sombre (Contraste 8.9:1 sur blanc) */
+  --live-dot-core: #059669;            /* Émeraude 600 */
+  --live-ring-1: rgba(16, 185, 129, 0.45);
+  --live-ring-2: rgba(52, 211, 153, 0.28);
+  --live-pulse-duration: 2s;
+  --live-shimmer-duration: 7s;
 }
 
 /* Thème 1 : Blanc Pur (data-theme="light") */
@@ -673,4 +691,249 @@ body.cursor-hover #custom-cursor-ring {
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
   padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 36px);
+}
+
+/* ========================================================================= */
+/* COMPOSANT 1 : BULLE ANIMÉE "EN DIRECT" (HYPER PREMIUM)                    */
+/* ========================================================================= */
+.live-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  background: var(--live-badge-bg, rgba(255, 255, 255, 0.92));
+  border: 1px solid var(--live-badge-border, rgba(16, 185, 129, 0.35));
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  overflow: hidden;
+  animation: live-badge-entry 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes live-badge-entry {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.live-badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.18);
+}
+
+/* Balayage lumineux périodique discret */
+.live-badge::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-20deg);
+  animation: live-shimmer var(--live-shimmer-duration, 7s) infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes live-shimmer {
+  0%, 82% {
+    left: -100%;
+  }
+  92%, 100% {
+    left: 140%;
+  }
+}
+
+/* Conteneur de bulle avec 2 anneaux concentriques pulsants */
+.live-indicator {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+}
+
+.live-dot-core {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--live-dot-core, #059669);
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);
+  z-index: 2;
+}
+
+.live-ring-1 {
+  position: absolute;
+  inset: -2px;
+  border-radius: 9999px;
+  background-color: var(--live-ring-1, rgba(16, 185, 129, 0.45));
+  animation: live-pulse-1 var(--live-pulse-duration, 2s) cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  z-index: 1;
+}
+
+.live-ring-2 {
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background-color: var(--live-ring-2, rgba(52, 211, 153, 0.28));
+  animation: live-pulse-2 var(--live-pulse-duration, 2s) cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  animation-delay: 0.4s;
+  z-index: 0;
+}
+
+@keyframes live-pulse-1 {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@keyframes live-pulse-2 {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.7);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.live-badge-text {
+  font-family: var(--font-sans);
+  font-size: 0.781rem; /* 12.5px */
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  color: var(--live-badge-text, #064E3B);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* ========================================================================= */
+/* COMPOSANT 3 : BRAND WORDMARK (TITRE HERO EN NUANCES HARMONISÉES)          */
+/* ========================================================================= */
+.brand-wordmark {
+  position: relative;
+  display: inline;
+  font-weight: 800;
+}
+
+/* Reflet subtil unique à l'apparition */
+.brand-wordmark::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+  opacity: 0;
+  animation: brand-wordmark-sheen 1.2s ease-out 0.8s 1 forwards;
+}
+
+@keyframes brand-wordmark-sheen {
+  0% {
+    left: -30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+.brand-word-multi {
+  color: var(--brand-word-multi-from);
+  background: linear-gradient(135deg, var(--brand-word-multi-from) 0%, var(--brand-word-multi-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.brand-word-business {
+  color: var(--brand-word-business-from);
+  background: linear-gradient(135deg, var(--brand-word-business-from) 0%, var(--brand-word-business-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.brand-word-sarl {
+  color: var(--brand-word-sarl-from);
+  background: linear-gradient(135deg, var(--brand-word-sarl-from) 0%, var(--brand-word-sarl-to) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Repli CSS sécurisé pour les navigateurs ne supportant pas background-clip: text */
+@supports not (-webkit-background-clip: text) {
+  .brand-word-multi {
+    color: var(--brand-word-multi-from) !important;
+    -webkit-text-fill-color: initial !important;
+  }
+  .brand-word-business {
+    color: var(--brand-word-business-from) !important;
+    -webkit-text-fill-color: initial !important;
+  }
+  .brand-word-sarl {
+    color: var(--brand-word-sarl-from) !important;
+    -webkit-text-fill-color: initial !important;
+  }
+}
+
+/* Respect de prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .live-badge {
+    animation: none;
+  }
+  .live-badge::after {
+    display: none !important;
+    animation: none !important;
+  }
+  .live-ring-1,
+  .live-ring-2 {
+    animation: none !important;
+    display: none !important;
+  }
+  .live-dot-core {
+    box-shadow: none !important;
+  }
+  .brand-wordmark::after {
+    display: none !important;
+    animation: none !important;
+  }
 }

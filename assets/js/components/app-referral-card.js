@@ -8,6 +8,23 @@ import { CONFIG } from '../config.js';
 import { icon, iconBadge } from '../icons.js';
 
 /**
+ * Composant Réutilisable : Indicateur / Bulle Animée "En direct"
+ * Conforme WCAG AA, pastille verre dépoli, 2 anneaux concentriques pulsants
+ */
+export function renderLiveBadge(extraClasses = '') {
+  return `
+    <span class="live-badge ${extraClasses}" role="status" aria-label="Application disponible en direct">
+      <span class="live-indicator" aria-hidden="true">
+        <span class="live-ring-2"></span>
+        <span class="live-ring-1"></span>
+        <span class="live-dot-core"></span>
+      </span>
+      <span class="live-badge-text">En direct</span>
+    </span>
+  `;
+}
+
+/**
  * Rendu du bloc complet de référencement vers l'application
  * Utilisable dans le Hero, la section application, ou toute vue
  */
@@ -24,26 +41,26 @@ export function renderAppReferralCard(options = {}) {
       <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
       <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-slate-100/60 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
 
-      <!-- EN-TÊTE : Logo MB détouré + Titre + Domaine apps.multibusiness.cm discret (sans pastille "En direct") -->
-      <div class="relative flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
-        <div class="flex items-center gap-3">
+      <!-- EN-TÊTE : Logo MB détouré + Titre + Domaine apps.multibusiness.cm + Bulle "En direct" -->
+      <div class="relative flex items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+        <div class="flex items-center gap-3 min-w-0">
           <img src="./assets/images/logo-transparent.png" 
                srcset="./assets/images/logo-64x64.png 1x, ./assets/images/logo-128x128.png 2x" 
                width="44" height="44" 
                alt="Logo MULTI BUSINESS SARL" 
                class="w-11 h-11 object-contain rounded-2xl bg-white shadow-xs border border-slate-100 p-1 flex-shrink-0" />
-          <div class="text-left">
-            <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight">App Multi Business</h3>
-            <p class="text-[11px] text-slate-500 font-medium">Vos services en ligne, en un clic</p>
-            <div class="text-right flex-shrink-0">
-              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
+          <div class="text-left min-w-0">
+            <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight truncate">App Multi Business</h3>
+            <p class="text-[11px] text-slate-500 font-medium truncate">Vos services en ligne, en un clic</p>
+            <div class="mt-1">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
                 ${CONFIG.app.domain}
               </span>
             </div>
           </div>
         </div>
-        <div class="flex items-center gap-1 flex-shrink-0 text-emerald-800 text-xs font-semibold">
-          <span class="px-1.5 py-0.2 rounded text-[9px] font-black uppercase bg-emerald-600 text-white"><span class="animate-pulse duration-1000 "></span> En direct</span>
+        <div class="flex items-center flex-shrink-0">
+          ${renderLiveBadge()}
         </div>
       </div>
 
