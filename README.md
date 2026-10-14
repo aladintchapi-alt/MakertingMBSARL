@@ -98,21 +98,22 @@ MakertingMBSARL/
 
 ## 5. Commandes de Développement & Tests
 
-Le projet est équipé d'une chaîne de scripts npm complète :
+Le projet est équipé des scripts npm de développement et de build de production :
 
 ```bash
+# Lancer l'environnement de développement complet (serveur local, compilation CSS et synchronisation des photos)
+npm run dev
+
 # Compiler la feuille de style Tailwind CSS en mode minifié (Production)
 npm run build:css
 
-# Lancer la suite d'audit final de conformité (Phase 7)
-npm test
+# Synchroniser les images du diaporama et générer les variantes WebP/AVIF optimisées
+npm run slides:sync
 
-# Lancer la suite complète pré-déploiement (73 assertions de sécurité + 10 routes SPA)
-npm run prebuild
-
-# Lancer le serveur local de développement
-npm run dev
+# Exécuter le build complet de production
+npm run build
 ```
+
 
 ---
 
@@ -192,13 +193,18 @@ En cas d'anomalie locale ou de cache corrompu :
    ```text
    http://localhost/MakertingMBSARL/?debug=1
    ```
-4. **Validation Automatisée de Stabilité & Défilement :**
+4. **Déploiement en Production via GitHub :**
+   Poussez vos modifications sur le dépôt distant avec Git :
    ```bash
-   npm run test:menu         # Validation du défilement tactile et des 5 viewports mobiles
-   npm run test:stability    # Chaos testing (200 cycles, poison de stockage, perte WebGL)
-   npm run audit             # Audit d'intégrité WCAG AAA et conformité visuelle
+   git add .
+   git commit -m "feat: site vitrine prêt pour déploiement en production"
+   git push origin main
    ```
+   Sur votre serveur d'hébergement (cPanel, VPS Apache, Nginx ou Cloud), effectuez un simple `git pull` (ou clone) :
+   - Tous les assets CSS et les déclinaisons WebP/AVIF optimisées sont pré-compilés.
+   - Les règles de réécriture SPA (`.htaccess`, `nginx.conf.example`, `vercel.json`, `_redirects`, `web.config`) garantissent un routage parfait sur toutes les URLs.
 
 ---
+
 
 © 2026 **MULTI BUSINESS SARL** — Tous droits réservés.

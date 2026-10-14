@@ -1,0 +1,26 @@
+# Dépendances Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Fichiers temporaires & profils de test Chrome
+.chrome-temp-*
+.chrome-cache-bust
+temp_*
+*.log
+
+# Fichiers système & éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environnement local
+.env.local
+.env.*.local

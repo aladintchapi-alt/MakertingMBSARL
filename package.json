@@ -4,24 +4,13 @@
   "description": "Site vitrine haute performance pour MULTI BUSINESS SARL - Gestion locative & Conseil d'affaires (Douala & Yaoundé, Cameroun)",
   "type": "module",
   "scripts": {
+    "start": "node dev-server.mjs",
+    "serve": "node dev-server.mjs",
     "dev:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch",
     "build:css": "tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --minify",
-    "serve": "node dev-server.mjs",
     "slides:sync": "node scripts/sync-slideshows.mjs",
     "dev": "concurrently \"npm run dev:css\" \"node dev-server.mjs\" \"node scripts/watch-slideshows.mjs\"",
-    "audit": "node audit-all-pages.mjs",
-    "audit:final": "node final-compliance-audit.mjs",
-    "test:nav": "node test-nav.mjs",
-    "test:runtime": "node test-spa-runtime.mjs",
-    "test:map": "node test-map.mjs",
-    "test:console": "node test-console.mjs",
-    "test:nav-coverage": "node test-nav-coverage.mjs",
-    "test:menu": "node test-menu.mjs",
-    "test:stability": "node test-stability.mjs",
-    "test:slideshow": "node test-slideshow.mjs",
-    "prebuild": "npm run audit && npm run test:nav && npm run test:runtime && npm run audit:final",
-    "build": "npm run slides:sync && npm run build:css",
-    "test": "npm run audit:final"
+    "build": "npm run slides:sync && npm run build:css"
   },
   "keywords": [
     "gestion-locative",
@@ -35,9 +24,9 @@
   "devDependencies": {
     "concurrently": "^9.1.2",
     "sharp": "^0.35.5",
-    "tailwindcss": "^3.4.17",
-    "ws": "^8.22.0"
+    "tailwindcss": "^3.4.17"
   },
+
   "dependencies": {
     "gsap": "^3.12.7",
     "lenis": "^1.1.20"

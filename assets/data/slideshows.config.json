@@ -12,8 +12,10 @@
         "Gemini_Generated_Image_vrq7m3vrq7m3vrq7.jpeg",
         "Gemini_Generated_Image_cv6cy4cv6cy4cv6c.jpeg",
         "multibusiness2.jpeg",
-        "multibusiness1.jpeg"
+        "multibusiness1.jpeg",
+        "Gemini_Generated_Image_kpvyspkpvyspkpvy.jpeg"
       ],
+
       "ignorePatterns": [
         "^pexels-",
         "^equipe\\.",
