@@ -19,7 +19,6 @@ export function renderLiveBadge(extraClasses = '') {
         <span class="live-ring-1"></span>
         <span class="live-dot-core"></span>
       </span>
-      <span class="live-badge-text">En direct</span>
     </span>
   `;
 }

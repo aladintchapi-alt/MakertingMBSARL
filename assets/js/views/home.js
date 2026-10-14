@@ -98,7 +98,67 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 2 : BANDEAU DE CONFIANCE & CHIFFRES CLÉS (Fond Blanc Pur) -->
+      <!-- SECTION 2 : À PROPOS CONDENSÉ + BLOC PDG + VIDÉO (Fond Blanc Pur)   -->
+      <!-- ================================================================= -->
+      <section class="py-24 bg-white border-y border-slate-200">
+        <div class="container max-w-7xl mx-auto px-4">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            
+            <!-- Bloc PDG & Présentation -->
+            <div class="lg:col-span-6 space-y-6 text-left" data-reveal="left">
+              <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">Direction & Vision</span>
+              <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">
+                La Rigueur et l'Intégrité au Service de Vos Projets
+              </h2>
+              <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                Fondée à Douala, <strong>MULTI BUSINESS SARL</strong> est une société camerounaise de prestations de services intellectuels. Notre ambition est d'offrir aux entrepreneurs, bailleurs et particuliers une structure de confiance, respectueuse des normes légales et dotée d'une technologie d'avant-garde.
+              </p>
+
+              <!-- Badges de Réassurance -->
+              <div class="flex flex-wrap gap-3">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-bold">
+                  ${icon('award', { class: 'w-4 h-4 text-mint-700' })}
+                  <span>Service de Qualité Certifié</span>
+                </span>
+                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
+                  ${icon('zap', { class: 'w-4 h-4 text-amber-700' })}
+                  <span>Rapidité d'Exécution Garantie</span>
+                </span>
+              </div>
+
+              <!-- Bloc Portrait du PDG avec Téléphone Direct -->
+              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-5">
+                <img src="./assets/images/gestionlocative/multibusiness2.jpeg" alt="Directeur Général MULTI BUSINESS SARL" class="w-16 h-16 rounded-full object-cover border-2 border-mint-500 shadow-md" />
+                <div class="space-y-0.5">
+                  <h4 class="font-serif font-bold text-sm text-marine-900">SIEGE</h4>
+                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Dakar, Douala</p>
+                  <a href="tel:+237690843497" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
+                    Ligne directe : (+237) 690 843 497
+                  </a>
+                  <a href="tel:+237671461791" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
+                    | 671 461 791
+                  </a>
+                  <br>
+                  <a href="tel:+237651589411" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
+                    Whatsapp : <span class="text-slate-500">+237 651 589 411</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
+            <div class="lg:col-span-6" data-reveal="right">
+              <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================================= -->
+      <!-- SECTION 3 : BANDEAU DE CONFIANCE & CHIFFRES CLÉS (Fond Blanc Pur) -->
       <!-- ================================================================= -->
       <section class="py-12 bg-white border-y border-slate-200">
         <div class="container max-w-7xl mx-auto px-4">
@@ -143,7 +203,7 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 3 : LES 4 SERVICES EN CARTES IMMERSIVES (Fond Ivoire)      -->
+      <!-- SECTION 4 : LES 4 SERVICES EN CARTES IMMERSIVES (Fond Ivoire)      -->
       <!-- ================================================================= -->
       <section id="services-section" class="py-24 bg-[#FAF9F5] relative">
         <div class="container max-w-7xl mx-auto px-4">
@@ -275,7 +335,7 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 4 : LES 3 VALEURS (Fond Pastel Doux)                       -->
+      <!-- SECTION 5 : LES 3 VALEURS (Fond Pastel Doux)                       -->
       <!-- ================================================================= -->
       <section class="py-20 bg-emerald-50/50 border-y border-mint-100">
         <div class="container max-w-7xl mx-auto px-4">
@@ -319,7 +379,7 @@ export default {
 
       <!-- ================================================================= -->
       <!-- ================================================================= -->
-      <!-- SECTION 5 : GESTION LOCATIVE EN GRAND (Fond Blanc Pur)              -->
+      <!-- SECTION 6 : GESTION LOCATIVE EN GRAND (Fond Blanc Pur)              -->
       <!-- ================================================================= -->
       <section class="py-24 bg-white">
         <div class="container max-w-7xl mx-auto px-4">
@@ -480,7 +540,7 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 6 : ESPACE PRÉSENTATION DES APPLICATIONS (WEB & MOBILE)    -->
+      <!-- SECTION 7 : ESPACE PRÉSENTATION DES APPLICATIONS (WEB & MOBILE)    -->
       <!-- ================================================================= -->
       <section id="app-section" class="py-24 bg-[#FAF9F5] border-y border-slate-200 relative overflow-hidden">
         
@@ -801,66 +861,6 @@ export default {
             </div>
           </div>
 
-        </div>
-      </section>
-
-      <!-- ================================================================= -->
-      <!-- SECTION 7 : À PROPOS CONDENSÉ + BLOC PDG + VIDÉO (Fond Blanc Pur)   -->
-      <!-- ================================================================= -->
-      <section class="py-24 bg-white">
-        <div class="container max-w-7xl mx-auto px-4">
-          
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
-            
-            <!-- Bloc PDG & Présentation -->
-            <div class="lg:col-span-6 space-y-6 text-left" data-reveal="left">
-              <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-800 text-xs font-bold uppercase tracking-wider">Direction & Vision</span>
-              <h2 class="font-serif text-3xl md:text-4xl font-extrabold text-marine-900">
-                La Rigueur et l'Intégrité au Service de Vos Projets
-              </h2>
-              <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-                Fondée à Douala, <strong>MULTI BUSINESS SARL</strong> est une société camerounaise de prestations de services intellectuels. Notre ambition est d'offrir aux entrepreneurs, bailleurs et particuliers une structure de confiance, respectueuse des normes légales et dotée d'une technologie d'avant-garde.
-              </p>
-
-              <!-- Badges de Réassurance -->
-              <div class="flex flex-wrap gap-3">
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-bold">
-                  ${icon('award', { class: 'w-4 h-4 text-mint-700' })}
-                  <span>Service de Qualité Certifié</span>
-                </span>
-                <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold">
-                  ${icon('zap', { class: 'w-4 h-4 text-amber-700' })}
-                  <span>Rapidité d'Exécution Garantie</span>
-                </span>
-              </div>
-
-              <!-- Bloc Portrait du PDG avec Téléphone Direct -->
-              <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-5">
-                <img src="./assets/images/gestionlocative/multibusiness2.jpeg" alt="Directeur Général MULTI BUSINESS SARL" class="w-16 h-16 rounded-full object-cover border-2 border-mint-500 shadow-md" />
-                <div class="space-y-0.5">
-                  <h4 class="font-serif font-bold text-sm text-marine-900">SIEGE</h4>
-                  <p class="text-xs text-slate-500">MULTI BUSINESS SARL • Dakar, Douala</p>
-                  <a href="tel:+237690843497" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
-                    Ligne directe : (+237) 690 843 497
-                  </a>
-                  <a href="tel:+237671461791" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
-                    | 671 461 791
-                  </a>
-                  <br>
-                  <a href="tel:+237651589411" class="text-xs font-bold text-mint-700 hover:underline inline-block pt-1 tabular-nums">
-                    Whatsapp : <span class="text-slate-500">+237 651 589 411</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
-            <div class="lg:col-span-6" data-reveal="right">
-              <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
-            </div>
-
-
-          </div>
         </div>
       </section>
 
