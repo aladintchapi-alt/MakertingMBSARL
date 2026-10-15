@@ -98,10 +98,10 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- SECTION 2 : À PROPOS CONDENSÉ + BLOC PDG + VIDÉO (Fond Blanc Pur)   -->
+      <!-- SECTION 2 : À PROPOS CONDENSÉ + BLOC PDG + DIAPORAMA (Fond Blanc Pur) -->
       <!-- ================================================================= -->
-      <section class="py-24 bg-white border-y border-slate-200">
-        <div class="container max-w-7xl mx-auto px-4">
+      <section class="py-0 bg-white border-y border-slate-200 overflow-hidden">
+        <div class="container max-w-7xl mx-auto px-4 pt-16 pb-5">
           
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
             
@@ -112,7 +112,7 @@ export default {
                 La Rigueur et l'Intégrité au Service de Vos Projets
               </h2>
               <p class="text-slate-600 text-sm md:text-base leading-relaxed">
-                Fondée à Douala, <strong>MULTI BUSINESS SARL</strong> est une société camerounaise de prestations de services intellectuels. Notre ambition est d'offrir aux entrepreneurs, bailleurs et particuliers une structure de confiance, respectueuse des normes légales et dotée d'une technologie d'avant-garde.
+                Fondée à Douala, <strong>MULTI BUSINESS SARL</strong> est une société camerounaise de prestations de services intellectuels. Notre ambition est d'offrir aux entrepreneurs, bailleurs, locataires et particuliers une structure de confiance, respectueuse des normes légales et dotée d'une technologie d'avant-garde.
               </p>
 
               <!-- Badges de Réassurance -->
@@ -148,8 +148,8 @@ export default {
             </div>
 
             <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
-            <div class="lg:col-span-6" data-reveal="right">
-              <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
+            <div class="lg:col-span-6 -mx-2 sm:mx-0" data-reveal="right">
+              <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" data-aspect-mobile="4/5" data-aspect-tablet="16/10" class="w-full"></div>
             </div>
 
 

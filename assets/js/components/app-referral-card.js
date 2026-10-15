@@ -29,30 +29,30 @@ export function renderLiveBadge(extraClasses = '') {
  */
 export function renderAppReferralCard(options = {}) {
   const links = CONFIG.app.links || [];
-  const primaryAction = links[0]; // Recherche d'un local (mise en avant visuelle)
-  const secondaryLinks = links.slice(1, 5); // Gestion locative, Création, Fiscalité, Dédouanement
+  const primaryLinks = links.filter(l => l.priority || l.isPrimary);
+  const secondaryLinks = links.filter(l => !l.priority && !l.isPrimary);
   const appHomeUrl = CONFIG.app.url || 'https://apps.multibusiness.cm/locataire';
 
   return `
-    <div class="relative mx-auto w-full max-w-md lg:max-w-[440px] bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-200/90 p-5 sm:p-6 overflow-hidden transition-all duration-300" id="hero-app-referral-card">
+    <div class="relative mx-auto w-full max-w-md lg:max-w-[460px] bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-slate-200/90 p-4 sm:p-5 overflow-hidden transition-all duration-300" id="hero-app-referral-card">
       
       <!-- Décoration lumineuse subtile (sans vert foncé) -->
       <div class="absolute -top-24 -right-24 w-48 h-48 bg-emerald-100/40 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
-      <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-slate-100/60 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-100/40 rounded-full blur-2xl pointer-events-none" aria-hidden="true"></div>
 
       <!-- EN-TÊTE : Logo MB détouré + Titre + Domaine apps.multibusiness.cm + Bulle "En direct" -->
-      <div class="relative flex items-center justify-between pb-4 mb-4 border-b border-slate-100 gap-3">
+      <div class="relative flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100 gap-3">
         <div class="flex items-center gap-3 min-w-0">
           <img src="./assets/images/logo-transparent.png" 
                srcset="./assets/images/logo-64x64.png 1x, ./assets/images/logo-128x128.png 2x" 
-               width="44" height="44" 
+               width="42" height="42" 
                alt="Logo MULTI BUSINESS SARL" 
-               class="w-11 h-11 object-contain rounded-2xl bg-white shadow-xs border border-slate-100 p-1 flex-shrink-0" />
+               class="w-10 h-10 object-contain rounded-2xl bg-white shadow-xs border border-slate-100 p-1 flex-shrink-0" />
           <div class="text-left min-w-0">
             <h3 class="font-display font-extrabold text-sm sm:text-base text-marine-900 leading-tight truncate">App Multi Business</h3>
             <p class="text-[11px] text-slate-500 font-medium truncate">Vos services en ligne, en un clic</p>
-            <div class="mt-1">
-              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
+            <div class="mt-0.5">
+              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] sm:text-[11px] font-mono font-semibold border border-slate-200/70" title="Plateforme officielle">
                 ${CONFIG.app.domain}
               </span>
             </div>
@@ -63,14 +63,16 @@ export function renderAppReferralCard(options = {}) {
         </div>
       </div>
 
-      <!-- CORPS : Liste de lignes-liens premium avec pastille d'icône, question en gras, sous-texte et flèche animée -->
-      <div class="relative space-y-2 mb-5 text-left" role="list" aria-label="Accès directs aux services de l'application">
+      <!-- CORPS : Deux actions prioritaires + Grille compacte des services + Localisation -->
+      <div class="relative space-y-2 mb-4 text-left" role="list" aria-label="Accès directs aux services de l'application">
         
-        <!-- Action Principale Mise en Avant : Recherche d'un local -->
-        ${renderPrimaryReferralRow(primaryAction)}
+        <!-- 2 Actions Principales Mises en Avant (Recherche d'un local & Paiement des factures) -->
+        ${primaryLinks.map(link => renderPrimaryReferralRow(link)).join('')}
 
-        <!-- 4 Lignes de services clés -->
-        ${secondaryLinks.map((link, idx) => renderReferralRow(link, idx)).join('')}
+        <!-- 4 Lignes de services clés : grille compacte 1 cols sur desktop, pleine largeur sur mobile -->
+        <div class="grid grid-cols-1 sm:grid-cols-1 gap-2 pt-0.5">
+          ${secondaryLinks.map((link, idx) => renderReferralRow(link, idx)).join('')}
+        </div>
 
         <!-- Ligne dédiée à la Localisation : Visite / Fiche Google Maps -->
         ${renderLocationReferralRow()}
@@ -82,7 +84,7 @@ export function renderAppReferralCard(options = {}) {
         <a href="${appHomeUrl}" 
            target="_blank" 
            rel="noopener noreferrer" 
-           class="w-full btn-primary !py-3.5 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all group"
+           class="w-full btn-primary !py-3 text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all group"
            aria-label="Ouvrir l'application Multi Business, s'ouvre dans un nouvel onglet">
           <span>Ouvrir l'application</span>
           <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -99,30 +101,48 @@ export function renderAppReferralCard(options = {}) {
 }
 
 /**
- * Ligne d'action principale mise en avant (Recherche d'un local)
+ * Lignes d'action principale mise en avant (Recherche d'un local & Paiement)
  */
 function renderPrimaryReferralRow(link) {
   if (!link) return '';
+  const isViolet = link.color === 'violet' || link.id === 'paiement';
+
+  const theme = isViolet ? {
+    border: 'border-violet-300 hover:border-violet-500',
+    bg: 'bg-gradient-to-r from-violet-50/95 via-purple-50/70 to-indigo-50/50',
+    badgeBg: 'bg-[#7C3AED] text-white',
+    hoverText: 'group-hover:text-purple-950',
+    ctaText: 'text-violet-800',
+    iconBg: 'bg-[#7C3AED] text-white'
+  } : {
+    border: 'border-emerald-300 hover:border-emerald-500',
+    bg: 'bg-gradient-to-r from-emerald-50/95 via-teal-50/70 to-mint-50/50',
+    badgeBg: 'bg-emerald-600 text-white',
+    hoverText: 'group-hover:text-emerald-950',
+    ctaText: 'text-emerald-800',
+    iconBg: 'bg-emerald-600 text-white'
+  };
+
   return `
     <a href="${link.url}" 
        target="_blank" 
        rel="noopener noreferrer" 
        role="listitem"
-       class="group referral-link-row flex items-center justify-between p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-emerald-50/90 to-teal-50/70 border-2 border-emerald-300 hover:border-emerald-500 hover:shadow-md transition-all duration-200 min-h-[58px]"
+       class="group referral-link-row flex items-center justify-between p-2.5 sm:p-3 rounded-2xl ${theme.bg} border-2 ${theme.border} hover:shadow-md transition-all duration-200 min-h-[58px]"
        aria-label="${link.ariaLabel || (link.question + ', s\'ouvre dans un nouvel onglet')}">
-      <div class="flex items-center gap-3 min-w-0 pr-2">
-        <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-xs flex-shrink-0 group-hover:scale-105 transition-transform" aria-hidden="true">
-          ${icon(link.icon, { class: 'w-5 h-5 text-white' })}
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl ${theme.iconBg} flex items-center justify-center shadow-xs flex-shrink-0 group-hover:scale-105 transition-transform" aria-hidden="true">
+          ${icon(link.icon || (isViolet ? 'wallet' : 'search'), { class: 'w-4 h-4 sm:w-5 sm:h-5 text-white' })}
         </div>
         <div class="min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <h4 class="font-bold text-xs sm:text-sm text-marine-900 group-hover:text-emerald-900 transition-colors leading-snug">${link.question}</h4>
-            <span class="px-1.5 py-0.2 rounded text-[9px] font-black uppercase bg-emerald-600 text-white leading-tight">Priorité</span>
+            <h4 class="font-bold text-xs sm:text-sm text-marine-900 ${theme.hoverText} transition-colors leading-snug">${link.question}</h4>
+            <span class="px-1.5 py-0.2 rounded text-[9px] font-black uppercase ${theme.badgeBg} leading-tight">Priorité</span>
           </div>
           <p class="text-[11px] text-slate-600 truncate mt-0.5">${link.subtext}</p>
         </div>
       </div>
-      <div class="flex items-center gap-1.5 flex-shrink-0 text-emerald-800 font-bold text-xs">
+      <div class="flex items-center gap-1 flex-shrink-0 ${theme.ctaText} font-bold text-xs">
         <span class="hidden sm:inline text-[11px]">${link.cta}</span>
         <svg class="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
@@ -159,6 +179,11 @@ function renderReferralRow(link, index) {
       hoverBorder: 'hover:border-sky-400 hover:bg-sky-50/40',
       arrow: 'text-sky-700'
     },
+    violet: {
+      badge: 'bg-violet-50 text-violet-700 border-violet-200 group-hover:bg-violet-100 group-hover:text-violet-800',
+      hoverBorder: 'hover:border-violet-400 hover:bg-violet-50/40',
+      arrow: 'text-violet-700'
+    },
     lime: {
       badge: 'bg-lime-50 text-emerald-900 border-lime-300 group-hover:bg-lime-100',
       hoverBorder: 'hover:border-lime-400 hover:bg-lime-50/40',
@@ -173,19 +198,18 @@ function renderReferralRow(link, index) {
        target="_blank" 
        rel="noopener noreferrer" 
        role="listitem"
-       class="group referral-link-row flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-white border border-slate-200/90 ${scheme.hoverBorder} hover:shadow-xs transition-all duration-200 min-h-[56px]"
+       class="group referral-link-row flex items-center justify-between p-2 sm:p-2.5 rounded-2xl bg-white border border-slate-200/90 ${scheme.hoverBorder} hover:shadow-xs transition-all duration-200 min-h-[56px] sm:min-h-[52px]"
        aria-label="${link.ariaLabel || (link.question + ', s\'ouvre dans un nouvel onglet')}">
-      <div class="flex items-center gap-3 min-w-0 pr-2">
-        <div class="w-9 h-9 rounded-xl border flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105 ${scheme.badge}" aria-hidden="true">
+      <div class="flex items-center gap-2.5 min-w-0 pr-1">
+        <div class="w-8 h-8 rounded-xl border flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105 ${scheme.badge}" aria-hidden="true">
           ${icon(link.icon, { class: 'w-4 h-4' })}
         </div>
         <div class="min-w-0">
           <h4 class="font-bold text-xs text-marine-900 group-hover:text-slate-950 transition-colors leading-tight truncate">${link.question}</h4>
-          <p class="text-[11px] text-slate-500 truncate mt-0.5">${link.subtext}</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 truncate mt-0.5">${link.subtext}</p>
         </div>
       </div>
       <div class="flex items-center gap-1 flex-shrink-0 ${scheme.arrow} text-xs font-semibold">
-        <span class="hidden md:inline text-[10px] text-slate-500 group-hover:text-slate-800 transition-colors">${link.cta}</span>
         <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
         </svg>
@@ -205,10 +229,10 @@ function renderLocationReferralRow() {
        target="_blank" 
        rel="noopener noreferrer" 
        role="listitem"
-       class="group referral-link-row flex items-center justify-between p-2.5 sm:p-3 rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:border-emerald-400 hover:bg-emerald-50/30 hover:shadow-xs transition-all duration-200 min-h-[56px]"
+       class="group referral-link-row flex items-center justify-between p-2.5 sm:p-2.5 rounded-2xl bg-slate-50/80 border border-slate-200/90 hover:border-emerald-400 hover:bg-emerald-50/30 hover:shadow-xs transition-all duration-200 min-h-[56px] sm:min-h-[50px]"
        aria-label="Voir MULTI BUSINESS SARL sur Google Maps (s'ouvre dans un nouvel onglet)">
-      <div class="flex items-center gap-3 min-w-0 pr-2">
-        <div class="w-9 h-9 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105 group-hover:bg-emerald-100" aria-hidden="true">
+      <div class="flex items-center gap-2.5 sm:gap-3 min-w-0 pr-2">
+        <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-800 flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-105 group-hover:bg-emerald-100" aria-hidden="true">
           ${icon('map-pin', { class: 'w-4 h-4 text-emerald-700' })}
         </div>
         <div class="min-w-0">
@@ -216,11 +240,11 @@ function renderLocationReferralRow() {
             <h4 class="font-bold text-xs text-marine-900 group-hover:text-emerald-950 transition-colors leading-tight truncate">Vous cherchez notre adresse ?</h4>
             <span class="px-1.5 py-0.2 rounded text-[9px] font-bold uppercase bg-slate-200 text-slate-700 leading-tight">Siège</span>
           </div>
-          <p class="text-[11px] text-slate-500 truncate mt-0.5">Retrouvez-nous à Dakar (Douala), près du commissariat du 8ᵉ arrondissement, Immeuble Express Union.</p>
+          <p class="text-[10px] sm:text-[11px] text-slate-500 truncate mt-0.5">Retrouvez-nous à Dakar (Douala), Immeuble Express Union.</p>
         </div>
       </div>
       <div class="flex items-center gap-1 flex-shrink-0 text-emerald-800 text-xs font-semibold">
-        <span class="hidden md:inline text-[10px] text-emerald-700 group-hover:text-emerald-900 transition-colors">Voir sur Google Maps</span>
+        <span class="hidden sm:inline text-[11px] text-emerald-700 group-hover:text-emerald-900 transition-colors">Google Maps</span>
         <svg class="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
         </svg>

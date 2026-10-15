@@ -109,15 +109,31 @@ export const CONFIG = {
         url: "https://apps.multibusiness.cm/locataire/choix",
         question: "Vous recherchez un local ?",
         subtext: "Trouvez le local qui vous correspond, en quelques clics.",
-        cta: "Trouver mon local",
+        cta: "Trouver un local",
         icon: "search",
         color: "mint",
         accentHex: "#26C992",
+        priority: true,
         isPrimary: true,
         ariaLabel: "Trouver mon local sur l'application Multi Business, s'ouvre dans un nouvel onglet"
       },
       {
+        id: "paiement",
+        serviceId: "paiement",
+        url: "https://apps.multibusiness.cm/locataire/connexion",
+        question: "Un loyer, une facture à régler ?",
+        subtext: "Payez vos loyers et vos factures d'eau et d'électricité en ligne, en quelques clics.",
+        cta: "Me connecter",
+        icon: "wallet",
+        color: "violet",
+        accentHex: "#7C3AED",
+        priority: true,
+        isPrimary: true,
+        ariaLabel: "Payer mes loyers et mes factures d'eau et d'électricité (connexion à l'application, s'ouvre dans un nouvel onglet)"
+      },
+      {
         id: "gestion-locative",
+
         serviceId: "gestion-locative",
         url: "https://apps.multibusiness.cm/locataire/gestion-locative",
         question: "Besoin de nos services de gestion locative ?",
@@ -167,19 +183,6 @@ export const CONFIG = {
         accentHex: "#0EA5E9",
         isPrimary: false,
         ariaLabel: "Lancer mon dédouanement sur l'application, s'ouvre dans un nouvel onglet"
-      },
-      {
-        id: "accueil-app",
-        serviceId: "app-home",
-        url: "https://apps.multibusiness.cm/locataire",
-        question: "Accédez à votre espace",
-        subtext: "Toute la plateforme Multi Business à portée de main.",
-        cta: "Ouvrir l'application",
-        icon: "smartphone",
-        color: "lime",
-        accentHex: "#9AFF01",
-        isPrimary: false,
-        ariaLabel: "Ouvrir l'application Multi Business, s'ouvre dans un nouvel onglet"
       }
     ]
   },

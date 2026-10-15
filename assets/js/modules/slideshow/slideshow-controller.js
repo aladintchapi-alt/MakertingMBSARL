@@ -14,6 +14,8 @@ export class PremiumSlideshow {
     this.container = element;
     this.slideshowId = element.getAttribute('data-slideshow') || 'gestion-locative';
     this.aspectRatio = element.getAttribute('data-aspect-ratio') || '16/9';
+    this.aspectMobile = element.getAttribute('data-aspect-mobile') || '6/5';
+    this.aspectTablet = element.getAttribute('data-aspect-tablet') || '16/10';
     this.customDuration = parseInt(element.getAttribute('data-duration'), 10) || null;
     this.pauseOnHover = element.getAttribute('data-pause-on-hover') === 'true';
     this.options = options;
@@ -30,6 +32,7 @@ export class PremiumSlideshow {
     this.slideRemainingTime = 0;
     this.isDestroyed = false;
     this.isFullscreen = false;
+    this.isPseudoFullscreen = false;
     this.wasPlayingBeforeHidden = false;
 
     // Éléments du DOM
@@ -116,23 +119,20 @@ export class PremiumSlideshow {
   render() {
     if (!this.container || this.isDestroyed) return;
 
-    // Définition de l'aspect ratio
-    let aspectClass = 'aspect-video';
-    if (this.aspectRatio === '4/3') aspectClass = 'aspect-[4/3]';
-    else if (this.aspectRatio === '21/9') aspectClass = 'aspect-[21/9]';
-    else if (this.aspectRatio === '1/1') aspectClass = 'aspect-square';
-
     this.container.classList.add('slideshow-container-root');
     this.container.setAttribute('role', 'region');
     this.container.setAttribute('aria-roledescription', 'diaporama');
     this.container.setAttribute('aria-label', this.data.title || 'Diaporama photos');
 
     const firstImg = this.images[0];
+    const firstFocal = firstImg.focalPoint || { x: 50, y: 50 };
     const totalDurationSeconds = Math.round(this.images.reduce((acc, it) => acc + (it.duration || this.defaultDuration), 0) / 1000);
     const coverSrc = this.getBestSource(firstImg, 1600);
 
     this.container.innerHTML = `
-      <div class="slideshow-wrapper relative w-full ${aspectClass} rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 group select-none outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/50" tabindex="0">
+      <div class="slideshow-wrapper relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-slate-950 group select-none outline-none focus-visible:ring-4 focus-visible:ring-emerald-500/50" 
+           style="--slide-aspect-mobile: ${this.aspectMobile}; --slide-aspect-tablet: ${this.aspectTablet}; --slide-aspect-desktop: ${this.aspectRatio};"
+           tabindex="0">
         
         <!-- ============================================================= -->
         <!-- SCÈNE VISUELLE (Couverture en repos, Scène dynamique en lecture) -->
@@ -140,16 +140,16 @@ export class PremiumSlideshow {
         <div class="slideshow-stage absolute inset-0 w-full h-full overflow-hidden">
           
           <!-- Voile flouté ambiant d'arrière-plan pour images de ratios variables -->
-          <div class="slideshow-ambient-bg absolute inset-0 w-full h-full bg-cover bg-center filter blur-2xl opacity-40 scale-110 pointer-events-none transition-all duration-1000" style="background-image: url('${coverSrc}');"></div>
+          <div class="slideshow-ambient-bg absolute inset-0 w-full h-full bg-cover bg-center filter blur-3xl opacity-40 scale-110 pointer-events-none transition-all duration-1000" style="background-image: url('${coverSrc}');"></div>
           
-          <!-- Image de Couverture (État Repos) -->
+          <!-- Image de Couverture (État Repos) avec point focal préservé -->
           <div class="slideshow-cover-layer absolute inset-0 w-full h-full transition-transform duration-700 ease-out group-hover:scale-105">
             <picture>
-              <source type="image/avif" srcset="${this.getSrcSet(firstImg, 'avif')}">
-              <source type="image/webp" srcset="${this.getSrcSet(firstImg, 'webp')}">
-              <img src="${coverSrc}" alt="${firstImg.alt}" class="w-full h-full object-cover object-center" loading="eager" decoding="async">
+              <source type="image/avif" srcset="${this.getSrcSet(firstImg, 'avif')}" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
+              <source type="image/webp" srcset="${this.getSrcSet(firstImg, 'webp')}" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
+              <img src="${coverSrc}" alt="${firstImg.alt}" class="w-full h-full object-cover" style="object-position: ${firstFocal.x}% ${firstFocal.y}%;" loading="eager" decoding="async" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
             </picture>
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent"></div>
           </div>
 
           <!-- Diapositives actives (Créées dynamiquement lors de la lecture) -->
@@ -164,88 +164,88 @@ export class PremiumSlideshow {
         <!-- ============================================================= -->
         <!-- COUCHE REPOS : GRAND BOUTON PLAY & BADGE INFORMATIF           -->
         <!-- ============================================================= -->
-        <div class="slideshow-idle-overlay absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-white z-10 transition-opacity duration-500">
-          <button type="button" class="slideshow-idle-play-btn group/btn relative flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/90 text-slate-900 shadow-2xl backdrop-blur-md border border-white/60 hover:scale-110 hover:bg-white active:scale-95 transition-all duration-300 mb-4 cursor-pointer" aria-label="Lancer le diaporama">
+        <div class="slideshow-idle-overlay absolute inset-0 flex flex-col items-center justify-center p-4 sm:p-6 text-center text-white z-10 transition-opacity duration-500">
+          <button type="button" class="slideshow-idle-play-btn group/btn relative flex items-center justify-center w-16 h-16 sm:w-22 sm:h-22 rounded-full bg-white/95 text-slate-900 shadow-2xl backdrop-blur-md border border-white/60 hover:scale-110 hover:bg-white active:scale-95 transition-all duration-300 mb-2.5 cursor-pointer touch-manipulation" aria-label="Lancer le diaporama">
             <!-- Anneau pulsant discret -->
-            <span class="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping opacity-60 pointer-events-none"></span>
-            <svg class="w-8 h-8 sm:w-10 sm:h-10 fill-current translate-x-0.5 text-marine-950 transition-transform group-hover/btn:scale-110" viewBox="0 0 24 24" aria-hidden="true">
+            <span class="absolute inset-0 rounded-full bg-emerald-500/35 animate-ping opacity-75 pointer-events-none"></span>
+            <svg class="w-7 h-7 sm:w-10 sm:h-10 fill-current translate-x-0.5 text-marine-950 transition-transform group-hover/btn:scale-110" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M8 5v14l11-7z"/>
             </svg>
           </button>
           
-          <div class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-950/75 backdrop-blur-md border border-white/15 text-xs font-semibold text-slate-100 shadow-md">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+          <div class="flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-semibold text-slate-100 shadow-md">
+            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
             <span>Diaporama • ${this.images.length} photos (${totalDurationSeconds} s)</span>
           </div>
-          <span class="text-[11px] text-slate-300 mt-2 opacity-85">Cliquez pour lancer la visite cinématographique</span>
+          <span class="text-[10px] sm:text-xs text-slate-200 mt-1.5 font-medium opacity-90 drop-shadow-sm">Cliquez pour lancer la visite cinématographique</span>
         </div>
 
         <!-- ============================================================= -->
         <!-- COUCHE LECTURE : BARRE SEGMENTS, LÉGENDES & CONTRÔLES VERRE   -->
         <!-- ============================================================= -->
-        <div class="slideshow-active-ui absolute inset-0 flex flex-col justify-between p-4 sm:p-6 z-20 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="slideshow-active-ui absolute inset-0 flex flex-col justify-between p-3 sm:p-5 z-20 opacity-0 pointer-events-none transition-opacity duration-300">
           
           <!-- En-tête : Barre de progression segmentée + Compteur -->
-          <div class="flex items-center gap-4">
-            <div class="slideshow-progress-bar flex items-center gap-1.5 flex-grow" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="${this.images.length}">
+          <div class="flex items-center gap-2.5 sm:gap-4">
+            <div class="slideshow-progress-bar flex items-center gap-1.5 sm:gap-2 flex-grow" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="${this.images.length}">
               ${this.images.map((_, idx) => `
-                <div class="slideshow-segment relative flex-grow h-1.5 rounded-full bg-white/30 overflow-hidden cursor-pointer" data-segment-idx="${idx}">
+                <div class="slideshow-segment relative flex-grow h-1.5 sm:h-2 rounded-full bg-white/30 overflow-hidden cursor-pointer touch-manipulation" data-segment-idx="${idx}" title="Photo ${idx + 1}">
                   <div class="slideshow-segment-fill absolute top-0 left-0 bottom-0 w-0 bg-white rounded-full transition-all duration-75"></div>
                 </div>
               `).join('')}
             </div>
-            <div class="slideshow-counter px-2.5 py-1 rounded-full bg-slate-950/70 backdrop-blur-md border border-white/20 text-xs font-mono font-bold text-white flex-shrink-0">
+            <div class="slideshow-counter px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/20 text-[11px] sm:text-xs font-mono font-bold text-white flex-shrink-0">
               1 / ${this.images.length}
             </div>
           </div>
 
-          <!-- Milieu / Bas : Légende animée en cascade -->
-          <div class="slideshow-caption text-left text-white max-w-2xl bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent p-4 sm:p-5 rounded-2xl backdrop-blur-xs transition-all duration-500">
-            <span class="slideshow-caption-category text-[11px] font-bold uppercase tracking-wider text-emerald-400 block mb-1">MULTI BUSINESS SARL</span>
-            <h4 class="slideshow-caption-title font-serif text-lg sm:text-2xl font-bold leading-tight drop-shadow-md text-white"></h4>
-            <p class="slideshow-caption-text text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed drop-shadow-sm font-sans"></p>
+          <!-- Milieu / Bas : Légende lisible avec dégradé -->
+          <div class="slideshow-caption text-left text-white max-w-2xl bg-gradient-to-t from-slate-950/85 via-slate-950/45 to-transparent p-2.5 sm:p-4 rounded-xl backdrop-blur-xs transition-all duration-500 max-h-[40%] overflow-hidden">
+            <span class="slideshow-caption-category text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-400 block mb-0.5">MULTI BUSINESS SARL</span>
+            <h4 class="slideshow-caption-title font-serif text-sm sm:text-2xl font-bold leading-tight drop-shadow-md text-white line-clamp-2"></h4>
+            <p class="slideshow-caption-text text-[11px] sm:text-sm text-slate-200 mt-0.5 leading-relaxed drop-shadow-sm font-sans line-clamp-2 sm:line-clamp-3"></p>
           </div>
 
-          <!-- Pied : Barre de contrôle en verre dépoli -->
-          <div class="slideshow-controls flex items-center justify-between gap-3 bg-slate-950/75 backdrop-blur-md border border-white/20 p-2 sm:p-2.5 rounded-full shadow-2xl transition-all duration-300">
+          <!-- Pied : Barre de contrôle tactile confortable -->
+          <div class="slideshow-controls flex items-center justify-between gap-1.5 sm:gap-3 bg-slate-950/80 backdrop-blur-md border border-white/20 p-1 sm:p-2 rounded-full shadow-2xl transition-all duration-300">
             
-            <div class="flex items-center gap-1 sm:gap-2">
+            <div class="flex items-center gap-0.5 sm:gap-1.5">
               <!-- Précédent -->
-              <button type="button" class="slideshow-prev-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer" aria-label="Photo précédente">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <button type="button" class="slideshow-prev-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer touch-manipulation" aria-label="Photo précédente">
+                <svg class="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
               </button>
               
               <!-- Lecture / Pause -->
-              <button type="button" class="slideshow-play-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-white text-slate-900 hover:bg-emerald-400 hover:text-slate-950 active:scale-95 transition-all shadow-md cursor-pointer" aria-label="Mettre en pause">
-                <svg class="slideshow-icon-pause w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                <svg class="slideshow-icon-play w-5 h-5 fill-current hidden" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <button type="button" class="slideshow-play-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center bg-white text-slate-900 hover:bg-emerald-400 hover:text-slate-950 active:scale-95 transition-all shadow-md cursor-pointer touch-manipulation" aria-label="Mettre en pause">
+                <svg class="slideshow-icon-pause w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                <svg class="slideshow-icon-play w-4.5 h-4.5 sm:w-5.5 sm:h-5.5 fill-current hidden" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
               </button>
 
               <!-- Suivant -->
-              <button type="button" class="slideshow-next-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer" aria-label="Photo suivante">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              <button type="button" class="slideshow-next-btn w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer touch-manipulation" aria-label="Photo suivante">
+                <svg class="w-4.5 h-4.5 sm:w-5.5 sm:h-5.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
               </button>
             </div>
 
             <!-- Bande de miniatures tactile -->
             <div class="slideshow-thumbs-strip hidden sm:flex items-center gap-1.5 overflow-x-auto max-w-[220px] md:max-w-xs scrollbar-none px-2 py-1">
               ${this.images.map((img, idx) => `
-                <button type="button" class="slideshow-thumb-btn w-8 h-8 rounded-lg overflow-hidden border border-white/30 opacity-60 hover:opacity-100 hover:scale-105 transition-all flex-shrink-0" data-thumb-idx="${idx}" aria-label="Aller à la photo ${idx + 1}">
+                <button type="button" class="slideshow-thumb-btn w-8 h-8 rounded-lg overflow-hidden border border-white/30 opacity-60 hover:opacity-100 hover:scale-105 transition-all flex-shrink-0 cursor-pointer" data-thumb-idx="${idx}" aria-label="Aller à la photo ${idx + 1}">
                   <img src="${img.lqip || this.getBestSource(img, 640)}" alt="" class="w-full h-full object-cover">
                 </button>
               `).join('')}
             </div>
 
-            <div class="flex items-center gap-1 sm:gap-2">
+            <div class="flex items-center gap-1 sm:gap-1.5">
               <!-- Boucle -->
-              <button type="button" class="slideshow-loop-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer ${this.loop ? 'text-emerald-400' : 'opacity-60'}" aria-label="Lecture en boucle active" title="Bascule boucle">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+              <button type="button" class="slideshow-loop-btn w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer touch-manipulation ${this.loop ? 'text-emerald-400' : 'opacity-60'}" aria-label="Lecture en boucle active" title="Bascule boucle">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
               </button>
 
               <!-- Plein écran -->
-              <button type="button" class="slideshow-fullscreen-btn w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer" aria-label="Activer le mode plein écran" title="Plein écran (F)">
-                <svg class="slideshow-icon-fs-enter w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-                <svg class="slideshow-icon-fs-exit w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+              <button type="button" class="slideshow-fullscreen-btn w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer touch-manipulation" aria-label="Activer le mode plein écran" title="Plein écran (F)">
+                <svg class="slideshow-icon-fs-enter w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+                <svg class="slideshow-icon-fs-exit w-5 h-5 sm:w-6 sm:h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
               </button>
             </div>
 
@@ -411,6 +411,12 @@ export class PremiumSlideshow {
           e.preventDefault();
           this.toggleFullscreen();
           break;
+        case 'Escape':
+          if (this.isPseudoFullscreen) {
+            e.preventDefault();
+            this.disablePseudoFullscreen();
+          }
+          break;
         case 'Home':
           e.preventDefault();
           this.goTo(0);
@@ -460,11 +466,8 @@ export class PremiumSlideshow {
 
     // 12. Événement plein écran
     const handleFsChange = () => {
-      this.isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement);
-      if (this.dom.iconFsEnter && this.dom.iconFsExit) {
-        this.dom.iconFsEnter.classList.toggle('hidden', this.isFullscreen);
-        this.dom.iconFsExit.classList.toggle('hidden', !this.isFullscreen);
-      }
+      this.isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement) || this.isPseudoFullscreen;
+      this.updateFsIcons(this.isFullscreen);
     };
     document.addEventListener('fullscreenchange', handleFsChange);
     document.addEventListener('webkitfullscreenchange', handleFsChange);
@@ -568,9 +571,9 @@ export class PremiumSlideshow {
     const slideHtml = `
       <div class="slideshow-slide-wrapper w-full h-full flex items-center justify-center relative">
         <picture>
-          <source type="image/avif" srcset="${this.getSrcSet(imgData, 'avif')}">
-          <source type="image/webp" srcset="${this.getSrcSet(imgData, 'webp')}">
-          <img src="${src}" alt="${imgData.alt}" class="slideshow-slide-img w-full h-full object-cover ${kenClass}" style="transform-origin: ${focal.x}% ${focal.y}%;">
+          <source type="image/avif" srcset="${this.getSrcSet(imgData, 'avif')}" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
+          <source type="image/webp" srcset="${this.getSrcSet(imgData, 'webp')}" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
+          <img src="${src}" alt="${imgData.alt}" class="slideshow-slide-img w-full h-full object-cover ${kenClass}" style="object-position: ${focal.x}% ${focal.y}%; transform-origin: ${focal.x}% ${focal.y}%;" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px">
         </picture>
         <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/30 pointer-events-none"></div>
       </div>
@@ -756,11 +759,56 @@ export class PremiumSlideshow {
   toggleFullscreen() {
     const elem = this.dom.wrapper || this.container;
     if (!this.isFullscreen) {
-      if (elem.requestFullscreen) elem.requestFullscreen();
-      else if (elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => this.enablePseudoFullscreen());
+      } else if (elem.webkitRequestFullscreen) {
+        try {
+          elem.webkitRequestFullscreen();
+        } catch (_) {
+          this.enablePseudoFullscreen();
+        }
+      } else {
+        this.enablePseudoFullscreen();
+      }
     } else {
-      if (document.exitFullscreen) document.exitFullscreen();
-      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      if (this.isPseudoFullscreen) {
+        this.disablePseudoFullscreen();
+      } else if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => this.disablePseudoFullscreen());
+      } else if (document.webkitExitFullscreen) {
+        try {
+          document.webkitExitFullscreen();
+        } catch (_) {
+          this.disablePseudoFullscreen();
+        }
+      } else {
+        this.disablePseudoFullscreen();
+      }
+    }
+  }
+
+  enablePseudoFullscreen() {
+    const elem = this.dom.wrapper || this.container;
+    elem.classList.add('is-pseudo-fullscreen');
+    document.body.classList.add('overflow-hidden');
+    this.isFullscreen = true;
+    this.isPseudoFullscreen = true;
+    this.updateFsIcons(true);
+  }
+
+  disablePseudoFullscreen() {
+    const elem = this.dom.wrapper || this.container;
+    elem.classList.remove('is-pseudo-fullscreen');
+    document.body.classList.remove('overflow-hidden');
+    this.isFullscreen = false;
+    this.isPseudoFullscreen = false;
+    this.updateFsIcons(false);
+  }
+
+  updateFsIcons(active) {
+    if (this.dom.iconFsEnter && this.dom.iconFsExit) {
+      this.dom.iconFsEnter.classList.toggle('hidden', active);
+      this.dom.iconFsExit.classList.toggle('hidden', !active);
     }
   }
 
@@ -775,7 +823,9 @@ export class PremiumSlideshow {
       activePlayingSlideshow = null;
     }
 
-    if (this.isFullscreen) {
+    if (this.isPseudoFullscreen) {
+      this.disablePseudoFullscreen();
+    } else if (this.isFullscreen) {
       try {
         if (document.exitFullscreen) document.exitFullscreen();
       } catch (_) {}

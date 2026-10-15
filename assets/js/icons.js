@@ -105,8 +105,10 @@ export function iconBadge(name, color = 'mint', size = 'md') {
     indigo: 'bg-indigo-50 text-indigo-700 border-indigo-200/90 group-hover:bg-indigo-100 group-hover:text-indigo-800',
     slate: 'bg-slate-100 text-slate-700 border-slate-200 group-hover:bg-slate-200 group-hover:text-slate-900',
     lime: 'bg-lime-50 text-emerald-900 border-lime-300 group-hover:bg-lime-100',
-    rose: 'bg-rose-50 text-rose-700 border-rose-200 group-hover:bg-rose-100 group-hover:text-rose-800'
+    rose: 'bg-rose-50 text-rose-700 border-rose-200 group-hover:bg-rose-100 group-hover:text-rose-800',
+    violet: 'bg-violet-50 text-violet-700 border-violet-200/90 group-hover:bg-violet-100 group-hover:text-violet-800'
   };
+
 
   const sizeMap = {
     sm: { box: 'w-7 h-7 rounded-lg', icon: 'w-3.5 h-3.5' },

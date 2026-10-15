@@ -374,9 +374,9 @@ export default {
       </section>
 
       <!-- ================================================================= -->
-      <!-- 7. VIDÉO D'ENTREPRISE & DÉMONSTRATION INSTITUTIONNELLE             -->
+      <!-- 7. DIAPORAMA D'ENTREPRISE & IMMERSION PHOTOGRAPHIQUE               -->
       <!-- ================================================================= -->
-      <section class="py-20 px-4 md:px-8 bg-[#FAF9F5] border-y border-slate-200" data-theme="ivory">
+      <section class="py-20 px-4 md:px-8 bg-[#FAF9F5] border-y border-slate-200 overflow-hidden" data-theme="ivory">
         <div class="container max-w-5xl mx-auto text-center space-y-8">
           
           <div class="space-y-3" data-reveal="up">
@@ -386,8 +386,8 @@ export default {
           </div>
 
           <!-- Diaporama Photographique d'Entreprise Hyper Premium -->
-          <div class="max-w-4xl mx-auto" data-reveal="up">
-            <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" class="w-full"></div>
+          <div class="max-w-4xl mx-auto w-full" data-reveal="up">
+            <div data-slideshow="gestion-locative" data-aspect-ratio="16/9" data-aspect-mobile="6/5" data-aspect-tablet="16/10" class="w-full"></div>
           </div>
 
         </div>
